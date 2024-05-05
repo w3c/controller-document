@@ -1959,19 +1959,19 @@ function baseDecode(sourceEncoding, sourceBase, baseAlphabet) {
         <p>
 The following algorithm specifies how to safely retrieve a verification method,
 such as a cryptographic <a>public key</a>, by using a <a>verification method</a>
-identifier contained in a <a>data integrity proof</a>. Required inputs are a
-<strong><a>data integrity proof</a></strong> (<var>proof</var>) and a set of
-<strong>dereferencing options</strong> (<var>options</var>). A
+identifier. Required inputs are a
+<strong><a>verification method</a></strong> (<var>verificationMethod</var>),
+a <strong><a>proof purpose</a></strong> (<var>proofPurpose</var>), and
+a set of <strong>dereferencing options</strong> (<var>options</var>). A
 <strong>verification method</strong> is produced as output.
         </p>
 
         <ol class="algorithm">
           <li>
-Let <var>vmIdentifier</var> be set to
-<var>proof</var>.<var>verificationMethod</var>.
+Let <var>vmIdentifier</var> be set to <var>verificationMethod</var>.
           </li>
           <li>
-Let <var>vmPurpose</var> be set to <var>proof</var>.<var>proofPurpose</var>.
+Let <var>vmPurpose</var> be set to <var>proofPurpose</var>.
           </li>
           <li>
 If <var>vmIdentifier</var> is not a valid URL, an error MUST be raised and SHOULD
