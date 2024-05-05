@@ -114,7 +114,7 @@
           // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
           // Team Contact.
           //wgPatentURI:  "",
-          xref: ["URL", "I18N-GLOSSARY", "INFRA", "?VC-DATA-MODEL-2.0"],
+          xref: ["URL", "I18N-GLOSSARY", "INFRA"],
           maxTocLevel: 3,
           /*preProcess: [ ],
           alternateFormats: [ {uri: "diff-20111214.html", label: "diff to previous version"} ],
@@ -1006,7 +1006,8 @@ the value of `controller` needs to <a>authenticate</a> with its
             <p>
 The `assertionMethod` <a>verification relationship</a> is used to
 specify how the <a>controller</a> is expected to express claims, such as for
-the purposes of issuing a [=verifiable credential=].
+the purposes of issuing a
+<a data-cite="?VC-DATA-MODEL-2.0#dfn-verifiable-credential">verifiable credential</a>.
             </p>
 
             <dl>
@@ -1020,8 +1021,9 @@ be embedded or referenced.
             </dl>
 
             <p>
-This property is useful, for example, during the processing of a <a>verifiable
-credential</a> by a verifier.
+This property is useful, for example, during the processing of a
+<a data-cite="?VC-DATA-MODEL-2.0#dfn-verifiable-credential">verifiable credential</a>
+by a verifier.
 <!-- VC-DATA-INTEGRITY-SPECIFIC:
 During verification, a verifier checks to see if a
 <a>verifiable credential</a> contains a proof created by the <a>controller</a>
@@ -1536,7 +1538,8 @@ approaches such as those described above or functionally equivalent mechanisms.
         </p>
         <p>
 Some applications, such as digital wallets, that are capable of holding arbitrary
-<a>verifiable credentials</a> or other data-integrity-protected documents, from
+<a data-cite="?VC-DATA-MODEL-2.0#dfn-verifiable-credential">verifiable credentials</a>
+or other data-integrity-protected documents, from
 any issuer and using any contexts, might need to be able to load externally
 linked resources, such as JSON-LD context files, in production settings. This is
 expected to increase user choice, scalability, and decentralized upgrades in the
