@@ -114,7 +114,7 @@
           // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
           // Team Contact.
           //wgPatentURI:  "",
-          xref: ["URL", "I18N-GLOSSARY", "INFRA", "VC-DATA-MODEL-2.0"],
+          xref: ["URL", "I18N-GLOSSARY", "INFRA", "?VC-DATA-MODEL-2.0"],
           maxTocLevel: 3,
           /*preProcess: [ ],
           alternateFormats: [ {uri: "diff-20111214.html", label: "diff to previous version"} ],
@@ -361,13 +361,6 @@ order to achieve a particular security goal. These documents are often used
 to specify [=verification methods=], digital signature types,
 their identifiers, and other related properties.<!--  See Section -->
 <!-- [[[#cryptographic-suites]]] for further detail. -->
-          </dd>
-
-          <dt><dfn data-lt="decentralized identifiers|DID|DIDs">decentralized identifier</dfn> (DID)</dt>
-          <dd>
-A globally unique persistent identifier that does not require a centralized
-registration authority and is often generated and/or registered
-cryptographically. The generic format of a is defined in [[?DID-CORE]].
           </dd>
 
           <dt><dfn class="export" data-lt="controller(s)">controller</dfn></dt>
@@ -867,7 +860,7 @@ embedded and its properties can be accessed directly. However, if the value is a
 URL <a data-cite="INFRA#string">string</a>, the <a>verification method</a> has
 been included by reference and its properties will need to be retrieved from
 elsewhere in the <a>controller document</a> or from another <a>controller document</a>. This
-is done by dereferencing the URL and searching the resulting <a>resource</a> for a
+is done by dereferencing the URL and searching the resulting resource for a
 <a>verification method</a> <a data-cite="INFRA#ordered-map">map</a> with an
 `id` property whose value matches the URL.
             </p>
@@ -1013,11 +1006,11 @@ the value of `controller` needs to <a>authenticate</a> with its
             <p>
 The `assertionMethod` <a>verification relationship</a> is used to
 specify how the <a>controller</a> is expected to express claims, such as for
-the purposes of issuing a Verifiable Credential [[?VC-DATA-MODEL-2.0]].
+the purposes of issuing a [=verifiable credential=].
             </p>
 
             <dl>
-              <dt><dfn id="defn-assertionMethod">assertionMethod</dfn></dt>
+              <dt id="defn-assertionMethod">assertionMethod</dt>
               <dd>
 The `assertionMethod` property is OPTIONAL. If present, its associated
 value MUST be a <a data-cite="INFRA#ordered-set">set</a> of one or
@@ -1128,7 +1121,7 @@ authorization to update the <a>controller document</a>.
             </p>
 
             <dl>
-              <dt><dfn id="defn-capabilityInvocation">capabilityInvocation</dfn></dt>
+              <dt id="defn-capabilityInvocation">capabilityInvocation</dt>
               <dd>
 The `capabilityInvocation` property is OPTIONAL. If present, the
 associated value MUST be a <a data-cite="INFRA#ordered-set">set</a> of
@@ -1149,7 +1142,7 @@ message that is placed into the HTTP Headers.
             <p>
 The server providing the HTTP API is the <em>verifier</em> of the capability and
 it would need to verify that the <a>verification method</a> referred to by the
-invoked capability exists in the `<a>capabilityInvocation</a>`
+invoked capability exists in the `capabilityInvocation`
 property of the <a>controller document</a>. The verifier would also check to make sure
 that the action being performed is valid and the capability is appropriate for
 the resource being accessed. If the verification is successful, the server has
@@ -1195,7 +1188,7 @@ to access a specific HTTP API to a subordinate.
             </p>
 
             <dl>
-              <dt><dfn class="lint-ignore" id="defn-capabilityDelegation">capabilityDelegation</dfn></dt>
+              <dt id="defn-capabilityDelegation">capabilityDelegation</dt>
               <dd>
 The `capabilityDelegation` property is OPTIONAL. If present, the
 associated value MUST be a <a data-cite="INFRA#ordered-set">set</a> of
@@ -2197,7 +2190,7 @@ Populated Terminology section.
         </li>
         <li>
 Apply wording updates from VC-JOSE-COSE spec.
-        <li>
+        </li>
       </ul>
 
     </section>
