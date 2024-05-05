@@ -114,6 +114,7 @@
           // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
           // Team Contact.
           //wgPatentURI:  "",
+          xref: ["URL", "I18N-GLOSSARY", "INFRA", "VC-DATA-MODEL-2.0"],
           maxTocLevel: 3,
           /*preProcess: [ ],
           alternateFormats: [ {uri: "diff-20111214.html", label: "diff to previous version"} ],
@@ -234,7 +235,7 @@
               publisher:  "The IETF OAuth Working Group"
             }
           },
-          postProcess: [restrictRefs],
+          postProcess: [],
           otherLinks: [{
             key: "Related Specifications",
             data: [{
@@ -1590,52 +1591,6 @@ necessary Data Integrity terms that were previously mapped by
           <p>
 This section defines datatypes that are used by this specification.
           </p>
-
-        <section>
-          <h4 id="cryptosuiteString">The `cryptosuiteString` Datatype</h3>
-
-          <p>
-This specification encodes cryptographic suite identifiers as enumerable
-strings, which is useful in processes that need to efficiently encode such
-strings, such as compression algorithms. In environments that support data types
-for string values, such as RDF [[?RDF-CONCEPTS]], cryptographic identifier
-content is indicated using a literal value whose datatype is set to
-`https://w3id.org/security#cryptosuiteString`.
-          </p>
-
-          <p>
-The <code>cryptosuiteString</code> datatype is defined as follows:
-          </p>
-
-          <dl>
-            <dt>The URL denoting this datatype</dt>
-            <dd>
-`https://w3id.org/security#cryptosuiteString`
-            </dd>
-            <dt>The lexical space</dt>
-            <dd>
-The union of all cryptosuite strings, expressed using American Standard Code
-for Information Interchange [[ASCII]] strings, that are defined by the
-collection of all Data Integrity cryptosuite specifications.
-            </dd>
-            <dt>The value space</dt>
-            <dd>
-The union of all cryptosuite types that are expressed using the `cryptosuite`
-property, as defined in Section <a href="#dataintegrityproof"></a>.
-            </dd>
-            <dt>The lexical-to-value mapping</dt>
-            <dd>
-Any element of the lexical space is mapped to the result of parsing it into an
-internal representation that uniquely identifies the cryptosuite type from all
-other possible cryptosuite types.
-            </dd>
-            <dt>The canonical mapping</dt>
-            <dd>
-Any element of the value space is mapped to the corresponding string in the
-lexical space.
-            </dd>
-          </dl>
-        </section>
 
         <section>
           <h4 id="multibase">The `multibase` Datatype</h3>
