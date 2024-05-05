@@ -1961,7 +1961,7 @@ The following algorithm specifies how to safely retrieve a verification method,
 such as a cryptographic <a>public key</a>, by using a <a>verification method</a>
 identifier. Required inputs are a
 <strong><a>verification method</a></strong> (<var>verificationMethod</var>),
-a <strong><a>proof purpose</a></strong> (<var>proofPurpose</var>), and
+a <strong>proof purpose</strong> (<var>proofPurpose</var>), and
 a set of <strong>dereferencing options</strong> (<var>options</var>). A
 <strong>verification method</strong> is produced as output.
         </p>
@@ -2104,6 +2104,13 @@ The <a>controller document</a> was malformed. See Section
           <dd>
 The <a>verification method</a> in a <a>controller document</a> was malformed. See Section
 <a href="#retrieve-verification-method"></a>.
+          </dd>
+          <dt id="INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD">INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD (-25)</dt>
+          <dd>
+The [=verification method=] in a [=controller document=] was not
+associated using the expected [=verification relationship=] as expressed in
+the `proofPurpose` property in the proof. See Section
+[[[#retrieve-verification-method]]].
           </dd>
         </dl>
       </section>
