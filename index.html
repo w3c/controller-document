@@ -1692,19 +1692,9 @@ The canonical mapping consists of using the lexical-to-value mapping.
       <h2>Algorithms</h2>
 
       <p>
-The algorithms defined below are generalized in that they require a specific
-<a>transformation algorithm</a>, <a>hashing algorithm</a>,
-<a>proof serialization algorithm</a>, and <a>proof verification algorithm</a> to be
-specified by a particular cryptographic suite<!--  (see Section -->
-<!-- <a href="#cryptographic-suites"></a>) -->.
-      </p>
-
-      <p class="issue" title="Verification hash algorithm definition">
-At present the creation of the verification hash is delegated to the
-cryptographic suite specification when generating and verifying a proof. It is
-expected that this algorithm is going to be common to most cryptographic suites.
-It is predicted that the algorithm that generates the verification hash
-will eventually be defined in this specification.
+This section defines algorithms used by this specification including
+instructions on how to base-encode and base-decode values, safely retrieve
+verification methods, and produce processing errors over HTTP channels.
       </p>
 
       <section class="normative">
