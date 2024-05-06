@@ -285,7 +285,9 @@ public cryptographic keys.
       <p>
 A <a>controller document</a> is a set of data that specifies one or more
 relationships between a <a>controller</a> and a set of data, such as a set of
-public cryptographic keys.
+public cryptographic keys. The <a>controller document</a> SHOULD
+contain <a>verification relationships</a> that explicitly permit the use of
+certain <a>verification methods</a> for specific purposes.
       </p>
       <p>
 It is expected that other specifications using this specification
@@ -460,12 +462,11 @@ data-cite="INFRA#ordered-map">map</a> MUST include the `id`,
 `type`, `controller`, and specific verification material
 properties that are determined by the value of `type` and are defined
 in <a href="#verification-material"></a>. A <a>verification method</a> MAY
-include additional properties. <a>Verification methods</a> SHOULD be registered
+include additional properties.
+<!-- VC-DATA-INTEGRITY-SPECIFIC:
+<a>Verification methods</a> SHOULD be registered
 in the Data Integrity Specification Registries [TBD - DIS-REGISTRIES].
-              </p>
-              <p class="note">
-The `verificationMethod` property is REQUIRED for proofs, unlike controller
-documents, for which it is optional.<!-- See section <a href="#proofs"></a>. -->
+-->
               </p>
 
               <dl>
@@ -481,15 +482,23 @@ conforms to the [[URL]] syntax.
                 <dd>
 The value of the `type` property MUST be a <a
 data-cite="INFRA#string">string</a> that references exactly one <a>verification
-method</a> type. In order to maximize global interoperability, the
+method</a> type.
+<!-- VC-DATA-INTEGRITY-SPECIFIC:
+In order to maximize global interoperability, the
 <a>verification method</a> type SHOULD be registered in the Data Integrity Specification
 Registries [TBD -- DIS-REGISTRIES].
+-->
+<!-- VC-JOSE-COSE-SPECIFIC:
+To maximize interoperability, the
+<a>verification method</a> type SHOULD be `JsonWebKey`.
+-->
                 </dd>
                 <dt><span id="defn-controller">controller</span></dt>
                 <dd>
 The value of the `controller` property MUST be a <a
 data-cite="INFRA#string">string</a> that conforms to the [[URL]] syntax.
                 </dd>
+<!-- VC-DATA-INTEGRITY-SPECIFIC:
                 <dt id="defn-vm-expires">expires</dt>
                 <dd>
 The `expires` property is OPTIONAL. It is set, in advance, by the
@@ -501,12 +510,17 @@ not expected to be updated, and systems depending on the value are expected to
 not verify any proofs associated with the <a>verification method</a> at or after
 the time of expiration.
                 </dd>
+-->
                 <dt><dfn class="lint-ignore">revoked</dfn></dt>
                 <dd>
-The `revoked` property is OPTIONAL. It is set by the <a>controller</a> of a
+The `revoked` property is OPTIONAL.
+<!-- VC-DATA-INTEGRITY-SPECIFIC:
+It is set by the <a>controller</a> of a
 <a>verification method</a> to signal when that method is to no longer to be used
 for verification purposes, such as after a security compromise of the
-<a>verification method</a>. If provided, it MUST be an [[XMLSCHEMA11-2]]
+<a>verification method</a>.
+-->
+If present, it MUST be an [[XMLSCHEMA11-2]]
 `dateTimeStamp` string specifying when the <a>verification method</a>
 SHOULD cease to be used. Once the value is set, it is not expected to be
 updated, and systems depending on the value are expected to not verify any
@@ -522,6 +536,8 @@ revocation.
     {
       "@context": [
         "https://www.w3.org/ns/did/v1",
+        "https://www.w3.org/ns/credentials/v2",
+        "https://w3id.org/security/jwk/v1",
         "https://w3id.org/security/data-integrity/v2"
       ]
       "id": "did:example:123456789abcdefghi",
@@ -565,10 +581,14 @@ of verification methods include `JsonWebKey` and `Multikey`.
 A <a>cryptographic suite</a> specification is responsible for specifying the
 <a>verification method</a> `type` and its associated verification material
 format. For examples, see
+<a href="https://www.w3.org/TR/vc-jose-cose/">Securing Verifiable Credentials using JOSE and COSE</a>,
 <a href="https://www.w3.org/TR/vc-di-ecdsa/">the Data Integrity ECDSA
 Cryptosuites</a> and <a href="https://w3c-ccg.github.io/lds-ed25519-2020/">
-the Data Integrity EdDSA Cryptosuites</a>. For a list of <a>verification
+the Data Integrity EdDSA Cryptosuites</a>.
+<!-- VC-DATA-INTEGRITY-SPECIFIC:
+For a list of <a>verification
 method</a> types, please see the [[?SECURITY-VOCABULARY]].
+-->
             </p>
 
             <p>
@@ -588,6 +608,12 @@ properties for the same material. For example, expressing key material in a
             </p>
 
             <p>
+Implementations MAY convert keys between formats as desired for operational purposes or
+to interface with cryptographic libraries. As an internal implementation detail, such
+conversion MUST NOT affect the external representation of key material.
+            </p>
+
+            <p>
 An example of a <a>controller document</a> containing <a>verification
 methods</a> using both properties above is shown below.
             </p>
@@ -598,6 +624,7 @@ methods</a> using both properties above is shown below.
     {
       "@context": [
         "https://www.w3.org/ns/did/v1",
+        "https://www.w3.org/ns/credentials/v2",
         "https://w3id.org/security/jwk/v1",
         "https://w3id.org/security/multikey/v1"
       ]
@@ -721,6 +748,7 @@ The value of the `type` property MUST contain the string `JsonWebKey`.
               </dd>
               <dt><dfn class="lint-ignore">publicKeyJwk</dfn></dt>
               <dd>
+                <p>
 The `publicKeyJwk` property is OPTIONAL. If present, its value MUST
 be a <a data-cite="INFRA#ordered-map">map</a> representing a JSON Web Key that
 conforms to [[RFC7517]]. The <a data-cite="INFRA#ordered-map">map</a> MUST NOT
@@ -732,33 +760,47 @@ their fragment identifier. It is RECOMMENDED that JWK `kid` values are set to
 the public key fingerprint [[RFC7638]]. See the first key in
 <a href="#example-various-verification-method-types"></a> for an example of a
 public key with a compound key identifier.
+                </p>
+                <p>
+As specified in <a data-cite="RFC7517#section-4.4">Section 4.4 of the JWK specification</a>,
+the OPTIONAL `alg` property identifies the algorithm intended for use with the public key,
+and SHOULD be included to prevent security issues that can arise when using the same
+key with multiple algorithms. As specified in <a data-cite="RFC7518#section-6.2.1.1">
+Section 6.2.1.1 of the JWA specification</a>, describing a key using an elliptic curve,
+the REQUIRED `crv` property is used to identify the particular curve type of the public key.
+As specified in <a data-cite="RFC7515#section-4.1.4">Section 4.1.4 of the JWS specification</a>,
+the OPTIONAL `kid` property is a hint used to help discover the key; if present, the `kid` value SHOULD
+match, or be included in, the `id` property of the encapsulating `JsonWebKey` object,
+as part of the path, query, or fragment of the URL.
+                </p>
+
               </dd>
               <dt><dfn class="lint-ignore">secretKeyJwk</dfn></dt>
               <dd>
 The `secretKeyJwk` property is OPTIONAL. If present, its value MUST be a <a
 data-cite="INFRA#ordered-map">map</a> representing a JSON Web Key that conforms
 to [[RFC7517]].
+It MUST NOT be used if the data structure containing it is public or may be revealed to parties other than the legitimate holders of the secret key.
               </dd>
             </dl>
 
             <p>
-An example of an object that conforms to this data model is provided below:
+An example of an object that conforms to `JsonWebKey` is provided below:
             </p>
 
-            <pre class="example nohighlight"
-              title="JSON Web Key encoding of an Ed25519 public key">
+            <pre class="example nohighlight" title="JSON Web Key encoding of a secp384r1 (P-384) public key">
 {
-  "@context": ["https://www.w3.org/ns/security/jwk/v1"],
   "id": "did:example:123456789abcdefghi#key-1",
   "type": "JsonWebKey",
   "controller": "did:example:123456789abcdefghi",
   "publicKeyJwk": {
-    "kty": "OKP",
-    "alg": "EdDSA"
-    "crv": "Ed25519",
-    "kid": "key-1",
-    "x": "_1EiHquO2aUx9JARSu0P8jdYT_OVneYxYOnOMAmUcFI",
-  }
+      "kid": "key-1",
+      "kty": "EC",
+      "crv": "P-384",
+      "alg": "ES384",
+      "x": "1F14JSzKbwxO-Heqew5HzEt-0NZXAjCu8w-RiuV8_9tMiXrSZdjsWqi4y86OFb5d",
+      "y": "dnd8yoq-NOJcBuEYgdVVMmSxonXg-DU90d7C4uPWb_Lkd4WIQQEH0DyeC2KUDMIU"
+    }
 }
             </pre>
 
@@ -766,17 +808,14 @@ An example of an object that conforms to this data model is provided below:
 In the example above, the `publicKeyJwk` value contains the JSON Web Key.
 The `kty` property encodes the key type of "OKP", which means
 "Octet string key pairs". The `alg` property identifies the algorithm intended
-for use with the public key. The `crv` property identifies the particular
-curve type of the public key. The `kid` property specifies how the public key
-might be referenced in software systems; if present, the `kid` value SHOULD match the
-`id` property of the encapsulating `JsonWebKey` object. Finally, the `x`
-property specifies the point on the Ed25519 curve that is associated with the
-public key.
+for use with the public key, which in this case is `ES384`. The `crv` property identifies
+the particular curve type of the public key, `P-384`. The `x` property specifies
+the point on the P-384 curve that is associated with the public key.
             </p>
 
             <p>
 The `publicKeyJwk` property MUST NOT contain any property marked as
-"Private" in any registry contained in the JOSE Registries [[JOSE-REGISTRIES]].
+"Private" or "Secret" in any registry contained in the JOSE Registries [[JOSE-REGISTRIES]], including "d".
             </p>
 
             <p>
@@ -785,20 +824,19 @@ referred to as <em>private keys</em>.
             </p>
 
             <pre class="example nohighlight"
-              title="JSON Web Key encoding of an Ed25519 secret key">
+              title="JSON Web Key encoding of a secp384r1 (P-384) secret key">
 {
-  "@context": ["https://www.w3.org/ns/security/jwk/v1"],
   "id": "did:example:123456789abcdefghi#key-1",
   "type": "JsonWebKey",
   "controller": "did:example:123456789abcdefghi",
   "secretKeyJwk": {
-    "kty": "OKP",
-    "alg": "EdDSA"
-    "crv": "Ed25519",
-    "kid": "key-1",
-    "d": "Q6JwjCUdThSnoxfXHSFt5C1nVFycY_ZpW7qVzK644_g",
-    "x": "_1EiHquO2aUx9JARSu0P8jdYT_OVneYxYOnOMAmUcFI",
-  }
+      "kty": "EC",
+      "crv": "P-384",
+      "alg": "ES384",
+      "d": "fGwges0SX1mj4eZamUCL4qtZijy9uT15fI4gKTuRvre4Kkoju2SHM4rlFOeKVraH",
+      "x": "1F14JSzKbwxO-Heqew5HzEt-0NZXAjCu8w-RiuV8_9tMiXrSZdjsWqi4y86OFb5d",
+      "y": "dnd8yoq-NOJcBuEYgdVVMmSxonXg-DU90d7C4uPWb_Lkd4WIQQEH0DyeC2KUDMIU"
+    }
 }
             </pre>
 
@@ -891,9 +929,9 @@ considered invalid or revoked.
           <p>
 The following sections define several useful <a>verification relationships</a>.
 A <a>controller document</a> MAY include any of these, or other properties, to
-express a specific <a>verification relationship</a>. In order to maximize global
+express a specific <a>verification relationship</a>. To maximize global
 interoperability, any such properties used SHOULD be registered in the
-Data Integrity Specification Registries [TBD: DIS-REGISTRIES].
+<a href="https://w3c.github.io/vc-specs-dir/#proof">VC Specifications Directory</a>.
           </p>
 
           <section>
@@ -909,7 +947,7 @@ challenge-response protocol.
             <dl>
               <dt id="defn-authentication">authentication</dt>
               <dd>
-The `authentication` property is OPTIONAL. If present, the associated
+The `authentication` property is OPTIONAL. If present, its
 value MUST be a <a data-cite="INFRA#ordered-set">set</a> of one or more
 <a>verification methods</a>. Each <a>verification method</a> MAY be embedded or
 referenced.
@@ -921,6 +959,7 @@ referenced.
     {
       "@context": [
         "https://www.w3.org/ns/did/v1",
+        "https://www.w3.org/ns/credentials/v2",
         "https://w3id.org/security/multikey/v1"
       ],
       "id": "did:example:123456789abcdefghi",
@@ -979,20 +1018,23 @@ the purposes of issuing a Verifiable Credential [[?VC-DATA-MODEL-2.0]].
             <dl>
               <dt><dfn id="defn-assertionMethod">assertionMethod</dfn></dt>
               <dd>
-The `assertionMethod` property is OPTIONAL. If present, the
-associated value MUST be a <a data-cite="INFRA#ordered-set">set</a> of
-one or more <a>verification methods</a>. Each <a>verification method</a> MAY be
-embedded or referenced.
+The `assertionMethod` property is OPTIONAL. If present, its associated
+value MUST be a <a data-cite="INFRA#ordered-set">set</a> of one or
+more <a>verification methods</a>. Each <a>verification method</a> MAY
+be embedded or referenced.
               </dd>
             </dl>
 
             <p>
 This property is useful, for example, during the processing of a <a>verifiable
-credential</a> by a verifier. During verification, a verifier checks to see if a
+credential</a> by a verifier.
+<!-- VC-DATA-INTEGRITY-SPECIFIC:
+During verification, a verifier checks to see if a
 <a>verifiable credential</a> contains a proof created by the <a>controller</a>
 by checking that the <a>verification method</a> used to assert the proof is
 associated with the `<a>assertionMethod</a>` property in the
 corresponding <a>controller document</a>.
+-->
             </p>
 
             <pre class="example nohighlight" title="Assertion method property
@@ -1000,6 +1042,7 @@ corresponding <a>controller document</a>.
     {
       "@context": [
         "https://www.w3.org/ns/did/v1",
+        "https://www.w3.org/ns/credentials/v2",
         "https://w3id.org/security/multikey/v1"
       ],
       "id": "did:example:123456789abcdefghi",
@@ -2199,6 +2242,9 @@ specification over time.
       <ul>
         <li>
 Populated Terminology section.
+        </li>
+        <li>
+Apply wording updates from VC-JOSE-COSE spec.
         <li>
       </ul>
 
