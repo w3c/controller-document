@@ -1,0 +1,3017 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="generator" content="ReSpec 35.0.2">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-color:var(--warning-border,#f11);border-width:.2em;border-style:solid;background:#fbe9e9;background:var(--warning-bg,#fbe9e9);color:#000;color:var(--text,#000)}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+    
+<title>Controller Documents 1.0</title>
+    
+    
+    
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+    
+
+    
+    
+<style>
+
+code {
+  color: rgb(199, 73, 0);
+  font-weight: bold;
+}
+pre.nohighlight {
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+ol.algorithm { counter-reset:numsection; list-style-type: none; }
+ol.algorithm li { margin: 0.5em 0; }
+ol.algorithm li:before { font-weight: bold; counter-increment: numsection; content: counters(numsection, ".") ") "; }
+    
+</style>
+
+<meta name="color-scheme" content="light">
+<meta name="description" content="A controller document is a set of data that specifies one or more
+relationships between a controller and a set of data, such as a set of
+public cryptographic keys.">
+<link rel="canonical" href="https://www.w3.org/TR/vc-controller-document/">
+<style>
+.hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{--base:#282c34;--mono-1:#abb2bf;--mono-2:#818896;--mono-3:#5c6370;--hue-1:#56b6c2;--hue-2:#61aeee;--hue-3:#c678dd;--hue-4:#98c379;--hue-5:#e06c75;--hue-5-2:#be5046;--hue-6:#d19a66;--hue-6-2:#e6c07b}
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "specStatus": "FPWD",
+  "shortName": "vc-controller-document",
+  "publishDate": "2024-05-30",
+  "edDraftURI": "https://w3c.github.io/vc-controller-document/",
+  "editors": [
+    {
+      "name": "Manu Sporny",
+      "url": "https://digitalbazaar.com/",
+      "company": "Digital Bazaar",
+      "companyURL": "http://digitalbazaar.com/",
+      "w3cid": 41758
+    },
+    {
+      "name": "Michael B. Jones",
+      "url": "https://self-issued.info/",
+      "company": "independent",
+      "w3cid": 38745
+    }
+  ],
+  "authors": [
+    {
+      "name": "Dave Longley",
+      "url": "http://digitalbazaar.com/",
+      "company": "Digital Bazaar",
+      "companyURL": "http://digitalbazaar.com/"
+    },
+    {
+      "name": "Manu Sporny",
+      "url": "http://digitalbazaar.com/",
+      "company": "Digital Bazaar",
+      "companyURL": "http://digitalbazaar.com/"
+    },
+    {
+      "name": "Markus Sabadello",
+      "url": "https://www.linkedin.com/in/markus-sabadello-353a0821",
+      "company": "Danube Tech",
+      "companyURL": "https://danubetech.com/",
+      "w3cid": 46729
+    },
+    {
+      "name": "Drummond Reed",
+      "url": "https://www.linkedin.com/in/drummondreed/",
+      "company": "Evernym/Avast",
+      "companyURL": "https://www.evernym.com/",
+      "w3cid": 3096
+    },
+    {
+      "name": "Orie Steele",
+      "url": "https://www.linkedin.com/in/or13b/",
+      "company": "Transmute",
+      "companyURL": "https://transmute.industries/"
+    },
+    {
+      "name": "Christopher Allen",
+      "url": "https://www.linkedin.com/in/christophera",
+      "company": "Blockchain Commons",
+      "companyURL": "https://www.BlockchainCommons.com",
+      "w3cid": 85560
+    }
+  ],
+  "group": "vc",
+  "wgPublicList": "public-vc-wg",
+  "github": "w3c/vc-controller-document",
+  "xref": [
+    "URL",
+    "I18N-GLOSSARY",
+    "INFRA"
+  ],
+  "maxTocLevel": 3,
+  "localBiblio": {
+    "DI-EDDSA": {
+      "title": "The Edwards Digital Signature Algorithm Cryptosuites v1.0",
+      "href": "https://www.w3.org/TR/vc-di-eddsa/",
+      "authors": [
+        "David Longley",
+        "Manu Sporny",
+        "Dmitri Zagidulin"
+      ],
+      "status": "WD",
+      "publisher": "W3C Verifiable Credentials Working Group"
+    },
+    "DI-ECDSA": {
+      "title": "The Elliptic Curve Digital Signature Algorithm Cryptosuites v1.0",
+      "href": "https://www.w3.org/TR/vc-di-ecdsa/",
+      "authors": [
+        "David Longley",
+        "Manu Sporny",
+        "Marty Reed"
+      ],
+      "status": "WD",
+      "publisher": "W3C Verifiable Credentials Working Group"
+    },
+    "DI-BBSDSA": {
+      "title": "The BBS Digital Signature Algorithm Cryptosuites v1.0",
+      "href": "https://www.w3.org/TR/vc-di-bbs/",
+      "authors": [
+        "Tobias Looker",
+        "Orie Steele"
+      ],
+      "status": "WD",
+      "publisher": "W3C Verifiable Credentials Working Group"
+    },
+    "JOSE-REGISTRIES": {
+      "title": "The JSON Object Signing and Encryption (JOSE) Registries",
+      "href": "https://www.iana.org/assignments/jose",
+      "authors": [
+        "The Internet Assigned Numbers Authority"
+      ],
+      "status": "REC",
+      "publisher": "The Internet Assigned Numbers Authority",
+      "id": "jose-registries"
+    },
+    "SECURITY-VOCABULARY": {
+      "title": "The Security Vocabulary",
+      "href": "https://w3id.org/security",
+      "authors": [
+        "Ivan Herman",
+        "Manu Sporny",
+        "David Longley"
+      ],
+      "status": "ED",
+      "publisher": "Verifiable Credentials Working Group"
+    },
+    "ZCAP": {
+      "title": "Authorization Capabilities for Linked Data",
+      "href": "https://w3c-ccg.github.io/zcap-spec/",
+      "status": "CGDRAFT",
+      "publisher": "Credentials Community Group"
+    },
+    "MULTIBASE": {
+      "title": "The Multibase Data Format",
+      "date": "February 2023",
+      "href": "https://datatracker.ietf.org/doc/draft-multiformats-multibase",
+      "authors": [
+        "Juan Benet",
+        "Manu Sporny"
+      ],
+      "status": "Internet-Draft",
+      "publisher": "IETF",
+      "id": "multibase"
+    },
+    "MULTIHASH": {
+      "title": "The Multihash Data Format",
+      "date": "February 2023",
+      "href": "https://datatracker.ietf.org/doc/draft-multiformats-multihash",
+      "authors": [
+        "Juan Benet",
+        "Manu Sporny"
+      ],
+      "status": "Internet-Draft",
+      "publisher": "IETF",
+      "id": "multihash"
+    },
+    "MULTICODEC": {
+      "title": "The Multi Codec Encoding Scheme",
+      "date": "February 2022",
+      "href": "https://github.com/multiformats/multicodec/blob/master/table.csv",
+      "authors": [
+        "The Multiformats Community"
+      ],
+      "status": "Internet-Draft",
+      "publisher": "IETF"
+    },
+    "VC-SPECS": {
+      "title": "Verifiable Credential Specifications Directory",
+      "href": "https://w3c.github.io/vc-specs-dir/",
+      "authors": [
+        "Manu Sporny"
+      ],
+      "status": "ED",
+      "publisher": "W3C Verifiable Credentials Working Group"
+    },
+    "DID-KEY": {
+      "title": "The did:key Method",
+      "href": "https://w3c-ccg.github.io/did-method-key/",
+      "authors": [
+        "Manu Sporny",
+        "Dmitri Zagidulin",
+        "Dave Longley",
+        "Orie Steele"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "W3C Credentials Community Group"
+    },
+    "SHA3": {
+      "title": "SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions",
+      "href": "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf",
+      "authors": [
+        "National Institute of Standards and Technology"
+      ],
+      "status": "National Standard",
+      "publisher": "U.S. Department of Commerce",
+      "id": "sha3"
+    },
+    "SD-JWT": {
+      "title": "Selective Disclosure for JWTs (SD-JWT)",
+      "href": "https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/",
+      "authors": [
+        "Daniel Fett",
+        "Kristina Yasuda",
+        "Brian Campbell"
+      ],
+      "status": "I-D",
+      "publisher": "The IETF OAuth Working Group"
+    }
+  },
+  "postProcess": [],
+  "otherLinks": [
+    {
+      "key": "Related Specifications",
+      "data": [
+        {
+          "value": "Decentralized Identifiers v1.0",
+          "href": "https://www.w3.org/TR/did-core/"
+        },
+        {
+          "value": "The Verifiable Credentials Data Model v2.0",
+          "href": "https://www.w3.org/TR/vc-data-model-2.0/"
+        },
+        {
+          "value": "Data Integrity v1.0",
+          "href": "https://www.w3.org/TR/vc-data-integrity/"
+        },
+        {
+          "value": "Securing Verifiable Credentials using JOSE and COSE",
+          "href": "https://www.w3.org/TR/vc-jose-cose/"
+        }
+      ]
+    }
+  ],
+  "publishISODate": "2024-05-30T00:00:00.000Z",
+  "generatedSubtitle": "W3C First Public Working Draft 30 May 2024"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-WD"></head>
+<body class="h-entry" data-cite="URL I18N-GLOSSARY INFRA"><div class="head">
+    <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
+  </a></p>
+    <h1 id="title" class="title">Controller Documents 1.0</h1> 
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#FPWD">W3C First Public Working Draft</a> <time class="dt-published" datetime="2024-05-30">30 May 2024</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://www.w3.org/TR/2024/WD-vc-controller-document-20240530/">https://www.w3.org/TR/2024/WD-vc-controller-document-20240530/</a>
+              </dd>
+        <dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/vc-controller-document/">https://www.w3.org/TR/vc-controller-document/</a>
+              </dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/vc-controller-document/">https://w3c.github.io/vc-controller-document/</a></dd>
+        <dt>History:</dt><dd>
+                    <a href="https://www.w3.org/standards/history/vc-controller-document/">https://www.w3.org/standards/history/vc-controller-document/</a>
+                  </dd><dd>
+                    <a href="https://github.com/w3c/vc-controller-document/commits/">Commit history</a>
+                  </dd>
+        
+        
+        
+        
+        
+        <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="41758">
+    <a class="u-url url p-name fn" href="https://digitalbazaar.com/">Manu Sporny</a> (<a class="p-org org h-org" href="http://digitalbazaar.com/">Digital Bazaar</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="38745">
+    <a class="u-url url p-name fn" href="https://self-issued.info/">Michael B. Jones</a> (<span class="p-org org h-org">independent</span>)
+  </dd>
+        
+        <dt>Authors:</dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="http://digitalbazaar.com/">Dave Longley</a> (<a class="p-org org h-org" href="http://digitalbazaar.com/">Digital Bazaar</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="http://digitalbazaar.com/">Manu Sporny</a> (<a class="p-org org h-org" href="http://digitalbazaar.com/">Digital Bazaar</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="46729">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/markus-sabadello-353a0821">Markus Sabadello</a> (<a class="p-org org h-org" href="https://danubetech.com/">Danube Tech</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="3096">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/drummondreed/">Drummond Reed</a> (<a class="p-org org h-org" href="https://www.evernym.com/">Evernym/Avast</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/or13b/">Orie Steele</a> (<a class="p-org org h-org" href="https://transmute.industries/">Transmute</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="85560">
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/christophera">Christopher Allen</a> (<a class="p-org org h-org" href="https://www.BlockchainCommons.com">Blockchain Commons</a>)
+  </dd>
+        <dt>Feedback:</dt><dd>
+        <a href="https://github.com/w3c/vc-controller-document/">GitHub w3c/vc-controller-document</a>
+        (<a href="https://github.com/w3c/vc-controller-document/pulls/">pull requests</a>,
+        <a href="https://github.com/w3c/vc-controller-document/issues/new/choose">new issue</a>,
+        <a href="https://github.com/w3c/vc-controller-document/issues/">open issues</a>)
+      </dd><dd><a href="mailto:public-vc-wg@w3.org?subject=%5Bvc-controller-document%5D%20YOUR%20TOPIC%20HERE">public-vc-wg@w3.org</a> with subject line <kbd>[vc-controller-document] <em>… message topic …</em></kbd> (<a rel="discussion" href="https://lists.w3.org/Archives/Public/public-vc-wg">archives</a>)</dd>
+        
+        <dt>Related Specifications</dt><dd>
+    <a href="https://www.w3.org/TR/did-core/">Decentralized Identifiers v1.0</a>
+  </dd><dd>
+    <a href="https://www.w3.org/TR/vc-data-model-2.0/">The Verifiable Credentials Data Model v2.0</a>
+  </dd><dd>
+    <a href="https://www.w3.org/TR/vc-data-integrity/">Data Integrity v1.0</a>
+  </dd><dd>
+    <a href="https://www.w3.org/TR/vc-jose-cose/">Securing Verifiable Credentials using JOSE and COSE</a>
+  </dd>
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">
+    <a href="https://www.w3.org/policies/#copyright">Copyright</a>
+    ©
+    2024
+    
+    <a href="https://www.w3.org/">World Wide Web Consortium</a>.
+    <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
+    <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and
+    <a rel="license" href="https://www.w3.org/copyright/software-license-2023/" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
+  </p>
+    <hr title="Separator for header">
+  </div>
+    <section id="abstract" class="introductory"><h2>Abstract</h2>
+      <p>
+A <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-1">controller document</a> is a set of data that specifies one or more
+relationships between a <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-1">controller</a> and a set of data, such as a set of
+public cryptographic keys.
+      </p>
+    </section>
+
+    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
+      document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
+      publications and the latest revision of this technical report can be found
+      in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+      https://www.w3.org/TR/.</em></p>
+
+    <p>
+    This document was published by the <a href="https://www.w3.org/groups/wg/vc">Verifiable Credentials Working Group</a> as
+    a First Public Working Draft using the
+        <a href="https://www.w3.org/2023/Process-20231103/#recs-and-notes">Recommendation track</a>. 
+  </p><p>Publication as a First Public Working Draft does not
+  imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p><p>
+    This is a draft document and may be updated, replaced or obsoleted by other
+    documents at any time. It is inappropriate to cite this document as other
+    than work in progress.
+    
+  </p><p>
+    
+        This document was produced by a group
+        operating under the
+        <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent
+          Policy</a>.
+      
+    
+                <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                <a rel="disclosure" href="https://www.w3.org/groups/wg/vc/ipr">public list of any patent disclosures</a>
+          made in connection with the deliverables of
+          the group; that page also includes
+          instructions for disclosing a patent. An individual who has actual
+          knowledge of a patent which the individual believes contains
+          <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
+          must disclose the information in accordance with
+          <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+        
+  </p><p>
+                      This document is governed by the
+                      <a id="w3c_process_revision" href="https://www.w3.org/2023/Process-20231103/">03 November 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.1 </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">1.2 </bdi>Terminology</a></li></ol></li><li class="tocline"><a class="tocxref" href="#data-model"><bdi class="secno">2. </bdi>Data Model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#verification-methods"><bdi class="secno">2.1 </bdi>Verification Methods</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#verification-material"><bdi class="secno">2.1.1 </bdi>Verification Material</a></li><li class="tocline"><a class="tocxref" href="#multikey"><bdi class="secno">2.1.2 </bdi>Multikey</a></li><li class="tocline"><a class="tocxref" href="#jsonwebkey"><bdi class="secno">2.1.3 </bdi>JsonWebKey</a></li><li class="tocline"><a class="tocxref" href="#referring-to-verification-methods"><bdi class="secno">2.1.4 </bdi>Referring to Verification Methods</a></li></ol></li><li class="tocline"><a class="tocxref" href="#verification-relationships"><bdi class="secno">2.2 </bdi>Verification Relationships</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#authentication"><bdi class="secno">2.2.1 </bdi>Authentication</a></li><li class="tocline"><a class="tocxref" href="#assertion"><bdi class="secno">2.2.2 </bdi>Assertion</a></li><li class="tocline"><a class="tocxref" href="#key-agreement"><bdi class="secno">2.2.3 </bdi>Key Agreement</a></li><li class="tocline"><a class="tocxref" href="#capability-invocation"><bdi class="secno">2.2.4 </bdi>Capability Invocation</a></li><li class="tocline"><a class="tocxref" href="#capability-delegation"><bdi class="secno">2.2.5 </bdi>Capability Delegation</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#multibase-0"><bdi class="secno">3. </bdi>Multibase</a></li><li class="tocline"><a class="tocxref" href="#multihash"><bdi class="secno">4. </bdi>Multihash</a></li><li class="tocline"><a class="tocxref" href="#contexts-and-vocabularies"><bdi class="secno">5. </bdi>Contexts and Vocabularies</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#context-injection"><bdi class="secno">5.1 </bdi>Context Injection</a></li><li class="tocline"><a class="tocxref" href="#datatypes"><bdi class="secno">5.2 </bdi>Datatypes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#multibase"><bdi class="secno">5.2.1 </bdi>The <code>multibase</code> Datatype</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#algorithms"><bdi class="secno">6. </bdi>Algorithms</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#base-encode"><bdi class="secno">6.1 </bdi>Base Encode</a></li><li class="tocline"><a class="tocxref" href="#base-decode"><bdi class="secno">6.2 </bdi>Base Decode</a></li><li class="tocline"><a class="tocxref" href="#retrieve-verification-method"><bdi class="secno">6.3 </bdi>Retrieve Verification Method</a></li><li class="tocline"><a class="tocxref" href="#processing-errors"><bdi class="secno">6.4 </bdi>Processing Errors</a></li></ol></li><li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">7. </bdi>Security Considerations</a></li><li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">8. </bdi>Privacy Considerations</a></li><li class="tocline"><a class="tocxref" href="#accessibility-considerations"><bdi class="secno">9. </bdi>Accessibility Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#presenting-time-values"><bdi class="secno">9.1 </bdi>Presenting Time Values</a></li></ol></li><li class="tocline"><a class="tocxref" href="#revision-history"><bdi class="secno">10. </bdi>Revision History</a></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">11. </bdi>Acknowledgements</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+
+    <section class="informative" id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
+      
+      <p>
+A <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-2">controller document</a> is a set of data that specifies one or more
+relationships between a <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-2">controller</a> and a set of data, such as a set of
+public cryptographic keys. The <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-3">controller document</a> <em class="rfc2119">SHOULD</em>
+contain <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-1">verification relationships</a> that explicitly permit the use of
+certain <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-1">verification methods</a> for specific purposes.
+      </p>
+      <p>
+It is expected that other specifications using this specification
+will profile the features that it defines,
+requiring and/or recommending the use of some and
+prohibiting and/or deprecating the use of others.
+      </p>
+
+      <section id="conformance"><div class="header-wrapper"><h3 id="x1-1-conformance"><bdi class="secno">1.1 </bdi>Conformance</h3><a class="self-link" href="#conformance" aria-label="Permalink for Section 1.1"></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
+        The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, <em class="rfc2119">MUST NOT</em>, <em class="rfc2119">OPTIONAL</em>, <em class="rfc2119">RECOMMENDED</em>, <em class="rfc2119">REQUIRED</em>, and <em class="rfc2119">SHOULD</em> in this document
+        are to be interpreted as described in
+        <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
+        [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
+        when, and only when, they appear in all capitals, as shown here.
+      </p>
+        <p>
+A <dfn id="dfn-conforming-controller-document" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">conforming controller document</dfn> is any concrete expression of the
+data model that follows the relevant normative requirements in Sections
+<a href="#data-model" class="sec-ref"><bdi class="secno">2. </bdi>Data Model</a> and <a href="#contexts-and-vocabularies" class="sec-ref"><bdi class="secno">5. </bdi>Contexts and Vocabularies</a>.
+        </p>
+
+        <p>
+A <dfn id="dfn-conforming-verification-method" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">conforming verification method</dfn> is any concrete expression of the
+data model that follows the relevant normative requirements in Sections
+<a href="#verification-methods" class="sec-ref"><bdi class="secno">2.1 </bdi>Verification Methods</a> and
+<a href="#contexts-and-vocabularies" class="sec-ref"><bdi class="secno">5. </bdi>Contexts and Vocabularies</a>.
+        </p>
+
+        <p>
+A <dfn class="lint-ignore" data-plurals="conforming documents" id="dfn-conforming-document" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">conforming document</dfn> is either a
+<a href="#dfn-conforming-controller-document" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-conforming-controller-document-1">conforming controller document</a>, or a
+<a href="#dfn-conforming-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-conforming-verification-method-1">conforming verification method</a>.
+        </p>
+
+        <p>
+A <dfn class="lint-ignore" id="dfn-conforming-processor" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">conforming processor</dfn> is any algorithm realized
+as software and/or hardware that generates and/or consumes a
+<a href="#dfn-conforming-document" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-conforming-document-1">conforming document</a> according to the relevant normative statements in
+Section <a href="#algorithms" class="sec-ref"><bdi class="secno">6. </bdi>Algorithms</a>. Conforming processors <em class="rfc2119">MUST</em> produce errors
+when non-conforming documents are consumed.
+        </p>
+
+      </section>
+
+      <section class="informative" id="terminology"><div class="header-wrapper"><h3 id="x1-2-terminology"><bdi class="secno">1.2 </bdi>Terminology</h3><a class="self-link" href="#terminology" aria-label="Permalink for Section 1.2"></a></div><p><em>This section is non-normative.</em></p>
+        
+
+        <p>
+This section defines the terms used in this specification. A link to these terms
+is included whenever they appear in this specification.
+        </p>
+
+        <dl class="termlist definitions" data-sort="ascending"><dt><dfn data-lt="authenticated|authenticate|authentication" id="dfn-authenticated" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">authentication</dfn></dt>
+          <dd data-defines="#dfn-authenticated">
+A process by which an entity can prove to a verifier that it has a specific
+attribute or controls a specific secret.
+          </dd>
+
+          <dt><dfn class="export" data-lt="controller(s)|controller" data-export="" data-plurals="controllers" id="dfn-controller-s" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">controller</dfn></dt>
+          <dd data-defines="#dfn-controller-s">
+An entity that has the capability to make changes to a
+<a data-link-type="dfn|abstract-op" href="#dfn-controller-documents" class="internalDFN" id="ref-for-dfn-controller-documents-4">controller document</a>.
+          </dd>
+
+          <dt><dfn class="export" data-lt="controller documents|controller document" data-export="" id="dfn-controller-documents" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">controller document</dfn></dt>
+          <dd data-defines="#dfn-controller-documents">
+A set of data that specifies one or more relationships between a
+<a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-3">controller</a> and a set of data, such as a set of public cryptographic keys.
+          </dd>
+
+          <dt><dfn class="export" data-lt="cryptosuite|cryptographic suite" data-export="" id="dfn-cryptosuite" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">cryptographic suite</dfn></dt>
+          <dd data-defines="#dfn-cryptosuite">
+A specification defining the usage of specific cryptographic primitives in
+order to achieve a particular security goal. These documents are often used
+to specify <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-2">verification methods</a>, digital signature types,
+their identifiers, and other related properties.
+
+          </dd>
+
+          <dt><dfn id="dfn-private-key" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">private key</dfn></dt>
+          <dd data-defines="#dfn-private-key">
+Cryptographic material that can be used to generate digital proofs.
+          </dd>
+
+          <dt><dfn data-plurals="public keys" id="dfn-public-key" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">public key</dfn></dt>
+          <dd data-defines="#dfn-public-key">
+Cryptographic material that can be used to verify digital proofs created with a
+corresponding <a data-link-type="dfn|abstract-op" href="#dfn-private-key" class="internalDFN" id="ref-for-dfn-private-key-1">private key</a>.
+          </dd>
+
+          <dt><dfn data-lt="subjects|subject" id="dfn-subjects" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">subject</dfn></dt>
+          <dd data-defines="#dfn-subjects">
+The entity identified by the <code>id</code> property in a <a data-link-type="dfn|abstract-op" href="#dfn-controller-documents" class="internalDFN" id="ref-for-dfn-controller-documents-5">controller document</a>.
+Anything can be a subject: person, group, organization, physical thing, digital
+thing, logical thing, etc.
+          </dd>
+
+          <dt><dfn class="export" data-export="" data-plurals="verification methods" id="dfn-verification-method" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verification method</dfn></dt>
+          <dd data-defines="#dfn-verification-method">
+            <p>
+A set of parameters that can be used together with a process to independently
+verify a proof. For example, a cryptographic public key can be used as a
+verification method with respect to a digital signature; in such usage, it
+verifies that the signer possessed the associated cryptographic private key.
+            </p>
+            <p>
+"Verification" and "proof" in this definition are intended to apply broadly. For
+example, a cryptographic public key might be used during Diffie-Hellman key
+exchange to negotiate a shared symmetric key for encryption. This guarantees the
+integrity of the key agreement process. It is thus another type of verification
+method, even though descriptions of the process might not use the words
+"verification" or "proof."
+            </p>
+          </dd>
+
+          <dt><dfn class="export" data-export="" data-plurals="verification relationships" id="dfn-verification-relationship" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verification relationship</dfn></dt>
+          <dd data-defines="#dfn-verification-relationship">
+            <p>
+An expression of the relationship between the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-1">subject</a> and a
+<a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-3">verification method</a>. An example of a verification relationship is
+<a href="#authentication" data-matched-text="[[[#authentication]]]" class="sec-ref"><bdi class="secno">2.2.1 </bdi>Authentication</a>.
+            </p>
+          </dd></dl>
+
+      </section>
+    </section>
+
+      <section id="data-model"><div class="header-wrapper"><h2 id="x2-data-model"><bdi class="secno">2. </bdi>Data Model</h2><a class="self-link" href="#data-model" aria-label="Permalink for Section 2."></a></div>
+        
+
+        <p>
+A <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-6">controller document</a> is a set of data that specifies one or more
+relationships between a <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-4">controller</a> and a set of data, such as a set of
+public cryptographic keys. The <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-7">controller document</a> <em class="rfc2119">SHOULD</em>
+contain <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-2">verification relationships</a> that explicitly permit the use of
+certain <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-4">verification methods</a> for specific purposes.
+        </p>
+
+        <div class="issue" id="issue-container-number-1"><div role="heading" class="issue-title marker" id="h-issue" aria-level="3"><span>Issue 1</span></div><div class="">Add examples of common Controller documents, such as
+controller documents published on a ledger-based registry, or on a mutable medium in
+combination with an integrity protection mechanism such as Hashlinks.
+        </div></div>
+
+        <section id="verification-methods"><div class="header-wrapper"><h3 id="x2-1-verification-methods"><bdi class="secno">2.1 </bdi>Verification Methods</h3><a class="self-link" href="#verification-methods" aria-label="Permalink for Section 2.1"></a></div>
+          
+          <p>
+A <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-8">controller document</a> can express <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-5">verification methods</a>, such as
+cryptographic <a href="#dfn-public-key" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-public-key-1">public keys</a>, which can be used to <a href="#dfn-authenticated" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-authenticated-1">authenticate</a> or
+authorize interactions with the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-5">controller</a> or associated parties. For
+example, a cryptographic <a href="#dfn-public-key" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-public-key-2">public key</a> can be used as a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-6">verification
+method</a> with respect to a digital signature; in such usage, it verifies that
+the signer could use the associated cryptographic private key. <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-7">Verification
+methods</a> might take many parameters. An example of this is a set of five
+cryptographic keys from which any three are required to contribute to a
+cryptographic threshold signature.
+          </p>
+
+          <dl>
+            <dt><dfn class="lint-ignore" id="dfn-verificationmethod" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verificationMethod</dfn></dt>
+            <dd>
+              <p>
+The <code>verificationMethod</code> property is <em class="rfc2119">OPTIONAL</em>. If present, the value
+<em class="rfc2119">MUST</em> be a <a href="https://infra.spec.whatwg.org/#ordered-set">set</a> of <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-8">verification
+methods</a>, where each <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-9">verification method</a> is expressed using a <a href="https://infra.spec.whatwg.org/#ordered-map">map</a>. The <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-10">verification method</a> <a href="https://infra.spec.whatwg.org/#ordered-map">map</a> <em class="rfc2119">MUST</em> include the <code>id</code>,
+<code>type</code>, <code>controller</code>, and specific verification material
+properties that are determined by the value of <code>type</code> and are defined
+in <a href="#verification-material" class="sec-ref"><bdi class="secno">2.1.1 </bdi>Verification Material</a>. A <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-11">verification method</a> <em class="rfc2119">MAY</em>
+include additional properties.
+
+              </p>
+              <div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span></div><p class="">
+The <code>verificationMethod</code> property is <em class="rfc2119">REQUIRED</em> for proofs, unlike controller
+documents, for which it is optional.
+              </p></div>
+
+              <dl>
+                <dt>id</dt>
+                <dd>
+                  <p>
+The value of the <code>id</code> property for a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-12">verification
+method</a> <em class="rfc2119">MUST</em> be a <a href="https://infra.spec.whatwg.org/#string">string</a> that conforms to the
+conforms to the [<cite><a class="bibref" data-link-type="biblio" href="#bib-url" title="URL Standard">URL</a></cite>] syntax.
+                  </p>
+                </dd>
+                <dt>type</dt>
+                <dd>
+The value of the <code>type</code> property <em class="rfc2119">MUST</em> be a <a href="https://infra.spec.whatwg.org/#string">string</a> that references exactly one <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-13">verification
+method</a> type.
+
+
+                </dd>
+                <dt><span id="defn-controller">controller</span></dt>
+                <dd>
+The value of the <code>controller</code> property <em class="rfc2119">MUST</em> be a <a href="https://infra.spec.whatwg.org/#string">string</a> that conforms to the [<cite><a class="bibref" data-link-type="biblio" href="#bib-url" title="URL Standard">URL</a></cite>] syntax.
+                </dd>
+
+                <dt><dfn class="lint-ignore" id="dfn-revoked" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">revoked</dfn></dt>
+                <dd>
+The <code>revoked</code> property is <em class="rfc2119">OPTIONAL</em>.
+
+If present, it <em class="rfc2119">MUST</em> be an [<cite><a class="bibref" data-link-type="biblio" href="#bib-xmlschema11-2" title="W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes">XMLSCHEMA11-2</a></cite>]
+<code>dateTimeStamp</code> string specifying when the <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-14">verification method</a>
+<em class="rfc2119">SHOULD</em> cease to be used. Once the value is set, it is not expected to be
+updated, and systems depending on the value are expected to not verify any
+proofs associated with the <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-15">verification method</a> at or after the time of
+revocation.
+                </dd>
+              </dl>
+            </dd>
+          </dl>
+
+          <div class="example" id="example-example-verification-method-structure">
+        <div class="marker">
+    <a class="self-link" href="#example-example-verification-method-structure">Example<bdi> 1</bdi></a><span class="example-title">: Example verification method structure</span>
+  </div> <pre class="nohighlight">{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://www.w3.org/ns/credentials/v2",
+    "https://w3id.org/security/jwk/v1",
+    "https://w3id.org/security/data-integrity/v2"
+  ]
+  "id": "did:example:123456789abcdefghi",
+  <span class="comment">...</span>
+  "verificationMethod": [{
+    "id": <span class="comment">...</span>,
+    "type": <span class="comment">...</span>,
+    "controller": <span class="comment">...</span>,
+    "publicKeyJwk": <span class="comment">...</span>
+  }, {
+    "id": <span class="comment">...</span>,
+    "type": <span class="comment">...</span>,
+    "controller": <span class="comment">...</span>,
+    "publicKeyMultibase": <span class="comment">...</span>
+  }]
+}</pre>
+      </div>
+
+          <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="4"><span>Note</span><span class="issue-label">: Verification method controller(s) and controller(s)</span></div><p class="">
+The semantics of the <code>controller</code> property are the same when the
+subject of the relationship is the <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-9">controller document</a> as when the subject of
+the relationship is a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-16">verification method</a>, such as a cryptographic public
+key. Since a key can't control itself, and the key controller cannot be inferred
+from the <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-10">controller document</a>, it is necessary to explicitly express the identity
+of the controller of the key. The difference is that the value of
+<code>controller</code> for a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-17">verification method</a> is <em>not</em>
+necessarily a <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-6">controller</a>. <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-7">controllers</a> are expressed
+using the `<a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-8">controller</a>` property at the highest level of the
+<a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-11">controller document</a>.
+          </p></div>
+
+          <section id="verification-material"><div class="header-wrapper"><h4 id="x2-1-1-verification-material"><bdi class="secno">2.1.1 </bdi>Verification Material</h4><a class="self-link" href="#verification-material" aria-label="Permalink for Section 2.1.1"></a></div>
+            
+
+            <p>
+Verification material is any information that is used by a process that applies
+a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-18">verification method</a>. The <code>type</code> of a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-19">verification method</a> is
+expected to be used to determine its compatibility with such processes. Examples
+of verification methods include <code>JsonWebKey</code> and <code>Multikey</code>.
+A <a href="#dfn-cryptosuite" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-cryptosuite-1">cryptographic suite</a> specification is responsible for specifying the
+<a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-20">verification method</a> <code>type</code> and its associated verification material
+format. For examples, see
+<a href="https://www.w3.org/TR/vc-jose-cose/">Securing Verifiable Credentials using JOSE and COSE</a>,
+<a href="https://www.w3.org/TR/vc-di-ecdsa/">the Data Integrity ECDSA
+Cryptosuites</a> and <a href="https://w3c-ccg.github.io/lds-ed25519-2020/">
+the Data Integrity EdDSA Cryptosuites</a>.
+
+            </p>
+
+            <p>
+To increase the likelihood of interoperable implementations, this specification
+limits the number of formats for expressing verification material in a
+<a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-12">controller document</a>. The fewer formats that implementers have to
+implement, the more likely it will be that they will support all of them. This
+approach attempts to strike a delicate balance between easing implementation
+and providing support for formats that have historically had broad deployment.
+            </p>
+
+            <p>
+A <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-21">verification method</a> <em class="rfc2119">MUST NOT</em> contain multiple verification material
+properties for the same material. For example, expressing key material in a
+<a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-22">verification method</a> using both <code>publicKeyJwk</code> and
+<code>publicKeyMultibase</code> at the same time is prohibited.
+            </p>
+
+            <p>
+Implementations <em class="rfc2119">MAY</em> convert keys between formats as desired for operational purposes or
+to interface with cryptographic libraries. As an internal implementation detail, such
+conversion <em class="rfc2119">MUST NOT</em> affect the external representation of key material.
+            </p>
+
+            <p>
+An example of a <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-13">controller document</a> containing <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-23">verification
+methods</a> using both properties above is shown below.
+            </p>
+
+            <div class="example" id="example-various-verification-method-types">
+        <div class="marker">
+    <a class="self-link" href="#example-various-verification-method-types">Example<bdi> 2</bdi></a><span class="example-title">: Verification methods using publicKeyJwk and publicKeyMultibase</span>
+  </div> <pre class="nohighlight">{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://www.w3.org/ns/credentials/v2",
+    "https://w3id.org/security/jwk/v1",
+    "https://w3id.org/security/multikey/v1"
+  ]
+  "id": "did:example:123456789abcdefghi",
+  <span class="comment">...</span>
+  "verificationMethod": [{
+    "id": "did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+    "type": "JsonWebKey", <span class="comment">// external (property value)</span>
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "crv": "Ed25519", <span class="comment">// external (property name)</span>
+      "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ", <span class="comment">// external (property name)</span>
+      "kty": "OKP", <span class="comment">// external (property name)</span>
+      "kid": "_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A" <span class="comment">// external (property name)</span>
+    }
+  }, {
+    "id": "did:example:123456789abcdefghi#keys-1",
+    "type": "Multikey", <span class="comment">// external (property value)</span>
+    "controller": "did:example:pqrstuvwxyz0987654321",
+    "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+  }],
+  <span class="comment">...</span>
+}</pre>
+      </div>
+          </section>
+
+          <section id="multikey"><div class="header-wrapper"><h4 id="x2-1-2-multikey"><bdi class="secno">2.1.2 </bdi>Multikey</h4><a class="self-link" href="#multikey" aria-label="Permalink for Section 2.1.2"></a></div>
+            
+            <p>
+The Multikey data model is a specific type of <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-24">verification method</a> that
+encodes key types into a single binary stream that is then encoded as a
+Multibase value as described in Section <a href="#multibase-0" class="sec-ref"><bdi class="secno">3. </bdi>Multibase</a>.
+            </p>
+
+            <p>
+When specifing a <code>Multikey</code>, the object takes the following form:
+            </p>
+
+            <dl>
+              <dt>type</dt>
+              <dd>
+The value of the <code>type</code> property <em class="rfc2119">MUST</em> contain the string <code>Multikey</code>.
+              </dd>
+              <dt><dfn class="lint-ignore" id="dfn-publickeymultibase" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">publicKeyMultibase</dfn></dt>
+              <dd>
+The <code>publicKeyMultibase</code> property is <em class="rfc2119">OPTIONAL</em>. If present, its value <em class="rfc2119">MUST</em> be a
+Multibase encoded value as described in Section <a href="#multibase-0" class="sec-ref"><bdi class="secno">3. </bdi>Multibase</a>.
+              </dd>
+              <dt><dfn class="lint-ignore" id="dfn-secretkeymultibase" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">secretKeyMultibase</dfn></dt>
+              <dd>
+The <code>secretKeyMultibase</code> property is <em class="rfc2119">OPTIONAL</em>. If present, its value <em class="rfc2119">MUST</em> be a
+Multibase encoded value as described in Section <a href="#multibase-0" class="sec-ref"><bdi class="secno">3. </bdi>Multibase</a>.
+              </dd>
+            </dl>
+
+            <p>
+An example of a Multikey is provided below:
+            </p>
+
+            <div class="example" id="example-multikey-encoding-of-a-ed25519-public-key">
+        <div class="marker">
+    <a class="self-link" href="#example-multikey-encoding-of-a-ed25519-public-key">Example<bdi> 3</bdi></a><span class="example-title">: Multikey encoding of a Ed25519 public key</span>
+  </div> <pre class="nohighlight">{
+  "@context": ["https://w3id.org/security/multikey/v1"],
+  "id": "did:example:123456789abcdefghi#keys-1",
+  "type": "Multikey",
+  "controller": "did:example:123456789abcdefghi",
+  "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+}</pre>
+      </div>
+
+            <p>
+In the example above, the <code>publicKeyMultibase</code> value starts with the letter <code>z</code>,
+which is the <a href="#multibase-0">Multibase</a> header that conveys that the
+binary data is base-58-btc-encoded using the Bitcoin base-encoding alphabet. The
+decoded binary data header is <code>0xed01</code>, which specifies that the
+remaining data is a 32-byte raw Ed25519 <a href="#dfn-public-key" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-public-key-3">public key</a>.
+            </p>
+
+            <p>
+The Multikey data model is also capable of encoding secret keys, whose subtypes
+include <em>symmetric keys</em> and <em>private keys</em>.
+            </p>
+
+            <div class="example" id="example-multikey-encoding-of-a-ed25519-secret-key">
+        <div class="marker">
+    <a class="self-link" href="#example-multikey-encoding-of-a-ed25519-secret-key">Example<bdi> 4</bdi></a><span class="example-title">: Multikey encoding of a Ed25519 secret key</span>
+  </div> <pre class="nohighlight">{
+  "@context": ["https://w3id.org/security/suites/secrets/v1"],
+  "id": "did:example:123456789abcdefghi#keys-1",
+  "type": "Multikey",
+  "controller": "did:example:123456789abcdefghi",
+  "secretKeyMultibase": "z3u2fprgdREFtGakrHr6zLyTeTEZtivDnYCPZmcSt16EYCER"
+}</pre>
+      </div>
+
+            <p>
+In the example above, the <code>secretKeyMultibase</code> value starts with the letter <code>z</code>,
+which is the <a href="#multibase-0">Multibase</a> header that conveys that the
+binary data is base-58-btc-encoded using the Bitcoin base-encoding alphabet. The
+decoded binary data header is <code>0x8026</code>, which specifies that the
+remaining data is a 32-byte raw Ed25519 private key.
+            </p>
+
+          </section>
+
+          <section id="jsonwebkey"><div class="header-wrapper"><h4 id="x2-1-3-jsonwebkey"><bdi class="secno">2.1.3 </bdi>JsonWebKey</h4><a class="self-link" href="#jsonwebkey" aria-label="Permalink for Section 2.1.3"></a></div>
+            
+            <p>
+The JSON Web Key (JWK) data model is a specific type of <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-25">verification method</a>
+that uses the JWK specification [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc7517" title="JSON Web Key (JWK)">RFC7517</a></cite>] to encode key types into a
+set of parameters.
+            </p>
+
+            <p>
+When specifing a <code>JsonWebKey</code>, the object takes the following form:
+            </p>
+
+            <dl>
+              <dt>type</dt>
+              <dd>
+The value of the <code>type</code> property <em class="rfc2119">MUST</em> contain the string <code>JsonWebKey</code>.
+              </dd>
+              <dt><dfn class="lint-ignore" id="dfn-publickeyjwk" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">publicKeyJwk</dfn></dt>
+              <dd>
+                <p>
+The <code>publicKeyJwk</code> property is <em class="rfc2119">OPTIONAL</em>. If present, its value <em class="rfc2119">MUST</em>
+be a <a href="https://infra.spec.whatwg.org/#ordered-map">map</a> representing a JSON Web Key that
+conforms to [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc7517" title="JSON Web Key (JWK)">RFC7517</a></cite>]. The <a href="https://infra.spec.whatwg.org/#ordered-map">map</a> <em class="rfc2119">MUST NOT</em>
+include any members of the private information class, such as <code>d</code>, as described
+in the <a href="https://datatracker.ietf.org/doc/html/rfc7517#section-8.1.1">JWK
+Registration Template</a>. It is <em class="rfc2119">RECOMMENDED</em> that verification methods that use
+JWKs [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc7517" title="JSON Web Key (JWK)">RFC7517</a></cite>] to represent their <a href="#dfn-public-key" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-public-key-4">public keys</a> use the value of <code>kid</code> as
+their fragment identifier. It is <em class="rfc2119">RECOMMENDED</em> that JWK <code>kid</code> values are set to
+the public key fingerprint [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc7638" title="JSON Web Key (JWK) Thumbprint">RFC7638</a></cite>]. See the first key in
+<a href="#example-various-verification-method-types" class="box-ref">Example<bdi> 2</bdi></a> for an example of a
+public key with a compound key identifier.
+                </p>
+                <p>
+As specified in <a href="https://www.rfc-editor.org/rfc/rfc7517#section-4.4">Section 4.4 of the JWK specification</a>,
+the <em class="rfc2119">OPTIONAL</em> <code>alg</code> property identifies the algorithm intended for use with the public key,
+and <em class="rfc2119">SHOULD</em> be included to prevent security issues that can arise when using the same
+key with multiple algorithms. As specified in <a href="https://www.rfc-editor.org/rfc/rfc7518#section-6.2.1.1">
+Section 6.2.1.1 of the JWA specification</a>, describing a key using an elliptic curve,
+the <em class="rfc2119">REQUIRED</em> <code>crv</code> property is used to identify the particular curve type of the public key.
+As specified in <a href="https://www.rfc-editor.org/rfc/rfc7515#section-4.1.4">Section 4.1.4 of the JWS specification</a>,
+the <em class="rfc2119">OPTIONAL</em> <code>kid</code> property is a hint used to help discover the key; if present, the <code>kid</code> value <em class="rfc2119">SHOULD</em>
+match, or be included in, the <code>id</code> property of the encapsulating <code>JsonWebKey</code> object,
+as part of the path, query, or fragment of the URL.
+                </p>
+
+              </dd>
+              <dt><dfn class="lint-ignore" id="dfn-secretkeyjwk" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">secretKeyJwk</dfn></dt>
+              <dd>
+The <code>secretKeyJwk</code> property is <em class="rfc2119">OPTIONAL</em>. If present, its value <em class="rfc2119">MUST</em> be a <a href="https://infra.spec.whatwg.org/#ordered-map">map</a> representing a JSON Web Key that conforms
+to [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc7517" title="JSON Web Key (JWK)">RFC7517</a></cite>].
+It <em class="rfc2119">MUST NOT</em> be used if the data structure containing it is public or may be revealed to parties other than the legitimate holders of the secret key.
+              </dd>
+            </dl>
+
+            <p>
+An example of an object that conforms to <code>JsonWebKey</code> is provided below:
+            </p>
+
+            <div class="example" id="example-json-web-key-encoding-of-a-secp384r1-p-384-public-key">
+        <div class="marker">
+    <a class="self-link" href="#example-json-web-key-encoding-of-a-secp384r1-p-384-public-key">Example<bdi> 5</bdi></a><span class="example-title">: JSON Web Key encoding of a secp384r1 (P-384) public key</span>
+  </div> <pre class="nohighlight">{
+  "id": "did:example:123456789abcdefghi#key-1",
+  "type": "JsonWebKey",
+  "controller": "did:example:123456789abcdefghi",
+  "publicKeyJwk": {
+      "kid": "key-1",
+      "kty": "EC",
+      "crv": "P-384",
+      "alg": "ES384",
+      "x": "1F14JSzKbwxO-Heqew5HzEt-0NZXAjCu8w-RiuV8_9tMiXrSZdjsWqi4y86OFb5d",
+      "y": "dnd8yoq-NOJcBuEYgdVVMmSxonXg-DU90d7C4uPWb_Lkd4WIQQEH0DyeC2KUDMIU"
+    }
+}</pre>
+      </div>
+
+            <p>
+In the example above, the <code>publicKeyJwk</code> value contains the JSON Web Key.
+The <code>kty</code> property encodes the key type of "OKP", which means
+"Octet string key pairs". The <code>alg</code> property identifies the algorithm intended
+for use with the public key, which in this case is <code>ES384</code>. The <code>crv</code> property identifies
+the particular curve type of the public key, <code>P-384</code>. The <code>x</code> property specifies
+the point on the P-384 curve that is associated with the public key.
+            </p>
+
+            <p>
+The <code>publicKeyJwk</code> property <em class="rfc2119">MUST NOT</em> contain any property marked as
+"Private" or "Secret" in any registry contained in the JOSE Registries [<cite><a class="bibref" data-link-type="biblio" href="#bib-jose-registries" title="The JSON Object Signing and Encryption (JOSE) Registries">JOSE-REGISTRIES</a></cite>], including "d".
+            </p>
+
+            <p>
+The JSON Web Key data model is also capable of encoding <em>secret keys</em>, sometimes
+referred to as <em>private keys</em>.
+            </p>
+
+            <div class="example" id="example-json-web-key-encoding-of-a-secp384r1-p-384-secret-key">
+        <div class="marker">
+    <a class="self-link" href="#example-json-web-key-encoding-of-a-secp384r1-p-384-secret-key">Example<bdi> 6</bdi></a><span class="example-title">: JSON Web Key encoding of a secp384r1 (P-384) secret key</span>
+  </div> <pre class="nohighlight">{
+  "id": "did:example:123456789abcdefghi#key-1",
+  "type": "JsonWebKey",
+  "controller": "did:example:123456789abcdefghi",
+  "secretKeyJwk": {
+      "kty": "EC",
+      "crv": "P-384",
+      "alg": "ES384",
+      "d": "fGwges0SX1mj4eZamUCL4qtZijy9uT15fI4gKTuRvre4Kkoju2SHM4rlFOeKVraH",
+      "x": "1F14JSzKbwxO-Heqew5HzEt-0NZXAjCu8w-RiuV8_9tMiXrSZdjsWqi4y86OFb5d",
+      "y": "dnd8yoq-NOJcBuEYgdVVMmSxonXg-DU90d7C4uPWb_Lkd4WIQQEH0DyeC2KUDMIU"
+    }
+}</pre>
+      </div>
+
+            <p>
+The private key example above is almost identical to the previous example of the
+public key, except that the information is stored in the <code>secretKeyJwk</code> property
+(rather than the <code>publicKeyJwk</code>), and the private key value is encoded in the <code>d</code>
+property thereof (alongside the <code>x</code> property, which still specifies the point on
+the Ed25519 curve that is associated with the public key).
+            </p>
+
+          </section>
+
+          <section id="referring-to-verification-methods"><div class="header-wrapper"><h4 id="x2-1-4-referring-to-verification-methods"><bdi class="secno">2.1.4 </bdi>Referring to Verification Methods</h4><a class="self-link" href="#referring-to-verification-methods" aria-label="Permalink for Section 2.1.4"></a></div>
+            
+            <p>
+<a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-26">Verification methods</a> can be embedded in or referenced from properties
+associated with various <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-3">verification relationships</a> as described in <a href="#verification-relationships" class="sec-ref"><bdi class="secno">2.2 </bdi>Verification Relationships</a>. Referencing <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-27">verification methods</a>
+allows them to be used by more than one <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-4">verification relationship</a>.
+            </p>
+
+            <p>
+If the value of a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-28">verification method</a> property is a <a href="https://infra.spec.whatwg.org/#ordered-map">map</a>, the <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-29">verification method</a> has been
+embedded and its properties can be accessed directly. However, if the value is a
+URL <a href="https://infra.spec.whatwg.org/#string">string</a>, the <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-30">verification method</a> has
+been included by reference and its properties will need to be retrieved from
+elsewhere in the <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-14">controller document</a> or from another <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-15">controller document</a>. This
+is done by dereferencing the URL and searching the resulting resource for a
+<a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-31">verification method</a> <a href="https://infra.spec.whatwg.org/#ordered-map">map</a> with an
+<code>id</code> property whose value matches the URL.
+            </p>
+
+            <div class="example" id="example-embedding-and-referencing-verification-methods">
+        <div class="marker">
+    <a class="self-link" href="#example-embedding-and-referencing-verification-methods">Example<bdi> 7</bdi></a><span class="example-title">: Embedding and referencing verification methods</span>
+  </div> <pre class="nohighlight">    {
+<span class="comment">...</span>
+
+      "authentication": [
+        <span class="comment">// this key is referenced and might be used by</span>
+        <span class="comment">// more than one verification relationship</span>
+        "did:example:123456789abcdefghi#keys-1",
+        <span class="comment">// this key is embedded and may *only* be used for authentication</span>
+        {
+          "id": "did:example:123456789abcdefghi#keys-2",
+          "type": "Multikey", <span class="comment">// external (property value)</span>
+          "controller": "did:example:123456789abcdefghi",
+          "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+        }
+      ],
+
+<span class="comment">...</span>
+    }</pre>
+      </div>
+          </section>
+        </section>
+
+        <section id="verification-relationships"><div class="header-wrapper"><h3 id="x2-2-verification-relationships"><bdi class="secno">2.2 </bdi>Verification Relationships</h3><a class="self-link" href="#verification-relationships" aria-label="Permalink for Section 2.2"></a></div>
+          
+
+          <p>
+A <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-5">verification relationship</a> expresses the relationship between the
+<a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-9">controller</a> and a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-32">verification method</a>.
+          </p>
+          <p>
+Different <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-6">verification relationships</a> enable the associated
+<a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-33">verification methods</a> to be used for different purposes. It is up to a
+<em>verifier</em> to ascertain the validity of a verification attempt by
+checking that the <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-34">verification method</a> used is contained in the
+appropriate <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-7">verification relationship</a> property of the
+<a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-16">controller document</a>.
+          </p>
+          <p>
+The <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-8">verification relationship</a> between the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-10">controller</a> and the
+<a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-35">verification method</a> is explicit in the <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-17">controller document</a>.
+<a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-36">Verification methods</a> that are not associated with a particular
+<a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-9">verification relationship</a> cannot be used for that <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-10">verification
+relationship</a>. For example, a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-37">verification method</a> in the value of
+the `<a href="#dfn-authenticated" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-authenticated-2">authentication</a>` property cannot be used to engage in
+key agreement protocols with the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-11">controller</a>—the value of the
+`<a href="#defn-keyAgreement" class="internalDFN" data-link-type="dfn" id="ref-for-defn-keyAgreement-1">keyAgreement</a>` property needs to be used for that.
+          </p>
+          <p>
+The <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-18">controller document</a> does not express revoked keys using a <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-11">verification
+relationship</a>. If a referenced verification method is not in the latest
+<a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-19">controller document</a> used to dereference it, then that verification method is
+considered invalid or revoked.
+          </p>
+          <p>
+The following sections define several useful <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-12">verification relationships</a>.
+A <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-20">controller document</a> <em class="rfc2119">MAY</em> include any of these, or other properties, to
+express a specific <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-13">verification relationship</a>. To maximize global
+interoperability, any such properties used <em class="rfc2119">SHOULD</em> be registered in the
+<a href="https://w3c.github.io/vc-specs-dir/#securing-mechanisms">VC Specifications Directory</a>.
+          </p>
+
+          <section id="authentication"><div class="header-wrapper"><h4 id="x2-2-1-authentication"><bdi class="secno">2.2.1 </bdi>Authentication</h4><a class="self-link" href="#authentication" aria-label="Permalink for Section 2.2.1"></a></div>
+            
+
+            <p>
+The <code>authentication</code> <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-14">verification relationship</a> is used to
+specify how the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-12">controller</a> is expected to be <a href="#dfn-authenticated" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-authenticated-3">authenticated</a>, for
+purposes such as logging into a website or engaging in any sort of
+challenge-response protocol.
+            </p>
+
+            <dl>
+              <dt id="defn-authentication">authentication</dt>
+              <dd>
+The <code>authentication</code> property is <em class="rfc2119">OPTIONAL</em>. If present, its
+value <em class="rfc2119">MUST</em> be a <a href="https://infra.spec.whatwg.org/#ordered-set">set</a> of one or more
+<a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-38">verification methods</a>. Each <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-39">verification method</a> <em class="rfc2119">MAY</em> be embedded or
+referenced.
+              </dd>
+            </dl>
+
+            <div class="example" id="example-authentication-property-containing-three-verification-methods">
+        <div class="marker">
+    <a class="self-link" href="#example-authentication-property-containing-three-verification-methods">Example<bdi> 8</bdi></a><span class="example-title">: Authentication property
+                          containing three verification methods</span>
+  </div> <pre class="nohighlight">{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://www.w3.org/ns/credentials/v2",
+    "https://w3id.org/security/multikey/v1"
+  ],
+  "id": "did:example:123456789abcdefghi",
+  <span class="comment">...</span>
+  "authentication": [
+    <span class="comment">// this method can be used to authenticate as did:...fghi</span>
+    "did:example:123456789abcdefghi#keys-1",
+    <span class="comment">// this method is *only* approved for authentication, it may not</span>
+    <span class="comment">// be used for any other proof purpose, so its full description is</span>
+    <span class="comment">// embedded here rather than using only a reference</span>
+    {
+      "id": "did:example:123456789abcdefghi#keys-2",
+      "type": "Multikey",
+      "controller": "did:example:123456789abcdefghi",
+      "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+    }
+  ],
+  <span class="comment">...</span>
+}</pre>
+      </div>
+
+            <p>
+If authentication is established, it is up to the application to decide what to
+do with that information.
+            </p>
+            <p>
+This is useful to any <em>authentication verifier</em> that needs to check to
+see if an entity that is attempting to <a href="#dfn-authenticated" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-authenticated-4">authenticate</a> is, in fact,
+presenting a valid proof of authentication. When a <em>verifier</em> receives
+some data (in some protocol-specific format) that contains a proof that was made
+for the purpose of "authentication", and that says that an entity is identified
+by the <code>id</code>, then that <em>verifier</em> checks to ensure that the proof can be
+verified using a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-40">verification method</a> (e.g., <a href="#dfn-public-key" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-public-key-5">public key</a>) listed
+under `<a href="#dfn-authenticated" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-authenticated-5">authentication</a>` in the <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-21">controller document</a>.
+            </p>
+            <p>
+Note that the <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-41">verification method</a> indicated by the
+`<a href="#dfn-authenticated" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-authenticated-6">authentication</a>` property of a <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-22">controller document</a> can
+only be used to <a href="#dfn-authenticated" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-authenticated-7">authenticate</a> the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-13">controller</a>. To
+<a href="#dfn-authenticated" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-authenticated-8">authenticate</a> a different <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-14">controller</a>, the entity associated with
+the value of <code>controller</code> needs to <a href="#dfn-authenticated" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-authenticated-9">authenticate</a> with its
+<em>own</em> <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-23">controller document</a> and associated
+`<a href="#dfn-authenticated" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-authenticated-10">authentication</a>` <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-15">verification relationship</a>.
+            </p>
+          </section>
+
+          <section id="assertion"><div class="header-wrapper"><h4 id="x2-2-2-assertion"><bdi class="secno">2.2.2 </bdi>Assertion</h4><a class="self-link" href="#assertion" aria-label="Permalink for Section 2.2.2"></a></div>
+            
+
+            <p>
+The <code>assertionMethod</code> <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-16">verification relationship</a> is used to
+specify how the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-15">controller</a> is expected to express claims, such as for
+the purposes of issuing a
+<a href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credential</a>.
+            </p>
+
+            <dl>
+              <dt id="defn-assertionMethod">assertionMethod</dt>
+              <dd>
+The <code>assertionMethod</code> property is <em class="rfc2119">OPTIONAL</em>. If present, its associated
+value <em class="rfc2119">MUST</em> be a <a href="https://infra.spec.whatwg.org/#ordered-set">set</a> of one or
+more <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-42">verification methods</a>. Each <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-43">verification method</a> <em class="rfc2119">MAY</em>
+be embedded or referenced.
+              </dd>
+            </dl>
+
+            <p>
+This property is useful, for example, during the processing of a
+<a href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credential</a>
+by a verifier.
+
+            </p>
+
+            <div class="example" id="example-assertion-method-property-containing-two-verification-methods">
+        <div class="marker">
+    <a class="self-link" href="#example-assertion-method-property-containing-two-verification-methods">Example<bdi> 9</bdi></a><span class="example-title">: Assertion method property
+                        containing two verification methods</span>
+  </div> <pre class="nohighlight">{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://www.w3.org/ns/credentials/v2",
+    "https://w3id.org/security/multikey/v1"
+  ],
+  "id": "did:example:123456789abcdefghi",
+  <span class="comment">...</span>
+  "assertionMethod": [
+    <span class="comment">// this method can be used to assert statements as did:...fghi</span>
+    "did:example:123456789abcdefghi#keys-1",
+    <span class="comment">// this method is *only* approved for assertion of statements, it is not</span>
+    <span class="comment">// used for any other verification relationship, so its full description is</span>
+    <span class="comment">// embedded here rather than using a reference</span>
+    {
+      "id": "did:example:123456789abcdefghi#keys-2",
+      "type": "Multikey", <span class="comment">// external (property value)</span>
+      "controller": "did:example:123456789abcdefghi",
+      "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+    }
+  ],
+  <span class="comment">...</span>
+}</pre>
+      </div>
+          </section>
+
+          <section id="key-agreement"><div class="header-wrapper"><h4 id="x2-2-3-key-agreement"><bdi class="secno">2.2.3 </bdi>Key Agreement</h4><a class="self-link" href="#key-agreement" aria-label="Permalink for Section 2.2.3"></a></div>
+            
+
+            <p>
+The <code>keyAgreement</code> <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-17">verification relationship</a> is used to
+specify how an entity can generate encryption material in order to transmit
+confidential information intended for the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-16">controller</a>, such as for
+the purposes of establishing a secure communication channel with the recipient.
+            </p>
+
+            <dl>
+              <dt><dfn id="defn-keyAgreement" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">keyAgreement</dfn></dt>
+              <dd>
+The <code>keyAgreement</code> property is <em class="rfc2119">OPTIONAL</em>. If present, the associated
+value <em class="rfc2119">MUST</em> be a <a href="https://infra.spec.whatwg.org/#ordered-set">set</a> of one or more
+<a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-44">verification methods</a>. Each <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-45">verification method</a> <em class="rfc2119">MAY</em> be embedded or
+referenced.
+              </dd>
+            </dl>
+
+            <p>
+An example of when this property is useful is when encrypting a message intended
+for the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-17">controller</a>. In this case, the counterparty uses the
+cryptographic <a href="#dfn-public-key" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-public-key-6">public key</a> information in the <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-46">verification method</a> to
+wrap a decryption key for the recipient.
+            </p>
+
+            <div class="example" id="example-key-agreement-property-containing-two-verification-methods">
+        <div class="marker">
+    <a class="self-link" href="#example-key-agreement-property-containing-two-verification-methods">Example<bdi> 10</bdi></a><span class="example-title">: Key agreement property
+                          containing two verification methods</span>
+  </div> <pre class="nohighlight">{
+  "@context": "https://www.w3.org/ns/did/v1",
+  "id": "did:example:123456789abcdefghi",
+  <span class="comment">...</span>
+  "keyAgreement": [
+    <span class="comment">// this method can be used to perform key agreement as did:...fghi</span>
+    "did:example:123456789abcdefghi#keys-1",
+    <span class="comment">// this method is *only* approved for key agreement usage, it will not</span>
+    <span class="comment">// be used for any other verification relationship, so its full description is</span>
+    <span class="comment">// embedded here rather than using only a reference</span>
+    {
+      "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+      "type": "X25519KeyAgreementKey2019", <span class="comment">// external (property value)</span>
+      "controller": "did:example:123",
+      "publicKeyMultibase": "z6LSn6p3HRxx1ZZk1dT9VwcfTBCYgtNWdzdDMKPZjShLNWG7"
+    }
+  ],
+  <span class="comment">...</span>
+}</pre>
+      </div>
+          </section>
+
+          <section id="capability-invocation"><div class="header-wrapper"><h4 id="x2-2-4-capability-invocation"><bdi class="secno">2.2.4 </bdi>Capability Invocation</h4><a class="self-link" href="#capability-invocation" aria-label="Permalink for Section 2.2.4"></a></div>
+            
+
+            <p>
+The <code>capabilityInvocation</code> <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-18">verification relationship</a> is used
+to specify a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-47">verification method</a> that might be used by the
+<a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-18">controller</a> to invoke a cryptographic capability, such as the
+authorization to update the <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-24">controller document</a>.
+            </p>
+
+            <dl>
+              <dt id="defn-capabilityInvocation">capabilityInvocation</dt>
+              <dd>
+The <code>capabilityInvocation</code> property is <em class="rfc2119">OPTIONAL</em>. If present, the
+associated value <em class="rfc2119">MUST</em> be a <a href="https://infra.spec.whatwg.org/#ordered-set">set</a> of
+one or more <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-48">verification methods</a>. Each <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-49">verification method</a> <em class="rfc2119">MAY</em> be
+embedded or referenced.
+              </dd>
+            </dl>
+
+            <p>
+An example of when this property is useful is when a <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-19">controller</a> needs to
+access a protected HTTP API that requires authorization in order to use it. In
+order to authorize when using the HTTP API, the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-20">controller</a>
+uses a capability that is associated with a particular URL that is
+exposed via the HTTP API. The invocation of the capability could be
+expressed in a number of ways, e.g., as a digitally signed
+message that is placed into the HTTP Headers.
+            </p>
+            <p>
+The server providing the HTTP API is the <em>verifier</em> of the capability and
+it would need to verify that the <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-50">verification method</a> referred to by the
+invoked capability exists in the <code>capabilityInvocation</code>
+property of the <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-25">controller document</a>. The verifier would also check to make sure
+that the action being performed is valid and the capability is appropriate for
+the resource being accessed. If the verification is successful, the server has
+cryptographically determined that the invoker is authorized to access the
+protected resource.
+            </p>
+
+            <div class="example" id="example-capability-invocation-property-containing-two-verification-methods">
+        <div class="marker">
+    <a class="self-link" href="#example-capability-invocation-property-containing-two-verification-methods">Example<bdi> 11</bdi></a><span class="example-title">: Capability invocation property
+                          containing two verification methods</span>
+  </div> <pre class="nohighlight">{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/multikey/v1"
+  ],
+  "id": "did:example:123456789abcdefghi",
+  <span class="comment">...</span>
+  "capabilityInvocation": [
+    <span class="comment">// this method can be used to invoke capabilities as did:...fghi</span>
+    "did:example:123456789abcdefghi#keys-1",
+    <span class="comment">// this method is *only* approved for capability invocation usage, it will not</span>
+    <span class="comment">// be used for any other verification relationship, so its full description is</span>
+    <span class="comment">// embedded here rather than using only a reference</span>
+    {
+    "id": "did:example:123456789abcdefghi#keys-2",
+    "type": "Multikey", <span class="comment">// external (property value)</span>
+    "controller": "did:example:123456789abcdefghi",
+    "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+    }
+  ],
+  <span class="comment">...</span>
+}</pre>
+      </div>
+          </section>
+
+          <section id="capability-delegation"><div class="header-wrapper"><h4 id="x2-2-5-capability-delegation"><bdi class="secno">2.2.5 </bdi>Capability Delegation</h4><a class="self-link" href="#capability-delegation" aria-label="Permalink for Section 2.2.5"></a></div>
+            
+
+            <p>
+The <code>capabilityDelegation</code> <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-19">verification relationship</a> is used
+to specify a mechanism that might be used by the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-21">controller</a> to delegate
+a cryptographic capability to another party, such as delegating the authority
+to access a specific HTTP API to a subordinate.
+            </p>
+
+            <dl>
+              <dt id="defn-capabilityDelegation">capabilityDelegation</dt>
+              <dd>
+The <code>capabilityDelegation</code> property is <em class="rfc2119">OPTIONAL</em>. If present, the
+associated value <em class="rfc2119">MUST</em> be a <a href="https://infra.spec.whatwg.org/#ordered-set">set</a> of
+one or more <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-51">verification methods</a>. Each <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-52">verification method</a> <em class="rfc2119">MAY</em> be
+embedded or referenced.
+              </dd>
+            </dl>
+
+            <p>
+An example of when this property is useful is when a <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-22">controller</a> chooses
+to delegate their capability to access a protected HTTP API to a party other
+than themselves. In order to delegate the capability, the <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-23">controller</a>
+would use a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-53">verification method</a> associated with the
+<code>capabilityDelegation</code> <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-20">verification relationship</a> to
+cryptographically sign the capability over to another <a href="#dfn-controller-s" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-s-24">controller</a>. The
+delegate would then use the capability in a manner that is similar to the
+example described in <a href="#capability-invocation" class="sec-ref"><bdi class="secno">2.2.4 </bdi>Capability Invocation</a>.
+            </p>
+
+            <div class="example" id="example-capability-delegation-property-containing-two-verification-methods">
+        <div class="marker">
+    <a class="self-link" href="#example-capability-delegation-property-containing-two-verification-methods">Example<bdi> 12</bdi></a><span class="example-title">: Capability Delegation property
+                          containing two verification methods</span>
+  </div> <pre class="nohighlight">{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/multikey/v1"
+  ],
+  "id": "did:example:123456789abcdefghi",
+  <span class="comment">...</span>
+  "capabilityDelegation": [
+    <span class="comment">// this method can be used to perform capability delegation as did:...fghi</span>
+    "did:example:123456789abcdefghi#keys-1",
+    <span class="comment">// this method is *only* approved for granting capabilities; it will not</span>
+    <span class="comment">// be used for any other verification relationship, so its full description is</span>
+    <span class="comment">// embedded here rather than using only a reference</span>
+    {
+    "id": "did:example:123456789abcdefghi#keys-2",
+    "type": "Multikey", <span class="comment">// external (property value)</span>
+    "controller": "did:example:123456789abcdefghi",
+    "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+    }
+  ],
+  <span class="comment">...</span>
+}</pre>
+      </div>
+          </section>
+        </section>
+      </section>
+
+      <section id="multibase-0"><div class="header-wrapper"><h2 id="x3-multibase"><bdi class="secno">3. </bdi>Multibase</h2><a class="self-link" href="#multibase-0" aria-label="Permalink for Section 3."></a></div>
+        
+
+        <div class="issue" id="issue-container-number-2"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="3"><span>Issue 2</span><span class="issue-label">: Multibase may be standardized at IETF</span></div><p class="">
+The [<cite><a class="bibref" data-link-type="biblio" href="#bib-multibase" title="The Multibase Data Format">MULTIBASE</a></cite>] specification has been dispatched at IETF and may be
+standardized there. There is active discussion on this initiative in
+the <a href="https://mailarchive.ietf.org/arch/browse/multiformats/">
+Multiformats mailing list at IETF</a>. If the Multibase draft is stabilized
+before this specification goes to the Proposed Recommendation phase, the table
+below will be replaced with normative references to the Multibase
+specification at IETF. It is the intention of the Working Group to ensure
+alignment between the Multibase values used in this specification and the
+Multibase values defined by the current Multibase community and any potential
+future IETF Multiformats Working Group.
+        </p></div>
+
+        <p>
+A Multibase string includes a single character header which identifies the
+base and encoding alphabet used to encode a binary value, followed by the
+encoded binary value (using that base and alphabet). The common Multibase
+header values and their associated base encoding alphabets as provided below
+are normative:
+        </p>
+
+        <table class="simple">
+          <thead>
+            <tr>
+              <th>Multibase&nbsp;Header</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><code>u</code></td>
+              <td>
+The base-64-url-no-pad alphabet is used to encode the bytes. The base-alphabet
+consists of the following characters, in order:
+<code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_</code>
+              </td>
+            </tr>
+            <tr>
+              <td><code>z</code></td>
+              <td>
+The base-58-btc alphabet is used to encode the bytes. The base-alphabet consists
+of the following characters, in order:
+<code>123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+Other Multibase encoding values <em class="rfc2119">MAY</em> be used, but interoperability is not
+guaranteed between implementations using such values.
+        </p>
+
+        <p>
+To base-encode a binary value into a Multibase string, an implementation <em class="rfc2119">MUST</em>
+apply the algorithm in Section <a href="#base-encode" class="sec-ref"><bdi class="secno">6.1 </bdi>Base Encode</a> to the binary value,
+with the desired base encoding and alphabet from the table above, ensuring to
+prepend the associated Multibase header from the table above to the result.
+Any algorithm with equivalent output <em class="rfc2119">MAY</em> be used.
+        </p>
+
+        <p>
+To base-decode a Multibase string, an implementation <em class="rfc2119">MUST</em> apply the algorithm
+in Section <a href="#base-decode" class="sec-ref"><bdi class="secno">6.2 </bdi>Base Decode</a> to the string following the first
+character (Multibase header), with the alphabet associated with the
+Multibase header. Any algorithm with equivalent output <em class="rfc2119">MAY</em> be used.
+        </p>
+
+      </section>
+
+      <section id="multihash"><div class="header-wrapper"><h2 id="x4-multihash"><bdi class="secno">4. </bdi>Multihash</h2><a class="self-link" href="#multihash" aria-label="Permalink for Section 4."></a></div>
+        
+
+        <div class="issue" id="issue-container-number-3"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="3"><span>Issue 3</span><span class="issue-label">: Multihash may be standardized at IETF</span></div><p class="">
+The [<cite><a class="bibref" data-link-type="biblio" href="#bib-multihash" title="The Multihash Data Format">MULTIHASH</a></cite>] specification has been dispatched at IETF and may be
+standardized. There is active discussion on this initiative in
+the <a href="https://mailarchive.ietf.org/arch/browse/multiformats/">
+Multiformats mailing list at IETF</a>. If the IETF draft is stabilized
+before this specification goes to the Proposed Recommendation phase, the table
+below will be replaced with normative references to the Multihash
+specification. It is the intention of the Working Group to ensure
+alignment between the Multihash values used in this specification and the
+Multihash values defined by the current Multihash community and any potential
+future IETF Multiformats Working Group.
+        </p></div>
+
+        <p>
+A Multihash value starts with a binary header, which identifies the specific
+cryptographic hash algorithm and parameters used to generate the digest,
+followed by the cryptographic digest value. The normative Multihash header
+values defined by this specification, and their associated output sizes and
+associated specifications, are provided below:
+        </p>
+
+        <table class="simple">
+          <thead>
+            <tr>
+              <th>Multihash&nbsp;Identifier</th>
+              <th>Multihash&nbsp;Header</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><code>sha2-256</code></td>
+              <td><code>0x12</code></td>
+              <td>
+SHA-2 with 256 bits (32 bytes) of output, as defined by [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc6234" title="US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)">RFC6234</a></cite>].
+              </td>
+            </tr>
+            <tr>
+              <td><code>sha2-384</code></td>
+              <td><code>0x20</code></td>
+              <td>
+SHA-2 with 384 bits (48 bytes) of output, as defined by [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc6234" title="US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)">RFC6234</a></cite>].
+              </td>
+            </tr>
+            <tr>
+              <td><code>sha3-256</code></td>
+              <td><code>0x16</code></td>
+              <td>
+SHA-3 with 256 bits (32 bytes) of output, as defined by [<cite><a class="bibref" data-link-type="biblio" href="#bib-sha3" title="SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions">SHA3</a></cite>].
+              </td>
+            </tr>
+            <tr>
+              <td><code>sha3-384</code></td>
+              <td><code>0x15</code></td>
+              <td>
+SHA-3 with 384 bits (48 bytes) of output, as defined by [<cite><a class="bibref" data-link-type="biblio" href="#bib-sha3" title="SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions">SHA3</a></cite>].
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+Other Multihash encoding values <em class="rfc2119">MAY</em> be used, but interoperability is not
+guaranteed between implementations.
+        </p>
+
+        <p>
+To encode to a Multihash value, an implementation <em class="rfc2119">MUST</em> prepend the associated
+Multihash header value to the cryptographic hash value.
+        </p>
+
+        <p>
+To decode a Multihash value, an implementation <em class="rfc2119">MUST</em> remove the prepended
+Multihash header value, which identifies the type of cryptographic hashing
+algorithm as well as its output length, leaving the raw cryptographic hash
+value which <em class="rfc2119">MUST</em> match the output length associated with the Multihash header.
+        </p>
+
+      </section>
+
+
+      <section id="contexts-and-vocabularies"><div class="header-wrapper"><h2 id="x5-contexts-and-vocabularies"><bdi class="secno">5. </bdi>Contexts and Vocabularies</h2><a class="self-link" href="#contexts-and-vocabularies" aria-label="Permalink for Section 5."></a></div>
+        
+
+        <div class="issue" id="issue-container-number-4"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="3"><span>Issue 4</span><span class="issue-label">: (AT RISK) Hash values might change during Candidate Recommendation</span></div><p class="">
+This section lists cryptographic hash values that might change during the
+Candidate Recommendation phase based on implementer feedback that requires
+the referenced files to be modified.
+        </p></div>
+        <p>
+Implementations that perform JSON-LD processing <em class="rfc2119">MUST</em> treat the following
+JSON-LD context URLs as already resolved, where the resolved document matches
+the corresponding hash values below:
+        </p>
+
+        <table class="simple">
+          <thead>
+            <tr>
+              <th>URL and Media Type</th>
+              <th>Content</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="white-space: nowrap;">
+https://w3id.org/security/data-integrity/v2<br>
+application/ld+json
+              </td>
+              <td>
+sha256: v/POI0jhSjPansxhJAP1fwepCBZ2HK77fRZfCCyBDs0=<br><br>
+sha3-512: Sg1PLFxKyEYQns9Zr0BoYXtFeDNfrHUDNMkyq4QEWv<wbr>wGIaX1v5xovnCG+dfceZEzr7BhBjm396noZF1HEeCM8g==
+              </td>
+            </tr>
+            <tr>
+              <td style="white-space: nowrap;">
+https://w3id.org/security/multikey/v1<br>
+application/ld+json
+              </td>
+              <td>
+sha256: uiwYLeLZL35HGEvMqPzwvq7m05hsUnv2ZMGVu8fFhZc=<br><br>
+sha3-512: En0TOOp/cC10XtW/aQDtqKrEQZ2lRjGB/KAsJ+BQhRB<wbr>ufT7s6eoOFWvP9cP5nurTl3hcRTvFeffdVJapkeELXw==
+              </td>
+            </tr>
+            <tr>
+              <td style="white-space: nowrap;">
+https://w3id.org/security/jwk/v1<br>
+application/ld+json
+              </td>
+              <td>
+sha256: 9h/GLRVuGCl0rn/ye6lzf219aN7Sgzq9yBFqUoOI54k=<br><br>
+sha3-512: VDH85TsaX6kH2nwmII0WXKzAi2MRNsJd+rJfYL5cw0b<wbr>12sAVPKDsVvRNJo0MMGd1RhV5W6Ii6D9GM7PCFeq97A==
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+The security vocabulary terms that the JSON-LD contexts listed above resolve
+to are in the <a href="https://w3id.org/security">https://w3id.org/security#</a>
+namespace. That is, all security terms in this vocabulary are of the form
+<code>https://w3id.org/security#TERM</code>, where <code>TERM</code> is the name of a term.
+        </p>
+
+        <p>
+Implementations that perform RDF processing <em class="rfc2119">MUST</em> treat the following
+JSON-LD vocabulary URL as already resolved, where the resolved document matches
+the corresponding hash values below.
+        </p>
+
+        <p>
+When dereferencing the
+<a href="https://w3id.org/security">https://w3id.org/security#</a> URL,
+the data returned depends on HTTP content negotiation. These are as follows:
+        </p>
+
+        <table class="simple">
+          <thead>
+            <tr>
+              <th>Media Type</th>
+              <th>Description and Cryptographic Hashes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+application/ld+json
+              </td>
+              <td>
+The vocabulary in JSON-LD format [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-ld11" title="JSON-LD 1.1">JSON-LD11</a></cite>].<br><br>
+
+sha256: LEaoTyf796eTaSlYWjfPe3Yb+poCW9TjWYTbFDmC0tc=<br><br>
+
+sha3-512: f4DhJ3xhT8nT+GZ8UUZi4QC+HT//wXE2fRTgUP4UNw<wbr>e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==
+              </td>
+            </tr>
+            <tr>
+              <td>
+text/turtle
+              </td>
+              <td>
+The vocabulary in Turtle format [<cite><a class="bibref" data-link-type="biblio" href="#bib-turtle" title="RDF 1.1 Turtle">TURTLE</a></cite>].<br><br>
+sha256: McnhLyt7+/A/0iLb3CUXD0itNw+7bwwjtzOww/zwoyI=<br><br>
+sha3-512: jZtZsqgPPPo+jphAcN8/St4VdRLLAmN3nEQhzs0twE<wbr>MTmCY45euQ01Z4Zo7VlJMYNTf0KC6BMpogpSTAi/1J7Q==
+              </td>
+            </tr>
+            <tr>
+              <td>
+text/html
+              </td>
+              <td>
+The vocabulary in HTML+RDFa Format [<cite><a class="bibref" data-link-type="biblio" href="#bib-html-rdfa" title="HTML+RDFa 1.1 - Second Edition">HTML-RDFA</a></cite>].<br><br>
+sha256: eUHP1xiSC157iTPDydZmxg/hvmX3g/nnCn+FO25d4dc=<br><br>
+sha3-512: z53j8ryjVeX16Z/dby//ujhw37degwi09+LAZCTUB8<wbr>WJZjjzW1AydhdEWmgHM0P5KUcPMmSe7edMlGr7G9rmcA==
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+It is possible to confirm the digests listed above by running the following
+command from a modern Unix command interface line:
+<code>curl -sL -H "Accept: &lt;MEDIA_TYPE&gt;" &lt;DOCUMENT_URL&gt; | openssl dgst -&lt;DIGEST_ALGORITHM&gt; -binary | openssl base64 -nopad -a</code>.
+        </p>
+
+        <p>
+Authors of application-specific vocabularies and specifications <em class="rfc2119">SHOULD</em> ensure
+that their JSON-LD context and vocabulary files are permanently cacheable
+using the approaches to caching described above or a functionally equivalent
+mechanism.
+        </p>
+
+        <p>
+Implementations <em class="rfc2119">MAY</em> load application-specific JSON-LD context files from the
+network during development, but <em class="rfc2119">SHOULD</em> permanently cache JSON-LD context files
+used in <a href="#dfn-conforming-document" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-conforming-document-2">conforming documents</a> in production settings to increase their
+security and privacy characteristics. Caching goals <em class="rfc2119">MAY</em> be achieved through
+approaches such as those described above or functionally equivalent mechanisms.
+        </p>
+        <p>
+Some applications, such as digital wallets, that are capable of holding arbitrary
+<a href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credentials</a>
+or other data-integrity-protected documents, from
+any issuer and using any contexts, might need to be able to load externally
+linked resources, such as JSON-LD context files, in production settings. This is
+expected to increase user choice, scalability, and decentralized upgrades in the
+ecosystem over time. Authors of such applications are advised to read the
+security and privacy sections of this document for further considerations.
+        </p>
+
+        <p>
+For further information regarding processing of JSON-LD contexts and
+vocabularies, see <a href="https://www.w3.org/TR/vc-data-model-2.0/#base-context">Verifiable
+Credentials v2.0: Base Context</a> and <a href="https://www.w3.org/TR/vc-data-model-2.0/#vocabularies">
+Verifiable Credentials v2.0: Vocabularies</a>.
+        </p>
+
+        <section id="context-injection"><div class="header-wrapper"><h3 id="x5-1-context-injection"><bdi class="secno">5.1 </bdi>Context Injection</h3><a class="self-link" href="#context-injection" aria-label="Permalink for Section 5.1"></a></div>
+          
+
+          <p>
+The <code>@context</code> property is used to ensure that implementations are using the
+same semantics when terms in this specification are processed. For example, this
+can be important when properties like <code>type</code> are processed and its value, such
+as <code>DataIntegrityProof</code>, are used.
+          </p>
+
+          <p>
+If an <code>@context</code> property is not provided in a document that is being secured or
+verified, or the Data Integrity terms used in the document are not mapped by
+existing values in the <code>@context</code> property, implementations <em class="rfc2119">MUST</em> inject or add
+an <code>@context</code> property with a value of
+<code>https://w3id.org/security/data-integrity/v2</code>.
+          </p>
+
+          <p>
+Context injection is expected to be unnecessary sometimes, such as when the Verifiable
+Credential Data Model v2.0 context (<code>https://www.w3.org/ns/credentials/v2</code>)
+exists as a value in the <code>@context</code> property, as that context maps all of the
+necessary Data Integrity terms that were previously mapped by
+<code>https://w3id.org/security/data-integrity/v2</code>.
+          </p>
+        </section>
+
+        <section id="datatypes"><div class="header-wrapper"><h3 id="x5-2-datatypes"><bdi class="secno">5.2 </bdi>Datatypes</h3><a class="self-link" href="#datatypes" aria-label="Permalink for Section 5.2"></a></div>
+          
+
+          <p>
+This section defines datatypes that are used by this specification.
+          </p>
+
+        <section id="the-multibase-datatype"><div class="header-wrapper"><h4 id="multibase"><bdi class="secno">5.2.1 </bdi>The <code>multibase</code> Datatype</h4><a class="self-link" href="#multibase" aria-label="Permalink for Section 5.2.1"></a></div>
+          
+
+          <p>
+<a href="#multibase">Multibase</a>-encoded strings are used to encode binary
+data into ASCII-only formats, which are useful in environments that cannot
+directly represent binary values. This specification makes use of this encoding.
+In environments that support data types for string values, such as RDF
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-rdf-concepts" title="Resource Description Framework (RDF): Concepts and Abstract Syntax">RDF-CONCEPTS</a></cite>], <a href="#multibase">Multibase</a>-encoded content is
+indicated using a literal value whose datatype is set to
+<code>https://w3id.org/security#multibase</code>.
+          </p>
+
+          <p>
+The <code>multibase</code> datatype is defined as follows:
+          </p>
+
+          <dl>
+            <dt>The URL denoting this datatype</dt>
+            <dd>
+<code>https://w3id.org/security#multibase</code>
+            </dd>
+            <dt>The lexical space</dt>
+            <dd>
+Any string that starts with a <a href="#multibase">Multibase</a> character and
+the rest of the characters consist of allowable characters in the respective
+base-encoding alphabet.
+            </dd>
+            <dt>The value space</dt>
+            <dd>
+The standard mathematical concept of all integer numbers.
+            </dd>
+            <dt>The lexical-to-value mapping</dt>
+            <dd>
+Any element of the lexical space is mapped to the value space by base-decoding
+the value based on the base-decoding alphabet associated with the
+first <a href="#multibase">Multibase</a> character in the lexical string.
+            </dd>
+            <dt>The canonical mapping</dt>
+            <dd>
+The canonical mapping consists of using the lexical-to-value mapping.
+            </dd>
+          </dl>
+        </section>
+
+      </section>
+
+    </section>
+
+    
+
+    <section id="algorithms"><div class="header-wrapper"><h2 id="x6-algorithms"><bdi class="secno">6. </bdi>Algorithms</h2><a class="self-link" href="#algorithms" aria-label="Permalink for Section 6."></a></div>
+      
+
+      <p>
+This section defines algorithms used by this specification including
+instructions on how to base-encode and base-decode values, safely retrieve
+verification methods, and produce processing errors over HTTP channels.
+      </p>
+
+      <section class="normative" id="base-encode"><div class="header-wrapper"><h3 id="x6-1-base-encode"><bdi class="secno">6.1 </bdi>Base Encode</h3><a class="self-link" href="#base-encode" aria-label="Permalink for Section 6.1"></a></div>
+        
+
+        <p>
+The following algorithm specifies how to encode an array of bytes, where each
+byte represents a base-256 value, to a different base representation that uses a
+particular base alphabet, such as base-64-url-no-pad or base-58-btc. The
+required inputs are the <var>bytes</var>, <var>targetBase</var>, and
+<var>baseAlphabet</var>. The output is a string that contains the base-encoded
+value. All mathematical operations <em class="rfc2119">MUST</em> be performed using integer arithmetic.
+Alternatives to the algorithm provided below <em class="rfc2119">MAY</em> be used as long as the
+outputs of the alternative algorithm remain the same.
+        </p>
+
+        <ol class="algorithm">
+          <li>
+Initialize the following variables; <var>zeroes</var> to <code>0</code>, <var>length</var> to
+<code>0</code>, <var>begin</var> to <code>0</code>, and <var>end</var> to the length of
+<var>bytes</var>.
+          </li>
+          <li>
+Set <var>begin</var> and <var>zeroes</var> to the number of leading <code>0</code> byte
+values in <var>bytes</var>.
+          </li>
+          <li>
+Set <var>baseValue</var> to an empty byte array that is the size of the final
+base-expanded value. Calculate the final <var>size</var> of <var>baseValue</var>
+by dividing log(256) by log(<var>targetBase</var>) and then multiplying the
+length of <var>bytes</var> minus the leading <var>zeroes</var>. Add <code>1</code> to the
+value of <var>size</var>.
+          </li>
+          <li>
+Process each byte in <var>bytes</var> as <var>byte</var> starting at offset
+<var>begin</var>:
+            <ol class="algorithm">
+              <li>
+Set the <var>carry</var> value to <var>byte</var>.
+              </li>
+              <li>
+Perform base-expansion by starting at the end of the <var>baseValue</var> array.
+Initialize an iterator <var>i</var> to <code>0</code>. Set <var>basePosition</var> to
+<var>size</var> minus <code>1</code>. Perform the following loop as long as <var>carry</var>
+does not equal <code>0</code> or <var>i</var> is less than <var>length</var>, and
+<var>basePosition</var> does not equal <code>-1</code>.
+                <ol class="algorithm">
+                  <li>
+Multiply the value in <var>baseValue[basePosition]</var> by <code>256</code> and add
+it to <var>carry</var>.
+                  </li>
+                  <li>
+Set the value at <var>baseValue[basePosition]</var> to the remainder after
+dividing <var>carry</var> by <var>targetBase</var>.
+                  </li>
+                  <li>
+Set the value of <var>carry</var> to <var>carry</var> divided by
+<var>targetBase</var> ensuring that integer division is used to perform the
+division.
+                  </li>
+                  <li>
+Decrement <var>basePosition</var> by <code>1</code> and increment <var>i</var> by <code>1</code>.
+                  </li>
+                </ol>
+              </li>
+              <li>
+Set <var>length</var> to <var>i</var> and increment <var>begin</var> by <code>1</code>.
+              </li>
+            </ol>
+          </li>
+          <li>
+Set the <var>baseEncodingPosition</var> to <var>size</var> minus <var>length</var>.
+While the <var>baseEncodingPosition</var> does not equal <var>size</var> and the
+<var>baseValue[baseEncodingPosition]</var> does not equal <code>0</code>, increment
+<var>baseEncodingPosition</var>. This step skips the leading zeros in the
+base-encoded result.
+          </li>
+          <li>
+Initialize the <var>baseEncoding</var> by repeating the first entry in the
+<var>baseAlphabet</var> by the value of <var>zeroes</var> (the number of leading
+zeroes in <var>bytes</var>).
+          </li>
+          <li>
+Convert the rest of the <var>baseValue</var> to the base-encoding. While the
+<var>baseEncodingPosition</var> is less than <var>size</var>, increment the
+<var>baseEncodingPosition</var>: Set <var>baseEncodedValue</var> to
+<var>baseValue</var>[<var>baseEncodingPosition</var>]. Append
+<var>baseAlphabet</var>[<var>baseEncodedValue</var>] to <var>baseEncoding</var>.
+          </li>
+          <li>
+Return <var>baseEncoding</var> as the base-encoded value.
+          </li>
+        </ol>
+
+        <div class="example" id="example-an-implementation-of-the-general-base-encoding-algorithm-above-in-javascript">
+        <div class="marker">
+    <a class="self-link" href="#example-an-implementation-of-the-general-base-encoding-algorithm-above-in-javascript">Example<bdi> 13</bdi></a><span class="example-title">: An implementation of the general base-encoding algorithm above in Javascript</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">baseEncode</span>(<span class="hljs-params">bytes, targetBase, baseAlphabet</span>) </span>{
+  <span class="hljs-keyword">let</span> zeroes = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">let</span> length = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">let</span> begin = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">let</span> end = bytes.length;
+
+  <span class="hljs-comment">// count the number of leading bytes that are zero</span>
+  <span class="hljs-keyword">while</span>(begin !== end &amp;&amp; bytes[begin] === <span class="hljs-number">0</span>) {
+    begin++;
+    zeroes++;
+  }
+
+  <span class="hljs-comment">// allocate enough space to store the target base value</span>
+  <span class="hljs-keyword">const</span> baseExpansionFactor = <span class="hljs-built_in">Math</span>.log(<span class="hljs-number">256</span>) / <span class="hljs-built_in">Math</span>.log(targetBase);
+  <span class="hljs-keyword">let</span> size = <span class="hljs-built_in">Math</span>.floor((end - begin) * baseExpansionFactor + <span class="hljs-number">1</span>);
+  <span class="hljs-keyword">let</span> baseValue = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(size);
+
+  <span class="hljs-comment">// process the entire input byte array</span>
+  <span class="hljs-keyword">while</span>(begin !== end) {
+    <span class="hljs-keyword">let</span> carry = bytes[begin];
+
+    <span class="hljs-comment">// for each byte in the array, perform base-expansion</span>
+    <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> basePosition = size - <span class="hljs-number">1</span>;
+        (carry !== <span class="hljs-number">0</span> || i &lt; length) &amp;&amp; (basePosition !== -<span class="hljs-number">1</span>);
+        basePosition--, i++) {
+      carry += <span class="hljs-built_in">Math</span>.floor(<span class="hljs-number">256</span> * baseValue[basePosition]);
+      baseValue[basePosition] = <span class="hljs-built_in">Math</span>.floor(carry % targetBase);
+      carry = <span class="hljs-built_in">Math</span>.floor(carry / targetBase);
+    }
+
+    length = i;
+    begin++;
+  }
+
+  <span class="hljs-comment">// skip leading zeroes in base-encoded result</span>
+  <span class="hljs-keyword">let</span> baseEncodingPosition = size - length;
+  <span class="hljs-keyword">while</span>(baseEncodingPosition !== size &amp;&amp;
+        baseValue[baseEncodingPosition] === <span class="hljs-number">0</span>) {
+    baseEncodingPosition++;
+  }
+
+  <span class="hljs-comment">// convert the base value to the base encoding</span>
+  <span class="hljs-keyword">let</span> baseEncoding = baseAlphabet.charAt(<span class="hljs-number">0</span>).repeat(zeroes)
+  <span class="hljs-keyword">for</span>(; baseEncodingPosition &lt; size; ++baseEncodingPosition) {
+    baseEncoding += baseAlphabet.charAt(baseValue[baseEncodingPosition])
+  }
+
+  <span class="hljs-keyword">return</span> baseEncoding;
+}</code></pre>
+      </div>
+      </section>
+
+      <section class="normative" id="base-decode"><div class="header-wrapper"><h3 id="x6-2-base-decode"><bdi class="secno">6.2 </bdi>Base Decode</h3><a class="self-link" href="#base-decode" aria-label="Permalink for Section 6.2"></a></div>
+        
+
+        <p>
+The following algorithm specifies how to decode an array of bytes, where each
+byte represents a base-encoded value, to a different base representation that
+uses a particular base alphabet, such as base-64-url-no-pad or base-58-btc. The
+required inputs are the <var>sourceEncoding</var>, <var>sourceBase</var>, and
+<var>baseAlphabet</var>. The output is an array of bytes that contains the
+base-decoded value. All mathematical operations <em class="rfc2119">MUST</em> be performed using integer
+arithmetic. Alternatives to the algorithm provided below <em class="rfc2119">MAY</em> be used as long as
+the outputs of the alternative algorithm remain the same.
+        </p>
+
+        <ol class="algorithm">
+          <li>
+Initialize a <var>baseMap</var> mapping by associating each character
+in <var>baseAlphabet</var> to its integer position in the
+<var>baseAlphabet</var> string.
+          </li>
+          <li>
+Initialize the following variables; <var>sourceOffset</var> to <code>0</code>,
+<var>zeroes</var> to <code>0</code>, and <var>decodedLength</var> to <code>0</code>.
+          </li>
+          <li>
+Set <var>zeroes</var> and <var>sourceOffset</var> to the number of leading
+<var>baseAlphabet[0]</var> values in <var>sourceEncoding</var>.
+          </li>
+          <li>
+Set <var>decodedBytes</var> to an empty byte array that is the size of the final
+base-converted value. Calculate the size of <var>decodedBytes</var>
+by dividing log(<var>sourceBase</var>) by log(<code>256</code>) and then multiplying by the
+length of <var>sourceEncoding</var> minus the leading zeroes. Add 1 to the value
+of size.
+          </li>
+          <li>
+Process each character in <var>sourceEncoding</var> as <var>character</var>
+starting at offset <var>sourceOffset</var>:
+            <ol class="algorithm">
+              <li>
+Set the <var>carry</var> value to the integer value in the <var>baseMap</var>
+that is associated with <var>character</var>.
+              </li>
+              <li>
+Perform base-decoding by starting at the end of the <var>decodedBytes</var>
+array. Initialize an iterator <var>i</var> to <code>0</code>. Set <var>byteOffset</var>
+to <var>decodedSize</var> minus <code>1</code>. Perform the following loop as long as,
+<var>carry</var> does not equal <code>0</code> or <var>i</var> is less than
+<var>decodedLength</var>, and <var>byteOffset</var> does not equal <code>-1</code>:
+                <ol class="algorithm">
+                  <li>
+Add the result of multiplying <var>sourceBase</var> by
+<var>decodedBytes</var>[<var>byteOffset</var>] to <var>carry</var>.
+                  </li>
+                  <li>
+Set <var>decodedBytes</var>[<var>byteOffset</var>] to the remainder of
+dividing <var>carry</var> by <code>256</code>.
+                  </li>
+                  <li>
+Set <var>carry</var> to <var>carry</var> divided by <code>256</code>, ensuring that integer
+division is used to perform the division.
+                  </li>
+                  <li>
+Decrement <var>byteOffset</var> by <code>1</code> and increment <var>i</var> by <code>1</code>.
+                  </li>
+                </ol>
+                </li><li>
+Set <var>decodedLength</var> to <var>i</var> and increment
+<var>sourceOffset</var> by <code>1</code>.
+                </li>
+              
+            </ol>
+          </li>
+          <li>
+Set the <var>decodedOffset</var> to <var>decodedSize</var> minus
+<var>decodedLength</var>. While the <var>decodedOffset</var> does not equal
+the <var>decodedSize</var> and
+<var>decodedBytes</var>[<var>decodedOffset</var>] equals <code>0</code>, increment
+<var>decodedOffset</var> by <code>1</code>. This step skips the leading zeros in the
+final base-decoded byte array.
+          </li>
+          <li>
+Set the size of the <var>finalBytes</var> array to <var>zeroes</var> plus,
+<var>decodedSize</var> minus <var>decodedOffset</var>. Initialize the first
+<var>zeroes</var> bytes in <var>finalBytes</var> to <code>0</code>.
+          </li>
+          <li>
+Starting at an offset equal to the number of <var>zeroes</var> in
+<var>finalBytes</var> plus <code>1</code>, copy all bytes in <var>decodedBytes</var>, up
+to <var>decodedSize</var>, starting at offset <var>decodedOffset</var> to
+<var>finalBytes</var>.
+          </li>
+        </ol>
+
+        <div class="example" id="example-an-implementation-of-the-general-base-decoding-algorithm-above-in-javascript">
+        <div class="marker">
+    <a class="self-link" href="#example-an-implementation-of-the-general-base-decoding-algorithm-above-in-javascript">Example<bdi> 14</bdi></a><span class="example-title">: An implementation of the general base-decoding algorithm above in Javascript</span>
+  </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">baseDecode</span>(<span class="hljs-params">sourceEncoding, sourceBase, baseAlphabet</span>) </span>{
+  <span class="hljs-comment">// build the base-alphabet to integer value map</span>
+  baseMap = {};
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; baseAlphabet.length; i++) {
+    baseMap[baseAlphabet[i]] = i;
+  }
+
+  <span class="hljs-comment">// skip and count zero-byte values in the sourceEncoding</span>
+  <span class="hljs-keyword">let</span> sourceOffset = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">let</span> zeroes = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">let</span> decodedLength = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">while</span>(sourceEncoding[sourceOffset] === baseAlphabet[<span class="hljs-number">0</span>]) {
+    zeroes++;
+    sourceOffset++;
+  }
+
+  <span class="hljs-comment">// allocate the decoded byte array</span>
+  <span class="hljs-keyword">const</span> baseContractionFactor = <span class="hljs-built_in">Math</span>.log(sourceBase) / <span class="hljs-built_in">Math</span>.log(<span class="hljs-number">256</span>);
+  <span class="hljs-keyword">let</span> decodedSize = <span class="hljs-built_in">Math</span>.floor((
+    (sourceEncoding.length - sourceOffset) * baseContractionFactor) + <span class="hljs-number">1</span>);
+  <span class="hljs-keyword">let</span> decodedBytes = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(decodedSize);
+
+  <span class="hljs-comment">// perform base-conversion on the source encoding</span>
+  <span class="hljs-keyword">while</span>(sourceEncoding[sourceOffset]) {
+    <span class="hljs-comment">// process each base-encoded number</span>
+    <span class="hljs-keyword">let</span> carry = baseMap[sourceEncoding[sourceOffset]];
+
+    <span class="hljs-comment">// convert the base-encoded number by performing base-expansion</span>
+    <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> byteOffset = decodedSize - <span class="hljs-number">1</span>;
+      (carry !== <span class="hljs-number">0</span> || i &lt; decodedLength) &amp;&amp; (byteOffset !== -<span class="hljs-number">1</span>);
+      byteOffset--, i++) {
+      carry += <span class="hljs-built_in">Math</span>.floor(sourceBase * decodedBytes[byteOffset]);
+      decodedBytes[byteOffset] = <span class="hljs-built_in">Math</span>.floor(carry % <span class="hljs-number">256</span>);
+      carry = <span class="hljs-built_in">Math</span>.floor(carry / <span class="hljs-number">256</span>);
+    }
+
+    decodedLength = i;
+    sourceOffset++;
+  }
+
+  <span class="hljs-comment">// skip leading zeros in the decoded byte array</span>
+  <span class="hljs-keyword">let</span> decodedOffset = decodedSize - decodedLength;
+  <span class="hljs-keyword">while</span>(decodedOffset !== decodedSize &amp;&amp; decodedBytes[decodedOffset] === <span class="hljs-number">0</span>) {
+    decodedOffset++;
+  }
+
+  <span class="hljs-comment">// create the final byte array that has been base-decoded</span>
+  <span class="hljs-keyword">let</span> finalBytes = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(zeroes + (decodedSize - decodedOffset));
+  <span class="hljs-keyword">let</span> j = zeroes;
+  <span class="hljs-keyword">while</span>(decodedOffset !== decodedSize) {
+    finalBytes[j++] = decodedBytes[decodedOffset++];
+  }
+
+  <span class="hljs-keyword">return</span> finalBytes;
+}</code></pre>
+      </div>
+
+      </section>
+
+      <section class="normative" id="retrieve-verification-method"><div class="header-wrapper"><h3 id="x6-3-retrieve-verification-method"><bdi class="secno">6.3 </bdi>Retrieve Verification Method</h3><a class="self-link" href="#retrieve-verification-method" aria-label="Permalink for Section 6.3"></a></div>
+        
+
+        <p>
+The following algorithm specifies how to safely retrieve a verification method,
+such as a cryptographic <a href="#dfn-public-key" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-public-key-7">public key</a>, by using a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-54">verification method</a>
+identifier. Required inputs are a
+<strong><a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-55">verification method</a></strong> (<var>verificationMethod</var>),
+a <strong>proof purpose</strong> (<var>proofPurpose</var>), and
+a set of <strong>dereferencing options</strong> (<var>options</var>). A
+<strong>verification method</strong> is produced as output.
+        </p>
+
+        <ol class="algorithm">
+          <li>
+Let <var>vmIdentifier</var> be set to <var>verificationMethod</var>.
+          </li>
+          <li>
+Let <var>vmPurpose</var> be set to <var>proofPurpose</var>.
+          </li>
+          <li>
+If <var>vmIdentifier</var> is not a valid URL, an error <em class="rfc2119">MUST</em> be raised and <em class="rfc2119">SHOULD</em>
+convey an error type of
+<a href="#INVALID_VERIFICATION_METHOD_URL">INVALID_VERIFICATION_METHOD_URL</a>.
+          </li>
+          <li>
+Let <var>controllerDocumentUrl</var> be the result of parsing
+<var>vmIdentifier</var> according to the rules of the URL scheme and extracting
+the primary resource identifier (without the fragment identifier).
+          </li>
+          <li>
+Let <var>vmFragment</var> be the result of parsing <var>vmIdentifier</var>
+according to the rules of the URL scheme and extracting the secondary
+resource identifier (the fragment identifier).
+          </li>
+          <li>
+Let <var>controllerDocument</var> be the result of dereferencing
+<var>controllerDocumentUrl</var>, according to the rules
+of the URL scheme and using the supplied <var>options</var>.
+          </li>
+          <li>
+If <var>controllerDocument</var>.<var>id</var> does not match the
+<var>controllerDocumentUrl</var>, an error <em class="rfc2119">MUST</em> be raised and <em class="rfc2119">SHOULD</em>
+convey an error type of
+<a href="#INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID</a>.
+          </li>
+          <li>
+If <var>controllerDocument</var> is not a valid <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-26">controller document</a>,
+an error <em class="rfc2119">MUST</em> be raised and <em class="rfc2119">SHOULD</em>
+convey an error type of
+<a href="#INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT</a>.
+          </li>
+          <li>
+Let <var>verificationMethod</var> be the result of dereferencing the
+<var>vmFragment</var> from the <var>controllerDocument</var> according to the
+rules of the media type of the <var>controllerDocument</var>.
+          </li>
+          <li>
+If <var>verificationMethod</var> is not a valid <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-56">verification method</a>,
+an error <em class="rfc2119">MUST</em> be raised and <em class="rfc2119">SHOULD</em> convey an error type of
+<a href="#INVALID_VERIFICATION_METHOD">INVALID_VERIFICATION_METHOD</a>.
+          </li>
+          <li>
+If <var>verificationMethod</var> is not associated with the array of
+<var>vmPurposes</var> in the <var>controllerDocument</var>, either by reference
+(URL) or by value (object), an error <em class="rfc2119">MUST</em> be raised and <em class="rfc2119">SHOULD</em> convey an error
+type of <a href="#INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD">
+INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD</a>.
+          </li>
+          <li>
+Return <var>verificationMethod</var> as the
+<strong>verification method</strong>.
+          </li>
+        </ol>
+
+        <p>
+The following example provides a minimum conformant
+<a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-27">controller document</a> containing a minimum conformant
+<a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-57">verification method</a> as required by the algorithm in this section:
+        </p>
+
+        <div class="example" id="example-minimum-conformant-controller-document">
+        <div class="marker">
+    <a class="self-link" href="#example-minimum-conformant-controller-document">Example<bdi> 15</bdi></a><span class="example-title">: Minimum conformant controller document</span>
+  </div> <pre aria-busy="false"><code class="hljs json">{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"https://controller.example/123"</span>,
+  <span class="hljs-attr">"verificationMethod"</span>: [{
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"https://controller.example/123#key-456"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"ExampleVerificationMethodType"</span>,
+    <span class="hljs-attr">"controller"</span>: <span class="hljs-string">"https://controller.example/123"</span>,
+    <span class="hljs-comment">// public cryptographic material goes here</span>
+  }],
+  <span class="hljs-attr">"authentication"</span>: [<span class="hljs-string">"#key-456"</span>]
+}</code></pre>
+      </div>
+
+      </section>
+
+      <section class="normative" id="processing-errors"><div class="header-wrapper"><h3 id="x6-4-processing-errors"><bdi class="secno">6.4 </bdi>Processing Errors</h3><a class="self-link" href="#processing-errors" aria-label="Permalink for Section 6.4"></a></div>
+        
+
+        <p>
+The algorithms described in this specification throw specific types of errors.
+Implementers might find it useful to convey these errors to other libraries or
+software systems. This section provides specific URLs, descriptions, and error
+codes for the errors, such that an ecosystem implementing technologies described
+by this specification might interoperate more effectively when errors occur.
+        </p>
+
+        <p>
+When exposing these errors through an HTTP interface, implementers <em class="rfc2119">SHOULD</em> use
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9457" title="Problem Details for HTTP APIs">RFC9457</a></cite>] to encode the error data structure. If [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc9457" title="Problem Details for HTTP APIs">RFC9457</a></cite>] is used:
+        </p>
+
+        <ul>
+          <li>
+The <code>type</code> value of the error object <em class="rfc2119">MUST</em> be a URL that starts with the value
+<code>https://w3id.org/security#</code> and ends with the value in the section listed
+below.
+          </li>
+          <li>
+The <code>code</code> value <em class="rfc2119">MUST</em> be the integer code described in the table below
+(in parentheses, beside the type name).
+          </li>
+          <li>
+The <code>title</code> value <em class="rfc2119">SHOULD</em> provide a short but specific human-readable string for
+the error.
+          </li>
+          <li>
+The <code>detail</code> value <em class="rfc2119">SHOULD</em> provide a longer human-readable string for the error.
+          </li>
+        </ul>
+
+        <dl>
+          <dt id="INVALID_VERIFICATION_METHOD_URL">INVALID_VERIFICATION_METHOD_URL (-21)</dt>
+          <dd>
+The <code>verificationMethod</code> value in a proof was malformed. See Section
+<a href="#retrieve-verification-method" class="sec-ref"><bdi class="secno">6.3 </bdi>Retrieve Verification Method</a>.
+          </dd>
+          <dt id="INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID (-22)</dt>
+          <dd>
+The <code>id</code> value in a <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-28">controller document</a> was malformed. See Section
+<a href="#retrieve-verification-method" class="sec-ref"><bdi class="secno">6.3 </bdi>Retrieve Verification Method</a>.
+          </dd>
+          <dt id="INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT (-23)</dt>
+          <dd>
+The <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-29">controller document</a> was malformed. See Section
+<a href="#retrieve-verification-method" class="sec-ref"><bdi class="secno">6.3 </bdi>Retrieve Verification Method</a>.
+          </dd>
+          <dt id="INVALID_VERIFICATION_METHOD">INVALID_VERIFICATION_METHOD (-24)</dt>
+          <dd>
+The <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-58">verification method</a> in a <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-30">controller document</a> was malformed. See Section
+<a href="#retrieve-verification-method" class="sec-ref"><bdi class="secno">6.3 </bdi>Retrieve Verification Method</a>.
+          </dd>
+          <dt id="INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD">INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD (-25)</dt>
+          <dd>
+The <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-59">verification method</a> in a <a data-link-type="dfn|abstract-op" href="#dfn-controller-documents" class="internalDFN" id="ref-for-dfn-controller-documents-31">controller document</a> was not
+associated using the expected <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-21">verification relationship</a> as expressed in
+the <code>proofPurpose</code> property in the proof. See Section
+<a href="#retrieve-verification-method" data-matched-text="[[[#retrieve-verification-method]]]" class="sec-ref"><bdi class="secno">6.3 </bdi>Retrieve Verification Method</a>.
+          </dd>
+        </dl>
+      </section>
+    </section>
+
+    <section id="security-considerations"><div class="header-wrapper"><h2 id="x7-security-considerations"><bdi class="secno">7. </bdi>Security Considerations</h2><a class="self-link" href="#security-considerations" aria-label="Permalink for Section 7."></a></div>
+      
+      <p>
+The following section describes security considerations that developers
+implementing this specification should be aware of in order to create secure
+software.
+      </p>
+
+      <div class="issue" id="issue-container-number-5"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="3"><span>Issue 5</span></div><p class="">Write Security Considerations section</p></div>
+
+    </section>
+
+    <section id="privacy-considerations"><div class="header-wrapper"><h2 id="x8-privacy-considerations"><bdi class="secno">8. </bdi>Privacy Considerations</h2><a class="self-link" href="#privacy-considerations" aria-label="Permalink for Section 8."></a></div>
+      
+      <p>
+The following section describes privacy considerations that developers
+implementing this specification should be aware of in order to create
+privacy enhancing software.
+      </p>
+
+      <div class="issue" id="issue-container-number-6"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="3"><span>Issue 6</span></div><p class="">Write Privacy Considerations section</p></div>
+
+    </section>
+
+    <section id="accessibility-considerations"><div class="header-wrapper"><h2 id="x9-accessibility-considerations"><bdi class="secno">9. </bdi>Accessibility Considerations</h2><a class="self-link" href="#accessibility-considerations" aria-label="Permalink for Section 9."></a></div>
+      
+      <p>
+The following section describes accessibility considerations that developers
+implementing this specification are urged to consider in order to ensure that
+their software is usable by people with different cognitive, motor, and visual
+needs. As a general rule, this specification is used by system software and does
+not directly expose individuals to information subject to accessibility
+considerations. However, there are instances where individuals might be
+indirectly exposed to information expressed by this specification and thus the
+guidance below is provided for those situations.
+      </p>
+
+      <div class="issue" id="issue-container-number-7"><div role="heading" class="issue-title marker" id="h-issue-5" aria-level="3"><span>Issue 7</span></div><p class="">Write Accessibility Considerations section</p></div>
+
+      <section id="presenting-time-values"><div class="header-wrapper"><h3 id="x9-1-presenting-time-values"><bdi class="secno">9.1 </bdi>Presenting Time Values</h3><a class="self-link" href="#presenting-time-values" aria-label="Permalink for Section 9.1"></a></div>
+        
+        <p>
+This specification enables the expression of dates and times related to the
+validity period of cryptographic proofs. This information might be indirectly
+exposed to an individual if a proof is processed and is detected to be outside
+an allowable time range. When exposing these dates and times to an individual,
+implementers are urged to take into account
+<a href="https://www.w3.org/TR/vc-data-model-2.0/#representing-time">cultural normas and locales
+when representing dates and times</a> in display software. In addition to these
+considerations, presenting time values in a way that eases the cognitive burden
+on the individual receiving the information is a suggested best practice.
+        </p>
+        <p>
+For example, when conveying the expiration date for a particular set of
+digitally signed information, implementers are urged to present the time of
+expiration using language that is easier to understand rather than language that
+optimizes for accuracy. Presenting the expiration time as "This ticket expired
+three days ago." is preferred over a phrase such as "This ticket expired on July
+25th 2023 at 3:43 PM." The former provides a relative time that is easier to
+comprehend than the latter time, which requires the individual to do the
+calculation in their head and presumes that they are capable of doing such a
+calculation.
+        </p>
+      </section>
+
+    </section>
+
+    <section class="informative" id="revision-history"><div class="header-wrapper"><h2 id="x10-revision-history"><bdi class="secno">10. </bdi>Revision History</h2><a class="self-link" href="#revision-history" aria-label="Permalink for Section 10."></a></div><p><em>This section is non-normative.</em></p>
+      
+
+      <p>
+This section contains the substantive changes that have been made to this
+specification over time.
+      </p>
+
+      <ul>
+        <li>
+Populated Terminology section.
+        </li>
+        <li>
+Apply wording updates from VC-JOSE-COSE spec.
+        </li>
+      </ul>
+
+    </section>
+    <section class="informative" id="acknowledgements"><div class="header-wrapper"><h2 id="x11-acknowledgements"><bdi class="secno">11. </bdi>Acknowledgements</h2><a class="self-link" href="#acknowledgements" aria-label="Permalink for Section 11."></a></div><p><em>This section is non-normative.</em></p>
+      
+
+      <p>
+The specification authors would like to thank the contributors to the
+<abbr title="World Wide Web Consortium">W3C</abbr> Decentralized Identifiers (DIDs) v1.0,
+<abbr title="World Wide Web Consortium">W3C</abbr> Verifiable Credential Data Integrity 1.0, and
+<abbr title="World Wide Web Consortium">W3C</abbr> Securing Verifiable Credentials using JOSE and COSE specifications
+upon which this work is based.
+      </p>
+  
+
+</section><section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-infra">[INFRA]</dt><dd>
+      <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
+    </dd><dt id="bib-jose-registries">[JOSE-REGISTRIES]</dt><dd>
+      <a href="https://www.iana.org/assignments/jose"><cite>The JSON Object Signing and Encryption (JOSE) Registries</cite></a>. The Internet Assigned Numbers Authority.  The Internet Assigned Numbers Authority. W3C Recommendation. URL: <a href="https://www.iana.org/assignments/jose">https://www.iana.org/assignments/jose</a>
+    </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
+    </dd><dt id="bib-rfc6234">[RFC6234]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc6234"><cite>US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)</cite></a>. D. Eastlake 3rd; T. Hansen.  IETF. May 2011. Informational. URL: <a href="https://www.rfc-editor.org/rfc/rfc6234">https://www.rfc-editor.org/rfc/rfc6234</a>
+    </dd><dt id="bib-rfc7515">[RFC7515]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc7515"><cite>JSON Web Signature (JWS)</cite></a>. M. Jones; J. Bradley; N. Sakimura.  IETF. May 2015. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc7515">https://www.rfc-editor.org/rfc/rfc7515</a>
+    </dd><dt id="bib-rfc7517">[RFC7517]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc7517"><cite>JSON Web Key (JWK)</cite></a>. M. Jones.  IETF. May 2015. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc7517">https://www.rfc-editor.org/rfc/rfc7517</a>
+    </dd><dt id="bib-rfc7518">[RFC7518]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc7518"><cite>JSON Web Algorithms (JWA)</cite></a>. M. Jones.  IETF. May 2015. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc7518">https://www.rfc-editor.org/rfc/rfc7518</a>
+    </dd><dt id="bib-rfc7638">[RFC7638]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc7638"><cite>JSON Web Key (JWK) Thumbprint</cite></a>. M. Jones; N. Sakimura.  IETF. September 2015. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc7638">https://www.rfc-editor.org/rfc/rfc7638</a>
+    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
+    </dd><dt id="bib-rfc9457">[RFC9457]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc9457"><cite>Problem Details for HTTP APIs</cite></a>. M. Nottingham; E. Wilde; S. Dalal.  IETF. July 2023. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9457">https://www.rfc-editor.org/rfc/rfc9457</a>
+    </dd><dt id="bib-sha3">[SHA3]</dt><dd>
+      <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf"><cite>SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions</cite></a>. National Institute of Standards and Technology.  U.S. Department of Commerce. National Standard. URL: <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf">https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf</a>
+    </dd><dt id="bib-url">[URL]</dt><dd>
+      <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
+    </dd><dt id="bib-xmlschema11-2">[XMLSCHEMA11-2]</dt><dd>
+      <a href="https://www.w3.org/TR/xmlschema11-2/"><cite>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</cite></a>. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al.  W3C. 5 April 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xmlschema11-2/">https://www.w3.org/TR/xmlschema11-2/</a>
+    </dd></dl>
+  </section><section id="informative-references"><div class="header-wrapper"><h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-html-rdfa">[HTML-RDFA]</dt><dd>
+      <a href="https://www.w3.org/TR/html-rdfa/"><cite>HTML+RDFa 1.1 - Second Edition</cite></a>. Manu Sporny.  W3C. 17 March 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html-rdfa/">https://www.w3.org/TR/html-rdfa/</a>
+    </dd><dt id="bib-json-ld11">[JSON-LD11]</dt><dd>
+      <a href="https://www.w3.org/TR/json-ld11/"><cite>JSON-LD 1.1</cite></a>. Gregg Kellogg; Pierre-Antoine Champin; Dave Longley.  W3C. 16 July 2020. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a>
+    </dd><dt id="bib-multibase">[MULTIBASE]</dt><dd>
+      <a href="https://datatracker.ietf.org/doc/draft-multiformats-multibase"><cite>The Multibase Data Format</cite></a>. Juan Benet; Manu Sporny.  IETF. February 2023. Internet-Draft. URL: <a href="https://datatracker.ietf.org/doc/draft-multiformats-multibase">https://datatracker.ietf.org/doc/draft-multiformats-multibase</a>
+    </dd><dt id="bib-multihash">[MULTIHASH]</dt><dd>
+      <a href="https://datatracker.ietf.org/doc/draft-multiformats-multihash"><cite>The Multihash Data Format</cite></a>. Juan Benet; Manu Sporny.  IETF. February 2023. Internet-Draft. URL: <a href="https://datatracker.ietf.org/doc/draft-multiformats-multihash">https://datatracker.ietf.org/doc/draft-multiformats-multihash</a>
+    </dd><dt id="bib-rdf-concepts">[RDF-CONCEPTS]</dt><dd>
+      <a href="https://www.w3.org/TR/rdf-concepts/"><cite>Resource Description Framework (RDF): Concepts and Abstract Syntax</cite></a>. Graham Klyne; Jeremy Carroll.  W3C. 10 February 2004. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-concepts/">https://www.w3.org/TR/rdf-concepts/</a>
+    </dd><dt id="bib-turtle">[TURTLE]</dt><dd>
+      <a href="https://www.w3.org/TR/turtle/"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a>
+    </dd><dt id="bib-vc-data-model-2.0">[VC-DATA-MODEL-2.0]</dt><dd>
+      <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Ted Thibodeau Jr; Ivan Herman; Michael Jones; Gabe Cohen.  W3C. 5 May 2024. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-conforming-controller-document" aria-label="Links in this document to definition: conforming controller document">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-conforming-controller-document" aria-label="Permalink for definition: conforming controller document. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-conforming-controller-document-1" title="§ 1.1 Conformance">§ 1.1 Conformance</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-conforming-verification-method" aria-label="Links in this document to definition: conforming verification method">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-conforming-verification-method" aria-label="Permalink for definition: conforming verification method. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-conforming-verification-method-1" title="§ 1.1 Conformance">§ 1.1 Conformance</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-conforming-document" aria-label="Links in this document to definition: conforming document">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-conforming-document" aria-label="Permalink for definition: conforming document. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-conforming-document-1" title="§ 1.1 Conformance">§ 1.1 Conformance</a> 
+    </li><li>
+      <a href="#ref-for-dfn-conforming-document-2" title="§ 5. Contexts and Vocabularies">§ 5. Contexts and Vocabularies</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-conforming-processor" aria-label="Links in this document to definition: conforming processor">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-conforming-processor" aria-label="Permalink for definition: conforming processor. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-authenticated" aria-label="Links in this document to definition: authentication">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-authenticated" aria-label="Permalink for definition: authentication. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-authenticated-1" title="§ 2.1 Verification Methods">§ 2.1 Verification Methods</a> 
+    </li><li>
+      <a href="#ref-for-dfn-authenticated-2" title="§ 2.2 Verification Relationships">§ 2.2 Verification Relationships</a> 
+    </li><li>
+      <a href="#ref-for-dfn-authenticated-3" title="§ 2.2.1 Authentication">§ 2.2.1 Authentication</a> <a href="#ref-for-dfn-authenticated-4" title="Reference 2">(2)</a> <a href="#ref-for-dfn-authenticated-5" title="Reference 3">(3)</a> <a href="#ref-for-dfn-authenticated-6" title="Reference 4">(4)</a> <a href="#ref-for-dfn-authenticated-7" title="Reference 5">(5)</a> <a href="#ref-for-dfn-authenticated-8" title="Reference 6">(6)</a> <a href="#ref-for-dfn-authenticated-9" title="Reference 7">(7)</a> <a href="#ref-for-dfn-authenticated-10" title="Reference 8">(8)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-controller-s" aria-label="Links in this document to definition: controller">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-controller-s" aria-label="Permalink for definition: controller. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-controller-s-1" title="§ Abstract">§ Abstract</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-s-2" title="§ 1. Introduction">§ 1. Introduction</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-s-3" title="§ 1.2 Terminology">§ 1.2 Terminology</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-s-4" title="§ 2. Data Model">§ 2. Data Model</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-s-5" title="§ 2.1 Verification Methods">§ 2.1 Verification Methods</a> <a href="#ref-for-dfn-controller-s-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controller-s-7" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controller-s-8" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-s-9" title="§ 2.2 Verification Relationships">§ 2.2 Verification Relationships</a> <a href="#ref-for-dfn-controller-s-10" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controller-s-11" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-s-12" title="§ 2.2.1 Authentication">§ 2.2.1 Authentication</a> <a href="#ref-for-dfn-controller-s-13" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controller-s-14" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-s-15" title="§ 2.2.2 Assertion">§ 2.2.2 Assertion</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-s-16" title="§ 2.2.3 Key Agreement">§ 2.2.3 Key Agreement</a> <a href="#ref-for-dfn-controller-s-17" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-s-18" title="§ 2.2.4 Capability Invocation">§ 2.2.4 Capability Invocation</a> <a href="#ref-for-dfn-controller-s-19" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controller-s-20" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-s-21" title="§ 2.2.5 Capability Delegation">§ 2.2.5 Capability Delegation</a> <a href="#ref-for-dfn-controller-s-22" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controller-s-23" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controller-s-24" title="Reference 4">(4)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-controller-documents" aria-label="Links in this document to definition: controller document">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-controller-documents" aria-label="Permalink for definition: controller document. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-controller-documents-1" title="§ Abstract">§ Abstract</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-2" title="§ 1. Introduction">§ 1. Introduction</a> <a href="#ref-for-dfn-controller-documents-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-4" title="§ 1.2 Terminology">§ 1.2 Terminology</a> <a href="#ref-for-dfn-controller-documents-5" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-6" title="§ 2. Data Model">§ 2. Data Model</a> <a href="#ref-for-dfn-controller-documents-7" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-8" title="§ 2.1 Verification Methods">§ 2.1 Verification Methods</a> <a href="#ref-for-dfn-controller-documents-9" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controller-documents-10" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controller-documents-11" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-12" title="§ 2.1.1 Verification Material">§ 2.1.1 Verification Material</a> <a href="#ref-for-dfn-controller-documents-13" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-14" title="§ 2.1.4 Referring to Verification Methods">§ 2.1.4 Referring to Verification Methods</a> <a href="#ref-for-dfn-controller-documents-15" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-16" title="§ 2.2 Verification Relationships">§ 2.2 Verification Relationships</a> <a href="#ref-for-dfn-controller-documents-17" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controller-documents-18" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controller-documents-19" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controller-documents-20" title="Reference 5">(5)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-21" title="§ 2.2.1 Authentication">§ 2.2.1 Authentication</a> <a href="#ref-for-dfn-controller-documents-22" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controller-documents-23" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-24" title="§ 2.2.4 Capability Invocation">§ 2.2.4 Capability Invocation</a> <a href="#ref-for-dfn-controller-documents-25" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-26" title="§ 6.3 Retrieve Verification Method">§ 6.3 Retrieve Verification Method</a> <a href="#ref-for-dfn-controller-documents-27" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controller-documents-28" title="§ 6.4 Processing Errors">§ 6.4 Processing Errors</a> <a href="#ref-for-dfn-controller-documents-29" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controller-documents-30" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controller-documents-31" title="Reference 4">(4)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-cryptosuite" aria-label="Links in this document to definition: cryptographic suite">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-cryptosuite" aria-label="Permalink for definition: cryptographic suite. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-cryptosuite-1" title="§ 2.1.1 Verification Material">§ 2.1.1 Verification Material</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-private-key" aria-label="Links in this document to definition: private key">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-private-key" aria-label="Permalink for definition: private key. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-private-key-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-public-key" aria-label="Links in this document to definition: public key">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-public-key" aria-label="Permalink for definition: public key. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-public-key-1" title="§ 2.1 Verification Methods">§ 2.1 Verification Methods</a> <a href="#ref-for-dfn-public-key-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-public-key-3" title="§ 2.1.2 Multikey">§ 2.1.2 Multikey</a> 
+    </li><li>
+      <a href="#ref-for-dfn-public-key-4" title="§ 2.1.3 JsonWebKey">§ 2.1.3 JsonWebKey</a> 
+    </li><li>
+      <a href="#ref-for-dfn-public-key-5" title="§ 2.2.1 Authentication">§ 2.2.1 Authentication</a> 
+    </li><li>
+      <a href="#ref-for-dfn-public-key-6" title="§ 2.2.3 Key Agreement">§ 2.2.3 Key Agreement</a> 
+    </li><li>
+      <a href="#ref-for-dfn-public-key-7" title="§ 6.3 Retrieve Verification Method">§ 6.3 Retrieve Verification Method</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-subjects" aria-label="Links in this document to definition: subject">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-subjects" aria-label="Permalink for definition: subject. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-subjects-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verification-method" aria-label="Links in this document to definition: verification method">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verification-method" aria-label="Permalink for definition: verification method. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-verification-method-1" title="§ 1. Introduction">§ 1. Introduction</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-2" title="§ 1.2 Terminology">§ 1.2 Terminology</a> <a href="#ref-for-dfn-verification-method-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-4" title="§ 2. Data Model">§ 2. Data Model</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-5" title="§ 2.1 Verification Methods">§ 2.1 Verification Methods</a> <a href="#ref-for-dfn-verification-method-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verification-method-7" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verification-method-8" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verification-method-9" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verification-method-10" title="Reference 6">(6)</a> <a href="#ref-for-dfn-verification-method-11" title="Reference 7">(7)</a> <a href="#ref-for-dfn-verification-method-12" title="Reference 8">(8)</a> <a href="#ref-for-dfn-verification-method-13" title="Reference 9">(9)</a> <a href="#ref-for-dfn-verification-method-14" title="Reference 10">(10)</a> <a href="#ref-for-dfn-verification-method-15" title="Reference 11">(11)</a> <a href="#ref-for-dfn-verification-method-16" title="Reference 12">(12)</a> <a href="#ref-for-dfn-verification-method-17" title="Reference 13">(13)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-18" title="§ 2.1.1 Verification Material">§ 2.1.1 Verification Material</a> <a href="#ref-for-dfn-verification-method-19" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verification-method-20" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verification-method-21" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verification-method-22" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verification-method-23" title="Reference 6">(6)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-24" title="§ 2.1.2 Multikey">§ 2.1.2 Multikey</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-25" title="§ 2.1.3 JsonWebKey">§ 2.1.3 JsonWebKey</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-26" title="§ 2.1.4 Referring to Verification Methods">§ 2.1.4 Referring to Verification Methods</a> <a href="#ref-for-dfn-verification-method-27" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verification-method-28" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verification-method-29" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verification-method-30" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verification-method-31" title="Reference 6">(6)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-32" title="§ 2.2 Verification Relationships">§ 2.2 Verification Relationships</a> <a href="#ref-for-dfn-verification-method-33" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verification-method-34" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verification-method-35" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verification-method-36" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verification-method-37" title="Reference 6">(6)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-38" title="§ 2.2.1 Authentication">§ 2.2.1 Authentication</a> <a href="#ref-for-dfn-verification-method-39" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verification-method-40" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verification-method-41" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-42" title="§ 2.2.2 Assertion">§ 2.2.2 Assertion</a> <a href="#ref-for-dfn-verification-method-43" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-44" title="§ 2.2.3 Key Agreement">§ 2.2.3 Key Agreement</a> <a href="#ref-for-dfn-verification-method-45" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verification-method-46" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-47" title="§ 2.2.4 Capability Invocation">§ 2.2.4 Capability Invocation</a> <a href="#ref-for-dfn-verification-method-48" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verification-method-49" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verification-method-50" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-51" title="§ 2.2.5 Capability Delegation">§ 2.2.5 Capability Delegation</a> <a href="#ref-for-dfn-verification-method-52" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verification-method-53" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-54" title="§ 6.3 Retrieve Verification Method">§ 6.3 Retrieve Verification Method</a> <a href="#ref-for-dfn-verification-method-55" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verification-method-56" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verification-method-57" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-method-58" title="§ 6.4 Processing Errors">§ 6.4 Processing Errors</a> <a href="#ref-for-dfn-verification-method-59" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verification-relationship" aria-label="Links in this document to definition: verification relationship">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verification-relationship" aria-label="Permalink for definition: verification relationship. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-verification-relationship-1" title="§ 1. Introduction">§ 1. Introduction</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-relationship-2" title="§ 2. Data Model">§ 2. Data Model</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-relationship-3" title="§ 2.1.4 Referring to Verification Methods">§ 2.1.4 Referring to Verification Methods</a> <a href="#ref-for-dfn-verification-relationship-4" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-relationship-5" title="§ 2.2 Verification Relationships">§ 2.2 Verification Relationships</a> <a href="#ref-for-dfn-verification-relationship-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verification-relationship-7" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verification-relationship-8" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verification-relationship-9" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verification-relationship-10" title="Reference 6">(6)</a> <a href="#ref-for-dfn-verification-relationship-11" title="Reference 7">(7)</a> <a href="#ref-for-dfn-verification-relationship-12" title="Reference 8">(8)</a> <a href="#ref-for-dfn-verification-relationship-13" title="Reference 9">(9)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-relationship-14" title="§ 2.2.1 Authentication">§ 2.2.1 Authentication</a> <a href="#ref-for-dfn-verification-relationship-15" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-relationship-16" title="§ 2.2.2 Assertion">§ 2.2.2 Assertion</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-relationship-17" title="§ 2.2.3 Key Agreement">§ 2.2.3 Key Agreement</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-relationship-18" title="§ 2.2.4 Capability Invocation">§ 2.2.4 Capability Invocation</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-relationship-19" title="§ 2.2.5 Capability Delegation">§ 2.2.5 Capability Delegation</a> <a href="#ref-for-dfn-verification-relationship-20" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verification-relationship-21" title="§ 6.4 Processing Errors">§ 6.4 Processing Errors</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verificationmethod" aria-label="Links in this document to definition: verificationMethod">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verificationmethod" aria-label="Permalink for definition: verificationMethod. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-revoked" aria-label="Links in this document to definition: revoked">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-revoked" aria-label="Permalink for definition: revoked. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-publickeymultibase" aria-label="Links in this document to definition: publicKeyMultibase">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-publickeymultibase" aria-label="Permalink for definition: publicKeyMultibase. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-secretkeymultibase" aria-label="Links in this document to definition: secretKeyMultibase">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-secretkeymultibase" aria-label="Permalink for definition: secretKeyMultibase. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-publickeyjwk" aria-label="Links in this document to definition: publicKeyJwk">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-publickeyjwk" aria-label="Permalink for definition: publicKeyJwk. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-secretkeyjwk" aria-label="Links in this document to definition: secretKeyJwk">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-secretkeyjwk" aria-label="Permalink for definition: secretKeyJwk. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-defn-keyAgreement" aria-label="Links in this document to definition: keyAgreement">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#defn-keyAgreement" aria-label="Permalink for definition: keyAgreement. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-defn-keyAgreement-1" title="§ 2.2 Verification Relationships">§ 2.2 Verification Relationships</a> 
+    </li>
+  </ul>
+    </div><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
