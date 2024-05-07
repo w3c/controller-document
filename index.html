@@ -340,8 +340,8 @@ when non-conforming documents are consumed.
         <h3>Terminology</h3>
 
         <p>
-This section defines the terms used in this specification. A link to these terms
-is included whenever they appear in this specification.
+This section defines the terms used in this specification. A link to the relevant
+definition is included whenever one of these terms appears in this specification.
         </p>
 
         <dl class="termlist definitions" data-sort="ascending">
@@ -365,8 +365,8 @@ attribute or controls a specific secret.
 
           <dt><dfn class="export" data-lt="cryptosuite">cryptographic suite</dfn></dt>
           <dd>
-A specification defining the usage of specific cryptographic primitives in
-order to achieve a particular security goal. These documents are often used
+A specification defining how to use specific cryptographic primitives
+to achieve a particular security goal. These documents are often used
 to specify [=verification methods=], digital signature types,
 their identifiers, and other related properties.<!--  See Section -->
 <!-- [[[#cryptographic-suites]]] for further detail. -->
@@ -396,7 +396,7 @@ thing, logical thing, etc.
             <p>
 A set of parameters that can be used together with a process to independently
 verify a proof. For example, a cryptographic public key can be used as a
-verification method with respect to a digital signature; in such usage, it
+verification method with respect to a digital signature; in such use, it
 verifies that the signer possessed the associated cryptographic private key.
             </p>
             <p>
@@ -413,7 +413,7 @@ method, even though descriptions of the process might not use the words
           <dd>
             <p>
 An expression of the relationship between the [=subject=] and a
-[=verification method=]. An example of a verification relationship is
+[=verification method=]. One example of a verification relationship is
 [[[#authentication]]].
             </p>
           </dd>
@@ -446,7 +446,7 @@ A <a>controller document</a> can express <a>verification methods</a>, such as
 cryptographic <a>public keys</a>, which can be used to <a>authenticate</a> or
 authorize interactions with the <a>controller</a> or associated parties. For
 example, a cryptographic <a>public key</a> can be used as a <a>verification
-method</a> with respect to a digital signature; in such usage, it verifies that
+method</a> with respect to a digital signature; in such use, it verifies that
 the signer could use the associated cryptographic private key. <a>Verification
 methods</a> might take many parameters. An example of this is a set of five
 cryptographic keys from which any three are required to contribute to a
@@ -1106,7 +1106,7 @@ wrap a decryption key for the recipient.
       "keyAgreement": [
         <span class="comment">// this method can be used to perform key agreement as did:...fghi</span>
         "did:example:123456789abcdefghi#keys-1",
-        <span class="comment">// this method is *only* approved for key agreement usage, it will not</span>
+        <span class="comment">// this method is *only* approved for key agreement use, it will not</span>
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
@@ -1173,7 +1173,7 @@ protected resource.
       "capabilityInvocation": [
         <span class="comment">// this method can be used to invoke capabilities as did:...fghi</span>
         "did:example:123456789abcdefghi#keys-1",
-        <span class="comment">// this method is *only* approved for capability invocation usage, it will not</span>
+        <span class="comment">// this method is *only* approved for use in capability invocation; it will not</span>
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
@@ -2211,9 +2211,9 @@ Apply wording updates from VC-JOSE-COSE spec.
 
       <p>
 The specification authors would like to thank the contributors to the
-W3C Decentralized Identifiers (DIDs) v1.0,
-W3C Verifiable Credential Data Integrity 1.0, and
-W3C Securing Verifiable Credentials using JOSE and COSE specifications
+<a href="https://www.w3.org/TR/did-core/">W3C Decentralized Identifiers (DIDs) v1.0</a>,
+<a href="https://www.w3.org/TR/vc-data-integrity/">W3C Verifiable Credential Data Integrity 1.0</a>, and
+<a href="https://www.w3.org/TR/vc-jose-cose/">W3C Securing Verifiable Credentials using JOSE and COSE</a> specifications
 upon which this work is based.
       </p>
   </body>
