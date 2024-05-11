@@ -115,7 +115,7 @@ ol.algorithm li:before { font-weight: bold; counter-increment: numsection; conte
 <meta name="description" content="A controller document is a set of data that specifies one or more
 relationships between a controller and a set of data, such as a set of
 public cryptographic keys.">
-<link rel="canonical" href="https://www.w3.org/TR/vc-controller-document/">
+<link rel="canonical" href="https://www.w3.org/TR/controller-document/">
 <style>
 .hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
 @media (prefers-color-scheme:dark){
@@ -143,8 +143,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 </style>
 <script id="initialUserConfig" type="application/json">{
   "specStatus": "FPWD",
-  "shortName": "vc-controller-document",
-  "publishDate": "2024-05-30",
+  "shortName": "controller-document",
+  "publishDate": "2024-05-14",
   "edDraftURI": "https://w3c.github.io/vc-controller-document/",
   "editors": [
     {
@@ -368,31 +368,35 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         {
           "value": "Securing Verifiable Credentials using JOSE and COSE",
           "href": "https://www.w3.org/TR/vc-jose-cose/"
+        },
+        {
+          "value": "Securing Verifiable Credentials using JOSE and COSE",
+          "href": "https://www.w3.org/TR/vc-jose-cose/"
         }
       ]
     }
   ],
-  "publishISODate": "2024-05-30T00:00:00.000Z",
-  "generatedSubtitle": "W3C First Public Working Draft 30 May 2024"
+  "publishISODate": "2024-05-14T00:00:00.000Z",
+  "generatedSubtitle": "W3C First Public Working Draft 14 May 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-WD"></head>
 <body class="h-entry" data-cite="URL I18N-GLOSSARY INFRA"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Controller Documents 1.0</h1> 
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#FPWD">W3C First Public Working Draft</a> <time class="dt-published" datetime="2024-05-30">30 May 2024</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#FPWD">W3C First Public Working Draft</a> <time class="dt-published" datetime="2024-05-14">14 May 2024</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
         <dt>This version:</dt><dd>
-                <a class="u-url" href="https://www.w3.org/TR/2024/WD-vc-controller-document-20240530/">https://www.w3.org/TR/2024/WD-vc-controller-document-20240530/</a>
+                <a class="u-url" href="https://www.w3.org/TR/2024/WD-controller-document-20240514/">https://www.w3.org/TR/2024/WD-controller-document-20240514/</a>
               </dd>
         <dt>Latest published version:</dt><dd>
-                <a href="https://www.w3.org/TR/vc-controller-document/">https://www.w3.org/TR/vc-controller-document/</a>
+                <a href="https://www.w3.org/TR/controller-document/">https://www.w3.org/TR/controller-document/</a>
               </dd>
         <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/vc-controller-document/">https://w3c.github.io/vc-controller-document/</a></dd>
         <dt>History:</dt><dd>
-                    <a href="https://www.w3.org/standards/history/vc-controller-document/">https://www.w3.org/standards/history/vc-controller-document/</a>
+                    <a href="https://www.w3.org/standards/history/controller-document/">https://www.w3.org/standards/history/controller-document/</a>
                   </dd><dd>
                     <a href="https://github.com/w3c/vc-controller-document/commits/">Commit history</a>
                   </dd>
@@ -425,7 +429,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         (<a href="https://github.com/w3c/vc-controller-document/pulls/">pull requests</a>,
         <a href="https://github.com/w3c/vc-controller-document/issues/new/choose">new issue</a>,
         <a href="https://github.com/w3c/vc-controller-document/issues/">open issues</a>)
-      </dd><dd><a href="mailto:public-vc-wg@w3.org?subject=%5Bvc-controller-document%5D%20YOUR%20TOPIC%20HERE">public-vc-wg@w3.org</a> with subject line <kbd>[vc-controller-document] <em>… message topic …</em></kbd> (<a rel="discussion" href="https://lists.w3.org/Archives/Public/public-vc-wg">archives</a>)</dd>
+      </dd><dd><a href="mailto:public-vc-wg@w3.org?subject=%5Bcontroller-document%5D%20YOUR%20TOPIC%20HERE">public-vc-wg@w3.org</a> with subject line <kbd>[controller-document] <em>… message topic …</em></kbd> (<a rel="discussion" href="https://lists.w3.org/Archives/Public/public-vc-wg">archives</a>)</dd>
         
         <dt>Related Specifications</dt><dd>
     <a href="https://www.w3.org/TR/did-core/">Decentralized Identifiers v1.0</a>
@@ -433,6 +437,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <a href="https://www.w3.org/TR/vc-data-model-2.0/">The Verifiable Credentials Data Model v2.0</a>
   </dd><dd>
     <a href="https://www.w3.org/TR/vc-data-integrity/">Data Integrity v1.0</a>
+  </dd><dd>
+    <a href="https://www.w3.org/TR/vc-jose-cose/">Securing Verifiable Credentials using JOSE and COSE</a>
   </dd><dd>
     <a href="https://www.w3.org/TR/vc-jose-cose/">Securing Verifiable Credentials using JOSE and COSE</a>
   </dd>
@@ -508,6 +514,12 @@ relationships between a <a href="#dfn-controller-s" class="internalDFN" data-lin
 public cryptographic keys. The <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-3">controller document</a> <em class="rfc2119">SHOULD</em>
 contain <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-1">verification relationships</a> that explicitly permit the use of
 certain <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-1">verification methods</a> for specific purposes.
+      </p>
+      <p>
+It is expected that other specifications using this specification
+will profile the features that it defines,
+requiring and/or recommending the use of some and
+prohibiting and/or deprecating the use of others.
       </p>
       <p>
 It is expected that other specifications using this specification
@@ -678,10 +690,6 @@ in <a href="#verification-material" class="sec-ref"><bdi class="secno">2.1.1 </b
 include additional properties.
 
               </p>
-              <div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span></div><p class="">
-The <code>verificationMethod</code> property is <em class="rfc2119">REQUIRED</em> for proofs, unlike controller
-documents, for which it is optional.
-              </p></div>
 
               <dl>
                 <dt>id</dt>
@@ -745,7 +753,7 @@ revocation.
 }</pre>
       </div>
 
-          <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="4"><span>Note</span><span class="issue-label">: Verification method controller(s) and controller(s)</span></div><p class="">
+          <div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span><span class="issue-label">: Verification method controller(s) and controller(s)</span></div><p class="">
 The semantics of the <code>controller</code> property are the same when the
 subject of the relationship is the <a href="#dfn-controller-documents" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-controller-documents-9">controller document</a> as when the subject of
 the relationship is a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-16">verification method</a>, such as a cryptographic public
@@ -2456,7 +2464,7 @@ upon which this work is based.
     </dd><dt id="bib-turtle">[TURTLE]</dt><dd>
       <a href="https://www.w3.org/TR/turtle/"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a>
     </dd><dt id="bib-vc-data-model-2.0">[VC-DATA-MODEL-2.0]</dt><dd>
-      <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Ted Thibodeau Jr; Ivan Herman; Michael Jones; Gabe Cohen.  W3C. 5 May 2024. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
+      <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Ted Thibodeau Jr; Ivan Herman; Michael Jones; Gabe Cohen.  W3C. 7 May 2024. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
     </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
