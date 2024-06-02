@@ -329,14 +329,14 @@ prohibiting and/or deprecating the use of others.
         <p>
 A <dfn>conforming controller document</dfn> is any concrete expression of the
 data model that follows the relevant normative requirements in Sections
-<a href="#data-model"></a> and <a href="#contexts-and-vocabularies"></a>.
+[[[#data-model]]] and [[[#contexts-and-vocabularies]]].
         </p>
 
         <p>
 A <dfn>conforming verification method</dfn> is any concrete expression of the
 data model that follows the relevant normative requirements in Sections
-<a href="#verification-methods"></a> and
-<a href="#contexts-and-vocabularies"></a>.
+[[[#verification-methods]]] and
+[[[#contexts-and-vocabularies]]].
         </p>
 
         <p>
@@ -349,7 +349,7 @@ A <dfn class="lint-ignore">conforming document</dfn> is either a
 A <dfn class="lint-ignore">conforming processor</dfn> is any algorithm realized
 as software and/or hardware that generates and/or consumes a
 [=conforming document=] according to the relevant normative statements in
-Section <a href="#algorithms"></a>. Conforming processors MUST produce errors
+Section [[[#algorithms]]]. Conforming processors MUST produce errors
 when non-conforming documents are consumed.
         </p>
 
@@ -483,7 +483,7 @@ data-cite="INFRA#ordered-map">map</a>. The [=verification method=] <a
 data-cite="INFRA#ordered-map">map</a> MUST include the `id`,
 `type`, `controller`, and specific verification material
 properties that are determined by the value of `type` and are defined
-in <a href="#verification-material"></a>. A [=verification method=] MAY
+in [[[#verification-material]]]. A [=verification method=] MAY
 include additional properties.
 <!-- VC-DATA-INTEGRITY-SPECIFIC:
 [=Verification methods=] SHOULD be registered
@@ -678,7 +678,7 @@ methods</a> using both properties above is shown below.
             <p>
 The Multikey data model is a specific type of [=verification method=] that
 encodes key types into a single binary stream that is then encoded as a
-Multibase value as described in Section <a href="#multibase-0"></a>.
+Multibase value as described in Section [[[#multibase-0]]].
             </p>
 
             <p>
@@ -693,12 +693,12 @@ The value of the `type` property MUST contain the string `Multikey`.
               <dt><dfn class="lint-ignore">publicKeyMultibase</dfn></dt>
               <dd>
 The `publicKeyMultibase` property is OPTIONAL. If present, its value MUST be a
-Multibase encoded value as described in Section <a href="#multibase-0"></a>.
+Multibase encoded value as described in Section [[[#multibase-0]]].
               </dd>
               <dt><dfn class="lint-ignore">secretKeyMultibase</dfn></dt>
               <dd>
 The `secretKeyMultibase` property is OPTIONAL. If present, its value MUST be a
-Multibase encoded value as described in Section <a href="#multibase-0"></a>.
+Multibase encoded value as described in Section [[[#multibase-0]]].
               </dd>
             </dl>
 
@@ -780,7 +780,7 @@ Registration Template</a>. It is RECOMMENDED that verification methods that use
 JWKs [[RFC7517]] to represent their [=public keys=] use the value of `kid` as
 their fragment identifier. It is RECOMMENDED that JWK `kid` values are set to
 the public key fingerprint [[RFC7638]]. See the first key in
-<a href="#example-various-verification-method-types"></a> for an example of a
+[[[#example-various-verification-method-types]]] for an example of a
 public key with a compound key identifier.
                 </p>
                 <p>
@@ -876,8 +876,8 @@ the Ed25519 curve that is associated with the public key).
             <h3>Referring to Verification Methods</h3>
             <p>
 [=Verification methods=] can be embedded in or referenced from properties
-associated with various [=verification relationships=] as described in <a
-href="#verification-relationships"></a>. Referencing [=verification methods=]
+associated with various [=verification relationships=] as described in
+[[[#verification-relationships]]]. Referencing [=verification methods=]
 allows them to be used by more than one [=verification relationship=].
             </p>
 
@@ -1236,7 +1236,7 @@ would use a [=verification method=] associated with the
 `capabilityDelegation` [=verification relationship=] to
 cryptographically sign the capability over to another [=controller=]. The
 delegate would then use the capability in a manner that is similar to the
-example described in <a href="#capability-invocation"></a>.
+example described in [[[#capability-invocation]]].
             </p>
 
             <pre class="example nohighlight" title="Capability Delegation property
@@ -1328,7 +1328,7 @@ guaranteed between implementations using such values.
 
         <p>
 To base-encode a binary value into a Multibase string, an implementation MUST
-apply the algorithm in Section <a href="#base-encode"></a> to the binary value,
+apply the algorithm in Section [[[#base-encode]]] to the binary value,
 with the desired base encoding and alphabet from the table above, ensuring to
 prepend the associated Multibase header from the table above to the result.
 Any algorithm with equivalent output MAY be used.
@@ -1336,7 +1336,7 @@ Any algorithm with equivalent output MAY be used.
 
         <p>
 To base-decode a Multibase string, an implementation MUST apply the algorithm
-in Section <a href="#base-decode"></a> to the string following the first
+in Section [[[#base-decode]]] to the string following the first
 character (Multibase header), with the alphabet associated with the
 Multibase header. Any algorithm with equivalent output MAY be used.
         </p>
@@ -2116,22 +2116,22 @@ The `detail` value SHOULD provide a longer human-readable string for the error.
           <dt id="INVALID_VERIFICATION_METHOD_URL">INVALID_VERIFICATION_METHOD_URL (-21)</dt>
           <dd>
 The `verificationMethod` value in a proof was malformed. See Section
-<a href="#retrieve-verification-method"></a>.
+[[[#retrieve-verification-method]]].
           </dd>
           <dt id="INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID (-22)</dt>
           <dd>
 The `id` value in a [=controller document=] was malformed. See Section
-<a href="#retrieve-verification-method"></a>.
+[[[#retrieve-verification-method]]].
           </dd>
           <dt id="INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT (-23)</dt>
           <dd>
 The [=controller document=] was malformed. See Section
-<a href="#retrieve-verification-method"></a>.
+[[[#retrieve-verification-method]]].
           </dd>
           <dt id="INVALID_VERIFICATION_METHOD">INVALID_VERIFICATION_METHOD (-24)</dt>
           <dd>
 The [=verification method=] in a [=controller document=] was malformed. See Section
-<a href="#retrieve-verification-method"></a>.
+[[[#retrieve-verification-method]]].
           </dd>
           <dt id="INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD">INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD (-25)</dt>
           <dd>
@@ -2178,7 +2178,7 @@ when accessing remote systems. Cryptographic digital signatures enable certain
 security protocols related to [=controller documents=]
 to be cryptographically verifiable. For these purposes, this specification
 defines useful [=verification relationships=] in <a
-href="#authentication"></a> and <a href="#capability-invocation"></a>. The
+href="#authentication"></a> and [[[#capability-invocation]]]. The
 secret cryptographic material associated with the [=verification methods=]
 can be used to generate a cryptographic digital signature as a part of an
 authentication or authorization security protocol.
@@ -2199,11 +2199,11 @@ it is strongly advised that non-public entities do not publish personal data in
 It can be useful to express a binding of an identifier to a person's or
 organization's physical identity in a way that is provably asserted by a
 trusted authority, such as a government. This specification provides
-the <a href="#assertion"></a> [=verification relationship=] for these
+the [[[#assertion]]] [=verification relationship=] for these
 purposes. This feature can enable interactions that are private and can be
 considered legally enforceable under one or more jurisdictions; establishing
 such bindings has to be carefully balanced against privacy considerations (see
-<a href="#privacy-considerations"></a>).
+[[[#privacy-considerations]]]).
         </p>
 
         <p>
@@ -2592,9 +2592,9 @@ of thing the [=subject=] is, particularly if the [=subject=] is a person.
       </p>
       <p>
 Not only do such properties potentially result in personal data (see
-<a href="#keep-personal-data-private"></a>) or correlatable data (see <a
+[[[#keep-personal-data-private]]]) or correlatable data (see <a
 href="#identifier-correlation-risks"> </a> and
-<a href="#controller-document-correlation-risks"></a>) being present in
+[[[#controller-document-correlation-risks]]]) being present in
 the [=controller document=], but they can be used for grouping particular
 identifiers in such a way that they are included in or excluded from certain
 operations or functionalities.
