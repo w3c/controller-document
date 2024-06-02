@@ -2502,63 +2502,43 @@ extended to incorporate this information.
     <h1>Privacy Considerations</h1>
 
     <p>
-Since <a>controller documents</a> are designed to be administered
-directly by the <a>controller</a>, it is critically important to apply
-the principles of Privacy by Design [[PRIVACY-BY-DESIGN]] to all aspects of the
-<a>decentralized identifier</a> architecture. All seven of these principles
-have been applied throughout the development of this specification. The design
-used in this specification does not assume that there is a registrar, hosting
-company, nor other intermediate service provider to recommend or apply
-additional privacy safeguards. Privacy in this specification is preventive,
-not remedial, and is an embedded default. The following sections cover privacy
-considerations that implementers might find useful when building systems that
-utilize <a>controller documents</a>.
+Since <a>controller documents</a> are designed to be administered directly by
+the <a>controller</a>, it is critically important to apply the principles of
+Privacy by Design [[PRIVACY-BY-DESIGN]] to all aspects of the
+<a>controller document</a>. All seven of these principles have been applied
+throughout the development of this specification. The design used in this
+specification does not assume that there is a registrar, hosting company, nor
+other intermediate service provider to recommend or apply additional privacy
+safeguards. Privacy in this specification is preventive, not remedial, and is an
+embedded default. The following sections cover privacy considerations that
+implementers might find useful when building systems that utilize <a>controller
+documents</a>.
     </p>
 
     <section>
       <h2>Keep Personal Data Private</h2>
 
       <p>
-If a <a>DID method</a> specification is written for a public-facing
-<a>verifiable data registry</a> where corresponding <a>DIDs</a> and <a>DID
-documents</a> might be made publicly available, it is <em>critical</em> that
-those <a>controller documents</a> contain no personal data. Personal data can instead
-be transmitted through other means such as 1) Verifiable Credentials
-[[?VC-DATA-MODEL]], or 2) <a>service endpoints</a> under control of the <a>DID
-subject</a> or <a>DID controller</a>.
-      </p>
-
-      <p>
-Due diligence is expected to be taken around the use of URLs in <a>service
-endpoints</a> to prevent leakage of personal data or correlation within a URL of
-a <a>service endpoint</a>. For example, a URL that contains a username is
-dangerous to include in a <a>controller document</a> because the username is likely to
-be human-meaningful in a way that can reveal information that the <a>DID
-subject</a> did not consent to sharing. With the privacy architecture suggested
-by this specification, personal data can be exchanged on a private, peer-to-peer
-basis using communication channels identified and secured by <a>verification
-methods</a> in <a>controller documents</a>. This also enables <a>DID subjects</a> and
-requesting parties to implement the <a
-href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR</a>
-<a href="https://en.wikipedia.org/wiki/Right_to_be_forgotten">right to be
-forgotten</a>, because no personal data is written to an immutable
-<a>distributed ledger</a>.
+If a <a>controller document</a> is about a specific individual and is
+public-facing, it is <em>critical</em> that the <a>controller documents</a>
+contain no personal data. Personal data can instead be transmitted through other
+means such as 1) [=verifiable credentials=] [[?VC-DATA-MODEL-2.0]], or 2)
+other private communication channels.
       </p>
     </section>
 
     <section>
-      <h2>DID Correlation Risks</h2>
+      <h2>Identifier Correlation Risks</h2>
 
       <p>
-Like any type of globally unambiguous identifier, <a>DIDs</a> might be used for
-correlation. <a>DID controllers</a> can mitigate this privacy risk by using
-pairwise <a>DIDs</a> that are unique to each relationship; in effect, each
-identifier acts as a pseudonym. A pairwise identifier need only be shared with
-more than one party when correlation is explicitly desired. If pairwise
-<a>DIDs</a> are the default, then the only need to publish an identifier openly,
-or to share it with multiple parties, is when the <a
-href="#dfn-did-controllers">DID controller(s)</a> and/or <a>DID subject</a>
-explicitly desires public identification and correlation.
+Globally unambiguous identifiers can be used for the purpose of correlation.
+<a>Controllers</a> can mitigate this privacy risk by using pairwise identifiers
+that are unique to each relationship; in effect, each identifier acts as a
+pseudonym. A pairwise identifier need only be shared with more than one party
+when correlation is explicitly desired. If pairwise identifiers are the default,
+then the only need to publish an identifier openly, or to share it with multiple
+parties, is when the <a>controllers</a> and/or <a>subjects</a> explicitly
+desire public identification and correlation.
       </p>
     </section>
 
