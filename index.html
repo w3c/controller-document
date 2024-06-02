@@ -2558,33 +2558,32 @@ also needs to use pairwise unique information, such as ensuring that
     </section>
 
     <section>
-      <h2>DID Subject Classification</h2>
+      <h2>Subject Classification</h2>
       <p>
-It is dangerous to add properties to the <a>controller document</a> that can be used
-to indicate, explicitly or through inference, what <em>type</em> or nature of
-thing the <a>DID subject</a> is, particularly if the <a>DID subject</a> is a
-person.
+It is dangerous to add properties to the <a>controller document</a> that can be
+used to indicate, explicitly or through inference, what <em>type</em> or nature
+of thing the <a>subject</a> is, particularly if the <a>subject</a> is a person.
       </p>
       <p>
 Not only do such properties potentially result in personal data (see
-<a href="#keep-personal-data-private"></a>) or
-correlatable data (see <a href="#did-correlation-risks">
-</a> and <a href="#did-document-correlation-risks"></a>) being present in the
-<a>controller document</a>, but they can be used for grouping particular <a>DIDs</a>
-in such a way that they are included in or excluded from certain operations or
-functionalities.
+<a href="#keep-personal-data-private"></a>) or correlatable data (see <a
+href="#identifier-correlation-risks"> </a> and
+<a href="#controller-document-correlation-risks"></a>) being present in
+the <a>controller document</a>, but they can be used for grouping particular
+identifiers in such a way that they are included in or excluded from certain
+operations or functionalities.
       </p>
       <p>
-Including <em>type</em> information in a <a>controller document</a> can
-result in personal privacy harms even for <a>DID Subjects</a> that are
-non-person entities, such as IoT devices. The aggregation of such
-information around a <a>DID Controller</a> could serve as a form of
-digital fingerprint and this is best avoided.
+Including <em>type</em> information in a <a>controller document</a> can result
+in personal privacy harms even for <a>subjects</a> that are non-person entities,
+such as IoT devices. The aggregation of such information around a
+<a>controller</a> could serve as a form of digital fingerprint and this is best
+avoided.
       </p>
       <p>
-To minimize these risks, all properties in a <a>controller document</a> ought to be
-for expressing cryptographic material, endpoints, or <a>verification methods</a>
-related to using the identifier.
+To minimize these risks, all properties in a <a>controller document</a> ought to
+be for expressing <a>verification methods</a> and <a>verification
+relationships</a> related to using the identifier.
       </p>
 
     </section>
