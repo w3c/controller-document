@@ -2432,87 +2432,21 @@ receiving party.
     <section>
       <h2>Content Integrity Protection</h2>
       <p>
-<a>controller documents</a> which include links to external machine-readable content
-such as images, web pages, or schemas are vulnerable to tampering. It is
-strongly advised that external links are integrity protected using solutions
-such as a hashlink [[?HASHLINK]]. External links are to be avoided if they
-cannot be integrity protected and the <a>controller document</a>'s integrity is
-dependent on the external link.
+<a>Controller documents</a> which include links to external machine-readable
+content such as images, web pages, or schemas are vulnerable to tampering. It is
+strongly advised that external links are integrity protected using mechanisms to
+secure related resources such as those described in the [[[?VC-DATA-MODEL-2.0]]]
+specification. External links are to be avoided if they cannot be integrity
+protected and the <a>controller document</a>'s integrity is dependent on the
+external link.
       </p>
       <p>
-One example of an external link where the integrity of the <a>controller document</a>
-itself could be affected is the JSON-LD Context [[JSON-LD11]]. To protect
-against compromise, <a>controller document</a> consumers are advised to cache local
-static copies of JSON-LD contexts and/or verify the integrity of external
+One example of an external link where the integrity of the <a>controller
+document</a> itself could be affected is the JSON-LD Context [[JSON-LD11]]. To protect
+against compromise, <a>controller document</a> consumers are advised to cache
+local static copies of JSON-LD contexts and/or verify the integrity of external
 contexts against a cryptographic hash that is known to be associated with a safe
 version of the external JSON-LD Context.
-      </p>
-    </section>
-    <section>
-      <h2>Persistence</h2>
-      <p>
-<a>DIDs</a> are designed to be persistent such that a <a>controller</a> need not
-rely upon a single trusted third party or administrator to maintain their
-identifiers. In an ideal case, no administrator can take control away from the
-<a>controller</a>, nor can an administrator prevent their identifiers' use for
-any particular purpose such as authentication, authorization, and attestation.
-No third party can act on behalf of a <a>controller</a> to remove or render
-inoperable an entity's identifier without the <a>controller</a>'s consent.
-      </p>
-      <p>
-However, it is important to note that in all <a>DID methods</a> that enable
-cryptographic proof-of-control, the means of proving control can always be
-transferred to another party by transferring the secret cryptographic material.
-Therefore, it is vital that systems relying on the persistence of an identifier
-over time regularly check to ensure that the identifier is, in fact, still under
-the control of the intended party.
-      </p>
-      <p>
-Unfortunately, it is impossible to determine from the cryptography alone whether
-or not the secret cryptographic material associated with a given
-<a>verification method</a> has been compromised. It might well be that the
-expected <a>controller</a> still has access to the secret cryptographic material
-&mdash; and as such can execute a proof-of-control as part of a verification
-process &mdash; while at the same time, a bad actor also has access to those
-same keys, or to a copy thereof.
-      </p>
-      <p>
-As such, cryptographic proof-of-control is expected to only be used as one
-factor in evaluating the level of identity assurance required for high-stakes
-scenarios. identifier-based authentication provides much greater assurance than
-a username and password, thanks to the ability to determine control over a
-cryptographic secret without transmitting that secret between systems. However,
-it is not infallible. Scenarios that involve sensitive, high value, or
-life-critical operations are expected to use additional factors as appropriate.
-      </p>
-      <p>
-In addition to potential ambiguity from use by different <a>controllers</a>, it
-is impossible to guarantee, in general, that a given identifier is being used in
-reference to the same subject at any given point in time. It is technically
-possible for the controller to reuse an identifier for different subjects and,
-more subtly, for the precise definition of the subject to either change over
-time or be misunderstood.
-      </p>
-      <p>
-For example, consider an identifier used for a sole proprietorship, receiving
-various credentials used for financial transactions. To the <a>controller</a>,
-that identifier referred to the business. As the business grows, it eventually
-gets incorporated as a Limited Liability Company. The <a>controller</a>
-continues using that same identifier, because to <strong>them</strong> the
-identifier refers to the business. However, to the state, the tax authority, and
-the local municipality, the identifier no longer refers to the same entity.
-Whether or not the subtle shift in meaning matters to a credit provider or
-supplier is necessarily up to them to decide. In many cases, as long as the
-bills get paid and collections can be enforced, the shift is immaterial.
-      </p>
-      <p>
-Due to these potential ambiguities, <a>DIDs</a> are to be considered valid
-<em>contextually</em> rather than absolutely. Their persistence does not imply
-that they refer to the exact same subject, nor that they are under the control
-of the same <a>controller</a>. Instead, one needs to understand the context in
-which the identifier was created, how it is used, and consider the likely shifts
-in their meaning, and adopt procedures and policies to address both potential
-and inevitable semantic drift.
       </p>
     </section>
 
@@ -2551,16 +2485,15 @@ requirement.
 
       <p>
 Some regulated scenarios require the implementation of a specific level of
-assurance. Since <a>verification relationships</a> such as <code>
-<a>assertionMethod</a></code> and <code><a>authentication</a></code> might be
+assurance. Since <a>verification relationships</a> used to perform
+<a href="#assertion">assertion</a> and <a>authentication</a> might be
 used in some of these situations, information about the applied security context
 might need to be expressed and provided to a <em>verifier</em>. Whether and how
-to encode this information in the <a>controller document</a> data model is out of scope
-for this specification. Interested readers might note that 1) the information
-could be transmitted using Verifiable Credentials [[?VC-DATA-MODEL]], and 2) the
-<a>controller document</a> data model can be extended to incorporate this information
-as described in <a href="#extensibility"></a>, and where <a
-href="#privacy-considerations"></a> is applicable for such extensions.
+to encode this information in the <a>controller document</a> data model is out
+of scope for this specification. Interested readers might note that 1) the
+information could be transmitted using Verifiable Credentials
+[[?VC-DATA-MODEL-2.0]], and 2) the <a>controller document</a> data model can be
+extended to incorporate this information.
       </p>
     </section>
   </section>
@@ -2569,8 +2502,8 @@ href="#privacy-considerations"></a> is applicable for such extensions.
     <h1>Privacy Considerations</h1>
 
     <p>
-Since <a>DIDs</a> and <a>controller documents</a> are designed to be administered
-directly by the <a>DID controller(s)</a>, it is critically important to apply
+Since <a>controller documents</a> are designed to be administered
+directly by the <a>controller</a>, it is critically important to apply
 the principles of Privacy by Design [[PRIVACY-BY-DESIGN]] to all aspects of the
 <a>decentralized identifier</a> architecture. All seven of these principles
 have been applied throughout the development of this specification. The design
@@ -2579,7 +2512,7 @@ company, nor other intermediate service provider to recommend or apply
 additional privacy safeguards. Privacy in this specification is preventive,
 not remedial, and is an embedded default. The following sections cover privacy
 considerations that implementers might find useful when building systems that
-utilize <a>decentralized identifiers</a>.
+utilize <a>controller documents</a>.
     </p>
 
     <section>
