@@ -2404,45 +2404,6 @@ that can be invalidated at any time by the <a>controller</a>.
     </section>
 
     <section>
-      <h2>DIDs as Enhanced URNs</h2>
-
-      <p>
-If desired by a <a>DID controller</a>, an identifier or a <a>DID URL</a> is
-capable of acting as persistent, location-independent resource identifier.
-These sorts of identifiers
-are classified as Uniform Resource Names (URNs) and are defined in [[RFC8141]].
-<a>DIDs</a> are an enhanced form of URN that provide a
-cryptographically secure, location-independent identifier for a digital
-resource, while also providing metadata that enables retrieval. Due to the
-indirection between the <a>controller document</a> and the identifier itself, the
-<a>DID controller</a> can adjust the actual location of the resource &mdash; or
-even provide the resource directly &mdash; without adjusting the identifier.
-<a>DIDs</a> of this type can definitively verify that the resource retrieved is,
-in fact, the resource identified.
-      </p>
-      <p>
-A <a>DID controller</a> who intends to use an identifier for this purpose is
-advised to follow the security considerations in [[RFC8141]]. In particular:
-      </p>
-      <ul>
-        <li>
-The <a>DID controller</a> is expected to choose a <a>DID method</a> that
-supports the controller's requirements for persistence. The Decentralized
-Characteristics Rubric [[?DID-RUBRIC]] is one tool available to help
-implementers decide upon the most suitable <a>DID method</a>.
-        </li>
-        <li>
-The <a>DID controller</a> is expected to publish its operational policies so
-requesting parties can determine the degree to which they can rely on the
-persistence of an identifier controlled by that <a>DID controller</a>. In the
-absence of such policies, requesting parties are not expected to make any
-assumption about whether an identifier is a persistent identifier for the same
-<a>DID subject</a>.
-        </li>
-      </ul>
-    </section>
-
-    <section>
       <h2>Immutability</h2>
 
       <p>
