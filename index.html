@@ -2288,7 +2288,7 @@ some time.
 Revocation is a management process that enables the secret cryptographic
 material associated with an existing <a>verification method</a> to be
 deactivated such that it ceases to be a valid form of creating new
-proofs of digital signatures.
+proofs.
       </p>
       <p>
 Revocation is a useful mechanism for reacting to a verification method
@@ -2302,7 +2302,7 @@ Compromise of the secrets associated with a <a>verification method</a> allows
 the attacker to use them according to the <a>verification relationship</a>
 expressed by <a>controller</a> in the <a>controller document</a>, for example, for
 authentication. The attacker's use of the secrets might be indistinguishable
-from the legitimate <a href="#did-controller">controller's</a> use starting from
+from the legitimate [=controller=]'s use starting from
 the time the <a>verification method</a> was registered, to the time it was
 revoked.
       </p>
@@ -2334,12 +2334,6 @@ previous versions.
         </li>
 
         <li>
-As described in <a href="#verification-material"></a>, absence of a verification
-method is the only form of revocation that applies to all <a>DID Methods</a>
-that support revocation.
-        </li>
-
-        <li>
 If a <a>verification method</a> is no longer exclusively accessible to the
 <a>controller</a> or parties trusted to act on behalf of the <a>controller</a>,
 it is expected to be revoked immediately to reduce the risk of
@@ -2354,18 +2348,6 @@ concern that existing proofs or signatures might have been created by an
 attacker, but this is not necessarily the case. Verifiers, however, might still
 choose to accept or reject any such proofs or signatures at their own
 discretion.
-        </li>
-
-        <li>
-The section on <a href="#method-operations">DID method operations</a> specifies
-the identifier operations to be supported by a <a>DID method</a> specification,
-including <a href="#method-operations">update</a> and <a
-href="#method-operations">deactivate</a>, which might be used to remove
-a <a>verification method</a> from a <a>controller document</a>.
-        </li>
-
-        <li>
-Not all <a>DID methods</a> support <a>verification method</a> revocation.
         </li>
 
         <li>
@@ -2389,13 +2371,14 @@ method</a> is publicly revoked.
         <p>
 Although verifiers might choose not to accept proofs or signatures from a
 revoked verification method, knowing whether a verification was made with a
-revoked <a>verification method</a> is trickier than it might seem. Some <a>DID
-methods</a> provide the ability to look back at the state of an identifier at a
-point in time, or at a particular version of the <a>controller document</a>. When such
-a feature is combined with a reliable way to determine the time or identifier
-version that existed when a cryptographically verifiable statement was made,
-then revocation does not undo that statement. This can be the basis for using
-<a>DIDs</a> to make binding commitments; for example, to sign a mortgage.
+revoked <a>verification method</a> is trickier than it might seem. Some auditing
+systems provide the ability to look back at the state of an identifier at a
+point in time, or at a particular version of the <a>controller document</a>.
+When such a feature is combined with a reliable way to determine the time or
+identifier version that existed when a cryptographically verifiable statement
+was made, then revocation does not undo that statement. This can be the basis
+for using digital signatures to make binding commitments; for example, to sign
+a mortgage.
         </p>
         <p>
 If these conditions are met, revocation is not retroactive; it only nullifies
@@ -2403,58 +2386,19 @@ future use of the method.
         </p>
         <p>
 However, in order for such semantics to be safe, the second condition &mdash; an
-ability to know what the state of the <a>controller document</a> was at the time the
-assertion was made &mdash; is expected to apply. Without that guarantee, someone
-could discover a revoked key and use it to make cryptographically verifiable
-statements with a simulated date in the past.
+ability to know what the state of the <a>controller document</a> was at the time
+the assertion was made &mdash; is expected to apply. Without that guarantee,
+someone could discover a revoked key and use it to make cryptographically
+verifiable statements with a simulated date in the past.
         </p>
         <p>
-Some <a>DID methods</a> only allow the retrieval of the current state of a
+Some auditing systems only allow the retrieval of the current state of a
 identifier. When this is true, or when the state of an identifier at the time of
 a cryptographically verifiable statement cannot be reliably determined, then the
-only safe course is to disallow any consideration of DID state with respect to
-time, except the present moment. identifier ecosystems that take this approach
+only safe course is to disallow any consideration of state with respect to time,
+except the present moment. Identifier ecosystems that take this approach
 essentially provide cryptographically verifiable statements as ephemeral tokens
-that can be invalidated at any time by the <a>DID controller</a>.
-        </p>
-      </section>
-
-      <section class="notoc">
-        <h3>Revocation in Trustless Systems</h3>
-
-        <p>
-Trustless systems are those where all trust is derived from cryptographically
-provable assertions, and more specifically, where no metadata outside of the
-cryptographic system is factored into the determination of trust in the system.
-To verify a signature of proof for a <a>verification method</a> which has been
-revoked in a trustless system, a <a>DID method</a> needs to support either or
-both of the `versionId` or `versionTime`, as well as both the `updated` and
-`nextUpdate`, <a>controller document</a> metadata properties. A verifier can validate a
-signature or proof of a revoked key if and only if all of the following are
-true:
-        </p>
-
-        <ul>
-          <li>
-The proof or signature includes the `versionId` or `versionTime` of the <a>DID
-document</a> that was used at the point the signature or proof was created.
-          </li>
-          <li>
-The verifier can determine the point in time at which the signature or proof was
-made; for example, it was anchored on a blockchain.
-          </li>
-          <li>
-For the resolved <a>controller document</a> metadata, the `updated` timestamp is
-before, and the `nextUpdate` timestamp is after, the point in time at which the
-signature or proof was made.
-          </li>
-        </ul>
-        <p>
-In systems that are willing to admit metadata other than those constituting
-cryptographic input, similar trust may be achieved -- but always on the
-same basis where a careful judgment is made about whether a
-<a>controller document</a>'s content at the moment of a signing event
-contained the expected content.
+that can be invalidated at any time by the <a>controller</a>.
         </p>
       </section>
     </section>
