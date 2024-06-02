@@ -10,6 +10,8 @@
      -->
     <script src='//www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
     <script class='remove' src="./common.js"></script>
+    <script class="remove"
+      src="https://cdn.jsdelivr.net/gh/digitalbazaar/respec-vc@3.1.0/dist/main.js"></script>
 
     <script type="text/javascript" class="remove">
       var respecConfig = {
@@ -235,7 +237,7 @@
               publisher:  "The IETF OAuth Working Group"
             }
           },
-          postProcess: [],
+          postProcess: [window.respecVc.createVcExamples],
           otherLinks: [{
             key: "Related Specifications",
             data: [{
@@ -266,6 +268,32 @@ pre.nohighlight {
 ol.algorithm { counter-reset:numsection; list-style-type: none; }
 ol.algorithm li { margin: 0.5em 0; }
 ol.algorithm li:before { font-weight: bold; counter-increment: numsection; content: counters(numsection, ".") ") "; }
+table.simple {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 400px;
+    border: 1px solid #dddddd;
+}
+table.simple thead tr {
+    background-color: #005a9c;
+    color: #ffffff;
+    text-align: left;
+}
+table.simple th,
+table.simple td {
+    padding: 12px 15px;
+    vertical-align: top;
+    text-align: left;
+}
+table.simple tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+table.simple tbody tr:nth-of-type(even) {
+    background-color: #00000008;
+}
+table.simple tbody tr:last-of-type {
+    border-bottom: 2px solid #005a9c;
+}
     </style>
 </head>
 <body>
@@ -289,12 +317,6 @@ relationships between a <a>controller</a> and a set of data, such as a set of
 public cryptographic keys. The <a>controller document</a> SHOULD
 contain <a>verification relationships</a> that explicitly permit the use of
 certain <a>verification methods</a> for specific purposes.
-      </p>
-      <p>
-It is expected that other specifications using this specification
-will profile the features that it defines,
-requiring and/or recommending the use of some and
-prohibiting and/or deprecating the use of others.
       </p>
       <p>
 It is expected that other specifications using this specification
@@ -1422,39 +1444,38 @@ the corresponding hash values below:
         <table class="simple">
           <thead>
             <tr>
-              <th>URL and Media Type</th>
-              <th>Content</th>
+              <th>URL, Media Type, and Content Digest</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td style="white-space: nowrap;">
-https://w3id.org/security/data-integrity/v2<br>
-application/ld+json
-              </td>
-              <td>
-sha256: v/POI0jhSjPansxhJAP1fwepCBZ2HK77fRZfCCyBDs0=<br><br>
-sha3-512: Sg1PLFxKyEYQns9Zr0BoYXtFeDNfrHUDNMkyq4QEWv<wbr>wGIaX1v5xovnCG+dfceZEzr7BhBjm396noZF1HEeCM8g==
-              </td>
-            </tr>
-            <tr>
-              <td style="white-space: nowrap;">
-https://w3id.org/security/multikey/v1<br>
-application/ld+json
-              </td>
-              <td>
-sha256: uiwYLeLZL35HGEvMqPzwvq7m05hsUnv2ZMGVu8fFhZc=<br><br>
-sha3-512: En0TOOp/cC10XtW/aQDtqKrEQZ2lRjGB/KAsJ+BQhRB<wbr>ufT7s6eoOFWvP9cP5nurTl3hcRTvFeffdVJapkeELXw==
+<strong>URL:</strong>
+https://w3id.org/security/data-integrity/v2 (application/ld+json)<br>
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3id.org/security/data-integrity/v2"
+  data-hash-format="openssl dgst -sha256" /></code>
               </td>
             </tr>
             <tr>
               <td style="white-space: nowrap;">
-https://w3id.org/security/jwk/v1<br>
-application/ld+json
+<strong>URL:</strong>
+https://w3id.org/security/multikey/v1 (application/ld+json)<br>
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3id.org/security/multikey/v1"
+  data-hash-format="openssl dgst -sha256" /></code>
               </td>
-              <td>
-sha256: 9h/GLRVuGCl0rn/ye6lzf219aN7Sgzq9yBFqUoOI54k=<br><br>
-sha3-512: VDH85TsaX6kH2nwmII0WXKzAi2MRNsJd+rJfYL5cw0b<wbr>12sAVPKDsVvRNJo0MMGd1RhV5W6Ii6D9GM7PCFeq97A==
+            </tr>
+            <tr>
+              <td style="white-space: nowrap;">
+<strong>URL:</strong>
+https://w3id.org/security/jwk/v1 (application/ld+json)<br>
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3id.org/security/jwk/v1"
+  data-hash-format="openssl dgst -sha256" /></code>
               </td>
             </tr>
           </tbody>
@@ -1483,7 +1504,7 @@ the data returned depends on HTTP content negotiation. These are as follows:
           <thead>
             <tr>
               <th>Media Type</th>
-              <th>Description and Cryptographic Hashes</th>
+              <th>Description and Content Digest</th>
             </tr>
           </thead>
           <tbody>
@@ -1493,10 +1514,10 @@ application/ld+json
               </td>
               <td>
 The vocabulary in JSON-LD format [[?JSON-LD11]].<br><br>
-
-sha256: LEaoTyf796eTaSlYWjfPe3Yb+poCW9TjWYTbFDmC0tc=<br><br>
-
-sha3-512: f4DhJ3xhT8nT+GZ8UUZi4QC+HT//wXE2fRTgUP4UNw<wbr>e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.jsonld"
+  data-hash-format="openssl dgst -sha256" /></code>
               </td>
             </tr>
             <tr>
@@ -1505,8 +1526,10 @@ text/turtle
               </td>
               <td>
 The vocabulary in Turtle format [[?TURTLE]].<br><br>
-sha256: McnhLyt7+/A/0iLb3CUXD0itNw+7bwwjtzOww/zwoyI=<br><br>
-sha3-512: jZtZsqgPPPo+jphAcN8/St4VdRLLAmN3nEQhzs0twE<wbr>MTmCY45euQ01Z4Zo7VlJMYNTf0KC6BMpogpSTAi/1J7Q==
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.ttl"
+  data-hash-format="openssl dgst -sha256" /></code>
               </td>
             </tr>
             <tr>
@@ -1515,8 +1538,10 @@ text/html
               </td>
               <td>
 The vocabulary in HTML+RDFa Format [[?HTML-RDFA]].<br><br>
-sha256: eUHP1xiSC157iTPDydZmxg/hvmX3g/nnCn+FO25d4dc=<br><br>
-sha3-512: z53j8ryjVeX16Z/dby//ujhw37degwi09+LAZCTUB8<wbr>WJZjjzW1AydhdEWmgHM0P5KUcPMmSe7edMlGr7G9rmcA==
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.html"
+  data-hash-format="openssl dgst -sha256" /></code>
               </td>
             </tr>
           </tbody>
@@ -1525,7 +1550,7 @@ sha3-512: z53j8ryjVeX16Z/dby//ujhw37degwi09+LAZCTUB8<wbr>WJZjjzW1AydhdEWmgHM0P5K
         <p>
 It is possible to confirm the digests listed above by running the following
 command from a modern Unix command interface line:
-`curl -sL -H "Accept: &lt;MEDIA_TYPE>" &lt;DOCUMENT_URL> | openssl dgst -&ltDIGEST_ALGORITHM> -binary | openssl base64 -nopad -a`.
+`curl -sL -H "Accept: &lt;MEDIA_TYPE>" &lt;DOCUMENT_URL> | openssl dgst -sha256`.
         </p>
 
         <p>
@@ -2144,7 +2169,7 @@ authorization.
       </p>
 
       <section class="notoc">
-        <h3>Proving Control of a DID and/or Controller Document</h3>
+        <h3>Proving Control of an Identifier and/or Controller Document</h3>
 
         <p>
 Proving control over an identifier and/or a <a>controller document</a> is useful
