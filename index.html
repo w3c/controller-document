@@ -2404,44 +2404,6 @@ that can be invalidated at any time by the <a>controller</a>.
     </section>
 
     <section>
-      <h2>Immutability</h2>
-
-      <p>
-Many cybersecurity abuses hinge on exploiting gaps between reality and the
-assumptions of rational, good-faith actors. Immutability of <a>controller documents</a>
-can provide some security benefits. Individual <a>DID methods</a> ought to
-consider constraints that would eliminate behaviors or semantics they do not
-need. The more <em>locked down</em> a <a>DID method</a> is, while providing the
-same set of features, the less it can be manipulated by malicious actors.
-      </p>
-      <p>
-As an example, consider that a single edit to a <a>controller document</a> can change
-anything except the root <code><a>id</a></code> property of the document. But
-is it actually desirable for a <a>service</a> to change its
-<code>type</code> after it is defined? Or for a key to change its value? Or
-would it be better to require a new <code><a>id</a></code> when certain
-fundamental properties of an object change? Malicious takeovers of a website
-often aim for an outcome where the site keeps its host name identifier,
-but is subtly changed underneath. If certain properties of the site, such
-as the <a target="_blank"
-href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)">ASN</a>
-associated with its IP address, were required by the specification to be
-immutable, anomaly detection would be easier, and attacks would be much
-harder and more expensive to carry out.
-      </p>
-      <p>
-For <a>DID methods</a> tied to a global source of truth, a direct,
-just-in-time lookup of the latest version of a <a>controller document</a> is always
-possible. However, it seems likely that layers of cache might eventually sit
-between a <a>DID resolver</a> and that source of truth. If they do, believing
-the attributes of an object in the <a>controller document</a> to have a given state
-when they are actually subtly different might invite exploits. This is
-particularly true if some lookups are of a full <a>controller document</a>, and
-others are of partial data where the larger context is assumed.
-      </p>
-    </section>
-
-    <section>
       <h2>Encrypted Data in Controller Documents</h2>
       <p>
 Encryption algorithms have been known to fail due to advances in cryptography
