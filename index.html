@@ -114,7 +114,7 @@
           // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
           // Team Contact.
           //wgPatentURI:  "",
-          xref: ["URL", "I18N-GLOSSARY", "INFRA"],
+          xref: ["URL", "I18N-GLOSSARY", "INFRA", "?VC-DATA-MODEL-2.0"],
           maxTocLevel: 3,
           /*preProcess: [ ],
           alternateFormats: [ {uri: "diff-20111214.html", label: "diff to previous version"} ],
@@ -2118,71 +2118,999 @@ the `proofPurpose` property in the proof. See Section
       </section>
     </section>
 
-    <section>
-      <h2>Security Considerations</h2>
-      <p>
-The following section describes security considerations that developers
-implementing this specification should be aware of in order to create secure
-software.
-      </p>
+  <section class="informative">
+    <h1>Security Considerations</h1>
 
-      <p class="issue">Write Security Considerations section</p>
-
-    </section>
-
-    <section>
-      <h2>Privacy Considerations</h2>
-      <p>
-The following section describes privacy considerations that developers
-implementing this specification should be aware of in order to create
-privacy enhancing software.
-      </p>
-
-      <p class="issue">Write Privacy Considerations section</p>
-
-    </section>
+    <p>
+This section contains a variety of security considerations that people using
+this specification are advised to consider before deploying this
+technology in a production setting. This technologies described in this
+document are designed to operate under the threat model used by many IETF
+standards and documented in [[?RFC3552]]. This section elaborates upon a number
+of the considerations in [[?RFC3552]], as well as other considerations that are
+unique to this specification.
+    </p>
 
     <section>
-      <h2>Accessibility Considerations</h2>
+      <h2>Proving Control and Binding</h2>
+
       <p>
-The following section describes accessibility considerations that developers
-implementing this specification are urged to consider in order to ensure that
-their software is usable by people with different cognitive, motor, and visual
-needs. As a general rule, this specification is used by system software and does
-not directly expose individuals to information subject to accessibility
-considerations. However, there are instances where individuals might be
-indirectly exposed to information expressed by this specification and thus the
-guidance below is provided for those situations.
+Binding an entity in the digital world or the physical world to an identifier, to
+a <a>controller document</a>, or to cryptographic material requires, the use of
+security protocols contemplated by this specification. The following sections
+describe some possible scenarios and how an entity therein might prove control
+over an identifier or a <a>controller document</a> for the purposes of authentication or
+authorization.
       </p>
 
-      <p class="issue">Write Accessibility Considerations section</p>
+      <section class="notoc">
+        <h3>Proving Control of a DID and/or Controller Document</h3>
 
-      <section>
-        <h2>Presenting Time Values</h2>
         <p>
-This specification enables the expression of dates and times related to the
-validity period of cryptographic proofs. This information might be indirectly
-exposed to an individual if a proof is processed and is detected to be outside
-an allowable time range. When exposing these dates and times to an individual,
-implementers are urged to take into account
-<a data-cite="?VC-DATA-MODEL-2.0#representing-time">cultural normas and locales
-when representing dates and times</a> in display software. In addition to these
-considerations, presenting time values in a way that eases the cognitive burden
-on the individual receiving the information is a suggested best practice.
-        </p>
-        <p>
-For example, when conveying the expiration date for a particular set of
-digitally signed information, implementers are urged to present the time of
-expiration using language that is easier to understand rather than language that
-optimizes for accuracy. Presenting the expiration time as "This ticket expired
-three days ago." is preferred over a phrase such as "This ticket expired on July
-25th 2023 at 3:43 PM." The former provides a relative time that is easier to
-comprehend than the latter time, which requires the individual to do the
-calculation in their head and presumes that they are capable of doing such a
-calculation.
+Proving control over an identifier and/or a <a>controller document</a> is useful
+when accessing remote systems. Cryptographic digital signatures enable certain
+security protocols related to <a>controller documents</a>
+to be cryptographically verifiable. For these purposes, this specification
+defines useful <a>verification relationships</a> in <a
+href="#authentication"></a> and <a href="#capability-invocation"></a>. The
+secret cryptographic material associated with the <a>verification methods</a>
+can be used to generate a cryptographic digital signature as a part of an
+authentication or authorization security protocol.
         </p>
       </section>
 
+      <section class="notoc">
+        <h3>Binding to Physical Identity</h3>
+
+        <p>
+An identifier or <a>controller document</a> do not inherently carry any
+<a href="https://en.wikipedia.org/wiki/Personal_data">personal data</a> and
+it is strongly advised that non-public entities do not publish personal data in
+<a>controller documents</a>.
+        </p>
+
+        <p>
+It can be useful to express a binding of an identifier to a person's or
+organization's physical identity in a way that is provably asserted by a
+trusted authority, such as a government. This specification provides
+the <a href="#assertion"></a> <a>verification relationship</a> for these
+purposes. This feature can enable interactions that are private and can be
+considered legally enforceable under one or more jurisdictions; establishing
+such bindings has to be carefully balanced against privacy considerations (see
+<a href="#privacy-considerations"></a>).
+        </p>
+
+        <p>
+The process of binding an identifier to something in the physical world, such as
+a person or an organization &mdash; for example, by using <a>verifiable
+credentials</a> with the same subject as that identifier &mdash; is contemplated
+by this specification and further defined in [[[?VC-DATA-MODEL-2.0]]].
+        </p>
+      </section>
+    </section>
+
+    <section>
+      <h2>Key and Signature Expiration</h2>
+
+      <p>
+In a decentralized architecture, there might not be centralized authorities to
+enforce cryptographic material or cryptographic digital signature expiration
+policies. Therefore, it is with supporting software such as verification
+libraries that requesting parties validate that cryptographic material were not
+expired at the time they were used. Requesting parties might employ their own
+expiration policies in addition to inputs into their verification processes. For
+example, some requesting parties might accept authentications from five minutes
+in the past, while others with access to high precision time sources might
+require authentications to be time stamped within the last 500 milliseconds.
+      </p>
+      <p>
+There are some requesting parties that have legitimate needs to extend the use
+of already-expired cryptographic material, such as verifying legacy
+cryptographic digital signatures. In these scenarios, a requesting party might
+instruct their verification software to ignore cryptographic key material
+expiration or determine if the cryptographic key material was expired at the
+time it was used.
+      </p>
+    </section>
+
+    <section>
+      <h2>Verification Method Rotation</h2>
+
+      <p>
+Rotation is a management process that enables the secret cryptographic material
+associated with an existing <a>verification method</a> to be deactivated or
+destroyed once a new <a>verification method</a> has been added to the
+<a>controller document</a>. Going forward, any new proofs that a
+<a>controller</a> would have generated using the old secret cryptographic
+material can now instead be generated using the new  cryptographic material and
+can be verified using the new <a>verification method</a>.
+      </p>
+
+      <p>
+Rotation is a useful mechanism for protecting against verification method
+compromise, since frequent rotation of a verification method by the controller
+reduces the value of a single compromised verification method to an attacker.
+Performing revocation immediately after rotation is useful for verification
+methods that a controller designates for short-lived verifications, such as
+those involved in encrypting messages and authentication.
+      </p>
+
+      <p>
+The following considerations might be of use when contemplating the use of
+<a>verification method</a> rotation:
+      </p>
+
+      <ul>
+        <li>
+<a>Verification method</a> rotation is a proactive security measure.
+        </li>
+        <li>
+It is generally considered a best practice to perform <a>verification method</a>
+rotation on a regular basis.
+        </li>
+        <li>
+Higher security environments tend to employ more frequent verification method
+rotation.
+        </li>
+        <li>
+<a>Verification method</a> rotation manifests only as changes to the current or
+latest version of a <a>controller document</a>.
+        </li>
+        <li>
+When a <a>verification method</a> has been active for a long time, or used for
+many operations, a controller might wish to perform a rotation.
+        </li>
+        <li>
+Frequent rotation of a <a>verification method</a> might be frustrating for
+parties that are forced to continuously renew or refresh associated credentials.
+        </li>
+        <li>
+Proofs or signatures that rely on <a>verification methods</a> that are not
+present in the latest version of a <a>controller document</a> are not impacted by
+rotation. In these cases, verification software might require additional
+information, such as when a particular <a>verification method</a> was
+expected to be valid as well as access to a <a>verifiable data registry</a>
+containing a historical record, to determine the validity of the proof or
+signature. This option might not be available in all systems.
+        </li>
+        <li>
+A <a>controller</a> performs a rotation when they add a new <a>verification
+method</a> that is meant to replace an existing <a>verification method</a> after
+some time.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Verification Method Revocation</h2>
+
+      <p>
+Revocation is a management process that enables the secret cryptographic
+material associated with an existing <a>verification method</a> to be
+deactivated such that it ceases to be a valid form of creating new
+proofs of digital signatures.
+      </p>
+      <p>
+Revocation is a useful mechanism for reacting to a verification method
+compromise. Performing revocation immediately after rotation is useful for
+verification methods that a controller designates for short-lived verifications,
+such as those involved in encrypting messages and authentication.
+      </p>
+
+      <p>
+Compromise of the secrets associated with a <a>verification method</a> allows
+the attacker to use them according to the <a>verification relationship</a>
+expressed by <a>controller</a> in the <a>controller document</a>, for example, for
+authentication. The attacker's use of the secrets might be indistinguishable
+from the legitimate <a href="#did-controller">controller's</a> use starting from
+the time the <a>verification method</a> was registered, to the time it was
+revoked.
+      </p>
+
+
+      <p>
+The following considerations might be of use when contemplating the use of
+<a>verification method</a> revocation:
+      </p>
+
+      <ul>
+        <li>
+<a>Verification method</a> revocation is a reactive security measure.
+        </li>
+
+        <li>
+It is considered a best practice to support key revocation.
+        </li>
+
+        <li>
+A <a>controller</a> is expected to immediately revoke any <a>verification
+method</a> that is known to be compromised.
+        </li>
+
+        <li>
+<a>Verification method</a> revocation can only be embodied in changes to
+the latest version of a <a>controller document</a>; it cannot retroactively adjust
+previous versions.
+        </li>
+
+        <li>
+As described in <a href="#verification-material"></a>, absence of a verification
+method is the only form of revocation that applies to all <a>DID Methods</a>
+that support revocation.
+        </li>
+
+        <li>
+If a <a>verification method</a> is no longer exclusively accessible to the
+<a>controller</a> or parties trusted to act on behalf of the <a>controller</a>,
+it is expected to be revoked immediately to reduce the risk of
+compromises such as masquerading, theft, and fraud.
+        </li>
+
+        <li>
+Revocation is expected to be understood as a <a>controller</a> expressing that
+proofs or signatures associated with a revoked <a>verification method</a>
+created after its revocation should be treated as invalid. It could also imply a
+concern that existing proofs or signatures might have been created by an
+attacker, but this is not necessarily the case. Verifiers, however, might still
+choose to accept or reject any such proofs or signatures at their own
+discretion.
+        </li>
+
+        <li>
+The section on <a href="#method-operations">DID method operations</a> specifies
+the identifier operations to be supported by a <a>DID method</a> specification,
+including <a href="#method-operations">update</a> and <a
+href="#method-operations">deactivate</a>, which might be used to remove
+a <a>verification method</a> from a <a>controller document</a>.
+        </li>
+
+        <li>
+Not all <a>DID methods</a> support <a>verification method</a> revocation.
+        </li>
+
+        <li>
+Even if a <a>verification method</a> is present in a <a>controller document</a>,
+additional information, such as a public key revocation certificate, or an
+external allow or deny list, could be used to determine whether a
+<a>verification method</a> has been revoked.
+        </li>
+
+        <li>
+The day-to-day operation of any software relying on a compromised
+<a>verification method</a>, such as an individual's operating system, antivirus,
+or endpoint protection software, could be impacted when the <a>verification
+method</a> is publicly revoked.
+        </li>
+      </ul>
+
+      <section class="notoc">
+        <h3>Revocation Semantics</h3>
+
+        <p>
+Although verifiers might choose not to accept proofs or signatures from a
+revoked verification method, knowing whether a verification was made with a
+revoked <a>verification method</a> is trickier than it might seem. Some <a>DID
+methods</a> provide the ability to look back at the state of an identifier at a
+point in time, or at a particular version of the <a>controller document</a>. When such
+a feature is combined with a reliable way to determine the time or identifier
+version that existed when a cryptographically verifiable statement was made,
+then revocation does not undo that statement. This can be the basis for using
+<a>DIDs</a> to make binding commitments; for example, to sign a mortgage.
+        </p>
+        <p>
+If these conditions are met, revocation is not retroactive; it only nullifies
+future use of the method.
+        </p>
+        <p>
+However, in order for such semantics to be safe, the second condition &mdash; an
+ability to know what the state of the <a>controller document</a> was at the time the
+assertion was made &mdash; is expected to apply. Without that guarantee, someone
+could discover a revoked key and use it to make cryptographically verifiable
+statements with a simulated date in the past.
+        </p>
+        <p>
+Some <a>DID methods</a> only allow the retrieval of the current state of a
+identifier. When this is true, or when the state of an identifier at the time of
+a cryptographically verifiable statement cannot be reliably determined, then the
+only safe course is to disallow any consideration of DID state with respect to
+time, except the present moment. identifier ecosystems that take this approach
+essentially provide cryptographically verifiable statements as ephemeral tokens
+that can be invalidated at any time by the <a>DID controller</a>.
+        </p>
+      </section>
+
+      <section class="notoc">
+        <h3>Revocation in Trustless Systems</h3>
+
+        <p>
+Trustless systems are those where all trust is derived from cryptographically
+provable assertions, and more specifically, where no metadata outside of the
+cryptographic system is factored into the determination of trust in the system.
+To verify a signature of proof for a <a>verification method</a> which has been
+revoked in a trustless system, a <a>DID method</a> needs to support either or
+both of the `versionId` or `versionTime`, as well as both the `updated` and
+`nextUpdate`, <a>controller document</a> metadata properties. A verifier can validate a
+signature or proof of a revoked key if and only if all of the following are
+true:
+        </p>
+
+        <ul>
+          <li>
+The proof or signature includes the `versionId` or `versionTime` of the <a>DID
+document</a> that was used at the point the signature or proof was created.
+          </li>
+          <li>
+The verifier can determine the point in time at which the signature or proof was
+made; for example, it was anchored on a blockchain.
+          </li>
+          <li>
+For the resolved <a>controller document</a> metadata, the `updated` timestamp is
+before, and the `nextUpdate` timestamp is after, the point in time at which the
+signature or proof was made.
+          </li>
+        </ul>
+        <p>
+In systems that are willing to admit metadata other than those constituting
+cryptographic input, similar trust may be achieved -- but always on the
+same basis where a careful judgment is made about whether a
+<a>controller document</a>'s content at the moment of a signing event
+contained the expected content.
+        </p>
+      </section>
+    </section>
+
+    <section>
+      <h2>DID Recovery</h2>
+
+      <p>
+Recovery is a reactive security measure whereby a <a>controller</a> that has
+lost the ability to perform DID operations, such as through the loss of a
+device, is able to regain the ability to perform DID operations.
+      </p>
+
+      <p>
+The following considerations might be of use when contemplating the use of
+identifier recovery:
+      </p>
+
+      <ul>
+
+        <li>
+Performing recovery proactively on an infrequent but regular basis, can help to
+ensure that control has not been lost.
+        </li>
+
+        <li>
+It is considered a best practice to never reuse cryptographic material
+associated with recovery for any other purposes.
+        </li>
+
+        <li>
+Recovery is commonly performed in conjunction with <a
+href="#verification-method-rotation">verification method rotation</a> and <a
+href="#verification-method-revocation">verification method revocation</a>.
+        </li>
+
+        <li>
+Recovery is advised when a <a>controller</a> or services trusted to act on their
+behalf no longer have the exclusive ability to perform DID operations as
+described in <a href="#method-operations"></a>.
+        </li>
+
+        <li>
+<a>DID method</a> specifications might choose to enable support for a quorum of
+trusted parties to facilitate recovery. Some of the facilities to do so are
+suggested in <a href="#did-controller"></a>.
+        </li>
+
+        <li>
+Not all <a>DID method</a> specifications will recognize control from <a>DIDs</a>
+registered using other <a>DID methods</a> and they might restrict third-party
+control to <a>DIDs</a> that use the same method.
+        </li>
+
+        <li>
+Access control and recovery in a <a>DID method</a> specification can also
+include a time lock feature to protect against key compromise by maintaining a
+second track of control for recovery.
+        </li>
+
+        <li>
+There are currently no common recovery mechanisms that apply to all
+<a>DID methods</a>.
+        </li>
+      </ul>
+
+    </section>
+
+    <section>
+      <h2>The Role of Human-Friendly Identifiers</h2>
+
+      <p>
+<a>DIDs</a> achieve global uniqueness without the need for a central
+registration authority. This comes at the cost of human memorability.
+Algorithms capable of generating globally unambiguous identifiers
+produce random strings of characters that have no human meaning. This
+trade-off is often referred to as
+<a href="https://en.wikipedia.org/wiki/Zooko%27s_triangle">Zooko's
+Triangle</a>.
+      </p>
+
+      <p>
+There are use cases where it is desirable to discover an identifier when
+starting from a human-friendly identifier. For example, a natural language
+name, a domain name, or a conventional address for a <a>DID controller</a>,
+such as a mobile telephone number, email address, social media username, or
+blog URL. However, the problem of mapping human-friendly identifiers to
+<a>DIDs</a>, and doing so in a way that can be verified and trusted, is
+outside the scope of this specification.
+      </p>
+
+      <p>
+Solutions to this problem are defined in separate specifications, such as
+[[?DNS-DID]], that reference this specification. It is strongly recommended that
+such specifications carefully consider the:
+      </p>
+
+      <ul>
+        <li>
+Numerous security attacks based on deceiving users about the true human-friendly
+identifier for a target entity.
+        </li>
+        <li>
+Privacy consequences of using human-friendly identifiers that are inherently
+correlatable, especially if they are globally unique.
+        </li>
+      </ul>
+
+    </section>
+
+    <section>
+      <h2>DIDs as Enhanced URNs</h2>
+
+      <p>
+If desired by a <a>DID controller</a>, an identifier or a <a>DID URL</a> is
+capable of acting as persistent, location-independent resource identifier.
+These sorts of identifiers
+are classified as Uniform Resource Names (URNs) and are defined in [[RFC8141]].
+<a>DIDs</a> are an enhanced form of URN that provide a
+cryptographically secure, location-independent identifier for a digital
+resource, while also providing metadata that enables retrieval. Due to the
+indirection between the <a>controller document</a> and the identifier itself, the
+<a>DID controller</a> can adjust the actual location of the resource &mdash; or
+even provide the resource directly &mdash; without adjusting the identifier.
+<a>DIDs</a> of this type can definitively verify that the resource retrieved is,
+in fact, the resource identified.
+      </p>
+      <p>
+A <a>DID controller</a> who intends to use an identifier for this purpose is
+advised to follow the security considerations in [[RFC8141]]. In particular:
+      </p>
+      <ul>
+        <li>
+The <a>DID controller</a> is expected to choose a <a>DID method</a> that
+supports the controller's requirements for persistence. The Decentralized
+Characteristics Rubric [[?DID-RUBRIC]] is one tool available to help
+implementers decide upon the most suitable <a>DID method</a>.
+        </li>
+        <li>
+The <a>DID controller</a> is expected to publish its operational policies so
+requesting parties can determine the degree to which they can rely on the
+persistence of an identifier controlled by that <a>DID controller</a>. In the
+absence of such policies, requesting parties are not expected to make any
+assumption about whether an identifier is a persistent identifier for the same
+<a>DID subject</a>.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Immutability</h2>
+
+      <p>
+Many cybersecurity abuses hinge on exploiting gaps between reality and the
+assumptions of rational, good-faith actors. Immutability of <a>controller documents</a>
+can provide some security benefits. Individual <a>DID methods</a> ought to
+consider constraints that would eliminate behaviors or semantics they do not
+need. The more <em>locked down</em> a <a>DID method</a> is, while providing the
+same set of features, the less it can be manipulated by malicious actors.
+      </p>
+      <p>
+As an example, consider that a single edit to a <a>controller document</a> can change
+anything except the root <code><a>id</a></code> property of the document. But
+is it actually desirable for a <a>service</a> to change its
+<code>type</code> after it is defined? Or for a key to change its value? Or
+would it be better to require a new <code><a>id</a></code> when certain
+fundamental properties of an object change? Malicious takeovers of a website
+often aim for an outcome where the site keeps its host name identifier,
+but is subtly changed underneath. If certain properties of the site, such
+as the <a target="_blank"
+href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)">ASN</a>
+associated with its IP address, were required by the specification to be
+immutable, anomaly detection would be easier, and attacks would be much
+harder and more expensive to carry out.
+      </p>
+      <p>
+For <a>DID methods</a> tied to a global source of truth, a direct,
+just-in-time lookup of the latest version of a <a>controller document</a> is always
+possible. However, it seems likely that layers of cache might eventually sit
+between a <a>DID resolver</a> and that source of truth. If they do, believing
+the attributes of an object in the <a>controller document</a> to have a given state
+when they are actually subtly different might invite exploits. This is
+particularly true if some lookups are of a full <a>controller document</a>, and
+others are of partial data where the larger context is assumed.
+      </p>
+    </section>
+
+    <section>
+      <h2>Encrypted Data in Controller Documents</h2>
+      <p>
+Encryption algorithms have been known to fail due to advances in cryptography
+and computing power. Implementers are advised to assume that any encrypted data
+placed in a <a>controller document</a> might eventually be made available in clear text
+to the same audience to which the encrypted data is available. This is
+particularly pertinent if the <a>controller document</a> is public.
+      </p>
+      <p>
+Encrypting all or parts of a <a>controller document</a> is <em>not</em> an appropriate
+means to protect data in the long term. Similarly, placing encrypted data in
+a <a>controller document</a> is not an appropriate means to protect personal data.
+      </p>
+      <p>
+Given the caveats above, if encrypted data is included in a <a>controller document</a>,
+implementers are advised to not associate any correlatable information
+that could be used to infer a relationship between the encrypted data
+and an associated party. Examples of correlatable information include
+public keys of a receiving party, identifiers to digital assets known to be
+under the control of a receiving party, or human readable descriptions of a
+receiving party.
+      </p>
+
+    </section>
+
+    <section>
+      <h2>Equivalence Properties</h2>
+      <p>
+Given the <code><a>equivalentId</a></code> and <code><a>canonicalId</a></code>
+properties are generated by <a>DID methods</a> themselves, the same security and
+accuracy guarantees that apply to the resolved identifier present in the
+<code>id</code> field of a <a>controller document</a> also apply to these properties.
+The <code><a>alsoKnownAs</a></code> property is not guaranteed to be an accurate
+statement of equivalence, and should not be relied upon without performing
+validation steps beyond the resolution of the <a>controller document</a>.
+      </p>
+      <p>
+The <code><a>equivalentId</a></code> and <code><a>canonicalId</a></code>
+properties express equivalence assertions to variants of a single identifier
+produced by the same <a>DID method</a> and can be trusted to the extent the
+requesting party trusts the <a>DID method</a> and a conforming producer and
+resolver.
+      </p>
+      <p>
+The <code><a>alsoKnownAs</a></code> property permits an equivalence assertion to
+<a>URIs</a> that are not governed by the same <a>DID method</a> and cannot be
+trusted without performing verification steps outside of the governing <a>DID
+method</a>. See additional guidance in <a href="#also-known-as"></a>.
+      </p>
+      <p>
+As with any other security-related properties in the <a>controller document</a>,
+parties relying on any equivalence statement in a <a>controller document</a> should
+guard against the values of these properties being substituted by an attacker
+after the proper verification has been performed. Any write access to a <a>DID
+document</a> stored in memory or disk after verification has been performed is
+an attack vector that might circumvent verification unless the <a>DID
+document</a> is re-verified.
+      </p>
+
+    </section>
+
+    <section>
+      <h2>Content Integrity Protection</h2>
+      <p>
+<a>controller documents</a> which include links to external machine-readable content
+such as images, web pages, or schemas are vulnerable to tampering. It is
+strongly advised that external links are integrity protected using solutions
+such as a hashlink [[?HASHLINK]]. External links are to be avoided if they
+cannot be integrity protected and the <a>controller document</a>'s integrity is
+dependent on the external link.
+      </p>
+      <p>
+One example of an external link where the integrity of the <a>controller document</a>
+itself could be affected is the JSON-LD Context [[JSON-LD11]]. To protect
+against compromise, <a>controller document</a> consumers are advised to cache local
+static copies of JSON-LD contexts and/or verify the integrity of external
+contexts against a cryptographic hash that is known to be associated with a safe
+version of the external JSON-LD Context.
+      </p>
+    </section>
+    <section>
+      <h2>Persistence</h2>
+      <p>
+<a>DIDs</a> are designed to be persistent such that a <a>controller</a> need not
+rely upon a single trusted third party or administrator to maintain their
+identifiers. In an ideal case, no administrator can take control away from the
+<a>controller</a>, nor can an administrator prevent their identifiers' use for
+any particular purpose such as authentication, authorization, and attestation.
+No third party can act on behalf of a <a>controller</a> to remove or render
+inoperable an entity's identifier without the <a>controller</a>'s consent.
+      </p>
+      <p>
+However, it is important to note that in all <a>DID methods</a> that enable
+cryptographic proof-of-control, the means of proving control can always be
+transferred to another party by transferring the secret cryptographic material.
+Therefore, it is vital that systems relying on the persistence of an identifier
+over time regularly check to ensure that the identifier is, in fact, still under
+the control of the intended party.
+      </p>
+      <p>
+Unfortunately, it is impossible to determine from the cryptography alone whether
+or not the secret cryptographic material associated with a given
+<a>verification method</a> has been compromised. It might well be that the
+expected <a>controller</a> still has access to the secret cryptographic material
+&mdash; and as such can execute a proof-of-control as part of a verification
+process &mdash; while at the same time, a bad actor also has access to those
+same keys, or to a copy thereof.
+      </p>
+      <p>
+As such, cryptographic proof-of-control is expected to only be used as one
+factor in evaluating the level of identity assurance required for high-stakes
+scenarios. identifier-based authentication provides much greater assurance than
+a username and password, thanks to the ability to determine control over a
+cryptographic secret without transmitting that secret between systems. However,
+it is not infallible. Scenarios that involve sensitive, high value, or
+life-critical operations are expected to use additional factors as appropriate.
+      </p>
+      <p>
+In addition to potential ambiguity from use by different <a>controllers</a>, it
+is impossible to guarantee, in general, that a given identifier is being used in
+reference to the same subject at any given point in time. It is technically
+possible for the controller to reuse an identifier for different subjects and,
+more subtly, for the precise definition of the subject to either change over
+time or be misunderstood.
+      </p>
+      <p>
+For example, consider an identifier used for a sole proprietorship, receiving
+various credentials used for financial transactions. To the <a>controller</a>,
+that identifier referred to the business. As the business grows, it eventually
+gets incorporated as a Limited Liability Company. The <a>controller</a>
+continues using that same identifier, because to <strong>them</strong> the
+identifier refers to the business. However, to the state, the tax authority, and
+the local municipality, the identifier no longer refers to the same entity.
+Whether or not the subtle shift in meaning matters to a credit provider or
+supplier is necessarily up to them to decide. In many cases, as long as the
+bills get paid and collections can be enforced, the shift is immaterial.
+      </p>
+      <p>
+Due to these potential ambiguities, <a>DIDs</a> are to be considered valid
+<em>contextually</em> rather than absolutely. Their persistence does not imply
+that they refer to the exact same subject, nor that they are under the control
+of the same <a>controller</a>. Instead, one needs to understand the context in
+which the identifier was created, how it is used, and consider the likely shifts
+in their meaning, and adopt procedures and policies to address both potential
+and inevitable semantic drift.
+      </p>
+    </section>
+
+    <section>
+      <h2>Level of Assurance</h2>
+
+      <p>
+Additional information about the security context of authentication events is
+often required for compliance reasons, especially in regulated areas such as the
+financial and public sectors. This information is often referred to as a Level
+of Assurance (LOA). Examples include the protection of secret cryptographic
+material, the identity proofing process, and the form-factor of the
+authenticator.
+      </p>
+
+      <p>
+<a target="_blank"
+href="https://ec.europa.eu/info/law/payment-services-psd-2-directive-eu-2015-2366_en">
+Payment services (PSD 2)</a> and <a target="_blank"
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2014.257.01.0073.01.ENG">
+eIDAS</a> introduce such requirements to the security context. Level of
+assurance frameworks are classified and defined by regulations and
+standards such as <a
+target="_blank"
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2014.257.01.0073.01.ENG">
+eIDAS</a>, <a target="_blank"
+href="https://pages.nist.gov/800-63-3/sp800-63-3.html"> NIST 800-63-3</a> and <a
+target="_blank" href="https://www.iso.org/standard/45138.html"> ISO/IEC
+29115:2013</a>, including their requirements for the security context, and
+making recommendations on how to achieve them. This might include strong user
+authentication where <a target="_blank"
+href="https://fidoalliance.org/fido2/">FIDO2</a>/<a target="_blank"
+href="https://www.w3.org/TR/webauthn-2/">WebAuthn</a> can fulfill the
+requirement.
+      </p>
+
+      <p>
+Some regulated scenarios require the implementation of a specific level of
+assurance. Since <a>verification relationships</a> such as <code>
+<a>assertionMethod</a></code> and <code><a>authentication</a></code> might be
+used in some of these situations, information about the applied security context
+might need to be expressed and provided to a <em>verifier</em>. Whether and how
+to encode this information in the <a>controller document</a> data model is out of scope
+for this specification. Interested readers might note that 1) the information
+could be transmitted using Verifiable Credentials [[?VC-DATA-MODEL]], and 2) the
+<a>controller document</a> data model can be extended to incorporate this information
+as described in <a href="#extensibility"></a>, and where <a
+href="#privacy-considerations"></a> is applicable for such extensions.
+      </p>
+    </section>
+  </section>
+
+  <section class="informative">
+    <h1>Privacy Considerations</h1>
+
+    <p>
+Since <a>DIDs</a> and <a>controller documents</a> are designed to be administered
+directly by the <a>DID controller(s)</a>, it is critically important to apply
+the principles of Privacy by Design [[PRIVACY-BY-DESIGN]] to all aspects of the
+<a>decentralized identifier</a> architecture. All seven of these principles
+have been applied throughout the development of this specification. The design
+used in this specification does not assume that there is a registrar, hosting
+company, nor other intermediate service provider to recommend or apply
+additional privacy safeguards. Privacy in this specification is preventive,
+not remedial, and is an embedded default. The following sections cover privacy
+considerations that implementers might find useful when building systems that
+utilize <a>decentralized identifiers</a>.
+    </p>
+
+    <section>
+      <h2>Keep Personal Data Private</h2>
+
+      <p>
+If a <a>DID method</a> specification is written for a public-facing
+<a>verifiable data registry</a> where corresponding <a>DIDs</a> and <a>DID
+documents</a> might be made publicly available, it is <em>critical</em> that
+those <a>controller documents</a> contain no personal data. Personal data can instead
+be transmitted through other means such as 1) Verifiable Credentials
+[[?VC-DATA-MODEL]], or 2) <a>service endpoints</a> under control of the <a>DID
+subject</a> or <a>DID controller</a>.
+      </p>
+
+      <p>
+Due diligence is expected to be taken around the use of URLs in <a>service
+endpoints</a> to prevent leakage of personal data or correlation within a URL of
+a <a>service endpoint</a>. For example, a URL that contains a username is
+dangerous to include in a <a>controller document</a> because the username is likely to
+be human-meaningful in a way that can reveal information that the <a>DID
+subject</a> did not consent to sharing. With the privacy architecture suggested
+by this specification, personal data can be exchanged on a private, peer-to-peer
+basis using communication channels identified and secured by <a>verification
+methods</a> in <a>controller documents</a>. This also enables <a>DID subjects</a> and
+requesting parties to implement the <a
+href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR</a>
+<a href="https://en.wikipedia.org/wiki/Right_to_be_forgotten">right to be
+forgotten</a>, because no personal data is written to an immutable
+<a>distributed ledger</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>DID Correlation Risks</h2>
+
+      <p>
+Like any type of globally unambiguous identifier, <a>DIDs</a> might be used for
+correlation. <a>DID controllers</a> can mitigate this privacy risk by using
+pairwise <a>DIDs</a> that are unique to each relationship; in effect, each
+identifier acts as a pseudonym. A pairwise identifier need only be shared with
+more than one party when correlation is explicitly desired. If pairwise
+<a>DIDs</a> are the default, then the only need to publish an identifier openly,
+or to share it with multiple parties, is when the <a
+href="#dfn-did-controllers">DID controller(s)</a> and/or <a>DID subject</a>
+explicitly desires public identification and correlation.
+      </p>
+    </section>
+
+    <section>
+      <h2>Controller Document Correlation Risks</h2>
+
+      <p>
+The anti-correlation protections of pairwise <a>DIDs</a> are easily defeated if
+the data in the corresponding <a>controller documents</a> can be correlated. For
+example, using identical <a>verification methods</a> or bespoke <a>service
+endpoints</a> in multiple <a>controller documents</a> can provide as much correlation
+information as using the same identifier. Therefore, the <a>controller document</a> for
+a pairwise identifier also needs to use pairwise unique information, such as
+ensuring that <a>verification methods</a> are unique to the pairwise
+relationship.
+      </p>
+
+      <p>
+It might seem natural to also use pairwise unique <a>service endpoints</a> in
+the <a>controller document</a> for a pairwise identifier. However, unique endpoints
+allow all traffic between two <a>DIDs</a> to be isolated perfectly into unique
+buckets, where timing correlation and similar analysis is easy. Therefore, a
+better strategy for endpoint privacy might be to share an endpoint among a large
+number of <a>DIDs</a> controlled by many different subjects (see <a
+href="#herd-privacy"></a>).
+      </p>
+    </section>
+
+    <section>
+      <h2>DID Subject Classification</h2>
+      <p>
+It is dangerous to add properties to the <a>controller document</a> that can be used
+to indicate, explicitly or through inference, what <em>type</em> or nature of
+thing the <a>DID subject</a> is, particularly if the <a>DID subject</a> is a
+person.
+      </p>
+      <p>
+Not only do such properties potentially result in personal data (see
+<a href="#keep-personal-data-private"></a>) or
+correlatable data (see <a href="#did-correlation-risks">
+</a> and <a href="#did-document-correlation-risks"></a>) being present in the
+<a>controller document</a>, but they can be used for grouping particular <a>DIDs</a>
+in such a way that they are included in or excluded from certain operations or
+functionalities.
+      </p>
+      <p>
+Including <em>type</em> information in a <a>controller document</a> can
+result in personal privacy harms even for <a>DID Subjects</a> that are
+non-person entities, such as IoT devices. The aggregation of such
+information around a <a>DID Controller</a> could serve as a form of
+digital fingerprint and this is best avoided.
+      </p>
+      <p>
+To minimize these risks, all properties in a <a>controller document</a> ought to be
+for expressing cryptographic material, endpoints, or <a>verification methods</a>
+related to using the identifier.
+      </p>
+
+    </section>
+
+    <section>
+      <h2>Herd Privacy</h2>
+
+      <p>
+When a <a>DID subject</a> is indistinguishable from others in the herd,
+privacy is available. When the act of engaging privately with another party is
+by itself a recognizable flag, privacy is greatly diminished.
+      </p>
+      <p>
+<a>DIDs</a> and <a>DID
+methods</a> need to work to improve herd privacy, particularly for those who
+legitimately need it most. Choose technologies and human interfaces that
+default to preserving anonymity and pseudonymity. To reduce <a
+href="https://en.wikipedia.org/wiki/Device_fingerprint">digital
+fingerprints</a>, share common settings across requesting party
+implementations, keep negotiated options to a minimum on wire protocols, use
+encrypted transport layers, and pad messages to standard lengths.
+      </p>
+    </section>
+
+    <section>
+      <h2>Service Privacy</h2>
+      <p>
+The ability for a <a>controller</a> to optionally express at least one
+<a>service endpoint</a> in the <a>controller document</a> increases their control and
+agency. Each additional endpoint in the <a>controller document</a> adds privacy risk
+either due to correlation, such as across endpoint descriptions, or because the
+<a>services</a> are not protected by an authorization mechanism, or both.
+      </p>
+      <p>
+<a>controller documents</a> are often public and, since they are standardized, will be
+stored and indexed efficiently by their very standards-based nature. This risk
+is worse if <a>controller documents</a> are published to immutable <a>verifiable data
+registries</a>. Access to a history of the <a>controller documents</a> referenced by a
+identifier represents a form of traffic analysis made more efficient through the
+use of standards.
+      </p>
+      <p>
+The degree of additional privacy risk caused by using multiple <a>service
+endpoints</a> in one <a>controller document</a> can be difficult to estimate. Privacy
+harms are typically unintended consequences. <a>DIDs</a> can refer to documents,
+<a>services</a>, schemas, and other things that might be associated with
+individual people, households, clubs, and employers &mdash; and correlation of
+their <a>service endpoints</a> could become a powerful surveillance and
+inference tool. An example of this potential harm can be seen when multiple
+common country-level top level domains such as
+<code>https://example.co.uk</code> might be used to infer the approximate
+location of the <a>DID subject</a> with a greater degree of probability.
+      </p>
+
+      <section class="notoc">
+        <h3>Maintaining Herd Privacy</h3>
+        <p>
+The variety of possible endpoints makes it particularly challenging to maintain
+herd privacy, in which no information about the <a>DID subject</a> is leaked
+(see <a href="#herd-privacy"></a>).
+        </p>
+
+        <p>
+First, because service endpoints might be specified as <a>URIs</a>, they could
+unintentionally leak personal information because of the architecture of the
+service. For example, a service endpoint of
+<code>http://example.com/MyFirstName</code> is leaking the term
+<code>MyFirstName</code> to everyone who can access the <a>controller document</a>.
+When linking to legacy systems, this is an unavoidable risk, and care is
+expected to be taken in such cases. This specification encourages new,
+identifier-aware endpoints to use nothing more than the identifier itself for
+any identification necessary. For example, if a service description were to
+include <code>http://example.com/did%3Aexample%3Aabc123</code>, no harm would be
+done because <code>did:example:abc123</code> is already exposed in the DID
+Document; it leaks no additional information.
+        </p>
+
+        <p>
+Second, because a <a>controller document</a> can list multiple service endpoints, it is
+possible to irreversibly associate services that are not associated in any other
+context. This correlation on its own may lead to privacy harms by revealing
+information about the <a>DID subject</a>, even if the <a>URIs</a> used did not
+contain any sensitive information.
+        </p>
+        <p>
+Third, because some types of <a>DID subjects</a> might be more or less likely to
+list specific endpoints, the listing of a given service could, by itself, leak
+information that can be used to infer something about the <a>DID subject</a>.
+For example, an identifier for an automobile might include a pointer to a public
+title record at the Department of Motor Vehicles, while an identifier for an
+individual would not include that information.
+        </p>
+        <p>
+It is the goal of herd privacy to ensure that the nature of specific <a>DID
+subjects</a> is obscured by the population of the whole. To maximize herd
+privacy, implementers need to rely on one &mdash; and only one &mdash; service
+endpoint, with that endpoint providing a proxy or mediator service that the
+controller is willing to depend on, to protect such associations and to blind
+requests to the ultimate service.
+        </p>
+      </section>
+
+      <section class="notoc">
+        <h3>Service Endpoint Alternatives</h3>
+
+        <p>
+Given the concerns in the previous section, implementers are urged to
+consider any of the following service endpoint approaches:
+        </p>
+
+        <ul>
+          <li>
+<strong>Negotiator Endpoint</strong> &mdash; Service for negotiating mutually
+agreeable communications channels, preferably using private set intersection.
+The output of negotiation is a communication channel and whatever credentials
+might be needed to access it.
+          </li>
+          <li>
+<strong>Tor Endpoint</strong> (<a
+href="https://www.torproject.org/about/history/">Tor Onion Router</a>) &mdash;
+Provide a privacy-respecting address for reaching service endpoints. Any service
+that can be provided online can be provided through TOR for additional
+privacy.
+           </li>
+           <li>
+<strong>Mediator Endpoint</strong> &mdash; <a
+href="https://github.com/hyperledger/aries-rfcs/blob/720bdab50e2d0437fda03028c1b17c69781bdd69/concepts/0046-mediators-and-relays/README.md">Mediators</a>
+provide a generic endpoint, for multiple parties, receive encrypted messages on
+behalf of those parties, and forward them to the intended recipient. This avoids
+the need to have a specific endpoint per subject, which could create a
+correlation risk. This approach is also called a proxy.
+          </li>
+          <li>
+<strong>Confidential Storage</strong> &mdash; Proprietary or confidential
+personal information might need to be kept off of a <a>verifiable data
+registry</a> to provide additional privacy and/or security guarantees,
+especially for those <a>DID methods</a> where <a>controller documents</a> are published
+on a public ledger. Pointing to external resource services provides a means for
+authorization checks and deletion.
+          </li>
+          <li>
+<strong>Polymorphic Proxy</strong> &mdash; A proxy endpoint that can act as any
+number of services, depending on how it is called. For example, the same URL
+could be used for both negotiator and mediator functions, depending on a
+mechanism for re-routing.
+          </li>
+        </ul>
+
+        <p>
+These service endpoint types continue to be an area of innovation and
+exploration.
+        </p>
+      </section>
+    </section>
     </section>
 
     <section class="informative">
