@@ -1426,248 +1426,6 @@ value which MUST match the output length associated with the Multihash header.
 
       </section>
 
-      <section>
-        <h2>Contexts and Vocabularies</h2>
-
-        <p class="issue" title="(AT RISK) Hash values might change during Candidate Recommendation">
-This section lists cryptographic hash values that might change during the
-Candidate Recommendation phase based on implementer feedback that requires
-the referenced files to be modified.
-        </p>
-        <p>
-Implementations that perform JSON-LD processing MUST treat the following
-JSON-LD context URLs as already resolved, where the resolved document matches
-the corresponding hash values below:
-        </p>
-
-        <table class="simple">
-          <thead>
-            <tr>
-              <th>URL, Media Type, and Content Digest</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="white-space: nowrap;">
-<strong>URL:</strong>
-https://w3id.org/security/data-integrity/v2 (application/ld+json)<br>
-<strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
-  data-hash-url="https://w3id.org/security/data-integrity/v2"
-  data-hash-format="openssl dgst -sha256" /></code>
-              </td>
-            </tr>
-            <tr>
-              <td style="white-space: nowrap;">
-<strong>URL:</strong>
-https://w3id.org/security/multikey/v1 (application/ld+json)<br>
-<strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
-  data-hash-url="https://w3id.org/security/multikey/v1"
-  data-hash-format="openssl dgst -sha256" /></code>
-              </td>
-            </tr>
-            <tr>
-              <td style="white-space: nowrap;">
-<strong>URL:</strong>
-https://w3id.org/security/jwk/v1 (application/ld+json)<br>
-<strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
-  data-hash-url="https://w3id.org/security/jwk/v1"
-  data-hash-format="openssl dgst -sha256" /></code>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p>
-The security vocabulary terms that the JSON-LD contexts listed above resolve
-to are in the <a href="https://w3id.org/security">https://w3id.org/security#</a>
-namespace. That is, all security terms in this vocabulary are of the form
-`https://w3id.org/security#TERM`, where `TERM` is the name of a term.
-        </p>
-
-        <p>
-Implementations that perform RDF processing MUST treat the following
-JSON-LD vocabulary URL as already resolved, where the resolved document matches
-the corresponding hash values below.
-        </p>
-
-        <p>
-When dereferencing the
-<a href="https://w3id.org/security">https://w3id.org/security#</a> URL,
-the data returned depends on HTTP content negotiation. These are as follows:
-        </p>
-
-        <table class="simple">
-          <thead>
-            <tr>
-              <th>Media Type</th>
-              <th>Description and Content Digest</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-application/ld+json
-              </td>
-              <td>
-The vocabulary in JSON-LD format [[?JSON-LD11]].<br><br>
-<strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
-  data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.jsonld"
-  data-hash-format="openssl dgst -sha256" /></code>
-              </td>
-            </tr>
-            <tr>
-              <td>
-text/turtle
-              </td>
-              <td>
-The vocabulary in Turtle format [[?TURTLE]].<br><br>
-<strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
-  data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.ttl"
-  data-hash-format="openssl dgst -sha256" /></code>
-              </td>
-            </tr>
-            <tr>
-              <td>
-text/html
-              </td>
-              <td>
-The vocabulary in HTML+RDFa Format [[?HTML-RDFA]].<br><br>
-<strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
-  data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.html"
-  data-hash-format="openssl dgst -sha256" /></code>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p>
-It is possible to confirm the digests listed above by running the following
-command from a modern Unix command interface line:
-`curl -sL -H "Accept: &lt;MEDIA_TYPE>" &lt;DOCUMENT_URL> | openssl dgst -sha256`.
-        </p>
-
-        <p>
-Authors of application-specific vocabularies and specifications SHOULD ensure
-that their JSON-LD context and vocabulary files are permanently cacheable
-using the approaches to caching described above or a functionally equivalent
-mechanism.
-        </p>
-
-        <p>
-Implementations MAY load application-specific JSON-LD context files from the
-network during development, but SHOULD permanently cache JSON-LD context files
-used in [=conforming documents=] in production settings to increase their
-security and privacy characteristics. Caching goals MAY be achieved through
-approaches such as those described above or functionally equivalent mechanisms.
-        </p>
-        <p>
-Some applications, such as digital wallets, that are capable of holding arbitrary
-verifiable credentials or other data-integrity-protected documents, from
-any issuer and using any contexts, might need to be able to load externally
-linked resources, such as JSON-LD context files, in production settings. This is
-expected to increase user choice, scalability, and decentralized upgrades in the
-ecosystem over time. Authors of such applications are advised to read the
-security and privacy sections of this document for further considerations.
-        </p>
-
-        <p>
-For further information regarding processing of JSON-LD contexts and
-vocabularies, see <a data-cite="?VC-DATA-MODEL-2.0#base-context">Verifiable
-Credentials v2.0: Base Context</a> and <a data-cite="?VC-DATA-MODEL-2.0#vocabularies">
-Verifiable Credentials v2.0: Vocabularies</a>.
-        </p>
-
-        <section>
-          <h3>Context Injection</h3>
-
-          <p>
-The `@context` property is used to ensure that implementations are using the
-same semantics when terms in this specification are processed. For example, this
-can be important when properties like `type` are processed and its value, such
-as `DataIntegrityProof`, are used.
-          </p>
-
-          <p>
-If an `@context` property is not provided in a document that is being secured or
-verified, or the Data Integrity terms used in the document are not mapped by
-existing values in the `@context` property, implementations MUST inject or add
-an `@context` property with a value of
-`https://w3id.org/security/data-integrity/v2`.
-          </p>
-
-          <p>
-Context injection is expected to be unnecessary sometimes, such as when the Verifiable
-Credential Data Model v2.0 context (`https://www.w3.org/ns/credentials/v2`)
-exists as a value in the `@context` property, as that context maps all of the
-necessary Data Integrity terms that were previously mapped by
-`https://w3id.org/security/data-integrity/v2`.
-          </p>
-        </section>
-
-        <section>
-          <h3>Datatypes</h3>
-
-          <p>
-This section defines datatypes that are used by this specification.
-          </p>
-
-        <section>
-          <h4 id="multibase">The `multibase` Datatype</h3>
-
-          <p>
-<a href="#multibase">Multibase</a>-encoded strings are used to encode binary
-data into ASCII-only formats, which are useful in environments that cannot
-directly represent binary values. This specification makes use of this encoding.
-In environments that support data types for string values, such as RDF
-[[?RDF-CONCEPTS]], <a href="#multibase">Multibase</a>-encoded content is
-indicated using a literal value whose datatype is set to
-`https://w3id.org/security#multibase`.
-          </p>
-
-          <p>
-The `multibase` datatype is defined as follows:
-          </p>
-
-          <dl>
-            <dt>The URL denoting this datatype</dt>
-            <dd>
-`https://w3id.org/security#multibase`
-            </dd>
-            <dt>The lexical space</dt>
-            <dd>
-Any string that starts with a <a href="#multibase">Multibase</a> character and
-the rest of the characters consist of allowable characters in the respective
-base-encoding alphabet.
-            </dd>
-            <dt>The value space</dt>
-            <dd>
-The standard mathematical concept of all integer numbers.
-            </dd>
-            <dt>The lexical-to-value mapping</dt>
-            <dd>
-Any element of the lexical space is mapped to the value space by base-decoding
-the value based on the base-decoding alphabet associated with the
-first <a href="#multibase">Multibase</a> character in the lexical string.
-            </dd>
-            <dt>The canonical mapping</dt>
-            <dd>
-The canonical mapping consists of using the lexical-to-value mapping.
-            </dd>
-          </dl>
-        </section>
-
-      </section>
-
-    </section>
-
-    </section>
-
     <section>
       <h2>Algorithms</h2>
 
@@ -2140,6 +1898,246 @@ the `proofPurpose` property in the proof. See Section
         </dl>
       </section>
     </section>
+
+    <section>
+      <h2>Contexts and Vocabularies</h2>
+
+      <p class="issue" title="(AT RISK) Hash values might change during Candidate Recommendation">
+This section lists cryptographic hash values that might change during the
+Candidate Recommendation phase based on implementer feedback that requires
+the referenced files to be modified.
+      </p>
+      <p>
+Implementations that perform JSON-LD processing MUST treat the following
+JSON-LD context URLs as already resolved, where the resolved document matches
+the corresponding hash values below:
+      </p>
+
+      <table class="simple">
+        <thead>
+          <tr>
+            <th>URL, Media Type, and Content Digest</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="white-space: nowrap;">
+<strong>URL:</strong>
+https://w3id.org/security/data-integrity/v2 (application/ld+json)<br>
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+data-hash-url="https://w3id.org/security/data-integrity/v2"
+data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+          <tr>
+            <td style="white-space: nowrap;">
+<strong>URL:</strong>
+https://w3id.org/security/multikey/v1 (application/ld+json)<br>
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+data-hash-url="https://w3id.org/security/multikey/v1"
+data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+          <tr>
+            <td style="white-space: nowrap;">
+<strong>URL:</strong>
+https://w3id.org/security/jwk/v1 (application/ld+json)<br>
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+data-hash-url="https://w3id.org/security/jwk/v1"
+data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+The security vocabulary terms that the JSON-LD contexts listed above resolve
+to are in the <a href="https://w3id.org/security">https://w3id.org/security#</a>
+namespace. That is, all security terms in this vocabulary are of the form
+`https://w3id.org/security#TERM`, where `TERM` is the name of a term.
+      </p>
+
+      <p>
+Implementations that perform RDF processing MUST treat the following
+JSON-LD vocabulary URL as already resolved, where the resolved document matches
+the corresponding hash values below.
+      </p>
+
+      <p>
+When dereferencing the
+<a href="https://w3id.org/security">https://w3id.org/security#</a> URL,
+the data returned depends on HTTP content negotiation. These are as follows:
+      </p>
+
+      <table class="simple">
+        <thead>
+          <tr>
+            <th>Media Type</th>
+            <th>Description and Content Digest</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+application/ld+json
+            </td>
+            <td>
+The vocabulary in JSON-LD format [[?JSON-LD11]].<br><br>
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.jsonld"
+data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+text/turtle
+            </td>
+            <td>
+The vocabulary in Turtle format [[?TURTLE]].<br><br>
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.ttl"
+data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+text/html
+            </td>
+            <td>
+The vocabulary in HTML+RDFa Format [[?HTML-RDFA]].<br><br>
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.html"
+data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+It is possible to confirm the digests listed above by running the following
+command from a modern Unix command interface line:
+`curl -sL -H "Accept: &lt;MEDIA_TYPE>" &lt;DOCUMENT_URL> | openssl dgst -sha256`.
+      </p>
+
+      <p>
+Authors of application-specific vocabularies and specifications SHOULD ensure
+that their JSON-LD context and vocabulary files are permanently cacheable
+using the approaches to caching described above or a functionally equivalent
+mechanism.
+      </p>
+
+      <p>
+Implementations MAY load application-specific JSON-LD context files from the
+network during development, but SHOULD permanently cache JSON-LD context files
+used in [=conforming documents=] in production settings to increase their
+security and privacy characteristics. Caching goals MAY be achieved through
+approaches such as those described above or functionally equivalent mechanisms.
+      </p>
+      <p>
+Some applications, such as digital wallets, that are capable of holding arbitrary
+verifiable credentials or other data-integrity-protected documents, from
+any issuer and using any contexts, might need to be able to load externally
+linked resources, such as JSON-LD context files, in production settings. This is
+expected to increase user choice, scalability, and decentralized upgrades in the
+ecosystem over time. Authors of such applications are advised to read the
+security and privacy sections of this document for further considerations.
+      </p>
+
+      <p>
+For further information regarding processing of JSON-LD contexts and
+vocabularies, see <a data-cite="?VC-DATA-MODEL-2.0#base-context">Verifiable
+Credentials v2.0: Base Context</a> and <a data-cite="?VC-DATA-MODEL-2.0#vocabularies">
+Verifiable Credentials v2.0: Vocabularies</a>.
+      </p>
+
+      <section>
+        <h3>Context Injection</h3>
+
+        <p>
+The `@context` property is used to ensure that implementations are using the
+same semantics when terms in this specification are processed. For example, this
+can be important when properties like `type` are processed and its value, such
+as `DataIntegrityProof`, are used.
+        </p>
+
+        <p>
+If an `@context` property is not provided in a document that is being secured or
+verified, or the Data Integrity terms used in the document are not mapped by
+existing values in the `@context` property, implementations MUST inject or add
+an `@context` property with a value of
+`https://w3id.org/security/data-integrity/v2`.
+        </p>
+
+        <p>
+Context injection is expected to be unnecessary sometimes, such as when the Verifiable
+Credential Data Model v2.0 context (`https://www.w3.org/ns/credentials/v2`)
+exists as a value in the `@context` property, as that context maps all of the
+necessary Data Integrity terms that were previously mapped by
+`https://w3id.org/security/data-integrity/v2`.
+        </p>
+      </section>
+
+      <section>
+        <h3>Datatypes</h3>
+
+        <p>
+This section defines datatypes that are used by this specification.
+        </p>
+
+      <section>
+        <h4 id="multibase">The `multibase` Datatype</h3>
+
+        <p>
+<a href="#multibase">Multibase</a>-encoded strings are used to encode binary
+data into ASCII-only formats, which are useful in environments that cannot
+directly represent binary values. This specification makes use of this encoding.
+In environments that support data types for string values, such as RDF
+[[?RDF-CONCEPTS]], <a href="#multibase">Multibase</a>-encoded content is
+indicated using a literal value whose datatype is set to
+`https://w3id.org/security#multibase`.
+        </p>
+
+        <p>
+The `multibase` datatype is defined as follows:
+        </p>
+
+        <dl>
+          <dt>The URL denoting this datatype</dt>
+          <dd>
+`https://w3id.org/security#multibase`
+          </dd>
+          <dt>The lexical space</dt>
+          <dd>
+Any string that starts with a <a href="#multibase">Multibase</a> character and
+the rest of the characters consist of allowable characters in the respective
+base-encoding alphabet.
+          </dd>
+          <dt>The value space</dt>
+          <dd>
+The standard mathematical concept of all integer numbers.
+          </dd>
+          <dt>The lexical-to-value mapping</dt>
+          <dd>
+Any element of the lexical space is mapped to the value space by base-decoding
+the value based on the base-decoding alphabet associated with the
+first <a href="#multibase">Multibase</a> character in the lexical string.
+          </dd>
+          <dt>The canonical mapping</dt>
+          <dd>
+The canonical mapping consists of using the lexical-to-value mapping.
+          </dd>
+        </dl>
+      </section>
+
+    </section>
+
+  </section>
 
   <section class="informative">
     <h1>Security Considerations</h1>
