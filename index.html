@@ -1035,8 +1035,7 @@ the value of `controller` needs to [=authenticate=] with its
             <p>
 The `assertionMethod` [=verification relationship=] is used to
 specify how the [=controller=] is expected to express claims, such as for
-the purposes of issuing a
-<a data-cite="?VC-DATA-MODEL-2.0#dfn-verifiable-credential">verifiable credential</a>.
+the purposes of issuing a verifiable credential.
             </p>
 
             <dl>
@@ -1051,8 +1050,7 @@ be embedded or referenced.
 
             <p>
 This property is useful, for example, during the processing of a
-<a data-cite="?VC-DATA-MODEL-2.0#dfn-verifiable-credential">verifiable credential</a>
-by a verifier.
+verifiable credential by a verifier.
 <!-- VC-DATA-INTEGRITY-SPECIFIC:
 During verification, a verifier checks to see if a
 [=verifiable credential=] contains a proof created by the [=controller=]
@@ -1570,8 +1568,7 @@ approaches such as those described above or functionally equivalent mechanisms.
         </p>
         <p>
 Some applications, such as digital wallets, that are capable of holding arbitrary
-<a data-cite="?VC-DATA-MODEL-2.0#dfn-verifiable-credential">verifiable credentials</a>
-or other data-integrity-protected documents, from
+verifiable credentials or other data-integrity-protected documents, from
 any issuer and using any contexts, might need to be able to load externally
 linked resources, such as JSON-LD context files, in production settings. This is
 expected to increase user choice, scalability, and decentralized upgrades in the
@@ -2295,7 +2292,7 @@ Proofs or signatures that rely on [=verification methods=] that are not
 present in the latest version of a [=controller document=] are not impacted by
 rotation. In these cases, verification software might require additional
 information, such as when a particular [=verification method=] was
-expected to be valid as well as access to a [=verifiable data registry=]
+expected to be valid as well as access to a verifiable data registry
 containing a historical record, to determine the validity of the proof or
 signature. This option might not be available in all systems.
         </li>
@@ -2548,7 +2545,7 @@ documents</a>.
 If a [=controller document=] is about a specific individual and is
 public-facing, it is <em>critical</em> that the [=controller documents=]
 contain no personal data. Personal data can instead be transmitted through other
-means such as 1) [=verifiable credentials=] [[?VC-DATA-MODEL-2.0]], or 2)
+means such as 1) verifiable credentials [[?VC-DATA-MODEL-2.0]], or 2)
 other private communication channels.
       </p>
     </section>
