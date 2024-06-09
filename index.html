@@ -755,6 +755,61 @@ then be encoded using the base-58-btc alphabet, according to Section
               </tbody>
             </table>
 
+
+            <p>
+The secret key values are expressed using the rules in the table below:
+            </p>
+
+            <table class="simple">
+              <thead>
+                <th>Key type</th>
+                <th>Description</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ECDSA 256-bit secret key</td>
+                  <td>
+The Multikey encoding of a P-256 secret key MUST start with the two-byte prefix
+`0x8626` (the varint expression of `0x1306`) followed by the 32-byte
+secret key data. The resulting 34-byte value MUST then be encoded using the
+base-58-btc alphabet, according to Section [[[#multibase-0]]], and then
+prepended with the base-58-btc Multibase header (`z`).
+                  </td>
+                </tr>
+                <tr>
+                  <td>ECDSA 384-bit secret key</td>
+                  <td>
+The encoding of a P-384 secret key MUST start with the two-byte prefix `0x8726`
+(the varint expression of `0x1307`) followed by the 48-byte secret
+key data. The resulting 50-byte value is then encoded using the base-58-btc
+alphabet, according to Section [[[#multibase-0]]], and then prepended with the
+base-58-btc Multibase header (`z`).
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ed25519 256-bit secret key</td>
+                  <td>
+The encoding of an Ed25519 secret key MUST start with the two-byte prefix
+`0x8026` (the varint expression of `0x1300`), followed by the 32-byte secret key
+data. The resulting 34-byte value MUST then be encoded using the base-58-btc
+alphabet, according to Section [[[#multibase-0]]], and then prepended with the
+base-58-btc Multibase header (`z`).
+                  </td>
+                </tr>
+                <tr>
+                  <td>BLS12-381 381-bit secret key</td>
+                  <td>
+The encoding of an BLS12-381 secret key in the G2 group MUST start with
+the two-byte prefix `0x8030` (the varint expression of `0x130a`), followed
+by the 96-byte compressed public key data. The resulting 98-byte value MUST
+then be encoded using the base-58-btc alphabet, according to Section
+[[[#multibase-0]]], and then prepended with the base-58-btc Multibase header
+(`z`).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
             <p>
 Any other encodings for key types listed in this specification MUST NOT be
 allowed.
