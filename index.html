@@ -690,7 +690,7 @@ Multibase value as described in Section [[[#multibase-0]]].
             </p>
 
             <p>
-When specifing a `Multikey`, the object takes the following form:
+When specifying a `Multikey`, the object takes the following form:
             </p>
 
             <dl>
@@ -711,51 +711,75 @@ Multibase encoded value as described in Section [[[#multibase-0]]].
             </dl>
 
             <p>
-An example of a Multikey is provided below:
+The public key values are expressed using the rules in the table below:
             </p>
 
-            <pre class="example nohighlight"
-              title="Multikey encoding of a Ed25519 public key">
-{
-  "@context": ["https://w3id.org/security/multikey/v1"],
-  "id": "did:example:123456789abcdefghi#keys-1",
-  "type": "Multikey",
-  "controller": "did:example:123456789abcdefghi",
-  "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
-}
-            </pre>
+            <table class="simple">
+              <thead>
+                <th>Key type</th>
+                <th>Description</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ECDSA 256-bit public key</td>
+                  <td>
+The Multikey encoding of a P-256 public key MUST start with the two-byte prefix
+`0x8024` (the varint expression of `0x1200`) followed by the 33-byte compressed
+public key data. The resulting 35-byte value MUST then be encoded using the
+base-58-btc alphabet, according to Section [[[#multibase-0]]], and then
+prepended with the base-58-btc Multibase header (`z`).
+                  </td>
+                </tr>
+                <tr>
+                  <td>ECDSA 384-bit public key</td>
+                  <td>
+The encoding of a P-384 public key MUST start with the two-byte prefix `0x8124`
+(the varint expression of `0x1201`) followed by the 49-byte compressed public
+key data. The resulting 51-byte value is then encoded using the base-58-btc
+alphabet, according to Section [[[#multibase-0]]], and then prepended with the
+base-58-btc Multibase header (`z`).
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ed25519 256-bit public key</td>
+                  <td>
+The encoding of an Ed25519 public key MUST start with the two-byte prefix
+`0xed01` (the varint expression of `0xed`), followed by the 32-byte public key
+data. The resulting 34-byte value MUST then be encoded using the base-58-btc
+alphabet, according to Section [[[#multibase-0]]], and then prepended with the
+base-58-btc Multibase header (`z`).
+                  </td>
+                </tr>
+                <tr>
+                  <td>BLS12-381 381-bit public key</td>
+                  <td>
+The encoding of an BLS12-381 public key in the G2 group MUST start with
+the two-byte prefix `0xeb01` (the varint expression of `0xeb`), followed
+by the 96-byte compressed public key data. The resulting 98-byte value MUST
+then be encoded using the base-58-btc alphabet, according to Section
+[[[#multibase-0]]], and then prepended with the base-58-btc Multibase header
+(`z`).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
             <p>
-In the example above, the `publicKeyMultibase` value starts with the letter `z`,
-which is the <a href="#multibase-0">Multibase</a> header that conveys that the
-binary data is base-58-btc-encoded using the Bitcoin base-encoding alphabet. The
-decoded binary data header is `0xed01`, which specifies that the
-remaining data is a 32-byte raw Ed25519 [=public key=].
+Any other encodings for key types listed in this specification MUST NOT be
+allowed.
+            </p>
+
+            <p class="advisement">
+Developers are advised to not accidentally publish a representation of a private
+key. Implementations using this specification will raise errors in the event of
+a Multikey header value that is not in the table above, or is not known to
+the implementation to be a public key value.
             </p>
 
             <p>
-The Multikey data model is also capable of encoding secret keys, whose subtypes
-include <em>symmetric keys</em> and <em>private keys</em>.
+Additional header values MAY be defined by other specifications.
             </p>
 
-            <pre class="example nohighlight"
-              title="Multikey encoding of a Ed25519 secret key">
-{
-  "@context": ["https://w3id.org/security/suites/secrets/v1"],
-  "id": "did:example:123456789abcdefghi#keys-1",
-  "type": "Multikey",
-  "controller": "did:example:123456789abcdefghi",
-  "secretKeyMultibase": "z3u2fprgdREFtGakrHr6zLyTeTEZtivDnYCPZmcSt16EYCER"
-}
-            </pre>
-
-            <p>
-In the example above, the `secretKeyMultibase` value starts with the letter `z`,
-which is the <a href="#multibase-0">Multibase</a> header that conveys that the
-binary data is base-58-btc-encoded using the Bitcoin base-encoding alphabet. The
-decoded binary data header is `0x8026`, which specifies that the
-remaining data is a 32-byte raw Ed25519 private key.
-            </p>
 
           </section>
 
