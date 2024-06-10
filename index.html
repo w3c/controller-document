@@ -771,7 +771,6 @@ then be encoded using the base-58-btc alphabet, according to Section
               </tbody>
             </table>
 
-
             <p>
 The secret key values are expressed using the rules in the table below:
             </p>
@@ -824,20 +823,23 @@ then be encoded using the base-58-btc alphabet, according to Section
                   </td>
                 </tr>
               </tbody>
+
             </table>
+
+            <p class="advisement">
+Developers are advised to not accidentally publish a representation of a secret
+key. Implementations that adhere to this specification will raise errors in the
+event of a Multikey header value that is not in the public key header table
+above, or when reading a Multikey value that is expected to be a public key,
+such as one published in a controller document, that does not start with a known
+public key header.
+            </p>
 
             <p>
 When defining values for use with `publicKeyMultibase` and `secretKeyMultibase`,
 specification authors MAY define additional header values for other key types in
 other specifications and MUST NOT define alternate encodings for key types
 already defined by this specification.
-            </p>
-
-            <p class="advisement">
-Developers are advised to not accidentally publish a representation of a private
-key. Implementations using this specification will raise errors in the event of
-a Multikey header value that is not in the table above, or is not known to
-the implementation to be a public key value.
             </p>
 
           </section>
