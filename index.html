@@ -827,8 +827,10 @@ then be encoded using the base-58-btc alphabet, according to Section
             </table>
 
             <p>
-Any other encodings for key types listed in this specification MUST NOT be
-allowed.
+When defining values for use with `publicKeyMultibase` and `secretKeyMultibase`,
+specification authors MAY define additional header values for other key types in
+other specifications and MUST NOT define alternate encodings for key types
+already defined by this specification.
             </p>
 
             <p class="advisement">
@@ -837,11 +839,6 @@ key. Implementations using this specification will raise errors in the event of
 a Multikey header value that is not in the table above, or is not known to
 the implementation to be a public key value.
             </p>
-
-            <p>
-Additional header values MAY be defined by other specifications.
-            </p>
-
 
           </section>
 
