@@ -570,7 +570,7 @@ revocation.
         "https://w3id.org/security/jwk/v1",
         "https://w3id.org/security/data-integrity/v2"
       ]
-      "id": "did:example:123456789abcdefghi",
+      "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "verificationMethod": [{
         "id": <span class="comment">...</span>,
@@ -658,12 +658,12 @@ methods</a> using both properties above is shown below.
         "https://w3id.org/security/jwk/v1",
         "https://w3id.org/security/multikey/v1"
       ]
-      "id": "did:example:123456789abcdefghi",
+      "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "verificationMethod": [{
-        "id": "did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+        "id": "https://controller.example/123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
         "type": "JsonWebKey", <span class="comment">// external (property value)</span>
-        "controller": "did:example:123",
+        "controller": "https://controller.example/123",
         "publicKeyJwk": {
           "crv": "Ed25519", <span class="comment">// external (property name)</span>
           "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ", <span class="comment">// external (property name)</span>
@@ -671,7 +671,7 @@ methods</a> using both properties above is shown below.
           "kid": "_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A" <span class="comment">// external (property name)</span>
         }
       }, {
-        "id": "did:example:123456789abcdefghi#keys-1",
+        "id": "https://controller.example/123456789abcdefghi#keys-1",
         "type": "Multikey", <span class="comment">// external (property value)</span>
         "controller": "did:example:pqrstuvwxyz0987654321",
         "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
@@ -719,9 +719,9 @@ above:
               title="Multikey encoding of a Ed25519 public key">
 {
   "@context": ["https://w3id.org/security/multikey/v1"],
-  "id": "did:example:123456789abcdefghi#keys-1",
+  "id": "https://controller.example/123456789abcdefghi#keys-1",
   "type": "Multikey",
-  "controller": "did:example:123456789abcdefghi",
+  "controller": "https://controller.example/123456789abcdefghi",
   "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
 }
             </pre>
@@ -915,9 +915,9 @@ An example of an object that conforms to `JsonWebKey` is provided below:
 
             <pre class="example nohighlight" title="JSON Web Key encoding of a secp384r1 (P-384) public key">
 {
-  "id": "did:example:123456789abcdefghi#key-1",
+  "id": "https://controller.example/123456789abcdefghi#key-1",
   "type": "JsonWebKey",
-  "controller": "did:example:123456789abcdefghi",
+  "controller": "https://controller.example/123456789abcdefghi",
   "publicKeyJwk": {
       "kid": "key-1",
       "kty": "EC",
@@ -951,9 +951,9 @@ referred to as <em>private keys</em>.
             <pre class="example nohighlight"
               title="JSON Web Key encoding of a secp384r1 (P-384) secret key">
 {
-  "id": "did:example:123456789abcdefghi#key-1",
+  "id": "https://controller.example/123456789abcdefghi#key-1",
   "type": "JsonWebKey",
-  "controller": "did:example:123456789abcdefghi",
+  "controller": "https://controller.example/123456789abcdefghi",
   "secretKeyJwk": {
       "kty": "EC",
       "crv": "P-384",
@@ -1004,12 +1004,12 @@ is done by dereferencing the URL and searching the resulting resource for a
       "authentication": [
         <span class="comment">// this key is referenced and might be used by</span>
         <span class="comment">// more than one verification relationship</span>
-        "did:example:123456789abcdefghi#keys-1",
+        "https://controller.example/123456789abcdefghi#keys-1",
         <span class="comment">// this key is embedded and may *only* be used for authentication</span>
         {
-          "id": "did:example:123456789abcdefghi#keys-2",
+          "id": "https://controller.example/123456789abcdefghi#keys-2",
           "type": "Multikey", <span class="comment">// external (property value)</span>
-          "controller": "did:example:123456789abcdefghi",
+          "controller": "https://controller.example/123456789abcdefghi",
           "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
         }
       ],
@@ -1088,18 +1088,18 @@ referenced.
         "https://www.w3.org/ns/credentials/v2",
         "https://w3id.org/security/multikey/v1"
       ],
-      "id": "did:example:123456789abcdefghi",
+      "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "authentication": [
         <span class="comment">// this method can be used to authenticate as did:...fghi</span>
-        "did:example:123456789abcdefghi#keys-1",
+        "https://controller.example/123456789abcdefghi#keys-1",
         <span class="comment">// this method is *only* approved for authentication, it may not</span>
         <span class="comment">// be used for any other proof purpose, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
-          "id": "did:example:123456789abcdefghi#keys-2",
+          "id": "https://controller.example/123456789abcdefghi#keys-2",
           "type": "Multikey",
-          "controller": "did:example:123456789abcdefghi",
+          "controller": "https://controller.example/123456789abcdefghi",
           "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
         }
       ],
@@ -1171,18 +1171,18 @@ corresponding [=controller document=].
         "https://www.w3.org/ns/credentials/v2",
         "https://w3id.org/security/multikey/v1"
       ],
-      "id": "did:example:123456789abcdefghi",
+      "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "assertionMethod": [
         <span class="comment">// this method can be used to assert statements as did:...fghi</span>
-        "did:example:123456789abcdefghi#keys-1",
+        "https://controller.example/123456789abcdefghi#keys-1",
         <span class="comment">// this method is *only* approved for assertion of statements, it is not</span>
         <span class="comment">// used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using a reference</span>
         {
-          "id": "did:example:123456789abcdefghi#keys-2",
+          "id": "https://controller.example/123456789abcdefghi#keys-2",
           "type": "Multikey", <span class="comment">// external (property value)</span>
-          "controller": "did:example:123456789abcdefghi",
+          "controller": "https://controller.example/123456789abcdefghi",
           "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
         }
       ],
@@ -1222,18 +1222,18 @@ wrap a decryption key for the recipient.
                           containing two verification methods">
     {
       "@context": "https://www.w3.org/ns/did/v1",
-      "id": "did:example:123456789abcdefghi",
+      "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "keyAgreement": [
         <span class="comment">// this method can be used to perform key agreement as did:...fghi</span>
-        "did:example:123456789abcdefghi#keys-1",
+        "https://controller.example/123456789abcdefghi#keys-1",
         <span class="comment">// this method is *only* approved for key agreement usage, it will not</span>
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
-          "id": "did:example:123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+          "id": "https://controller.example/123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
           "type": "X25519KeyAgreementKey2019", <span class="comment">// external (property value)</span>
-          "controller": "did:example:123",
+          "controller": "https://controller.example/123",
           "publicKeyMultibase": "z6LSn6p3HRxx1ZZk1dT9VwcfTBCYgtNWdzdDMKPZjShLNWG7"
         }
       ],
@@ -1289,18 +1289,18 @@ protected resource.
         "https://www.w3.org/ns/did/v1",
         "https://w3id.org/security/multikey/v1"
       ],
-      "id": "did:example:123456789abcdefghi",
+      "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "capabilityInvocation": [
         <span class="comment">// this method can be used to invoke capabilities as did:...fghi</span>
-        "did:example:123456789abcdefghi#keys-1",
+        "https://controller.example/123456789abcdefghi#keys-1",
         <span class="comment">// this method is *only* approved for capability invocation usage, it will not</span>
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
-        "id": "did:example:123456789abcdefghi#keys-2",
+        "id": "https://controller.example/123456789abcdefghi#keys-2",
         "type": "Multikey", <span class="comment">// external (property value)</span>
-        "controller": "did:example:123456789abcdefghi",
+        "controller": "https://controller.example/123456789abcdefghi",
         "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
         }
       ],
@@ -1347,18 +1347,18 @@ example described in [[[#capability-invocation]]].
         "https://www.w3.org/ns/did/v1",
         "https://w3id.org/security/multikey/v1"
       ],
-      "id": "did:example:123456789abcdefghi",
+      "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "capabilityDelegation": [
         <span class="comment">// this method can be used to perform capability delegation as did:...fghi</span>
-        "did:example:123456789abcdefghi#keys-1",
+        "https://controller.example/123456789abcdefghi#keys-1",
         <span class="comment">// this method is *only* approved for granting capabilities; it will not</span>
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
-        "id": "did:example:123456789abcdefghi#keys-2",
+        "id": "https://controller.example/123456789abcdefghi#keys-2",
         "type": "Multikey", <span class="comment">// external (property value)</span>
-        "controller": "did:example:123456789abcdefghi",
+        "controller": "https://controller.example/123456789abcdefghi",
         "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
         }
       ],
@@ -2792,7 +2792,7 @@ developers seeking test values.
                title="Multiple public keys encoded as Multikeys in a controller document">
 {
   "@context": "https://www.w3.org/ns/controller/v1",
-  "id": "did:example:123",
+  "id": "https://controller.example/123",
   "verificationMethod": [{
     "id": "https://multikey.example/issuer/123#key-1",
     "type": "Multikey",
@@ -2812,17 +2812,17 @@ developers seeking test values.
     5ypoHjwBb"
   }],
   "authentication": [
-    "did:example:123#key-1"
+    "https://controller.example/123#key-1"
   ],
   "assertionMethod": [
-    "did:example:123#key-2"
-    "did:example:123#key-3"
+    "https://controller.example/123#key-2"
+    "https://controller.example/123#key-3"
   ],
   "capabilityDelegation": [
-    "did:example:123#key-2"
+    "https://controller.example/123#key-2"
   ],
   "capabilityInvocation": [
-    "did:example:123#key-2"
+    "https://controller.example/123#key-2"
   ]
 }
           </pre>
