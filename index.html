@@ -2745,7 +2745,108 @@ calculation.
 
     </section>
 
-    <section class="informative">
+    <section class="appendix informative">
+      <h2>Examples</h2>
+
+      <p>
+This section contains more detailed examples of the concepts introduced in
+the specification.
+      </p>
+      <section class="informative">
+        <h2>Multikey Examples</h2>
+
+        <p>
+This section contains various Multikey examples that might be useful for
+developers seeking test values.
+        </p>
+
+          <pre class="example nohighlight"
+            title="A P-256 public key encoded as a Multikey">
+{
+  "id": "https://multikey.example/issuer/123#key-0",
+  "type": "Multikey",
+  "controller": "https://multikey.example/issuer/123",
+  "publicKeyMultibase": "zDnaerx9CtbPJ1q36T5Ln5wYt3MQYeGRG5ehnPAmxcf5mDZpv"
+}
+          </pre>
+
+          <pre class="example nohighlight"
+            title="A P-384 public key encoded as a Multikey">
+{
+  "id": "https://multikey.example/issuer/123#key-0",
+  "type": "Multikey",
+  "controller": "https://multikey.example/issuer/123",
+  "publicKeyMultibase": "z82LkvCwHNreneWpsgPEbV3gu1C6NFJEBg4srfJ5gdxEsMGRJ
+    Uz2sG9FE42shbn2xkZJh54"
+}
+          </pre>
+
+          <pre class="example nohighlight"
+            title="An Ed25519 public key encoded as a Multikey">
+{
+  "id": "https://multikey.example/issuer/123#key-0",
+  "type": "Multikey",
+  "controller": "https://multikey.example/issuer/123",
+  "publicKeyMultibase": "z6Mkf5rGMoatrSj1f4CyvuHBeXJELe9RPdzo2PKGNCKVtZxP"
+}
+          </pre>
+
+          <pre class="example nohighlight"
+            title="A BLS12-381 G2 group public key, encoded as a Multikey">
+{
+  "id": "https://multikey.example/issuer/123#key-0",
+  "type": "Multikey",
+  "controller": "https://multikey.example/issuer/123",
+  "publicKeyMultibase": "zUC7EK3ZakmukHhuncwkbySmomv3FmrkmS36E4Ks5rsb6VQSRpoCrx6
+  Hb8e2Nk6UvJFSdyw9NK1scFXJp21gNNYFjVWNgaqyGnkyhtagagCpQb5B7tagJu3HDbjQ8h
+  5ypoHjwBb"
+}
+          </pre>
+
+          <pre class="example nohighlight"
+               title="Multiple public keys encoded as Multikeys in a controller document">
+{
+  "@context": "https://www.w3.org/ns/controller/v1",
+  "id": "did:example:123",
+  "verificationMethod": [{
+    "id": "https://multikey.example/issuer/123#key-1",
+    "type": "Multikey",
+    "controller": "https://multikey.example/issuer/123",
+    "publicKeyMultibase": "zDnaerx9CtbPJ1q36T5Ln5wYt3MQYeGRG5ehnPAmxcf5mDZpv"
+  }, {
+    "id": "https://multikey.example/issuer/123#key-2",
+    "type": "Multikey",
+    "controller": "https://multikey.example/issuer/123",
+    "publicKeyMultibase": "z6Mkf5rGMoatrSj1f4CyvuHBeXJELe9RPdzo2PKGNCKVtZxP"
+  }, {
+    "id": "https://multikey.example/issuer/123#key-3",
+    "type": "Multikey",
+    "controller": "https://multikey.example/issuer/123",
+    "publicKeyMultibase": "zUC7EK3ZakmukHhuncwkbySmomv3FmrkmS36E4Ks5rsb6VQSRpoCrx6
+    Hb8e2Nk6UvJFSdyw9NK1scFXJp21gNNYFjVWNgaqyGnkyhtagagCpQb5B7tagJu3HDbjQ8h
+    5ypoHjwBb"
+  }],
+  "authentication": [
+    "did:example:123#key-1"
+  ],
+  "assertionMethod": [
+    "did:example:123#key-2"
+    "did:example:123#key-3"
+  ],
+  "capabilityDelegation": [
+    "did:example:123#key-2"
+  ],
+  "capabilityInvocation": [
+    "did:example:123#key-2"
+  ]
+}
+          </pre>
+        </section>
+      </section>
+
+    </section>
+
+    <section class="appendix informative">
       <h2>Revision History</h2>
 
       <p>
@@ -2763,7 +2864,8 @@ Apply wording updates from VC-JOSE-COSE spec.
       </ul>
 
     </section>
-    <section class="informative">
+
+    <section class="appendix informative">
       <h2>Acknowledgements</h2>
 
       <p>
