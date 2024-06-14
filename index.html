@@ -462,10 +462,243 @@ contain [=verification relationships=] that explicitly permit the use of
 certain [=verification methods=] for specific purposes.
         </p>
 
-        <div class="issue">Add examples of common Controller documents, such as
-controller documents published on a ledger-based registry, or on a mutable medium in
-combination with an integrity protection mechanism such as Hashlinks.
+        <div class="issue">
+Add examples of common Controller documents.
         </div>
+
+        <p class="note"
+           title="Property names used in map of different types">
+The property names `id`, `type`, and `controller` can be present in map of
+different types with possible differences in constraints.
+        </p>
+
+        <section>
+          <h2>Controller Documents</h2>
+
+          <p>
+The following sections define the properties in a [=controller document=],
+including whether these properties are required or optional. These properties
+describe relationships between the [=subject=] and the value of the
+property.
+          </p>
+
+          <p>
+The following tables contain informative references for the core properties
+defined by this specification, with expected values, and whether or not they are
+required. The property names in the tables are linked to the normative
+definitions and more detailed descriptions of each property.
+          </p>
+
+          <table class="simple">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Required?</th>
+                <th>Value constraints</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>`id`</td>
+                <td>yes</td>
+                <td>
+A <a data-cite="INFRA#string">string</a> that conforms to the URL syntax
+defined in Section [[[#subjects]]].
+                </td>
+              </tr>
+              <tr>
+                <td>`alsoKnownAs`</td>
+                <td>no</td>
+                <td>
+A <a data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a> that conform to the rules of
+[[RFC3986]] for URIs as defined in Section [[[#also-known-as]]].
+                </td>
+              </tr>
+              <tr>
+                <td>`controller`</td>
+                <td>no</td>
+                <td>
+A <a data-cite="INFRA#string">string</a> or a
+<a data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a> that conform to the URL syntax
+defined in the [[[URL]]] as defined in Section [[[#controllers]]].
+                </td>
+              </tr>
+              <tr>
+                <td>`verificationMethod`</td>
+                <td>no</td>
+                <td>
+A <a data-cite="INFRA#ordered-set">set</a> of
+[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>
+that conform to the rules in Section [[[#verification-methods]]].
+                </td>
+              </tr>
+              <tr>
+                <td>`authentication`</td>
+                <td>no</td>
+                <td rowspan="5">
+A <a data-cite="INFRA#ordered-set">set</a> of
+[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>
+that conform to the rules in Section [[[#authentication]]] or a
+a <a data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a> that conform to the URL syntax
+defined in the [[[URL]]].
+                </td>
+              </tr>
+              <tr>
+                <td>`assertionMethod`</td>
+                <td>no</td>
+
+              </tr>
+              <tr>
+                <td>`keyAgreement`</td>
+                <td>no</td>
+
+              </tr>
+              <tr>
+                <td>`capabilityInvocation`</td>
+                <td>no</td>
+
+              </tr>
+              <tr>
+                <td>`capabilityDelegation`</td>
+                <td>no</td>
+
+              </tr>
+            </tbody>
+          </table>
+
+          <section>
+            <h3>Subjects</h3>
+            <p>
+The identifier for a particular [=subject=] is expressed using the
+`id` property in the [=controller document=].
+            </p>
+
+            <dl>
+              <dt>id</dt>
+              <dd>
+The value of `id` MUST be a <a data-cite="INFRA#string">string</a>
+that conforms to the rules in the [[[URL]]].
+              </dd>
+            </dl>
+
+            <p>
+A [=controller document=] MUST contain an `id` value in the
+root <a data-cite="INFRA#ordered-map">map</a>.
+            </p>
+
+            <pre class="example nohighlight">
+{
+  "id": "https://controller.example/123"
+}
+            </pre>
+
+            <p>
+The `id` property only denotes the identifier of the [=subject=] when it is
+present in the <em>topmost</em>
+<a data-cite="INFRA#ordered-map">map</a> of the [=controller document=].
+            </p>
+
+          </section>
+
+          <section>
+            <h3>Controllers</h3>
+
+            <p>
+A [=controller=] is an entity that is authorized to make changes to a
+[=controller document=].
+            </p>
+
+            <dl>
+              <dt>controller</dt>
+              <dd>
+The `controller` property is OPTIONAL. If present, the value MUST
+be a <a data-cite="INFRA#string">string</a> or a <a
+data-cite="INFRA#ordered-set">set</a> of <a
+data-cite="INFRA#string">strings</a> that conform to the rules in
+the [[[URL]]]. The corresponding [=controller document=](s) SHOULD
+contain [=verification relationships=] that explicitly permit the use of
+certain [=verification methods=] for specific purposes. If the `controller`
+property is not provided, the controller MUST be assumed to be the value
+expressed by the `id` property.
+              </dd>
+            </dl>
+
+            <p>
+When a `controller` property is present in a [=controller document=], its
+value expresses one or more identifiers. Any [=verification methods=] contained
+in the [=controller documents=] for those identifiers SHOULD
+be accepted as authoritative, such that proofs that satisfy those
+[=verification methods=] are to be considered equivalent to proofs provided
+by the [=subject=].
+            </p>
+
+            <pre class="example nohighlight"
+              title="Controller document with a controller property">
+{
+  "@context": "https://www.w3.org/ns/controller/v1",
+  "id": "https://controller1.example/123",
+  "controller": "https://controllerB.example/abc",
+}
+            </pre>
+
+            <p class="note" title="Authorization vs authentication">
+Note that authorization provided by the value of `controller` is
+separate from authentication as described in Section [[[#authentication]]].
+This is particularly important for key recovery in the case of cryptographic key
+loss, where the [=subject=] no longer has access to their keys, or key
+compromise, where the [=controller=]'s trusted third parties need to
+override malicious activity by an attacker. See [[[#security-considerations]]]
+for information related to threat models and attack vectors.
+            </p>
+          </section>
+
+          <section>
+            <h3>Also Known As</h3>
+
+            <p>
+A [=subject=] can have multiple identifiers for different purposes, or
+at different times. The assertion that two or more identifiers (or other types
+of URI) refer to the same [=subject=] can be made using the
+`alsoKnownAs` property.
+            </p>
+
+            <dl>
+              <dt>alsoKnownAs</dt>
+              <dd>
+The `alsoKnownAs` property is OPTIONAL. If present, the value MUST
+be a <a data-cite="INFRA#ordered-set">set</a> where each item in the
+set is a URI conforming to [[RFC3986]].
+              </dd>
+              <dd>
+This relationship is a statement that the subject of this identifier is
+also identified by one or more other identifiers.
+              </dd>
+            </dl>
+
+            <div class="note" title="Equivalence and alsoKnownAs">
+              <p>
+Applications might choose to consider two identifiers related by `alsoKnownAs`
+to be equivalent <em>if</em> the `alsoKnownAs` relationship is reciprocated in
+the reverse direction. It is best practice <em>not</em> to consider them
+equivalent in the absence of this inverse relationship. In other words, the
+presence of an `alsoKnownAs` assertion does not prove that this assertion is
+true. Therefore, it is strongly advised that a requesting party obtain
+independent verification of an `alsoKnownAs` assertion.
+              </p>
+              <p>
+Given that the [=subject=] might use different identifiers for different
+purposes, an expectation of strong equivalence between the two identifiers, or
+merging the information of the two corresponding [=controller documents=], is
+not necessarily appropriate, <em>even with</em> a reciprocal relationship.
+              </p>
+            </div>
+
+          </section>
+
+        </section>
 
         <section>
           <h2>Verification Methods</h2>
@@ -566,7 +799,7 @@ revocation.
             title="Example verification method structure">
     {
       "@context": [
-        "https://www.w3.org/ns/did/v1",
+        "https://www.w3.org/ns/controller/v1",
         "https://www.w3.org/ns/credentials/v2",
         "https://w3id.org/security/jwk/v1",
         "https://w3id.org/security/data-integrity/v2"
@@ -597,7 +830,7 @@ from the [=controller document=], it is necessary to explicitly express the iden
 of the controller of the key. The difference is that the value of
 `controller` for a [=verification method=] is <em>not</em>
 necessarily a [=controller=]. [=Controllers=] are expressed
-using the `[=controller=]` property at the highest level of the
+using the `controller` property at the highest level of the
 [=controller document=].
           </p>
 
@@ -654,7 +887,7 @@ methods</a> using both properties above is shown below.
               title="Verification methods using publicKeyJwk and publicKeyMultibase">
     {
       "@context": [
-        "https://www.w3.org/ns/did/v1",
+        "https://www.w3.org/ns/controller/v1",
         "https://www.w3.org/ns/credentials/v2",
         "https://w3id.org/security/jwk/v1",
         "https://w3id.org/security/multikey/v1"
@@ -1084,7 +1317,7 @@ referenced.
                           containing three verification methods">
     {
       "@context": [
-        "https://www.w3.org/ns/did/v1",
+        "https://www.w3.org/ns/controller/v1",
         "https://www.w3.org/ns/credentials/v2",
         "https://w3id.org/security/multikey/v1"
       ],
@@ -1119,16 +1352,16 @@ some data (in some protocol-specific format) that contains a proof that was made
 for the purpose of "authentication", and that says that an entity is identified
 by the `id`, then that <em>verifier</em> checks to ensure that the proof can be
 verified using a [=verification method=] (e.g., [=public key=]) listed
-under `[=authentication=]` in the [=controller document=].
+under `authentication` in the [=controller document=].
             </p>
             <p>
 Note that the [=verification method=] indicated by the
-`[=authentication=]` property of a [=controller document=] can
+`authentication` property of a [=controller document=] can
 only be used to [=authenticate=] the [=controller=]. To
 [=authenticate=] a different [=controller=], the entity associated with
 the value of `controller` needs to [=authenticate=] with its
 <em>own</em> [=controller document=] and associated
-`[=authentication=]` [=verification relationship=].
+`authentication` [=verification relationship=].
             </p>
           </section>
 
@@ -1158,7 +1391,7 @@ verifiable credential by a verifier.
 During verification, a verifier checks to see if a
 [=verifiable credential=] contains a proof created by the [=controller=]
 by checking that the [=verification method=] used to assert the proof is
-associated with the `[=assertionMethod=]` property in the
+associated with the `assertionMethod` property in the
 corresponding [=controller document=].
 -->
             </p>
@@ -1167,7 +1400,7 @@ corresponding [=controller document=].
                         containing two verification methods">
     {
       "@context": [
-        "https://www.w3.org/ns/did/v1",
+        "https://www.w3.org/ns/controller/v1",
         "https://www.w3.org/ns/credentials/v2",
         "https://w3id.org/security/multikey/v1"
       ],
@@ -1286,7 +1519,7 @@ protected resource.
                           containing two verification methods">
     {
       "@context": [
-        "https://www.w3.org/ns/did/v1",
+        "https://www.w3.org/ns/controller/v1",
         "https://w3id.org/security/multikey/v1"
       ],
       "id": "https://controller.example/123456789abcdefghi",
@@ -1344,7 +1577,7 @@ example described in [[[#capability-invocation]]].
                           containing two verification methods">
     {
       "@context": [
-        "https://www.w3.org/ns/did/v1",
+        "https://www.w3.org/ns/controller/v1",
         "https://w3id.org/security/multikey/v1"
       ],
       "id": "https://controller.example/123456789abcdefghi",
@@ -2004,9 +2237,9 @@ the corresponding hash values below:
 <strong>URL:</strong>
 https://w3id.org/security/data-integrity/v2 (application/ld+json)<br>
 <strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
+`<span class="vc-hash"
 data-hash-url="https://w3id.org/security/data-integrity/v2"
-data-hash-format="openssl dgst -sha256" /></code>
+data-hash-format="openssl dgst -sha256" />`
             </td>
           </tr>
           <tr>
@@ -2014,9 +2247,9 @@ data-hash-format="openssl dgst -sha256" /></code>
 <strong>URL:</strong>
 https://w3id.org/security/multikey/v1 (application/ld+json)<br>
 <strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
+`<span class="vc-hash"
 data-hash-url="https://w3id.org/security/multikey/v1"
-data-hash-format="openssl dgst -sha256" /></code>
+data-hash-format="openssl dgst -sha256" />`
             </td>
           </tr>
           <tr>
@@ -2024,9 +2257,9 @@ data-hash-format="openssl dgst -sha256" /></code>
 <strong>URL:</strong>
 https://w3id.org/security/jwk/v1 (application/ld+json)<br>
 <strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
+`<span class="vc-hash"
 data-hash-url="https://w3id.org/security/jwk/v1"
-data-hash-format="openssl dgst -sha256" /></code>
+data-hash-format="openssl dgst -sha256" />`
             </td>
           </tr>
         </tbody>
@@ -2066,9 +2299,9 @@ application/ld+json
             <td>
 The vocabulary in JSON-LD format [[?JSON-LD11]].<br><br>
 <strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
+`<span class="vc-hash"
 data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.jsonld"
-data-hash-format="openssl dgst -sha256" /></code>
+data-hash-format="openssl dgst -sha256" />`
             </td>
           </tr>
           <tr>
@@ -2078,9 +2311,9 @@ text/turtle
             <td>
 The vocabulary in Turtle format [[?TURTLE]].<br><br>
 <strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
+`<span class="vc-hash"
 data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.ttl"
-data-hash-format="openssl dgst -sha256" /></code>
+data-hash-format="openssl dgst -sha256" />`
             </td>
           </tr>
           <tr>
@@ -2090,9 +2323,9 @@ text/html
             <td>
 The vocabulary in HTML+RDFa Format [[?HTML-RDFA]].<br><br>
 <strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash"
+`<span class="vc-hash"
 data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.html"
-data-hash-format="openssl dgst -sha256" /></code>
+data-hash-format="openssl dgst -sha256" />`
             </td>
           </tr>
         </tbody>
@@ -2156,7 +2389,7 @@ an `@context` property with a value of
         <p>
 Context injection is expected to be unnecessary sometimes, such as when the Verifiable
 Credential Data Model v2.0 context (`https://www.w3.org/ns/credentials/v2`)
-exists as a value in the `@context` property, as that context maps all of the
+exists as a value in the `@context` property, as that context map all of the
 necessary Data Integrity terms that were previously mapped by
 `https://w3id.org/security/data-integrity/v2`.
         </p>
