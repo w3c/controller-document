@@ -521,7 +521,7 @@ A <a data-cite="INFRA#ordered-set">set</a> of
                 <td>
 A <a data-cite="INFRA#string">string</a> or a
 <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a> that conform to the URL syntax
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
 defined in the [[[URL]]] as defined in Section [[[#controllers]]].
                 </td>
               </tr>
@@ -540,9 +540,9 @@ that conform to the rules in Section [[[#verification-methods]]].
                 <td rowspan="5">
 A <a data-cite="INFRA#ordered-set">set</a> of
 [=verification method=] <a data-cite="INFRA#ordered-map">maps</a>
-that conform to the rules in Section [[[#authentication]]] or a
+that conform to the rules in Section [[[#authentication]]]; or a
 a <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a> that conform to the URL syntax
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
 defined in the [[[URL]]].
                 </td>
               </tr>
@@ -614,15 +614,15 @@ A [=controller=] is an entity that is authorized to make changes to a
             <dl>
               <dt>controller</dt>
               <dd>
-The `controller` property is OPTIONAL. If present, the value MUST
+The `controller` property is OPTIONAL. If present, its value MUST
 be a <a data-cite="INFRA#string">string</a> or a <a
 data-cite="INFRA#ordered-set">set</a> of <a
-data-cite="INFRA#string">strings</a> that conform to the rules in
+data-cite="INFRA#string">strings</a>, each of which conforms to the rules in
 the [[[URL]]]. The corresponding [=controller document=](s) SHOULD
 contain [=verification relationships=] that explicitly permit the use of
 certain [=verification methods=] for specific purposes. If the `controller`
-property is not provided, the controller MUST be assumed to be the value
-expressed by the `id` property.
+property is not present, the value expressed by the `id` property MUST be 
+treated as if it were also set as the value of the `controller` property.
               </dd>
             </dl>
 
@@ -631,7 +631,7 @@ When a `controller` property is present in a [=controller document=], its
 value expresses one or more identifiers. Any [=verification methods=] contained
 in the [=controller documents=] for those identifiers SHOULD
 be accepted as authoritative, such that proofs that satisfy those
-[=verification methods=] are to be considered equivalent to proofs provided
+[=verification methods=] are considered equivalent to proofs provided
 by the [=subject=].
             </p>
 
@@ -647,9 +647,9 @@ by the [=subject=].
             <p class="note" title="Authorization vs authentication">
 Note that authorization provided by the value of `controller` is
 separate from authentication as described in Section [[[#authentication]]].
-This is particularly important for key recovery in the case of cryptographic key
-loss, where the [=subject=] no longer has access to their keys, or key
-compromise, where the [=controller=]'s trusted third parties need to
+This is particularly important for key recovery in the cases of cryptographic key
+loss, where the [=subject=] no longer has access to their keys, or cryptographic
+key compromise, where the [=controller=]'s trusted third parties need to
 override malicious activity by an attacker. See [[[#security-considerations]]]
 for information related to threat models and attack vectors.
             </p>
@@ -659,8 +659,8 @@ for information related to threat models and attack vectors.
             <h3>Also Known As</h3>
 
             <p>
-A [=subject=] can have multiple identifiers for different purposes, or
-at different times. The assertion that two or more identifiers (or other types
+A [=subject=] can have multiple identifiers that are used for different purposes
+or at different times. The assertion that two or more identifiers (or other types
 of URI) refer to the same [=subject=] can be made using the
 `alsoKnownAs` property.
             </p>
@@ -668,7 +668,7 @@ of URI) refer to the same [=subject=] can be made using the
             <dl>
               <dt>alsoKnownAs</dt>
               <dd>
-The `alsoKnownAs` property is OPTIONAL. If present, the value MUST
+The `alsoKnownAs` property is OPTIONAL. If present, its value MUST
 be a <a data-cite="INFRA#ordered-set">set</a> where each item in the
 set is a URI conforming to [[RFC3986]].
               </dd>
@@ -681,17 +681,20 @@ also identified by one or more other identifiers.
             <div class="note" title="Equivalence and alsoKnownAs">
               <p>
 Applications might choose to consider two identifiers related by `alsoKnownAs`
-to be equivalent <em>if</em> the `alsoKnownAs` relationship is reciprocated in
-the reverse direction. It is best practice <em>not</em> to consider them
-equivalent in the absence of this inverse relationship. In other words, the
-presence of an `alsoKnownAs` assertion does not prove that this assertion is
-true. Therefore, it is strongly advised that a requesting party obtain
+to be equivalent <em>if</em> the `alsoKnownAs` relationship expressed in the
+controller document of one [=subject=] is also expressed in the reverse direction
+(i.e., reciprocated) in the controller document of the other [=subject=]. It is
+best practice <em>not</em> to consider them
+equivalent in the absence of this reciprocating relationship. In other words,
+the presence of an `alsoKnownAs` assertion does not prove that this assertion
+is true. Therefore, it is strongly advised that a requesting party obtain
 independent verification of an `alsoKnownAs` assertion.
               </p>
               <p>
 Given that the [=subject=] might use different identifiers for different
-purposes, an expectation of strong equivalence between the two identifiers, or
-merging the information of the two corresponding [=controller documents=], is
+purposes, such as enhanced privacy protection, an expectation of strong
+equivalence between the two identifiers, or taking action to
+merge the information from the two corresponding [=controller documents=], is
 not necessarily appropriate, <em>even with</em> a reciprocal relationship.
               </p>
             </div>
@@ -2389,7 +2392,7 @@ an `@context` property with a value of
         <p>
 Context injection is expected to be unnecessary sometimes, such as when the Verifiable
 Credential Data Model v2.0 context (`https://www.w3.org/ns/credentials/v2`)
-exists as a value in the `@context` property, as that context map all of the
+exists as a value in the `@context` property, as that context maps all of the
 necessary Data Integrity terms that were previously mapped by
 `https://w3id.org/security/data-integrity/v2`.
         </p>
