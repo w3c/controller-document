@@ -368,8 +368,8 @@ when non-conforming documents are consumed.
         <h3>Terminology</h3>
 
         <p>
-This section defines the terms used in this specification. A link to these terms
-is included whenever they appear in this specification.
+This section defines the terms used in this specification. A link to the relevant
+definition is included whenever one of these terms appears in this specification.
         </p>
 
         <dl class="termlist definitions" data-sort="ascending">
@@ -393,14 +393,14 @@ attribute or controls a specific secret.
 
           <dt><dfn class="export" data-lt="cryptosuite">cryptographic suite</dfn></dt>
           <dd>
-A specification defining the usage of specific cryptographic primitives in
-order to achieve a particular security goal. These documents are often used
+A specification defining how to use specific cryptographic primitives
+to achieve a particular security goal. These documents are often used
 to specify [=verification methods=], digital signature types,
 their identifiers, and other related properties.<!--  See Section -->
 <!-- [[[#cryptographic-suites]]] for further detail. -->
           </dd>
 
-          <dt><dfn class="export" data-lt="controller(s)">controller</dfn></dt>
+          <dt><dfn class="export" data-lt="controller(s)|Controllers">controller</dfn></dt>
           <dd>
 An entity that has the capability to make changes to a
 [=controller document=].
@@ -424,7 +424,7 @@ thing, logical thing, etc.
             <p>
 A set of parameters that can be used together with a process to independently
 verify a proof. For example, a cryptographic public key can be used as a
-verification method with respect to a digital signature; in such usage, it
+verification method with respect to a digital signature; in such use, it
 verifies that the signer possessed the associated cryptographic private key.
             </p>
             <p>
@@ -440,8 +440,8 @@ method, even though descriptions of the process might not use the words
           <dt><dfn class="export">verification relationship</dfn></dt>
           <dd>
             <p>
-An expression of the relationship between the [=subject=] and a
-[=verification method=]. An example of a verification relationship is
+An expression of the relationship between a [=subject=] and a
+[=verification method=]. One example of a verification relationship is
 [[[#authentication]]].
             </p>
           </dd>
@@ -474,7 +474,7 @@ A [=controller document=] can express [=verification methods=], such as
 cryptographic [=public keys=], which can be used to [=authenticate=] or
 authorize interactions with the [=controller=] or associated parties. For
 example, a cryptographic [=public key=] can be used as a <a>verification
-method</a> with respect to a digital signature; in such usage, it verifies that
+method</a> with respect to a digital signature; in such use, it verifies that
 the signer could use the associated cryptographic private key. <a>Verification
 methods</a> might take many parameters. An example of this is a set of five
 cryptographic keys from which any three are required to contribute to a
@@ -504,8 +504,9 @@ in the Data Integrity Specification Registries [TBD - DIS-REGISTRIES].
                 <dt>id</dt>
                 <dd>
                   <p>
-The value of the `id` property for a <a>verification
-method</a> MUST be a <a data-cite="INFRA#string">string</a> that conforms to the [[URL]] syntax.
+The value of the `id` property for a [=verification method=]
+MUST be a <a data-cite="INFRA#string">string</a> that
+conforms to the [[URL]] syntax.
                   </p>
                 </dd>
                 <dt>type</dt>
@@ -595,7 +596,7 @@ key. Since a key can't control itself, and the key controller cannot be inferred
 from the [=controller document=], it is necessary to explicitly express the identity
 of the controller of the key. The difference is that the value of
 `controller` for a [=verification method=] is <em>not</em>
-necessarily a [=controller=]. [=controllers=] are expressed
+necessarily a [=controller=]. [=Controllers=] are expressed
 using the `[=controller=]` property at the highest level of the
 [=controller document=].
           </p>
@@ -1038,12 +1039,12 @@ appropriate [=verification relationship=] property of the
 The [=verification relationship=] between the [=controller=] and the
 [=verification method=] is explicit in the [=controller document=].
 [=Verification methods=] that are not associated with a particular
-[=verification relationship=] cannot be used for that <a>verification
-relationship</a>. For example, a [=verification method=] in the value of
+[=verification relationship=] cannot be used for that [=verification
+relationship=]. For example, a [=verification method=] in the value of
 the `[=authentication=]` property cannot be used to engage in
-key agreement protocols with the [=controller=]&mdash;the value of the
-`<a href="#defn-keyAgreement">keyAgreement</a>` property needs to be used for
-that.
+key agreement protocols with the [=controller=] &mdash; the value of the
+`<a href="#defn-keyAgreement">keyAgreement</a>` property needs to be used
+for that.
           </p>
           <p>
 The [=controller document=] does not express revoked keys using a <a>verification
@@ -1291,9 +1292,9 @@ protected resource.
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "capabilityInvocation": [
-        <span class="comment">// this method can be used to invoke capabilities as did:...fghi</span>
+        <span class="comment">// this method can be used to invoke capabilities as https:...fghi</span>
         "https://controller.example/123456789abcdefghi#keys-1",
-        <span class="comment">// this method is *only* approved for capability invocation usage, it will not</span>
+        <span class="comment">// this method is *only* approved for use in capability invocation; it will not</span>
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
@@ -2854,9 +2855,9 @@ Apply wording updates from VC-JOSE-COSE spec.
 
       <p>
 The specification authors would like to thank the contributors to the
-W3C Decentralized Identifiers (DIDs) v1.0,
-W3C Verifiable Credential Data Integrity 1.0, and
-W3C Securing Verifiable Credentials using JOSE and COSE specifications
+<a href="https://www.w3.org/TR/2022/REC-did-core-20220719/">W3C Decentralized Identifiers (DIDs) v1.0</a>,
+<a href="https://www.w3.org/TR/2024/CRD-vc-data-integrity-20240609/">W3C Verifiable Credential Data Integrity 1.0</a>, and
+<a href="https://www.w3.org/TR/2024/CRD-vc-jose-cose-20240521/">W3C Securing Verifiable Credentials using JOSE and COSE</a> specifications
 upon which this work is based.
       </p>
   </body>
