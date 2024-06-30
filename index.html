@@ -537,7 +537,7 @@ that conform to the rules in Section [[[#verification-methods]]].
               <tr>
                 <td>`authentication`</td>
                 <td>no</td>
-                <td rowspan="5">
+                <td>
 A <a data-cite="INFRA#ordered-set">set</a> of
 [=verification method=] <a data-cite="INFRA#ordered-map">maps</a>
 that conform to the rules in Section [[[#authentication]]]; or a
@@ -549,22 +549,50 @@ defined in the [[[URL]]].
               <tr>
                 <td>`assertionMethod`</td>
                 <td>no</td>
-
+                <td>
+A <a data-cite="INFRA#ordered-set">set</a> of
+[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>
+that conform to the rules in Section [[[#assertion]]]; or a
+a <a data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
+defined in the [[[URL]]].
+                </td>
               </tr>
               <tr>
                 <td>`keyAgreement`</td>
                 <td>no</td>
-
+                <td>
+A <a data-cite="INFRA#ordered-set">set</a> of
+[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>
+that conform to the rules in Section [[[#key-agreement]]]; or a
+a <a data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
+defined in the [[[URL]]].
+                </td>
               </tr>
               <tr>
                 <td>`capabilityInvocation`</td>
                 <td>no</td>
-
+                <td>
+A <a data-cite="INFRA#ordered-set">set</a> of
+[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>
+that conform to the rules in Section [[[#capability-invocation]]]; or a
+a <a data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
+defined in the [[[URL]]].
+                </td>
               </tr>
               <tr>
                 <td>`capabilityDelegation`</td>
                 <td>no</td>
-
+                <td>
+A <a data-cite="INFRA#ordered-set">set</a> of
+[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>
+that conform to the rules in Section [[[#capability-delegation]]]; or a
+a <a data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
+defined in the [[[URL]]].
+                </td>
               </tr>
             </tbody>
           </table>
@@ -621,7 +649,7 @@ data-cite="INFRA#string">strings</a>, each of which conforms to the rules in
 the [[[URL]]]. The corresponding [=controller document=](s) SHOULD
 contain [=verification relationships=] that explicitly permit the use of
 certain [=verification methods=] for specific purposes. If the `controller`
-property is not present, the value expressed by the `id` property MUST be 
+property is not present, the value expressed by the `id` property MUST be
 treated as if it were also set as the value of the `controller` property.
               </dd>
             </dl>
