@@ -3164,6 +3164,22 @@ developers seeking test values.
           </pre>
 
           <pre class="example nohighlight"
+            title="A BLS12-381 G2 group public key, encoded as a JsonWebKey using OKP">
+{
+  "id": "https://jsonwebkey.example/issuer/123#key-0",
+  "type": "JsonWebKey",
+  "controller": "https://jsonwebkey.example/issuer/123",
+  "publicKeyJwk": {
+    "kty": "OKP",
+    "crv": "Bls12381G2",
+    "x": "rMvXj_LibMeRrNh2sqmkBqBH4xKeOWmAYK8inVMX1839y6XeolnbT6vxnxU2PmV9FXJ
+    -rtcz6Txe7v2ij1dFzMHuBT1TyBrtEZWtCSOMTIBXpnVsOMMSdhsTB1iUS9o1"
+  }
+}
+          </pre>
+
+
+          <pre class="example nohighlight"
                title="Multiple public keys encoded as JsonWebKey in a controller document">
 {
   "@context": "https://www.w3.org/ns/controller/v1",
