@@ -1370,6 +1370,12 @@ referenced.
             "kty": "OKP",
             "kid": "_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
           }
+        },
+        {
+          "id": "https://controller.example/123456789abcdefghi#keys-3",
+          "type": "Multikey",
+          "controller": "https://controller.example/123456789abcdefghi",
+          "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
         }
       ],
       <span class="comment">...</span>
@@ -1500,7 +1506,13 @@ wrap a decryption key for the recipient.
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
-          "id": "https://controller.example/123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+          "id": "https://controller.example/123#z6LSn6p3HRxx1ZZk1dT9VwcfTBCYgtNWdzdDMKPZjShLNWG7",
+          "type": "X25519KeyAgreementKey2019", <span class="comment">// external (property value)</span>
+          "controller": "https://controller.example/123",
+          "publicKeyMultibase": "z6LSn6p3HRxx1ZZk1dT9VwcfTBCYgtNWdzdDMKPZjShLNWG7"
+        },
+        {
+          "id": "https://controller.example/123#uJVamQV5rMNQGUwCqlH0",
           "type": "JsonWebKey", <span class="comment">// external (property value)</span>
           "controller": "https://controller.example/123",
           "publicKeyJwk": {
@@ -1629,13 +1641,20 @@ example described in [[[#capability-invocation]]].
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
-        "id": "https://controller.example/123456789abcdefghi#keys-2",
-        "type": "JsonWebKey", <span class="comment">// external (property value)</span>
-        "controller": "https://controller.example/123456789abcdefghi",
-        "publicKeyJwk": {
-          "kty": "OKP",
-          "crv": "Ed25519",
-          "x": "O2onvM62pC1io6jQKm8Nc2UyFXcd4kOmOsBIoYtZ2ik"
+          "id": "https://controller.example/123456789abcdefghi#keys-2",
+          "type": "JsonWebKey", <span class="comment">// external (property value)</span>
+          "controller": "https://controller.example/123456789abcdefghi",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "O2onvM62pC1io6jQKm8Nc2UyFXcd4kOmOsBIoYtZ2ik"
+          }
+        },
+        {
+          "id": "https://controller.example/123456789abcdefghi#keys-3",
+          "type": "Multikey", <span class="comment">// external (property value)</span>
+          "controller": "https://controller.example/123456789abcdefghi",
+          "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
         }
       ],
       <span class="comment">...</span>
