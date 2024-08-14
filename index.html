@@ -1357,9 +1357,8 @@ referenced.
       "authentication": [
         <span class="comment">// this method can be used to authenticate as did:...fghi</span>
         "https://controller.example/123456789abcdefghi#keys-1",
-        <span class="comment">// this method is *only* approved for authentication, it may not</span>
-        <span class="comment">// be used for any other proof purpose, so its full description is</span>
-        <span class="comment">// embedded here rather than using only a reference</span>
+        <span class="comment">// this method is *only* approved for authentication, so its</span>
+        <span class="comment">// full description is embedded here rather than using only a reference</span>
         {
           "id": "https://controller.example/123456789abcdefghi#keys-2",
           "type": "Multikey",
@@ -2086,18 +2085,16 @@ function baseDecode(sourceEncoding, sourceBase, baseAlphabet) {
 The following algorithm specifies how to safely retrieve a verification method,
 such as a cryptographic [=public key=], by using a [=verification method=]
 identifier. Required inputs are a
-<strong>[=verification method=]</strong> (<var>verificationMethod</var>),
-a <strong>proof purpose</strong> (<var>proofPurpose</var>), and
-a set of <strong>dereferencing options</strong> (<var>options</var>). A
+<strong>[=verification method=]</strong> (<var>verificationMethod</var>), a
+<strong>[=verification relationship=]</strong>
+(<var>verificationRelationship</var>), and a set of <strong>dereferencing
+options</strong> (<var>options</var>). A
 <strong>verification method</strong> is produced as output.
         </p>
 
         <ol class="algorithm">
           <li>
 Let <var>vmIdentifier</var> be set to <var>verificationMethod</var>.
-          </li>
-          <li>
-Let <var>vmPurpose</var> be set to <var>proofPurpose</var>.
           </li>
           <li>
 If <var>vmIdentifier</var> is not a valid URL, an error MUST be raised and SHOULD
@@ -2142,11 +2139,12 @@ an error MUST be raised and SHOULD convey an error type of
 <a href="#INVALID_VERIFICATION_METHOD">INVALID_VERIFICATION_METHOD</a>.
           </li>
           <li>
-If <var>verificationMethod</var> is not associated with the array of
-<var>vmPurposes</var> in the <var>controllerDocument</var>, either by reference
-(URL) or by value (object), an error MUST be raised and SHOULD convey an error
-type of <a href="#INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD">
-INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD</a>.
+If <var>verificationMethod</var> is not associated with the
+<var>verificationRelationship</var> array in the <var>controllerDocument</var>,
+either by reference (URL) or by value (object), an error MUST be raised and
+SHOULD convey an error type of
+<a href="#INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD">
+INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD</a>.
           </li>
           <li>
 Return <var>verificationMethod</var> as the
@@ -2231,7 +2229,7 @@ The [=controller document=] was malformed. See Section
 The [=verification method=] in a [=controller document=] was malformed. See Section
 [[[#retrieve-verification-method]]].
           </dd>
-          <dt id="INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD">INVALID_PROOF_PURPOSE_FOR_VERIFICATION_METHOD (-25)</dt>
+          <dt id="INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD">INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD (-25)</dt>
           <dd>
 The [=verification method=] in a [=controller document=] was not
 associated using the expected [=verification relationship=] as expressed in
