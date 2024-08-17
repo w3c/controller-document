@@ -1500,20 +1500,19 @@ wrap a decryption key for the recipient.
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "keyAgreement": [
-        <span class="comment">// this method can be used to perform key agreement as did:...fghi</span>
         "https://controller.example/123456789abcdefghi#keys-1",
-        <span class="comment">// this method is *only* approved for key agreement usage, it will not</span>
-        <span class="comment">// be used for any other verification relationship, so its full description is</span>
-        <span class="comment">// embedded here rather than using only a reference</span>
+        <span class="comment">// the rest of the methods below are *only* approved for key agreement usage</span>
+        <span class="comment">// they will not be used for any other verification relationship</span>
+        <span class="comment">// the full value is embedded here rather than using only a reference</span>
         {
-          "id": "https://controller.example/123#z6LSn6p3HRxx1ZZk1dT9VwcfTBCYgtNWdzdDMKPZjShLNWG7",
-          "type": "X25519KeyAgreementKey2019", <span class="comment">// external (property value)</span>
+          "id": "https://controller.example/123#keys-2",
+          "type": "Multikey",
           "controller": "https://controller.example/123",
-          "publicKeyMultibase": "z6LSn6p3HRxx1ZZk1dT9VwcfTBCYgtNWdzdDMKPZjShLNWG7"
+          "publicKeyMultibase": "zDnaerx9CtbPJ1q36T5Ln5wYt3MQYeGRG5ehnPAmxcf5mDZpv"
         },
         {
-          "id": "https://controller.example/123#uJVamQV5rMNQGUwCqlH0",
-          "type": "JsonWebKey", <span class="comment">// external (property value)</span>
+          "id": "https://controller.example/123#keys-3",
+          "type": "JsonWebKey",
           "controller": "https://controller.example/123",
           "publicKeyJwk": {
             "kty": "OKP",
