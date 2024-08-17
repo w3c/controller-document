@@ -1362,6 +1362,17 @@ referenced.
         <span class="comment">// embedded here rather than using only a reference</span>
         {
           "id": "https://controller.example/123456789abcdefghi#keys-2",
+          "type": "JsonWebKey",
+          "controller": "https://controller.example/123456789abcdefghi",
+          "publicKeyJwk": {
+            "crv": "Ed25519",
+            "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ",
+            "kty": "OKP",
+            "kid": "_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
+          }
+        },
+        {
+          "id": "https://controller.example/123456789abcdefghi#keys-3",
           "type": "Multikey",
           "controller": "https://controller.example/123456789abcdefghi",
           "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
@@ -1495,10 +1506,20 @@ wrap a decryption key for the recipient.
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
-          "id": "https://controller.example/123#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+          "id": "https://controller.example/123#z6LSn6p3HRxx1ZZk1dT9VwcfTBCYgtNWdzdDMKPZjShLNWG7",
           "type": "X25519KeyAgreementKey2019", <span class="comment">// external (property value)</span>
           "controller": "https://controller.example/123",
           "publicKeyMultibase": "z6LSn6p3HRxx1ZZk1dT9VwcfTBCYgtNWdzdDMKPZjShLNWG7"
+        },
+        {
+          "id": "https://controller.example/123#uJVamQV5rMNQGUwCqlH0",
+          "type": "JsonWebKey", <span class="comment">// external (property value)</span>
+          "controller": "https://controller.example/123",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "X25519",
+            "x": "W_Vcc7guviK-gPNDBmevVw-uJVamQV5rMNQGUwCqlH0"
+          }
         }
       ],
       <span class="comment">...</span>
@@ -1620,10 +1641,20 @@ example described in [[[#capability-invocation]]].
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
         <span class="comment">// embedded here rather than using only a reference</span>
         {
-        "id": "https://controller.example/123456789abcdefghi#keys-2",
-        "type": "Multikey", <span class="comment">// external (property value)</span>
-        "controller": "https://controller.example/123456789abcdefghi",
-        "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+          "id": "https://controller.example/123456789abcdefghi#keys-2",
+          "type": "JsonWebKey", <span class="comment">// external (property value)</span>
+          "controller": "https://controller.example/123456789abcdefghi",
+          "publicKeyJwk": {
+            "kty": "OKP",
+            "crv": "Ed25519",
+            "x": "O2onvM62pC1io6jQKm8Nc2UyFXcd4kOmOsBIoYtZ2ik"
+          }
+        },
+        {
+          "id": "https://controller.example/123456789abcdefghi#keys-3",
+          "type": "Multikey", <span class="comment">// external (property value)</span>
+          "controller": "https://controller.example/123456789abcdefghi",
+          "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
         }
       ],
       <span class="comment">...</span>
@@ -3065,6 +3096,139 @@ developers seeking test values.
     "publicKeyMultibase": "zUC7EK3ZakmukHhuncwkbySmomv3FmrkmS36E4Ks5rsb6VQSRpoCrx6
     Hb8e2Nk6UvJFSdyw9NK1scFXJp21gNNYFjVWNgaqyGnkyhtagagCpQb5B7tagJu3HDbjQ8h
     5ypoHjwBb"
+  }],
+  "authentication": [
+    "https://controller.example/123#key-1"
+  ],
+  "assertionMethod": [
+    "https://controller.example/123#key-2"
+    "https://controller.example/123#key-3"
+  ],
+  "capabilityDelegation": [
+    "https://controller.example/123#key-2"
+  ],
+  "capabilityInvocation": [
+    "https://controller.example/123#key-2"
+  ]
+}
+          </pre>
+        </section>
+        <section class="informative">
+        <h2>JsonWebKey Examples</h2>
+
+        <p>
+This section contains various JsonWebKey examples that might be useful for
+developers seeking test values.
+        </p>
+
+          <pre class="example nohighlight"
+            title="A P-256 public key encoded as a JsonWebKey">
+{
+  "id": "https://jsonwebkey.example/issuer/123#key-0",
+  "type": "JsonWebKey",
+  "controller": "https://jsonwebkey.example/issuer/123",
+  "publicKeyJwk": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "Ums5WVgwRkRTVVFnU3k5c2xvZllMbEcwM3NPRW91ZzN",
+    "y": "nDQW6XZ7b_u2Sy9slofYLlG03sOEoug3I0aAPQ0exs4"
+  }
+}
+          </pre>
+
+          <pre class="example nohighlight"
+            title="A P-384 public key encoded as a JsonWebKey">
+{
+  "id": "https://jsonwebkey.example/issuer/123#key-0",
+  "type": "JsonWebKey",
+  "controller": "https://jsonwebkey.example/issuer/123",
+  "publicKeyJwk": {
+    "kty": "EC",
+    "crv": "P-384",
+    "x": "VUZKSlUwMGdpSXplekRwODhzX2N4U1BYdHVYWUZsaXVDR25kZ1U0UXA4bDkxeHpE",
+    "y": "jq4QoAHKiIzezDp88s_cxSPXtuXYFliuCGndgU4Qp8l91xzD1spCmFIzQgVjqvcP"
+  }
+}
+          </pre>
+
+          <pre class="example nohighlight"
+            title="An Ed25519 public key encoded as a JsonWebKey">
+{
+  "id": "https://jsonwebkey.example/issuer/123#key-0",
+  "type": "JsonWebKey",
+  "controller": "https://jsonwebkey.example/issuer/123",
+  "publicKeyJwk": {
+    "kty": "OKP",
+    "crv": "Ed25519",
+    "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+  }
+}
+          </pre>
+
+          <pre class="example nohighlight"
+            title="A BLS12-381 G2 group public key, encoded as a JsonWebKey">
+{
+  "id": "https://jsonwebkey.example/issuer/123#key-0",
+  "type": "JsonWebKey",
+  "controller": "https://jsonwebkey.example/issuer/123",
+  "publicKeyJwk": {
+    "kty": "EC",
+    "crv": "BLS12381G2",
+    "x": "Ajs8lstTgoTgXMF6QXdyh3m8k2ixxURGYLMaYylVK_x0F8HhE8zk0YWiGV3CHwpQEa2sH4PBZLaYCn8se-1clmCORDsKxbbw3Js_Alu4OmkV9gmbJsy1YF2rt7Vxzs6S",
+    "y": "BVkkrVEib-P_FMPHNtqxJymP3pV-H8fCdvPkoWInpFfM9tViyqD8JAmwDf64zU2hBV_vvCQ632ScAooEExXuz1IeQH9D2o-uY_dAjZ37YHuRMEyzh8Tq-90JHQvicOqx"
+  }
+}
+          </pre>
+
+          <pre class="example nohighlight"
+            title="A BLS12-381 G2 group public key, encoded as a JsonWebKey using OKP">
+{
+  "id": "https://jsonwebkey.example/issuer/123#key-0",
+  "type": "JsonWebKey",
+  "controller": "https://jsonwebkey.example/issuer/123",
+  "publicKeyJwk": {
+    "kty": "OKP",
+    "crv": "Bls12381G2",
+    "x": "rMvXj_LibMeRrNh2sqmkBqBH4xKeOWmAYK8inVMX1839y6XeolnbT6vxnxU2PmV9FXJ-rtcz6Txe7v2ij1dFzMHuBT1TyBrtEZWtCSOMTIBXpnVsOMMSdhsTB1iUS9o1"
+  }
+}
+          </pre>
+
+
+          <pre class="example nohighlight"
+               title="Multiple public keys encoded as JsonWebKey in a controller document">
+{
+  "@context": "https://www.w3.org/ns/controller/v1",
+  "id": "https://controller.example/123",
+  "verificationMethod": [{
+    "id": "https://jsonwebkey.example/issuer/123#key-1",
+    "type": "JsonWebKey",
+    "controller": "https://jsonwebkey.example/issuer/123",
+    "publicKeyJwk": {
+      "kty": "EC",
+      "crv": "P-256",
+      "x": "fyNYMN0976ci7xqiSdag3buk-ZCwgXU4kz9XNkBlNUI",
+      "y": "hW2ojTNfH7Jbi8--CJUo3OCbH3y5n91g-IMA9MLMbTU"
+    }
+  }, {
+    "id": "https://jsonwebkey.example/issuer/123#key-2",
+    "type": "JsonWebKey",
+    "controller": "https://jsonwebkey.example/issuer/123",
+    "publicKeyJwk": {
+      "kty": "EC",
+      "crv": "P-521",
+      "x": "ASUHPMyichQ0QbHZ9ofNx_l4y7luncn5feKLo3OpJ2nSbZoC7mffolj5uy7s6KSKXFmnNWxGJ42IOrjZ47qqwqyS",
+      "y": "AW9ziIC4ZQQVSNmLlp59yYKrjRY0_VqO-GOIYQ9tYpPraBKUloEId6cI_vynCzlZWZtWpgOM3HPhYEgawQ703RjC"
+    }
+  }, {
+    "id": "https://jsonwebkey.example/issuer/123#key-3",
+    "type": "JsonWebKey",
+    "controller": "https://jsonwebkey.example/issuer/123",
+    "publicKeyJwk": {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "_eT7oDCtAC98L31MMx9J0T-w7HR-zuvsY08f9MvKne8"
+    }
   }],
   "authentication": [
     "https://controller.example/123#key-1"
