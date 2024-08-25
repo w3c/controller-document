@@ -1146,7 +1146,8 @@ in the <a href="https://datatracker.ietf.org/doc/html/rfc7517#section-8.1.1">JWK
 Registration Template</a>. It is RECOMMENDED that verification methods that use
 JWKs [[RFC7517]] to represent their [=public keys=] use the value of `kid` as
 their fragment identifier. It is RECOMMENDED that JWK `kid` values are set to
-the public key fingerprint [[RFC7638]]. See the first key in
+the JWK Thumbprint [[RFC7638]] using the SHA-256 (SHA2-256) hash function of the [=public key=].
+See the first key in
 [[[#example-various-verification-method-types]]] for an example of a
 public key with a compound key identifier.
                 </p>
@@ -1195,11 +1196,11 @@ An example of an object that conforms to `JsonWebKey` is provided below:
 
             <p>
 In the example above, the `publicKeyJwk` value contains the JSON Web Key.
-The `kty` property encodes the key type of "OKP", which means
-"Octet string key pairs". The `alg` property identifies the algorithm intended
+The `kty` property encodes the key type of "EC", which means
+"Elliptic Curve". The `alg` property identifies the algorithm intended
 for use with the public key, which in this case is `ES384`. The `crv` property identifies
-the particular curve type of the public key, `P-384`. The `x` property specifies
-the point on the P-384 curve that is associated with the public key.
+the particular curve type of the public key, `P-384`. The `x` and `y` properties specify
+the point on the `P-384` curve that is associated with the public key.
             </p>
 
             <p>
@@ -1233,8 +1234,8 @@ referred to as <em>private keys</em>.
 The private key example above is almost identical to the previous example of the
 public key, except that the information is stored in the `secretKeyJwk` property
 (rather than the `publicKeyJwk`), and the private key value is encoded in the `d`
-property thereof (alongside the `x` property, which still specifies the point on
-the Ed25519 curve that is associated with the public key).
+property thereof (alongside the `x` and `y` properties, which still specify
+the point on the `P-384` curve that is associated with the public key).
             </p>
 
           </section>
@@ -1305,9 +1306,9 @@ The [=verification relationship=] between the [=controller=] and the
 [=Verification methods=] that are not associated with a particular
 [=verification relationship=] cannot be used for that [=verification
 relationship=]. For example, a [=verification method=] in the value of
-the `[=authentication=]` property cannot be used to engage in
+the [=authentication=] property cannot be used to engage in
 key agreement protocols with the [=controller=] &mdash; the value of the
-`<a href="#defn-keyAgreement">keyAgreement</a>` property needs to be used
+<a href="#defn-keyAgreement">keyAgreement</a> property needs to be used
 for that.
           </p>
           <p>
@@ -1319,7 +1320,7 @@ considered invalid or revoked.
           <p>
 The following sections define several useful [=verification relationships=].
 A [=controller document=] MAY include any of these, or other properties, to
-express a specific [=verification relationship=]. To maximize global
+express a specific [=verification relationship=]. To maximize
 interoperability, any such properties used SHOULD be registered in the
 <a href="https://w3c.github.io/vc-specs-dir/#securing-mechanisms">VC Specifications Directory</a>.
           </p>
@@ -1470,7 +1471,7 @@ corresponding [=controller document=].
 
             <p>
 The `keyAgreement` [=verification relationship=] is used to
-specify how an entity can generate encryption material in order to transmit
+specify how an entity can perform encryption in order to transmit
 confidential information intended for the [=controller=], such as for
 the purposes of establishing a secure communication channel with the recipient.
             </p>
@@ -2422,18 +2423,18 @@ Verifiable Credentials v2.0: Vocabularies</a>.
         <h3>Context Injection</h3>
 
         <p>
-The `@context` property is used to ensure that implementations are using the
+The `@context` property is used by implementations that employ JSON-LD to ensure that implementations are using the
 same semantics when terms in this specification are processed. For example, this
-can be important when properties like `type` are processed and its value, such
+can be important when properties like `type` are processed and its values, such
 as `DataIntegrityProof`, are used.
         </p>
 
         <p>
 If an `@context` property is not provided in a document that is being secured or
-verified, or the Data Integrity terms used in the document are not mapped by
-existing values in the `@context` property, implementations MUST inject or add
+verified, or any Data Integrity terms used in the document are not mapped by
+existing values in the `@context` property, implementations using JSON-LD MUST inject or add
 an `@context` property with a value of
-`https://w3id.org/security/data-integrity/v2`.
+`https://www.w3.org/ns/controller/v1`.
         </p>
 
         <p>
@@ -2519,14 +2520,14 @@ unique to this specification.
 
       <p>
 Binding an entity in the digital world or the physical world to an identifier, to
-a [=controller document=], or to cryptographic material requires, the use of
+a [=controller document=], or to cryptographic material requires the use of
 security protocols contemplated by this specification. The following sections
 describe some possible scenarios and how an entity therein might prove control
 over an identifier or a [=controller document=] for the purposes of authentication or
 authorization.
       </p>
 
-      <section class="notoc">
+      <section>
         <h3>Proving Control of an Identifier and/or Controller Document</h3>
 
         <p>
@@ -2542,7 +2543,7 @@ authentication or authorization security protocol.
         </p>
       </section>
 
-      <section class="notoc">
+      <section>
         <h3>Binding to Physical Identity</h3>
 
         <p>
@@ -2579,7 +2580,7 @@ by this specification and further defined in [[[?VC-DATA-MODEL-2.0]]].
 In a decentralized architecture, there might not be centralized authorities to
 enforce cryptographic material or cryptographic digital signature expiration
 policies. Therefore, it is with supporting software such as verification
-libraries that requesting parties validate that cryptographic material were not
+libraries that requesting parties validate that cryptographic materials were not
 expired at the time they were used. Requesting parties might employ their own
 expiration policies in addition to inputs into their verification processes. For
 example, some requesting parties might accept authentications from five minutes
@@ -2657,7 +2658,7 @@ containing a historical record, to determine the validity of the proof or
 signature. This option might not be available in all systems.
         </li>
         <li>
-A [=controller=] performs a rotation when they add a new <a>verification
+A [=controller=] performs a rotation when it adds a new <a>verification
 method</a> that is meant to replace an existing [=verification method=] after
 some time.
         </li>
@@ -2748,7 +2749,7 @@ method</a> is publicly revoked.
         </li>
       </ul>
 
-      <section class="notoc">
+      <section>
         <h3>Revocation Semantics</h3>
 
         <p>
@@ -2815,7 +2816,7 @@ receiving party.
     <section>
       <h2>Content Integrity Protection</h2>
       <p>
-[=Controller documents=] which include links to external machine-readable
+[=Controller documents=] that include links to external machine-readable
 content such as images, web pages, or schemas are vulnerable to tampering. It is
 strongly advised that external links are integrity protected using mechanisms to
 secure related resources such as those described in the [[[?VC-DATA-MODEL-2.0]]]
@@ -2825,8 +2826,9 @@ external link.
       </p>
       <p>
 One example of an external link where the integrity of the <a>controller
-document</a> itself could be affected is the JSON-LD Context [[JSON-LD11]]. To protect
-against compromise, [=controller document=] consumers are advised to cache
+document</a> itself could be affected is the JSON-LD Context [[JSON-LD11]],
+when present. To protect against compromise,
+[=controller document=] consumers using JSON-LD are advised to cache
 local static copies of JSON-LD contexts and/or verify the integrity of external
 contexts against a cryptographic hash that is known to be associated with a safe
 version of the external JSON-LD Context.
@@ -2914,7 +2916,7 @@ other private communication channels.
       <h2>Identifier Correlation Risks</h2>
 
       <p>
-Globally unambiguous identifiers can be used for the purpose of correlation.
+Identifiers can be used for the purpose of correlation.
 [=Controllers=] can mitigate this privacy risk by using pairwise identifiers
 that are unique to each relationship; in effect, each identifier acts as a
 pseudonym. A pairwise identifier need only be shared with more than one party
@@ -3178,21 +3180,6 @@ developers seeking test values.
           </pre>
 
           <pre class="example nohighlight"
-            title="A BLS12-381 G2 group public key, encoded as a JsonWebKey using OKP">
-{
-  "id": "https://jsonwebkey.example/issuer/123#key-0",
-  "type": "JsonWebKey",
-  "controller": "https://jsonwebkey.example/issuer/123",
-  "publicKeyJwk": {
-    "kty": "OKP",
-    "crv": "Bls12381G2",
-    "x": "rMvXj_LibMeRrNh2sqmkBqBH4xKeOWmAYK8inVMX1839y6XeolnbT6vxnxU2PmV9FXJ-rtcz6Txe7v2ij1dFzMHuBT1TyBrtEZWtCSOMTIBXpnVsOMMSdhsTB1iUS9o1"
-  }
-}
-          </pre>
-
-
-          <pre class="example nohighlight"
                title="Multiple public keys encoded as JsonWebKey in a controller document">
 {
   "@context": "https://www.w3.org/ns/controller/v1",
@@ -3278,7 +3265,7 @@ upon which this work is based.
       </p>
 
       <p>
-we would also like to thank the base-x software library contributors and the
+We would also like to thank the base-x software library contributors and the
 Bitcoin Core developers who wrote the original code, shared under an MIT
 License, found in Section [[[#base-encode]]] and Section [[[#base-decode]]].
       </p>
