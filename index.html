@@ -1170,6 +1170,7 @@ in the <a href="https://datatracker.ietf.org/doc/html/rfc7517#section-8.1.1">JWK
 Registration Template</a>. It is RECOMMENDED that verification methods that use
 JWKs [[RFC7517]] to represent their [=public keys=] use the value of `kid` as
 their fragment identifier. It is RECOMMENDED that JWK `kid` values are set to
+the JWK Thumbprint [[RFC7638]] using the SHA-256 hash function of the [=public key=].
 See the first key in
 [[[#example-various-verification-method-types]]] for an example of a
 public key with a compound key identifier.
@@ -2312,7 +2313,7 @@ the `proofPurpose` property in the proof. See Section
           The terms defined in this specification are also part of the
           RDF <a data-cite="RDF-CONCEPTS#vocabularies">vocabulary namespace</a> [[RDF-CONCEPTS]]
           <a href="https://w3id.org/security">https://w3id.org/security#</a>.
-          For any `TERM`, the relevant URL is of the form 
+          For any `TERM`, the relevant URL is of the form
           `https://w3id.org/security#TERM` or `https://w3id.org/security#TERMmethod`.
           Implementations that use RDF processing and rely on this specification MUST use these URLs.
         </p>
@@ -2322,7 +2323,7 @@ the `proofPurpose` property in the proof. See Section
           <a href="https://w3id.org/security">https://w3id.org/security#</a> URL,
           the media type of the data that is returned depends on HTTP content negotiation. These are as follows:
         </p>
-        
+
         <table class="simple">
           <thead>
             <tr>
@@ -2337,7 +2338,7 @@ the `proofPurpose` property in the proof. See Section
               </td>
               <td>
                 The vocabulary in JSON-LD format [[?JSON-LD11]].<br>
-        
+
                 <strong>SHA2-256 Digest:</strong> <code><span class="vc-hash"
         data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.jsonld"
         data-hash-format="openssl dgst -sha256" /></code>
@@ -2349,7 +2350,7 @@ the `proofPurpose` property in the proof. See Section
               </td>
               <td>
                 The vocabulary in Turtle format [[?TURTLE]].<br>
-        
+
                 <strong>SHA2-256 Digest:</strong> <code><span class="vc-hash"
         data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.ttl"
         data-hash-format="openssl dgst -sha256" /></code>
@@ -2361,8 +2362,8 @@ the `proofPurpose` property in the proof. See Section
               </td>
               <td>
                 The vocabulary in HTML+RDFa Format [[?HTML-RDFA]].<br>
-        
-        
+
+
                 <strong>SHA2-256 Digest:</strong> <code><span class="vc-hash"
         data-hash-url="https://w3c.github.io/vc-data-integrity/vocab/security/vocabulary.html"
         data-hash-format="openssl dgst -sha256" /></code>
@@ -2370,13 +2371,13 @@ the `proofPurpose` property in the proof. See Section
             </tr>
           </tbody>
         </table>
-        
+
         <p>
           It is possible to confirm the cryptographic digests above by running
           a command like the following (replacing `&lt;MEDIA_TYPE>` and `&lt;DOCUMENT_URL>`
           with the appropriate values) through a modern UNIX-like OS command line interface:
           `curl -sL -H "Accept: &lt;MEDIA_TYPE>" &lt;DOCUMENT_URL> | openssl dgst -sha256`
-        </p>       
+        </p>
       </section>
 
       <section>
@@ -2386,7 +2387,7 @@ the `proofPurpose` property in the proof. See Section
           JSON-LD context URL as already resolved, where the resolved document matches
           the corresponding hash value below:
         </p>
-        
+
         <table class="simple">
           <thead>
             <th>Context URL and Hash</th>
@@ -2402,13 +2403,13 @@ the `proofPurpose` property in the proof. See Section
             </tr>
           </tbody>
         </table>
-        
+
         <p>
           It is possible to confirm the cryptographic digests listed above by running a
           command like the following through a modern UNIX-like OS command line interface: `curl -sL -H
           "Accept: application/ld+json" https://www.w3.org/ns/controller/v1 | openssl dgst -sha256`
         </p>
-        
+
         <p>
           The security vocabulary terms that the JSON-LD contexts listed above resolve
           to are in the <a href="https://w3id.org/security">https://w3id.org/security#</a>
@@ -2417,7 +2418,7 @@ the `proofPurpose` property in the proof. See Section
 
         <p class="note">
           Applications or specifications may define mappings to the
-          vocabulary URLs using their own JSON-LD contexts. For example, these mappings are part 
+          vocabulary URLs using their own JSON-LD contexts. For example, these mappings are part
           of the `https://w3id.org/security/data-integrity/v2` context,
           defined by the [[[?VC-DATA-INTEGRITY]]] specification, or the `https://www.w3.org/ns/did/v1` context,
           defined by the [[[?DID-CORE]]] specification.
@@ -2435,7 +2436,7 @@ the `proofPurpose` property in the proof. See Section
           <p>
             When an application is processing a [=controller document=], if an `@context`
             property is not provided in the document or the terms used in the document are
-            not mapped by existing values in the `@context` property, implementations MUST inject 
+            not mapped by existing values in the `@context` property, implementations MUST inject
             or append an `@context` property with a value of
             `https://www.w3.org/ns/controller/v1` or one or more contexts with at least the
             same declarations, such as the Decentralized Identifier v1.1 context
