@@ -778,15 +778,8 @@ conforms to the [[URL]] syntax.
 The value of the `type` property MUST be a <a
 data-cite="INFRA#string">string</a> that references exactly one <a>verification
 method</a> type.
-<!-- VC-DATA-INTEGRITY-SPECIFIC:
-In order to maximize global interoperability, the
-[=verification method=] type SHOULD be registered in the Data Integrity Specification
-Registries [TBD -- DIS-REGISTRIES].
--->
-<!-- VC-JOSE-COSE-SPECIFIC:
-To maximize interoperability, the
-[=verification method=] type SHOULD be `JsonWebKey`.
--->
+This specification defines the types `JsonWebKey` (see Section [[[#JsonWebKey]]])
+and `Multikey` (see Section [[[#Multikey]]]).
                 </dd>
                 <dt><span id="defn-controller">controller</span></dt>
                 <dd>
@@ -875,15 +868,11 @@ expected to be used to determine its compatibility with such processes. Examples
 of verification methods include `JsonWebKey` and `Multikey`.
 A [=cryptographic suite=] specification is responsible for specifying the
 [=verification method=] `type` and its associated verification material
-format. For examples, see
+format. For examples using verification material, see
 <a href="https://www.w3.org/TR/vc-jose-cose/">Securing Verifiable Credentials using JOSE and COSE</a>,
 <a href="https://www.w3.org/TR/vc-di-ecdsa/">the Data Integrity ECDSA
 Cryptosuites</a> and <a href="https://w3c-ccg.github.io/lds-ed25519-2020/">
 the Data Integrity EdDSA Cryptosuites</a>.
-<!-- VC-DATA-INTEGRITY-SPECIFIC:
-For a list of <a>verification
-method</a> types, please see the [[?SECURITY-VOCABULARY]].
--->
             </p>
 
             <p>
