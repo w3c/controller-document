@@ -485,20 +485,14 @@ certain [=verification methods=] for specific purposes.
 
         <pre class="example" title="Controller Document using publicKeyMultibase and JSON-LD">
 {
-  "@context": [
-    "https://www.w3.org/ns/controller/v1",
-    "https://www.w3.org/ns/credentials/v2",
-    "https://w3id.org/security/multikey/v1"
-  ],
-  "id": "https://controller.example/",
-  "authentication": [
-    {
-      "id": "https://controller.example/#authn-key-1724893671",
+  "@context": "https://www.w3.org/ns/controller/v1",
+  "id": "https://controller.example",
+  "authentication": [{
+      "id": "https://controller.example#authn-key-123",
       "type": "Multikey",
-      "controller": "https://controller.example/",
+      "controller": "https://controller.example",
       "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
-    }
-  ]
+    }]
 }
         </pre>
 
