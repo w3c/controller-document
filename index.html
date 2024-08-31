@@ -204,18 +204,6 @@
               status: "ED",
               publisher: "W3C Verifiable Credentials Working Group"
             },
-            "DID-KEY": {
-              title: "The did:key Method",
-              href: "https://w3c-ccg.github.io/did-method-key/",
-              authors: [
-                "Manu Sporny",
-                "Dmitri Zagidulin",
-                "Dave Longley",
-                "Orie Steele"
-              ],
-              status: "CG-DRAFT",
-              publisher: "W3C Credentials Community Group"
-            },
             "SHA3": {
               title: "SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions",
               href: "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf",
@@ -936,18 +924,13 @@ methods</a> using both properties above is shown below.
               class="example nohighlight"
               title="Verification methods using publicKeyJwk and publicKeyMultibase">
     {
-      "@context": [
-        "https://www.w3.org/ns/controller/v1",
-        "https://www.w3.org/ns/credentials/v2",
-        "https://w3id.org/security/jwk/v1",
-        "https://w3id.org/security/multikey/v1"
-      ]
+      "@context": "https://www.w3.org/ns/controller/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "verificationMethod": [{
         "id": "https://controller.example/123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
         "type": "JsonWebKey", <span class="comment">// external (property value)</span>
-        "controller": "https://controller.example/123",
+        "controller": "https://controller.example/123456789abcdefghi",
         "publicKeyJwk": {
           "crv": "Ed25519", <span class="comment">// external (property name)</span>
           "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ", <span class="comment">// external (property name)</span>
@@ -957,7 +940,7 @@ methods</a> using both properties above is shown below.
       }, {
         "id": "https://controller.example/123456789abcdefghi#keys-1",
         "type": "Multikey", <span class="comment">// external (property value)</span>
-        "controller": "did:example:pqrstuvwxyz0987654321",
+        "controller": "https://controller.example/123456789abcdefghi",
         "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
       }],
       <span class="comment">...</span>
@@ -1375,7 +1358,7 @@ referenced.
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "authentication": [
-        <span class="comment">// this method can be used to authenticate as did:...fghi</span>
+        <span class="comment">// this method can be used to authenticate</span>
         "https://controller.example/123456789abcdefghi#keys-1",
         <span class="comment">// this method is *only* approved for authentication, so its</span>
         <span class="comment">// full description is embedded here rather than using only a reference</span>
@@ -1468,7 +1451,7 @@ corresponding [=controller document=].
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "assertionMethod": [
-        <span class="comment">// this method can be used to assert statements as did:...fghi</span>
+        <span class="comment">// this method can be used to assert statements</span>
         "https://controller.example/123456789abcdefghi#keys-1",
         <span class="comment">// this method is *only* approved for assertion of statements, it is not</span>
         <span class="comment">// used for any other verification relationship, so its full description is</span>
@@ -1515,7 +1498,7 @@ wrap a decryption key for the recipient.
             <pre class="example nohighlight" title="Key agreement property
                           containing two verification methods">
     {
-      "@context": "https://www.w3.org/ns/did/v1",
+      "@context": "https://www.w3.org/ns/controller/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "keyAgreement": [
@@ -1653,7 +1636,7 @@ example described in [[[#capability-invocation]]].
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "capabilityDelegation": [
-        <span class="comment">// this method can be used to perform capability delegation as did:...fghi</span>
+        <span class="comment">// this method can be used to perform capability delegation</span>
         "https://controller.example/123456789abcdefghi#keys-1",
         <span class="comment">// this method is *only* approved for granting capabilities; it will not</span>
         <span class="comment">// be used for any other verification relationship, so its full description is</span>
