@@ -396,8 +396,9 @@ their identifiers, and other related properties.<!--  See Section -->
 
           <dt><dfn class="export" data-lt="controller(s)|Controllers">controller</dfn></dt>
           <dd>
-An entity that has the capability to make changes to a
-[=controller document=].
+An entity that is [=authorized=] to perform an action with a specific resource,
+such as update a [=controller document=] or use a cryptographic key to generate
+a digital signature.
           </dd>
 
           <dt><dfn class="export">controller document</dfn></dt>
@@ -884,16 +885,17 @@ revocation.
           </pre>
 
           <p class="note"
-            title="Verification method controller(s) and controller(s)">
-The semantics of the `controller` property are the same when the
-subject of the relationship is the [=controller document=] as when the subject of
-the relationship is a [=verification method=], such as a cryptographic public
-key. Since a key can't control itself, and the key controller cannot be inferred
-from the [=controller document=], it is necessary to explicitly express the identity
-of the controller of the key. The difference is that the value of
-`controller` for a [=verification method=] is <em>not</em>
-necessarily a [=controller=]. [=Controllers=] are expressed
-using the `controller` property at the highest level of the
+            title="The `controller` property is used by multiple objects">
+The `controller` property is used by [=controller documents=], as described in
+Section [[[#controller-documents]]], and by [=verification methods=], as
+described in Section [[[#verification-methods]]]. When it is used in either
+place, its purpose is the same; that is, it expresses one or more entities that
+are authorized to perform certain actions associated with the resource with
+which it is associated. To ensure explicit security guarantees, the
+[=controller=] of a [=verification method=] cannot be inferred from the
+[=controller document=]. It is necessary to explicitly express the identifier of
+the controller of the key because the value of `controller` for a [=verification
+method=] is <em>not</em> necessarily the value of the `controller` for a
 [=controller document=].
           </p>
 
