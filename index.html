@@ -1691,11 +1691,13 @@ example described in [[[#capability-invocation]]].
           <h2>Multibase</h2>
 
           <p>
-A Multibase string includes a single character header which identifies the
-base and encoding alphabet used to encode a binary value, followed by the
-encoded binary value (using that base and alphabet). The common Multibase
-header values and their associated base encoding alphabets as provided below
-are normative:
+A Multibase value encodes a binary value as a
+<a href="https://en.wikipedia.org/wiki/Binary-to-text_encoding">base-encoded
+string</a>. The value starts with a single character header, which identifies
+the base and encoding alphabet used to encode a binary value, followed by the
+encoded binary value (using that base and alphabet). The common
+<dfn class="export">Multibase header</dfn> values and their associated base
+encoding alphabets, as provided below, are normative:
           </p>
 
           <table class="simple">
@@ -2483,12 +2485,12 @@ This section defines datatypes that are used by this specification.
         <h4 id="multibase">The `multibase` Datatype</h3>
 
         <p>
-<a href="#multibase">Multibase</a>-encoded strings are used to encode binary
-data into ASCII-only formats, which are useful in environments that cannot
-directly represent binary values. This specification makes use of this encoding.
-In environments that support data types for string values, such as RDF
-[[?RDF-CONCEPTS]], <a href="#multibase">Multibase</a>-encoded content is
-indicated using a literal value whose datatype is set to
+<a href="#multibase-0">Multibase</a>-encoded strings are used to encode binary
+data into printable formats, such as ASCII, which are useful in environments
+that cannot directly represent binary values. This specification makes use of
+this encoding. In environments that support data types for string values, such
+as RDF [[?RDF-CONCEPTS]], <a href="#multibase-0">Multibase</a>-encoded content
+is indicated using a literal value whose datatype is set to
 `https://w3id.org/security#multibase`.
         </p>
 
@@ -2503,9 +2505,9 @@ The `multibase` datatype is defined as follows:
           </dd>
           <dt>The lexical space</dt>
           <dd>
-Any string that starts with a <a href="#multibase">Multibase</a> character and
-the rest of the characters consist of allowable characters in the respective
-base-encoding alphabet.
+Any string that starts with a [=Multibase header=] and the rest of the
+characters consist of allowable characters in the respective base-encoding
+alphabet.
           </dd>
           <dt>The value space</dt>
           <dd>
@@ -2514,8 +2516,8 @@ The standard mathematical concept of all integer numbers.
           <dt>The lexical-to-value mapping</dt>
           <dd>
 Any element of the lexical space is mapped to the value space by base-decoding
-the value based on the base-decoding alphabet associated with the
-first <a href="#multibase">Multibase</a> character in the lexical string.
+the value based on the base-decoding alphabet associated with the first
+[=Multibase header=] in the lexical string.
           </dd>
           <dt>The canonical mapping</dt>
           <dd>
