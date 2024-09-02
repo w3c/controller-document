@@ -513,6 +513,7 @@ definitions and more detailed descriptions of each property.
                 <th>Property</th>
                 <th>Required?</th>
                 <th>Value constraints</th>
+                <th style="white-space: nowrap;">Definition</th>
               </tr>
             </thead>
             <tbody>
@@ -520,18 +521,9 @@ definitions and more detailed descriptions of each property.
                 <td>`id`</td>
                 <td>yes</td>
                 <td>
-A <a data-cite="INFRA#string">string</a> that conforms to the URL syntax
-defined in Section [[[#subjects]]].
+A <a data-cite="INFRA#string">string</a> that conforms to the URL syntax.
                 </td>
-              </tr>
-              <tr>
-                <td>`alsoKnownAs`</td>
-                <td>no</td>
-                <td>
-A <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
-defined in the [[[URL]]] as defined in Section [[[#also-known-as]]].
-                </td>
+                <td style="white-space: nowrap;">[[[#subjects]]]</td>
               </tr>
               <tr>
                 <td>`controller`</td>
@@ -539,78 +531,89 @@ defined in the [[[URL]]] as defined in Section [[[#also-known-as]]].
                 <td>
 A <a data-cite="INFRA#string">string</a> or a
 <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
-defined in the [[[URL]]] as defined in Section [[[#controllers]]].
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL
+syntax.
                 </td>
+                <td style="white-space: nowrap;">[[[#controllers]]]</td>
+              </tr>
+              <tr>
+                <td>`alsoKnownAs`</td>
+                <td>no</td>
+                <td>
+A <a data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL
+syntax.
+                </td>
+                <td style="white-space: nowrap;">[[[#also-known-as]]]</td>
               </tr>
               <tr>
                 <td>`verificationMethod`</td>
                 <td>no</td>
                 <td>
 A <a data-cite="INFRA#ordered-set">set</a> of
-[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>, each of which
-conforms to the rules in Section [[[#verification-methods]]].
+[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>.
                 </td>
+                <td style="white-space: nowrap;">[[[#verification-methods]]]</td>
               </tr>
               <tr>
                 <td>`authentication`</td>
                 <td>no</td>
                 <td>
-A <a data-cite="INFRA#ordered-set">set</a> of
-[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>, each of which
-conforms to the rules in Section [[[#authentication]]]; or a
-a <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
-defined in the [[[URL]]].
+A <a data-cite="INFRA#ordered-set">set</a> of [=verification method=] <a
+data-cite="INFRA#ordered-map">maps</a> or a a <a
+data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL
+syntax.
                 </td>
+                <td style="white-space: nowrap;">[[[#authentication]]]</td>
               </tr>
               <tr>
                 <td>`assertionMethod`</td>
                 <td>no</td>
                 <td>
-A <a data-cite="INFRA#ordered-set">set</a> of
-[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>, each of which
-conforms to the rules in Section [[[#assertion]]]; or a
-a <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
-defined in the [[[URL]]].
+A <a data-cite="INFRA#ordered-set">set</a> of [=verification method=] <a
+data-cite="INFRA#ordered-map">maps</a> or a a <a
+data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL
+syntax.
                 </td>
+                <td style="white-space: nowrap;">[[[#assertion]]]</td>
               </tr>
               <tr>
                 <td>`keyAgreement`</td>
                 <td>no</td>
                 <td>
-A <a data-cite="INFRA#ordered-set">set</a> of
-[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>, each of which
-conforms to the rules in Section [[[#key-agreement]]]; or a
-a <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
-defined in the [[[URL]]].
+A <a data-cite="INFRA#ordered-set">set</a> of [=verification method=] <a
+data-cite="INFRA#ordered-map">maps</a> or a a <a
+data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL
+syntax.
                 </td>
+                <td style="white-space: nowrap;">[[[#key-agreement]]]</td>
               </tr>
               <tr>
                 <td>`capabilityInvocation`</td>
                 <td>no</td>
                 <td>
-A <a data-cite="INFRA#ordered-set">set</a> of
-[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>, each of which
-conforms to the rules in Section [[[#capability-invocation]]]; or a
-a <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
-defined in the [[[URL]]].
+A <a data-cite="INFRA#ordered-set">set</a> of [=verification method=] <a
+data-cite="INFRA#ordered-map">maps</a> or a a <a
+data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL
+syntax.
                 </td>
+                <td style="white-space: nowrap;">[[[#capability-invocation]]]</td>
               </tr>
               <tr>
                 <td>`capabilityDelegation`</td>
                 <td>no</td>
                 <td>
-A <a data-cite="INFRA#ordered-set">set</a> of
-[=verification method=] <a data-cite="INFRA#ordered-map">maps</a>, each of which
-conforms to the rules in Section [[[#capability-delegation]]]; or a
-a <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL syntax
-defined in the [[[URL]]].
+A <a data-cite="INFRA#ordered-set">set</a> of [=verification method=] <a
+data-cite="INFRA#ordered-map">maps</a> or a a <a
+data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the URL
+syntax.
                 </td>
+                <td style="white-space: nowrap;">[[[#capability-delegation]]]</td>
               </tr>
             </tbody>
           </table>
