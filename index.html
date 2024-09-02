@@ -379,6 +379,12 @@ A process by which an entity can prove to a verifier that it has a specific
 attribute or controls a specific secret.
           </dd>
 
+          <dt><dfn data-lt="authorized|authorize">authorization</dfn></dt>
+          <dd>
+A process by which an entity can prove to a verifier that it is allowed to
+perform a specific activity.
+          </dd>
+
           <dt><dfn class="export" data-lt="cryptosuite">cryptographic suite</dfn></dt>
           <dd>
 A means of using specific cryptographic primitives
@@ -699,14 +705,20 @@ are to be made about a [=controller=] being a single entity nor only controlling
 a single [=verification method=].
             </p>
 
-            <p class="note" title="Authorization vs authentication">
-Note that authorization provided by the value of `controller` is separate from
-authentication as described in Section [[[#authentication]]]. This is
-particularly important for key recovery in the cases of cryptographic key loss,
-where the [=subject=] no longer has access to their keys, or cryptographic key
-compromise, where the [=controller=]'s trusted third parties need to override
-malicious activity by an attacker. See [[[#security-considerations]]] for
-information related to threat models and attack vectors.
+            <p class="note" title="Authentication versus Authorization">
+Note that the definition of [=authentication=] is different from the definition
+of [=authorization=]. Generally speaking, [=authentication=] answers the
+question of "Who is this?" while [=authorization=] answers the question of "Are
+they allowed to perform this action?". The `authentication` property in this
+specification is used to, unsurprisingly, perform [=authentication=] while the
+other [=verification relationships=] such as `capabilityDelegation` and
+`capabilityInvocation` are used to perform [=authorization=]. Since successfully
+performing [=authorization=] might have more serious effects on a system,
+[=controllers=] are urged to use different [=verification methods=] when
+performing [=authentication=] versus [=authorization=] and provide stronger
+access protection for [=verification methods=] used for [=authorization=] versus
+[=authentication=]. See [[[#security-considerations]]] for information related
+to threat models and attack vectors.
             </p>
           </section>
 
