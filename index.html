@@ -1741,10 +1741,10 @@ Multibase header. Any algorithm with equivalent output MAY be used.
 
           <p>
 A Multihash value starts with a binary header, which includes 1) an identifier
-for the specific cryptographic hash algorithm, 2) the length of the
-cryptographic hash, and 3) the value of the cryptographic hash. The normative
-Multihash header values defined by this specification, and their associated
-output sizes and associated specifications, are provided below:
+for the specific cryptographic hashing algorithm, 2) a cryptographic digest size
+in bytes, and 3) the value of the cryptographic digest. The normative Multihash
+header values defined by this specification, and their associated output sizes
+and associated specifications, are provided below:
           </p>
 
           <table class="simple">
@@ -1795,17 +1795,18 @@ guaranteed between implementations.
 
           <p>
 To encode to a Multihash value, an implementation MUST concatenate the
-associated Multihash header, the cryptographic hash length, and the
-cryptographic hash value, in that order.
+associated Multihash header (encoded as a varint), the cryptographic digest
+length in bytes (encoded as a varint), and the cryptographic digest value, in
+that order.
           </p>
 
           <p>
 To decode a Multihash value, an implementation MUST 1) remove the prepended
-Multihash header value, which identifies the type of cryptographic hashing
-algorithm, 2) remove the output length, and 3) extract the raw cryptographic
-hash value which MUST match the expected output length associated with the
-Multihash header as well as the output length provided in the Multihash
-value itself.
+Multihash header value, which identifies the type of cryptographic hash
+algorithm, 2) remove the cryptogrphic digest length in bytes, and 3) extract the
+raw cryptographic digest value which MUST match the expected output length
+associated with the Multihash header as well as the output length provided in
+the Multihash value itself.
           </p>
 
         </section>
