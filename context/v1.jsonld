@@ -52,6 +52,10 @@
         "publicKeyMultibase": {
           "@id": "https://w3id.org/security#publicKeyMultibase",
           "@type": "https://w3id.org/security#multibase"
+        },
+        "secretKeyMultibase": {
+          "@id": "https://w3id.org/security#secretKeyMultibase",
+          "@type": "https://w3id.org/security#multibase"
         }
       }
     },
@@ -63,6 +67,10 @@
         "type": "@type",
         "publicKeyJwk": {
           "@id": "https://w3id.org/security#publicKeyJwk",
+          "@type": "@json"
+        },
+        "secretKeyJwk": {
+          "@id": "https://w3id.org/security#secretKeyJwk",
           "@type": "@json"
         }
       }
