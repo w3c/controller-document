@@ -1406,9 +1406,9 @@ If authentication is established, it is up to the application to decide what to
 do with that information.
             </p>
             <p>
-This is useful to any party verifying the authentication that needs to check to
-see if an entity that is attempting to [=authenticate=] is, in fact,
-presenting a valid proof of authentication. When a <em>verifier</em> receives
+This is useful to any entity verifying authentication that needs to check
+whether an entity that is attempting to [=authenticate=] is presenting a valid
+proof of authentication. When such an authentication verifying entity receives
 some data (in some protocol-specific format) that contains a proof that was made
 for the purpose of "authentication", and that says that an entity is identified
 by the `id`, then that <em>verifier</em> checks to ensure that the proof can be
