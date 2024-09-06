@@ -462,9 +462,39 @@ contain [=verification relationships=] that explicitly permit the use of
 certain [=verification methods=] for specific purposes.
         </p>
 
-        <div class="issue">
-Add examples of common Controller documents.
-        </div>
+        <pre class="example" title="Controller Document using publicKeyJwk">
+{
+  "id": "https://controller.example/101",
+  "verificationMethod": [{
+    "id": "https://controller.example/101#key-20240828",
+    "type": "JsonWebKey",
+    "controller": "https://controller.example/101",
+    "publicKeyJwk": {
+      "kid": "key-20240828",
+      "kty": "EC",
+      "crv": "P-256",
+      "alg": "ES256",
+      "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+      "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"
+    }
+
+  }],
+  "authentication": ["#key-20240828"]
+}
+        </pre>
+
+        <pre class="example" title="Controller Document using publicKeyMultibase and JSON-LD">
+{
+  "@context": "https://www.w3.org/ns/controller/v1",
+  "id": "https://controller.example",
+  "authentication": [{
+      "id": "https://controller.example#authn-key-123",
+      "type": "Multikey",
+      "controller": "https://controller.example",
+      "publicKeyMultibase": "z6MkmM42vxfqZQsv4ehtTjFFxQ4sQKS2w6WR7emozFAn5cxu"
+    }]
+}
+        </pre>
 
         <p class="note"
            title="Property names used in map of different types">
