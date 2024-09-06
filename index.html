@@ -660,25 +660,24 @@ A [=controller=] is an entity that is authorized to make changes to a
             <dl>
               <dt>controller</dt>
               <dd>
-The `controller` property is OPTIONAL. If present, its value MUST
-be a <a data-cite="INFRA#string">string</a> or a <a
-data-cite="INFRA#ordered-set">set</a> of <a
-data-cite="INFRA#string">strings</a>, each of which conforms to the rules in
-the [[[URL]]]. The corresponding [=controller document=](s) SHOULD
-contain [=verification relationships=] that explicitly permit the use of
-certain [=verification methods=] for specific purposes. If the `controller`
-property is not present, the value expressed by the `id` property MUST be
-treated as if it were also set as the value of the `controller` property.
+The `controller` property is OPTIONAL. If present, its value MUST be a
+<a data-cite="INFRA#string">string</a> or a
+<a data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>, each of which conforms to the rules
+in the [[[URL]]]. The corresponding [=controller document=](s) SHOULD contain
+[=verification relationships=] that explicitly permit the use of certain
+[=verification methods=] for specific purposes. If the `controller` property is
+not present, the value expressed by the `id` property MUST be treated as if it
+were also set as the value of the `controller` property.
               </dd>
             </dl>
 
             <p>
-When a `controller` property is present in a [=controller document=], its
-value expresses one or more identifiers. Any [=verification methods=] contained
-in the [=controller documents=] for those identifiers SHOULD
-be accepted as authoritative, such that proofs that satisfy those
-[=verification methods=] are considered equivalent to proofs provided
-by the [=subject=].
+When a `controller` property is present in a [=controller document=], its value
+expresses one or more identifiers. Any [=verification methods=] contained in the
+[=controller documents=] for those identifiers SHOULD be accepted as
+authoritative, such that proofs that satisfy those [=verification methods=] are
+considered equivalent to proofs provided by the [=subject=].
             </p>
 
             <pre class="example nohighlight"
@@ -691,26 +690,25 @@ by the [=subject=].
             </pre>
 
             <p>
-While the identifier used for a [=controller=] is unambiguous, that does
-not imply that a single entity is always the controller, nor
-that the controller only has a single identifier. A
-[=controller=] might be a single entity, or a collection of entities,
-such as a corporation. A [=controller=] might also use multiple identifiers
-to refer to itself, for purposes such as privacy or delineating operational
-boundaries within an organization. Similarly, a [=controller=] might control
-many [=verification methods=] and so no assumptions are to be made about
-a [=controller=] being a single entity nor only controlling a single
-[=verification method=].
+While the identifier used for a [=controller=] is unambiguous, that does not
+imply that a single entity is always the controller, nor that the controller
+only has a single identifier. A [=controller=] might be a single entity, or a
+collection of entities, such as a corporation. A [=controller=] might also use
+multiple identifiers to refer to itself, for purposes such as privacy or
+delineating operational boundaries within an organization. Similarly, a
+[=controller=] might control many [=verification methods=] and so no assumptions
+are to be made about a [=controller=] being a single entity nor only controlling
+a single [=verification method=].
             </p>
 
             <p class="note" title="Authorization vs authentication">
-Note that authorization provided by the value of `controller` is
-separate from authentication as described in Section [[[#authentication]]].
-This is particularly important for key recovery in the cases of cryptographic key
-loss, where the [=subject=] no longer has access to their keys, or cryptographic
-key compromise, where the [=controller=]'s trusted third parties need to
-override malicious activity by an attacker. See [[[#security-considerations]]]
-for information related to threat models and attack vectors.
+Note that authorization provided by the value of `controller` is separate from
+authentication as described in Section [[[#authentication]]]. This is
+particularly important for key recovery in the cases of cryptographic key loss,
+where the [=subject=] no longer has access to their keys, or cryptographic key
+compromise, where the [=controller=]'s trusted third parties need to override
+malicious activity by an attacker. See [[[#security-considerations]]] for
+information related to threat models and attack vectors.
             </p>
           </section>
 
