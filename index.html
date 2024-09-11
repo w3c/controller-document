@@ -825,19 +825,22 @@ method</a> type. This specification defines the types `JsonWebKey` (see Section
 The value of the `controller` property MUST be a <a
 data-cite="INFRA#string">string</a> that conforms to the [[URL]] syntax.
                 </dd>
-<!-- VC-DATA-INTEGRITY-SPECIFIC:
+
                 <dt id="defn-vm-expires">expires</dt>
                 <dd>
-The `expires` property is OPTIONAL. It is set, in advance, by the
+The `expires` property is OPTIONAL. 
+<!-- VC-DATA-INTEGRITY-SPECIFIC:
+ It is set, in advance, by the
 [=controller=] of a  [=verification method=] to signal when that method
-can no longer be used for verification purposes. If provided, it MUST be an
+can no longer be used for verification purposes. 
+-->
+If provided, it MUST be an
 [[XMLSCHEMA11-2]] `dateTimeStamp` string specifying when the
 [=verification method=] SHOULD cease to be used. Once the value is set, it is
 not expected to be updated, and systems depending on the value are expected to
 not verify any proofs associated with the [=verification method=] at or after
 the time of expiration.
                 </dd>
--->
                 <dt><dfn class="lint-ignore">revoked</dfn></dt>
                 <dd>
 The `revoked` property is OPTIONAL.
