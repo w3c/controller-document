@@ -695,15 +695,15 @@ considered equivalent to proofs provided by the [=subject=].
             </pre>
 
             <p>
-While the identifier used for a [=controller=] is unambiguous, that does not
-imply that a single entity is always the controller, nor that the controller
+While the identifier used for a [=controller=] is unambiguous, this does not
+imply that a single entity is always the controller, nor that a controller
 only has a single identifier. A [=controller=] might be a single entity, or a
 collection of entities, such as a corporation. A [=controller=] might also use
 multiple identifiers to refer to itself, for purposes such as privacy or
 delineating operational boundaries within an organization. Similarly, a
-[=controller=] might control many [=verification methods=] and so no assumptions
-are to be made about a [=controller=] being a single entity nor only controlling
-a single [=verification method=].
+[=controller=] might control many [=verification methods=]. For these reasons,
+no assumptions are to be made about a [=controller=] being a single entity nor
+controlling only a single [=verification method=].
             </p>
 
             <p class="note" title="Authentication versus Authorization">
@@ -919,7 +919,7 @@ the Data Integrity EdDSA Cryptosuites</a>.
 To increase the likelihood of interoperable implementations, this specification
 limits the number of formats for expressing verification material in a
 [=controller document=]. The fewer formats that implementers have to
-choose from, the more likely interoperability will be achieved. This
+choose from, the more likely that interoperability will be achieved. This
 approach attempts to strike a delicate balance between easing implementation
 and providing support for formats that have historically had broad deployment.
             </p>
@@ -1413,7 +1413,7 @@ do with that information.
             <p>
 This is useful to any entity verifying authentication that needs to check
 whether an entity that is attempting to [=authenticate=] is presenting a valid
-proof of authentication. When such an authentication verifying entity receives
+proof of authentication. When such an authentication-verifying entity receives
 some data (in some protocol-specific format) that contains a proof that was made
 for the purpose of "authentication", and that says that an entity is identified
 by the `id`, then that <em>verifier</em> checks to ensure that the proof can be
