@@ -769,6 +769,89 @@ not necessarily appropriate, <em>even with</em> a reciprocal relationship.
 
           </section>
 
+          <section>
+            <h2>Services</h2>
+
+            <p>
+[=Services=] are used in [=controller documents=] to express ways of
+communicating with the [=subject=] or associated entities. A [=service=] can be
+any type of service the [=subject=] wants to advertise for further discovery,
+authentication, authorization, or interaction.
+            </p>
+
+            <p>
+Due to privacy concerns, revealing public information through [=services=], such
+as social media accounts, personal websites, and email addresses, is
+discouraged. Further exploration of privacy concerns can be found in
+[=#keep-personal-data-private=] and [=#service-privacy=]. The information
+associated with [=services=] is often service specific. For example, the
+information associated with an encrypted messaging service can express how to
+initiate the encrypted link before messaging begins.
+            </p>
+
+            <p>
+[=Services=] are expressed using the `service` property, which is described
+below:
+            </p>
+
+            <dl>
+              <dt><dfn>service</dfn></dt>
+              <dd>
+                <p>
+The `service` property is OPTIONAL. If present, the associated value MUST be a
+<a data-cite="INFRA#ordered-set">set</a> of [=services=], where each service is
+described by a <a data-cite="INFRA#ordered-map">map</a>. Each [=service=] <a
+data-cite="INFRA#ordered-map">map</a> MUST contain `id`, `type`, and
+`serviceEndpoint` properties. Each service extension MAY include additional
+properties and MAY further restrict the properties associated with the
+extension.
+                </p>
+                <dl>
+                  <dt id="prop-service-id">id</dt>
+                  <dd>
+An OPTIONAL property where the value of the `id` property MUST be a URL
+conforming to [[[URL]]]. A [=conforming document=] MUST NOT include multiple
+`service` entries with the same `id`.
+                  </dd>
+                <dt id="prop-service-type">type</dt>
+                <dd>
+A REQUIRED property where the value of the `type` property MUST be a
+<a data-cite="INFRA#string">string</a> or a
+<a data-cite="INFRA#ordered-set">set</a> of
+<a data-cite="INFRA#string">strings</a>. In order to maximize interoperability,
+the [=service=] type and its associated properties SHOULD be registered in the
+[[[?VC-EXTENSIONS]]].
+                </dd>
+                <dt id="prop-service-endpoint">serviceEndpoint</dt>
+                <dd>
+The value of the `serviceEndpoint` property MUST be a
+<a data-cite="INFRA#string">string</a>, a <a data-cite="INFRA#maps">map</a>, or
+a <a data-cite="INFRA#ordered-set">set</a> composed of one or more
+<a data-cite="INFRA#string">strings</a> and/or
+<a data-cite="INFRA#maps">maps</a>. All <a data-cite="INFRA#string">string</a>
+values MUST be valid URLs conforming to [[[URL]]].
+                </dd>
+              </dl>
+            </dl>
+
+            <p>
+For more information regarding privacy and security considerations related to
+[=services=] see [[[#service-privacy]]], [[[#keep-personal-data-private]]],
+[[[#controller-document-correlation-risks]]], and
+[[[#authentication-service-endpoints]]].
+      </p>
+
+      <pre class="example nohighlight" title="Usage of the service property">
+{
+  "service": [{
+    "type": "ExampleSocialMediaService",
+    "serviceEndpoint": "https://warbler.example/sal674"
+  }]
+}
+            </pre>
+
+          </section>
+
         </section>
 
         <section>
@@ -2416,7 +2499,7 @@ the `proofPurpose` property in the proof. See Section
         <p>
           The security vocabulary terms that the JSON-LD contexts listed above resolve
           to are in the <a href="https://w3id.org/security">https://w3id.org/security#</a>
-          namespace. See also <a href="#vocabulary"></a> for further details.
+          namespace. See also [[[#vocabulary]]] for further details.
         </p>
 
         <p class="note">
