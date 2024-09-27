@@ -818,7 +818,7 @@ conforms to the [[URL]] syntax.
 The value of the `type` property MUST be a <a
 data-cite="INFRA#string">string</a> that references exactly one <a>verification
 method</a> type. This specification defines the types `JsonWebKey` (see Section
-[[[#jsonwebkey]]]) and `Multikey` (see Section [[[#multikey]]]).
+[[[#JsonWebKey]]]) and `Multikey` (see Section [[[#Multikey]]]).
                 </dd>
                 <dt><span id="defn-controller">controller</span></dt>
                 <dd>
@@ -828,11 +828,11 @@ data-cite="INFRA#string">string</a> that conforms to the [[URL]] syntax.
 
                 <dt id="defn-vm-expires">expires</dt>
                 <dd>
-The `expires` property is OPTIONAL. 
+The `expires` property is OPTIONAL.
 <!-- VC-DATA-INTEGRITY-SPECIFIC:
  It is set, in advance, by the
 [=controller=] of a  [=verification method=] to signal when that method
-can no longer be used for verification purposes. 
+can no longer be used for verification purposes.
 -->
 If provided, it MUST be an
 [[XMLSCHEMA11-2]] `dateTimeStamp` string specifying when the
