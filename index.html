@@ -782,8 +782,8 @@ authentication, authorization, or interaction.
             <p>
 Due to privacy concerns, revealing public information through [=services=], such
 as social media accounts, personal websites, and email addresses, is
-discouraged. Further exploration of privacy concerns can be found in
-[=#keep-personal-data-private=] and [=#service-privacy=]. The information
+discouraged. Further exploration of privacy concerns can be found in sections
+[[[#keep-personal-data-private]]] and [[[#service-privacy]]]. The information
 associated with [=services=] is often service specific. For example, the
 information associated with an encrypted messaging service can express how to
 initiate the encrypted link before messaging begins.
@@ -2972,6 +2972,19 @@ information could be transmitted using Verifiable Credentials
 extended to incorporate this information.
       </p>
     </section>
+
+    <section>
+      <h2>Authentication Service Endpoints</h2>
+
+      <p>
+If a [=controller document=] publishes a [=service=] intended for authentication
+or authorization of the [=subject=] (see Section [[[#services]]]), it is the
+responsibility of the [=service=] provider, [=subject=], and/or requesting party
+to comply with the requirements of the authentication protocols supported at
+that [=service=].
+      </p>
+    </section>
+
   </section>
 
   <section class="informative">
@@ -3063,6 +3076,36 @@ relationships</a> related to using the identifier.
       </p>
 
     </section>
+
+    <section>
+      <h2>Service Privacy</h2>
+      <p>
+The ability for a [=controller=] to optionally express at least one [=service=] in the [=controller document=] increases their control and agency.
+Each additional endpoint in the [=controller document=] adds privacy risk either
+due to correlation, such as across endpoint descriptions, or because the
+[=services=] are not protected by an authorization mechanism, or both.
+      </p>
+      <p>
+[=Controller documents=] are often public and, since they are standardized, will
+be stored and indexed efficiently by their very standards-based nature. This
+risk is worse if [=controller documents=] are published to immutable
+[=verifiable data registries=]. Access to a history of the [=controller
+documents=] referenced by a URL represents a form of traffic analysis made more
+efficient through the use of standards.
+      </p>
+      <p>
+The degree of additional privacy risk caused by using multiple [=services=] in
+one [=controller document=] can be difficult to estimate. Privacy harms are
+typically unintended consequences. URLs can refer to documents, [=services=],
+schemas, and other things that might be associated with individual people,
+households, clubs, and employers &mdash; and correlation of their [=services=]
+could become a powerful surveillance and inference tool. An example of
+this potential harm can be seen when multiple common country-level top level
+domains such as `https://example.co.uk` might be used to infer the approximate
+location of the [=subject=] with a greater degree of probability.
+      </p>
+    </section>
+
     </section>
 
     <section>
