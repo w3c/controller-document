@@ -809,27 +809,28 @@ extension.
                 <dl>
                   <dt id="prop-service-id">id</dt>
                   <dd>
-An OPTIONAL property where the value of the `id` property MUST be a URL
+The `id` property is OPTIONAL. If present, its value MUST be a URL
 conforming to [[[URL]]]. A [=conforming document=] MUST NOT include multiple
 `service` entries with the same `id`.
                   </dd>
                 <dt id="prop-service-type">type</dt>
                 <dd>
-A REQUIRED property where the value of the `type` property MUST be a
+The `type` property is REQUIRED. Its value MUST be a
 <a data-cite="INFRA#string">string</a> or a
 <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a>. In order to maximize interoperability,
+<a data-cite="INFRA#string">strings</a>. To maximize interoperability,
 the [=service=] type and its associated properties SHOULD be registered in the
 [[[?VC-EXTENSIONS]]].
                 </dd>
                 <dt id="prop-service-endpoint">serviceEndpoint</dt>
                 <dd>
-The value of the `serviceEndpoint` property MUST be a
-<a data-cite="INFRA#string">string</a>, a <a data-cite="INFRA#maps">map</a>, or
-a <a data-cite="INFRA#ordered-set">set</a> composed of one or more
+The `serviceEndpoint` property is REQUIRED. The value of the `serviceEndpoint`
+property MUST be a single <a data-cite="INFRA#string">string</a>, a single
+<a data-cite="INFRA#maps">map</a>, or a <a data-cite="INFRA#ordered-set">set</a>
+composed of one or more
 <a data-cite="INFRA#string">strings</a> and/or
-<a data-cite="INFRA#maps">maps</a>. All <a data-cite="INFRA#string">string</a>
-values MUST be valid URLs conforming to [[[URL]]].
+<a data-cite="INFRA#maps">maps</a>. Each <a data-cite="INFRA#string">string</a>
+value MUST be a valid URL conforming to [[[URL]]].
                 </dd>
               </dl>
             </dl>
