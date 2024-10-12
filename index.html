@@ -300,9 +300,9 @@ table.simple tbody tr:last-of-type {
 <body>
     <section id='abstract'>
       <p>
-A [=controller document=] is a set of data that specifies one or more
-relationships between a [=controller=] and a set of data, such as a set of
-public cryptographic keys.
+A [=controller document=] contains cryptographic material and service
+endpoints for the purposes of verifying proofs from, and interacting
+with, the [=controller=] of an identifier.
       </p>
     </section>
 
@@ -312,23 +312,31 @@ public cryptographic keys.
 
     <section class="informative">
       <h2>Introduction</h2>
-
       <p>
-Digital signatures, based on
-<a href="https://en.wikipedia.org/wiki/Public-key_cryptography">asymmetric
-cryptography</a>, can be used to make [=authentication=] and [=authorization=]
-schemes more difficult for adversaries to compromise. However, one shortcoming
-of digital signatures is the challenge in distributing necessary information,
-such as public cryptographic keys and revocation information, to those who need
-to verify the security of a digital signature.
+A [=controller document=] contains cryptographic material and service
+endpoints for the purposes of verifying proofs from, and interacting
+with, the [=controller=] of an identifier.
       </p>
-
       <p>
-A [=controller document=] is a set of data that specifies one or more
-relationships between an identifier that is controlled by a [=controller=] and a
-set of data, such as a set of public cryptographic keys. The [=controller
-document=] contains [=verification relationships=] that explicitly permit the
-use of certain [=verification methods=] for specific purposes.
+[=Controller documents=] enable the verification of proofs created
+by the controller of an identifier. They provide [=verification methods=]
+that express public cryptographic material, such as public keys, for
+verifying proofs created by the controller of the
+identifier for specific [=verification relationships=], such as
+authentication, attestation, encryption, and capability invocation
+and delegation.
+      </p>
+      <p>
+Controller Documents also provide [services] related to the identifier,
+for example to request additional information for verification.
+      </p>
+      <p>
+In other words, the
+controller document contains the necessary information for proving
+cryptographically that specific actions were taken by the
+controller of an identifier, including material for
+cryptographic proofs and service endpoints for additional
+communications.
       </p>
 
       <p>
