@@ -3106,6 +3106,30 @@ location of the [=subject=] with a greater degree of probability.
       </p>
     </section>
 
+    <section>
+      <h3>Relationship to the Same-Origin Policy</h3>
+
+      <p>
+The <a href="https://en.wikipedia.org/wiki/Same-origin_policy">
+Same-origin policy</a> is a security and privacy concept that constrains
+information to the same Web domain by default. There are mechaisms, such as
+[[[?WEBAUTHN]]], that extend this policy to cryptographic keys.
+      </p>
+      <p>
+This specification is closer to
+<a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">
+Cross-origin resource sharing</a> (CORS) both in concept and practice. The
+result of this is that correlatable information can be shared between origins
+and while that can lead to positive security outcomes (no public key
+registration burden), it can also lead to negative privacy outcomes (tracking).
+Those that use this specification are warned that there are trade-offs with
+each approach and to use the mechanism that maximizes security and privacy
+according to the needs of the individual or organization. Using a
+[=controller document=] for all use cases is not always advantageous when a
+same-origin bound cryptographic key would suffice.
+      </p>
+    </section>
+
     </section>
 
     <section>
