@@ -3099,17 +3099,43 @@ other private communication channels.
     </section>
 
     <section>
+      <h3>Relationship to the Same-Origin Policy</h3>
+
+      <p>
+The <a href="https://en.wikipedia.org/wiki/Same-origin_policy">
+Same-origin policy</a> is a security and privacy concept that constrains
+information to the same Web domain by default. There are mechanisms, such as
+[[[?WEBAUTHN]]], that extend this policy to cryptographic keys. When a
+cryptographic key is bound to a specific domain, it is sometimes referred to
+as a <dfn>pairwise identifier</dfn>.
+      </p>
+      <p>
+This specification is closer to
+<a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">
+Cross-origin resource sharing</a> (CORS) both in concept and practice. The
+result of this is that correlatable information can be shared between origins
+and while that can lead to positive security outcomes (no public key
+registration burden), it can also lead to negative privacy outcomes (tracking).
+Those that use this specification are warned that there are trade-offs with
+each approach and to use the mechanism that maximizes security and privacy
+according to the needs of the individual or organization. Using a
+[=controller document=] for all use cases is not always advantageous when a
+same-origin bound cryptographic key would suffice.
+      </p>
+    </section>
+
+    <section>
       <h2>Identifier Correlation Risks</h2>
 
       <p>
-Identifiers can be used for the purpose of correlation.
-[=Controllers=] can mitigate this privacy risk by using pairwise identifiers
-that are unique to each relationship; in effect, each identifier acts as a
-pseudonym. A pairwise identifier need only be shared with more than one party
-when correlation is explicitly desired. If pairwise identifiers are the default,
-then the only need to publish an identifier openly, or to share it with multiple
-parties, is when the [=controllers=] and/or [=subjects=] explicitly
-desire public identification and correlation.
+Identifiers can be used for the purpose of correlation. [=Controllers=] can
+mitigate this privacy risk by using [=pairwise identifiers=] that are unique to
+each relationship; in effect, each identifier acts as a pseudonym. A [=pairwise
+identifier=] need only be shared with more than one party when correlation is
+explicitly desired. If [=pairwise identifiers=] are the default, then the only
+need to publish an identifier openly, or to share it with multiple parties, is
+when the [=controllers=] and/or [=subjects=] explicitly desire public
+identification and correlation.
       </p>
     </section>
 
@@ -3117,11 +3143,11 @@ desire public identification and correlation.
       <h2>Controller Document Correlation Risks</h2>
 
       <p>
-The anti-correlation protections of pairwise identifiers are easily defeated if
-the data in the corresponding [=controller documents=] can be correlated. For
+The anti-correlation protections of [=pairwise identifiers=] are easily defeated
+if the data in the corresponding [=controller documents=] can be correlated. For
 example, using identical [=verification methods=] in multiple <a>controller
 documents</a> can provide as much correlation information as using the same
-identifier. Therefore, the [=controller document=] for a pairwise identifier
+identifier. Therefore, the [=controller document=] for a [=pairwise identifier=]
 also needs to use pairwise unique information, such as ensuring that
 [=verification methods=] are unique to the pairwise relationship.
       </p>
@@ -3185,30 +3211,6 @@ could become a powerful surveillance and inference tool. An example of
 this potential harm can be seen when multiple common country-level top level
 domains such as `https://example.co.uk` might be used to infer the approximate
 location of the [=subject=] with a greater degree of probability.
-      </p>
-    </section>
-
-    <section>
-      <h3>Relationship to the Same-Origin Policy</h3>
-
-      <p>
-The <a href="https://en.wikipedia.org/wiki/Same-origin_policy">
-Same-origin policy</a> is a security and privacy concept that constrains
-information to the same Web domain by default. There are mechaisms, such as
-[[[?WEBAUTHN]]], that extend this policy to cryptographic keys.
-      </p>
-      <p>
-This specification is closer to
-<a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">
-Cross-origin resource sharing</a> (CORS) both in concept and practice. The
-result of this is that correlatable information can be shared between origins
-and while that can lead to positive security outcomes (no public key
-registration burden), it can also lead to negative privacy outcomes (tracking).
-Those that use this specification are warned that there are trade-offs with
-each approach and to use the mechanism that maximizes security and privacy
-according to the needs of the individual or organization. Using a
-[=controller document=] for all use cases is not always advantageous when a
-same-origin bound cryptographic key would suffice.
       </p>
     </section>
 
