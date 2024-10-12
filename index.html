@@ -658,32 +658,66 @@ present in the <em>topmost</em>
             <h3>Controllers</h3>
 
             <p>
-A [=controller=] is an entity that is authorized to make changes to a
-[=controller document=].
+A [=controller=] is any entity capable of making changes to a
+[=controller document=]. Every controller document is stored and
+retrieved according to the URL of the document. Whoever can update
+the content of the resource returned from dereferencing that URL
+is, by definition, a controller of the document and its canonical
+identifier. Proofs that satisfy a controller document's verification
+methods are taken as cryptographic assurance that the controller of the
+identifier created those proofs.
             </p>
-
+            <p class="note" title="Identifier Controller v Document Controller">
+The controller of the controller document is taken to be the
+controller of the document's canonical identifier, also known as its
+URL. That is, whoever can update the controller document is both
+the document controller and the identifier controller. Updating the
+document is how you control the identifier. These terms can be used
+interchangeably. Controlling the canonical controller document for 
+an identifier is the same as controlling the identifier.
+            </p>
             <dl>
               <dt>controller</dt>
               <dd>
-The `controller` property is OPTIONAL. If present, its value MUST be a
+The `controller` property is OPTIONAL. If it is possible to represent
+the legitimate controllers of the document as URLs, the document SHOULD
+list URLs identifying those controllers. 
+
+  <p class="note" title="Presumed Control">
+It is possible to list a verification method which is
+functionally under the control of someone other than the controller
+of the controller document. For example, a document controller could
+set a public key under another party's control as an authentication
+verification method. This would enable the other party to authenticate
+on behalf of this identifier (because their public key is listed in 
+an authentication verification method) WITHOUT enabling that party
+to update the controller document. However, since the document
+controller explicitly listed that key for authentication, the
+proof in question is taken as created by the document controller, as
+it was created by their explicit assignee. This is useful
+when the "other party" is a device under the control of the document
+controller, but with a distinct cryptographic authority, i.e., it 
+has its own keystore and can generate proofs. That pattern enables
+different devices, each using their own cryptographic material, to
+generate verifiable proofs that are taken as proofs created by 
+controller of the identifier.
+  </p>
+If present, its value MUST be a
 <a data-cite="INFRA#string">string</a> or a
 <a data-cite="INFRA#ordered-set">set</a> of
-<a data-cite="INFRA#string">strings</a>, each of which conforms to the rules
-in the [[[URL]]]. The corresponding [=controller document=](s) SHOULD contain
-[=verification relationships=] that explicitly permit the use of certain
-[=verification methods=] for specific purposes. If the `controller` property is
-not present, the value expressed by the `id` property MUST be treated as if it
-were also set as the value of the `controller` property.
+<a data-cite="INFRA#string">strings</a>,
+each of which conforms to the rules in the [[[URL]]].
+
+Each entry in the 'controller property' MUST identify
+at least one entity capable of updating the canonical version
+of the [=controller document=] which contains the property, such
+that subsequent requests for this controller document, from its
+canonical location, contain the latest version.
+
+If the `controller` property is not present, then control of the document
+is determined entirely by its storage location.
               </dd>
             </dl>
-
-            <p>
-When a `controller` property is present in a [=controller document=], its value
-expresses one or more identifiers. Any [=verification methods=] contained in the
-[=controller documents=] for those identifiers SHOULD be accepted as
-authoritative, such that proofs that satisfy those [=verification methods=] are
-considered equivalent to proofs provided by the [=subject=].
-            </p>
 
             <pre class="example nohighlight"
               title="Controller document with a controller property">
@@ -975,9 +1009,11 @@ revocation.
 The `controller` property is used by [=controller documents=], as described in
 Section [[[#controller-documents]]], and by [=verification methods=], as
 described in Section [[[#verification-methods]]]. When it is used in either
-place, its purpose is the same; that is, it expresses one or more entities that
-are authorized to perform certain actions associated with the resource with
-which it is associated. To ensure explicit security guarantees, the
+place, its purpose is essentially the same; that is, it expresses one or more entities that are authorized to perform certain actions associated with the resource with which it is associated. 
+
+In the case of the controller of a controller document, the controller can update the content of the document. In the case of the controller of a verification method, the controller can generate proofs that satisfy the method.
+
+To ensure explicit security guarantees, the
 [=controller=] of a [=verification method=] cannot be inferred from the
 [=controller document=]. It is necessary to explicitly express the identifier of
 the controller of the key because the value of `controller` for a [=verification
@@ -1510,11 +1546,8 @@ under `authentication` in the [=controller document=].
             <p>
 Note that the [=verification method=] indicated by the
 `authentication` property of a [=controller document=] can
-only be used to [=authenticate=] the [=controller=]. To
-[=authenticate=] a different [=controller=], the entity associated with
-the value of `controller` needs to [=authenticate=] with its
-<em>own</em> [=controller document=] and associated
-`authentication` [=verification relationship=].
+only be used to [=authenticate=] interactive sessions on behalf 
+of the controller document's base identifier. 
             </p>
           </section>
 
