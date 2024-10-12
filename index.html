@@ -309,11 +309,20 @@ public cryptographic keys.
     <section class="informative">
       <h2>Introduction</h2>
       <p>
-A [=controller document=] is a set of data that specifies one or more
-relationships between a [=controller=] and a set of data, such as a set of
-public cryptographic keys. The [=controller document=] contains [=verification
-relationships=] that explicitly permit the use of certain [=verification
-methods=] for specific purposes.
+        [=Controller Documents=] enable the verification of proofs created
+        by the controller of an identifier. They provide public
+        cryptographic material, e.g., public keys, known as [=verification
+        methods=], for verifying proofs created by the controller of the
+        identifier for specific [=verification relationships=], such as
+        authentication, attestation, encryption, and capability invocation
+        and delegation. Controller Documents also provide endpoints for
+        services related to the identifier, for example to request
+        additional information for verification. In other words, the
+        controller document contains the necessary information for proving
+        cryptographically that specific actions were taken by the
+        controller of an identifier, including cryptographic material for
+        cryptographic proofs and service endpoints for additional
+        communications or interactions.
       </p>
       <p>
 It is expected that other specifications, such as [[[?DID-CORE]]], will profile
