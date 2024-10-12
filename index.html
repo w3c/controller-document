@@ -2974,14 +2974,14 @@ extended to incorporate this information.
     </section>
 
     <section>
-      <h2>Authentication Service Endpoints</h2>
+      <h2>Service Endpoints for Authentication and Authorization</h2>
 
       <p>
 If a [=controller document=] publishes a [=service=] intended for authentication
 or authorization of the [=subject=] (see Section [[[#services]]]), it is the
 responsibility of the [=service=] provider, [=subject=], and/or requesting party
-to comply with the requirements of the authentication protocols supported at
-that [=service=].
+to comply with the requirements of the authentication and/or authorization
+protocols supported by that [=service=] endpoint.
       </p>
     </section>
 
@@ -3087,14 +3087,14 @@ due to correlation, such as across endpoint descriptions, or because the
       </p>
       <p>
 [=Controller documents=] are often public and, since they are standardized, will
-be stored and indexed efficiently by their very standards-based nature. This
-risk is worse if [=controller documents=] are published to immutable
+be stored and indexed efficiently. This
+risk is increased if [=controller documents=] are published to immutable
 [=verifiable data registries=]. Access to a history of the [=controller
-documents=] referenced by a URL represents a form of traffic analysis made more
+documents=] referenced by a URL enables a form of traffic analysis made more
 efficient through the use of standards.
       </p>
       <p>
-The degree of additional privacy risk caused by using multiple [=services=] in
+The degree of additional privacy risk caused by including multiple [=services=] in
 one [=controller document=] can be difficult to estimate. Privacy harms are
 typically unintended consequences. URLs can refer to documents, [=services=],
 schemas, and other things that might be associated with individual people,
