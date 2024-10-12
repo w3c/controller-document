@@ -312,19 +312,87 @@ public cryptographic keys.
 
     <section class="informative">
       <h2>Introduction</h2>
+
+      <p>
+The use of shared secrets for [=authentication=] and [=authorization=], such as
+the use of passwords, has resulted in a variety of security failures over the
+past several decades. To address these security failures, systems can upgrade to
+the use of
+<a href="https://en.wikipedia.org/wiki/Public-key_cryptography">
+asymmetric cryptography</a>, which uses digital signatures that are far more
+difficult to compromise. However, one shortcoming of digital signatures is
+the difficulty in disseminating the information, such as public cryptographic
+keys, to those that would need to verify the security of the digital signature.
+      </p>
+
       <p>
 A [=controller document=] is a set of data that specifies one or more
-relationships between a [=controller=] and a set of data, such as a set of
-public cryptographic keys. The [=controller document=] contains [=verification
-relationships=] that explicitly permit the use of certain [=verification
-methods=] for specific purposes.
+relationships between an identifier that is controlled by a [=controller=] and a
+set of data, such as a set of public cryptographic keys. The [=controller
+document=] contains [=verification relationships=] that explicitly permit the
+use of certain [=verification methods=] for specific purposes.
       </p>
+
       <p>
 It is expected that other specifications, such as [[[?DID-CORE]]], will profile
 the features that are defined in this specification, requiring and/or
 recommending the use of some and prohibiting and/or deprecating the use of
 others.
       </p>
+
+      <section>
+        <h3>Use Cases</h3>
+        <p>
+The following use cases are illustrative of the need for this specification.
+While many other use cases exist, the following paragraphs highlight the
+main scenarios that this specification is designed to improve upon.
+        </p>
+
+        <section>
+          <h4>Identification</h4>
+
+          <p>
+Lemmy runs an enterprise portal that manages large amounts of sensitive data
+submitted by people working for a variety of organizations. He would like to use
+identifiers for entities in the database where control over the identifier can
+be cryptographically proven in order to increase security related to who is
+allowed to access and update each organizations data.
+          </p>
+        </section>
+
+        <section>
+          <h4>Cryptographic Purpose</h4>
+
+          <p>
+Stef, who operates a high security service, would like to ensure that certain
+cryptographic keys used by his customers can only be used for certain purposes
+to enable different levels of access and protection for each type of
+cryptographic key.
+          </p>
+        </section>
+
+        <section>
+          <h4>Service Engagement</h4>
+
+          <p>
+Marge, a software developer, would like to publicly advertise ways in which
+other people on the Web can reach her through various communication services she
+uses based on her globally unique identifier.
+          </p>
+        </section>
+
+        <section>
+          <h4>Extensibility</h4>
+
+          <p>
+Cory, a systems architect, would like to extend the use cases described in this
+section in a way that provides new functionality while not creating conflicts
+with others that are adding extensions.
+          </p>
+        </section>
+
+      </section>
+
 
       <section id="conformance">
         <p>
