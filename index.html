@@ -393,6 +393,71 @@ with others that are adding extensions.
 
       </section>
 
+      <section>
+        <h3>Requirements</h3>
+
+        <p>
+The use cases outlined in the previous section result in at least the following
+requirements:
+        </p>
+
+        <dl>
+          <dt>1. Guaranteed Unique Identifier</dt>
+          <dd>
+Identifiers are globally unique with no possibility of duplication.
+          </dd>
+          <dt>2. Proof of Control</dt>
+          <dd>
+It is possible to prove that the entity claiming control over the identifier is
+indeed its controller.
+          </dd>
+          <dt>3. Associated cryptographic material</dt>
+          <dd>
+The identifier is tightly coupled with cryptographic material that can be used
+to prove control over that identifier.
+          </dd>
+          <dt>4. Streamlined key rotation</dt>
+          <dd>
+When authentication materials need to be updated, these identifiers can update
+without direct intervention with requesting parties and with minimal individual
+interaction.
+          </dd>
+          <dt>5. Service endpoint discovery</dt>
+          <dd>
+These identifiers allow requesting parties to look up available service
+endpoints for interacting with the subject of the identifier.
+          </dd>
+          <dt>6. Delegation of control</dt>
+          <dd>
+The controller of the identifier is able to delegate that control to a third
+party.
+          </dd>
+          <dt>7. Cryptographic future proof</dt>
+          <dd>
+These identifiers are capable of being updated as technology evolves. Current
+cryptography techniques are known to be susceptible to quantum computational
+attacks. Future-proofed identifiers provide a means to continue using the same
+identifier with updated, advanced authentication and authorization technologies.
+          </dd>
+          <dt>8. Cryptographic authentication and communication</dt>
+          <dd>
+These identifiers enable cryptographic techniques to authenticate individuals
+and to secure communications with the subject of the identifier, typically using
+public-private key pairs.
+          </dd>
+          <dt>9. Legally-enabled identity</dt>
+          <dd>
+These identifiers can be used as a basis for credentials and transactions that
+can be recognized as legally valid under one or more jurisdictions.
+          </dd>
+          <dt>10. Human-centered interoperability</dt>
+          <dd>
+Decentralized identifiers need to be easy to use by people with no technical
+expertise or specialist knowledge.
+          </dd>
+        </dl>
+
+      </section>
 
       <section id="conformance">
         <p>
