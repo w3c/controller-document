@@ -2958,6 +2958,36 @@ version of the external JSON-LD Context.
     </section>
 
     <section>
+      <h2>Integrity Protection of Controllers</h2>
+
+      <p>
+As described in Section [[[#controllers]]], this specification provides for a
+mechanism to delegate change control of a [=controller document=] to an entity
+that is described in an external [=controller document=] through the use of the
+`controller` property.
+      </p>
+
+      <p>
+Delegating change control addresses a number of use cases including ones
+where an individual is responsible for the care of another individual and
+ones where an entity desires another to provide account recovery services.
+For these class of use cases, it can be beneficial to allow the guardian to
+manage the rotation of their own key material. It can also be beneficial for
+the delegator to associate a cryptographic hash of the remote
+[=controller document=] to "pin" the remote document to a known good value.
+      </p>
+
+      <p>
+While this document does not specify a particular mechanism for
+cryptographically protected URLs, the `relatedResource` property in
+[[[VC-DATA-MODEL-2.0]]] and the `digestMultibase` property in
+[[[VC-DATA-INTEGRITY]]] are possible mechanisms that would provide such a
+protection.
+      </p>
+
+    </section>
+
+    <section>
       <h2>Level of Assurance</h2>
 
       <p>
