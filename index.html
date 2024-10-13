@@ -2583,7 +2583,11 @@ same declarations, such as the Decentralized Identifier v1.1 context
 
           <p>
 Implementations that do not intend to use JSON-LD MAY choose to not include an
-`@context` declaration at the top-level of the document.
+`@context` declaration at the top-level of the document. Whether the `@context`
+value or JSON-LD processors are used or not, the semantics for all properties
+and values expressed in [=conforming documents=] interpreted by [=conforming
+processors=] are the same. Any differences in semantics between documents
+processed in either mode are either implementation or specification bugs.
           </p>
         </section>
       </section>
