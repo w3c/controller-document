@@ -2512,27 +2512,27 @@ the `proofPurpose` property in the proof. See Section
         </p>
 
         <section>
-          <h4>Context injection</h4>
+          <h4>Context Injection</h4>
           <p>
-            The `@context` property is used to ensure that implementations are using the
-            same semantics when terms in this specification are processed. For example, this
-            can be important when properties like `authentication` are processed and its
-            value, such as `Multikey` or `JsonWebKey`, are used.
+The `@context` property is used to ensure that implementations are using the
+same semantics when terms in this specification are processed. For example, this
+can be important when properties like `authentication` are processed and its
+value, such as `Multikey` or `JsonWebKey`, are used.
           </p>
 
           <p>
-            When an application is processing a [=controller document=], if an `@context`
-            property is not provided in the document or the terms used in the document are
-            not mapped by existing values in the `@context` property, implementations MUST inject
-            or append an `@context` property with a value of
-            `https://www.w3.org/ns/controller/v1` or one or more contexts with at least the
-            same declarations, such as the Decentralized Identifier v1.1 context
-            (`https://www.w3.org/ns/did/v1`).
+When an application is processing a [=controller document=], if an `@context`
+property is not provided in the document or the terms used in the document are
+not mapped by existing values in the `@context` property, implementations MUST
+inject or append an `@context` property with a value of
+`https://www.w3.org/ns/controller/v1` or one or more contexts with at least the
+same declarations, such as the Decentralized Identifier v1.1 context
+(`https://www.w3.org/ns/did/v1`).
           </p>
 
           <p>
-            Implementations that do not intend to use JSON-LD MAY choose to not include an
-            `@context` declaration at the top-level of the document.
+Implementations that do not intend to use JSON-LD MAY choose to not include an
+`@context` declaration at the top-level of the document.
           </p>
         </section>
       </section>
