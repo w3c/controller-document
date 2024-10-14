@@ -258,6 +258,10 @@ code {
   color: rgb(199, 73, 0);
   font-weight: bold;
 }
+pre.highlight {
+  font-weight: bold;
+  color: green;
+}
 pre.nohighlight {
   overflow-x: auto;
   white-space: pre-wrap;
@@ -2315,6 +2319,32 @@ The following example provides a minimum conformant
   "authentication": ["#key-456"]
 }
         </pre>
+
+        <p class="note" title="Controller documents can contain references to external verification methods">
+[=Verification methods=] are identified via the `id` property, whose value is a
+URL. It is possible for a [=controller document=] to specify a [=verification
+method=], through a [=verification relationship=], that exists in a place that
+is external to the [=controller document=]. As described in Section
+[[[#integrity-protection-of-controllers]]], specifying a [=verification method=]
+that is external to a [=controller document=] is a valid usage of this
+specification. When retrieving any [=verification method=], especially when the
+[=verification method=] might be cached, it is vital that the algorithm above is
+used to ensure that there is a bi-directional reference from the [=controller
+document=] to the [=verification method=] (via a [=verification relationship=])
+and from the [=verification method=] to the [=controller document=] (via the
+[=verification method=]'s `controller` property). Not ensuring this
+bi-directional relationship exists can lead to security compromises where an
+attacker poisons a cache by claiming control of a [=verification method=]
+without the consent (that is, without a bi-directional reference) of the victim.
+        </p>
+
+        <pre class="example nohighlight" title="Referencing an external verification method for `capabilityInvocation`">
+{
+  "id": "https://controller.example/123",
+  "capabilityInvocation": [<span class="highligh">"https://external.example/xyz#key-789"</span>]
+}
+        </pre>
+
 
       </section>
 
