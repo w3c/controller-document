@@ -296,9 +296,9 @@ table.simple tbody tr:last-of-type {
 <body>
     <section id='abstract'>
       <p>
-A [=controller document=] is a set of data that specifies one or more
-relationships between a [=controller=] and a set of data, such as a set of
-public cryptographic keys.
+A [=controller document=] contains cryptographic material and service
+endpoints for the purposes of verifying proofs from, and interacting
+with, the [=controller=] of an identifier.
       </p>
     </section>
 
@@ -309,11 +309,30 @@ public cryptographic keys.
     <section class="informative">
       <h2>Introduction</h2>
       <p>
-A [=controller document=] is a set of data that specifies one or more
-relationships between a [=controller=] and a set of data, such as a set of
-public cryptographic keys. The [=controller document=] contains [=verification
-relationships=] that explicitly permit the use of certain [=verification
-methods=] for specific purposes.
+A [=controller document=] contains cryptographic material and service
+endpoints for the purposes of verifying proofs from, and interacting
+with, the [=controller=] of an identifier.
+      </p>
+      <p>
+[=Controller documents=] enable the verification of proofs created
+by the controller of an identifier. They provide [=verification methods=]
+that express public cryptographic material, such as public keys, for 
+verifying proofs created by the controller of the 
+identifier for specific purposes, such as
+authentication, attestation, key agreement (for encryption), and capability invocation
+and delegation.
+      </p>
+      <p> 
+Controller Documents also provide [=services=] related to the identifier,
+for example to request additional information for verification.
+      </p>
+      <p> 
+In other words, the
+controller document contains the necessary information for proving
+that specific actions were taken by the controller of an identifier,
+including material for
+cryptographic proofs and service endpoints for additional
+communications.
       </p>
       <p>
 It is expected that other specifications, such as [[[?DID-CORE]]], will profile
