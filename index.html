@@ -2879,6 +2879,39 @@ that can be invalidated at any time by the [=controller=].
     </section>
 
     <section>
+      <h2>Choosing a Multiformat</h2>
+
+      <p>
+<dfn class="external lint-ignore">Multiformats</dfn> enable self-describing
+data; if data is known to be a Multiformat, its exact type can be determined by
+reading a few compact header bytes that are expressed at the beginning of the
+data. <a href="#multibase-0">Multibase</a>, <a href="#multihash">Multihash</a>,
+and <a href="#Multikey">Multikey</a> are types of Multiformats that are defined
+by this specification.
+      </p>
+
+      <p>
+Some mistakenly presume that Multiformats promote an explosion of encoding
+formats, which harm interoperability due to forcing implementers to have to
+implement many different formats. To the contrary, Multiformats exist because
+there are multiple choices in the world today when it comes to things like base
+encoding functions, cryptographic hashing functions, and cryptographic key
+formats. The creation and use of Multiformats acknowledge that application
+developers make different choices based upon different requirements. Imposing a
+single base-encoding, cryptographic hashing, or cryptographic key format on the
+world has never worked. Instead, Multiformats provide a mechanism to detect any
+base encoding, cryptographic hash, or cryptographic key format.
+      </p>
+
+      <p>
+When possible, specification authors are urged to, ideally, pick a single
+Multiformat and, if that is not possible, minimize the number of Multiformats
+any particular application or ecosystem uses to increase interoperability.
+      </p>
+
+    </section>
+
+    <section>
       <h2>Encrypted Data in Controller Documents</h2>
       <p>
 Encryption algorithms have been known to fail due to advances in cryptography
