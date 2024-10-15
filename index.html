@@ -3392,10 +3392,68 @@ Apply wording updates from VC-JOSE-COSE spec.
 
       <p>
 The specification authors would like to thank the contributors to the
-<a href="https://www.w3.org/TR/2022/REC-did-core-20220719/">W3C Decentralized Identifiers (DIDs) v1.0</a>,
-<a href="https://www.w3.org/TR/2024/CRD-vc-data-integrity-20240609/">W3C Verifiable Credential Data Integrity 1.0</a>, and
-<a href="https://www.w3.org/TR/2024/CRD-vc-jose-cose-20240521/">W3C Securing Verifiable Credentials using JOSE and COSE</a> specifications
-upon which this work is based.
+<a href="https://www.w3.org/TR/2022/REC-did-core-20220719/">
+W3C Decentralized Identifiers (DIDs) v1.0</a> specification upon which this work
+is based.
+      </p>
+
+      <p>
+The Working Group gratefully acknowledges the work that led to the creation of
+this specification, and extends sincere appreciation to those individuals that
+worked on technologies and specifications that deeply influenced our work. In
+particular, this includes the work of Phil Zimmerman, Jon Callas, Lutz
+Donnerhacke, Hal Finney, David Shaw, and Rodney Thayer on <a
+href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy"> Pretty Good Privacy
+(PGP)</a> in the 1990s and 2000s.
+      </p>
+
+      <p>
+In the mid-2010s, preliminary implementations of what would become Decentralized
+Identifiers were <a href="https://web-payments.org/minutes/2014-05-07/#topic-1">
+built</a> in collaboration with Jeremie Miller's Telehash project and the W3C
+Web Payments Community Group's work led by Dave Longley and Manu Sporny. Around
+a year later, the XDI.org Registry Working Group
+<a href="https://docs.google.com/document/d/1EP-KhH60y-nl4xkEzoeSf3DjmjLomfboF4p2umF51FA/">
+began exploring</a> decentralized technologies for replacing its existing
+identifier registry. Some of the first
+<a href="https://github.com/WebOfTrustInfo/rwot1-sf/blob/master/final-documents/dpki.pdf">written</a>
+<a href="https://github.com/WebOfTrustInfo/rwot2-id2020/blob/master/final-documents/requirements-for-dids.pdf">papers</a>
+exploring the concept of Decentralized Identifiers can be traced back to the
+first several Rebooting the Web of Trust workshops convened by Christopher
+Allen. That work led to a key collaboration between Christopher Allen, Drummond
+Reed, Les Chasen, Manu Sporny, and Anil John. Anil saw promise in the technology
+and allocated the initial set of government funding to explore the space.
+Without the support of Anil John and his guidance through the years, it is
+unlikely that Decentralized Identifiers would be where they are today. Further
+refinement at the Rebooting the Web of Trust workshops led to the <a
+href="https://github.com/WebOfTrustInfo/rwot3-sf/blob/master/final-documents/did-implementer-draft-10.pdf">first
+implementers documentation</a>, edited by Drummond Reed, Les Chasen, Christopher
+Allen, and Ryan Grant. Contributors included Manu Sporny, Dave Longley, Jason
+Law, Daniel Hardman, Markus Sabadello, Christian Lundkvist, and Jonathan
+Endersby. This initial work was then merged into the W3C Credentials Community
+Group, incubated further, and then transitioned to the W3C Decentralized
+Identifiers Working Group for global standardization. That work was then used
+as the basis for this, more generalized and less decentralized, specification.
+      </p>
+
+      <p>
+Portions of the work on this specification have been funded by the United States
+Department of Homeland Security's (US DHS) Science and Technology Directorate
+under contracts HSHQDC-16-R00012-H-SB2016-1-002, and HSHQDC-17-C-00019, as well
+as the US DHS Silicon Valley Innovation Program under contracts
+70RSAT20T00000003, 70RSAT20T00000010/P00001, 70RSAT20T00000029,
+70RSAT20T00000030, 70RSAT20T00000033, 70RSAT20T00000045,
+70RSAT21T00000016/P00001, 70RSAT23T00000005, 70RSAT23C00000030, and
+70RSAT23R00000006. The content of this specification does not necessarily
+reflect the position or the policy of the U.S. Government and no official
+endorsement should be inferred.
+      </p>
+
+      <p>
+Portions of the work on this specification have also been funded by the European
+Union's StandICT.eu program under sub-grantee contract number CALL05/19. The
+content of this specification does not necessarily reflect the position or the
+policy of the European Union and no official endorsement should be inferred.
       </p>
 
       <p>
@@ -3403,6 +3461,51 @@ We would also like to thank the base-x software library contributors and the
 Bitcoin Core developers who wrote the original code, shared under an MIT
 License, found in Section [[[#base-encode]]] and Section [[[#base-decode]]].
       </p>
+
+      <p>
+Work on this specification has also been supported by the
+<a href="https://www.weboftrust.info/">Rebooting the Web of Trust</a> community
+facilitated by Christopher Allen, Shannon Appelcline, Kiara Robles, Brian
+Weller, Betty Dhamers, Kaliya Young, Kim Hamilton Duffy, Manu Sporny, Drummond
+Reed, Joe Andrieu, Heather Vescent, Samantha Chase, Andrew Hughes, Erica
+Connell, Shigeya Suzuki, and Zaïda Rivai. Development of this specification has
+also been supported by the
+<a href="https://w3c-ccg.github.io/">W3C Credentials Community Group</a>, which
+has been Chaired by Kim Hamilton Duffy, Joe Andrieu, Christopher Allen, Heather
+Vescent, and Wayne Chang. The participants in the Internet Identity Workshop,
+facilitated by Phil Windley, Kaliya Young, Doc Searls, and Heidi Nobantu Saul,
+also supported this work through numerous working sessions designed to debate,
+improve, and educate participants about this specification.
+      </p>
+
+      <p>
+The Working Group thanks the following individuals for their contributions to
+this specification (in alphabetical order, Github handles start with `@` and
+are sorted as last names): Denis Ah-Kang, Nacho Alamillo, Christopher Allen, Joe
+Andrieu, Antonio, Phil Archer, George Aristy, Baha, Juan Benet, BigBlueHat, Dan
+Bolser, Chris Boscolo, Pelle Braendgaard, Daniel Buchner, Daniel Burnett, Juan
+Caballero, @cabo, Tim Cappalli, Melvin Carvalho, David Chadwick, Wayne Chang,
+Sam Curren, Hai Dang, Tim Daubenschütz, Oskar van Deventer, Kim Hamilton Duffy,
+Arnaud Durand, Ken Ebert, Veikko Eeva, @ewagner70, Carson Farmer, Nikos Fotiou,
+Gabe, Gayan, @gimly-jack, @gjgd, Ryan Grant, Peter Grassberger, Adrian Gropper,
+Amy Guy, Daniel Hardman, Kyle Den Hartog, Philippe Le Hegaret, Ivan Herman,
+Michael Herman, Alen Horvat, Dave Huseby, Marcel Jackisch, Mike Jones, Andrew
+Jones, Tom Jones, jonnycrunch, Gregg Kellogg, Michael Klein, @kdenhartog-sybil1,
+Paul Knowles, @ktobich, David I. Lehn, Charles E. Lehner, Michael Lodder,
+@mooreT1881, Dave Longley, Tobias Looker, Wolf McNally, Robert Mitwicki, Mircea
+Nistor, Grant Noble, Mark Nottingham, @oare, Darrell O'Donnell, Vinod Panicker,
+Dirk Porsche, Praveen, Mike Prorock, @pukkamustard, Drummond Reed, Julian
+Reschke, Yancy Ribbens, Justin Richer, Rieks, @rknobloch, Mikeal Rogers,
+Evstifeev Roman, Troy Ronda, Leonard Rosenthol, Michael Ruminer, Markus
+Sabadello, Cihan Saglam, Samu, Rob Sanderson, Wendy Seltzer, Mehran Shakeri,
+Jaehoon (Ace) Shim, Samuel Smith, James M Snell, SondreB, Manu Sporny, @ssstolk,
+Orie Steele, Shigeya Suzuki, Sammotic Switchyarn, @tahpot, Oliver Terbu,  Ted
+Thibodeau Jr., Joel Thorstensson, Tralcan, Henry Tsai, Rod Vagg, Mike Varley,
+Kaliya "Identity Woman" Young, Eric Welton, Fuqiao Xue, @Yue, Dmitri Zagidulin,
+@zhanb, and Brent Zundel.
+      </p>
+
+
     </section>
 
   </body>
