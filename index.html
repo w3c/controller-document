@@ -2266,16 +2266,16 @@ Let <var>controllerDocument</var> be the result of dereferencing
 of the URL scheme and using the supplied <var>options</var>.
           </li>
           <li>
-If <var>controllerDocument</var>.<var>id</var> does not match the
-<var>controllerDocumentUrl</var>, an error MUST be raised and SHOULD
-convey an error type of
-<a href="#INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID</a>.
-          </li>
-          <li>
 If <var>controllerDocument</var> is not a [=conforming controller document=],
 an error MUST be raised and SHOULD
 convey an error type of
 <a href="#INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT</a>.
+          </li>
+          <li>
+If <var>controllerDocument</var>.<var>id</var> does not match the
+<var>controllerDocumentUrl</var>, an error MUST be raised and SHOULD
+convey an error type of
+<a href="#INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID</a>.
           </li>
           <li>
 Let <var>verificationMethod</var> be the result of dereferencing the
@@ -2286,6 +2286,12 @@ rules of the media type of the <var>controllerDocument</var>.
 If <var>verificationMethod</var> is not a [=conforming verification method=],
 an error MUST be raised and SHOULD convey an error type of
 <a href="#INVALID_VERIFICATION_METHOD">INVALID_VERIFICATION_METHOD</a>.
+          </li>
+          <li>
+If the absolute URL value of <var>verificationMethod</var>.<var>id</var>
+does not start with the <var>controllerDocumentUrl</var>, an error MUST be
+raised and SHOULD convey an error type of
+<a href="#INVALID_VERIFICATION_METHOD_URL">INVALID_VERIFICATION_METHOD_URL</a>.
           </li>
           <li>
 If the [=verification method=] is not associated with a
