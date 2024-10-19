@@ -2233,12 +2233,12 @@ function baseDecode(sourceEncoding, sourceBase, baseAlphabet) {
         <p>
 The following algorithm specifies how to safely retrieve a verification method,
 such as a cryptographic [=public key=], by using a [=verification method=]
-identifier. Required inputs are a
-<strong>[=verification method=]</strong> (<var>verificationMethod</var>), a
+identifier. Required inputs are a <strong>[=verification method=]</strong>
+identifier (<var>verificationMethod</var>), a
 <strong>[=verification relationship=]</strong>
 (<var>verificationRelationship</var>), and a set of <strong>dereferencing
 options</strong> (<var>options</var>). A
-<strong>verification method</strong> is produced as output.
+<strong>[=verification method=]</strong> is produced as output.
         </p>
 
         <ol class="algorithm">
@@ -2246,8 +2246,8 @@ options</strong> (<var>options</var>). A
 Let <var>vmIdentifier</var> be set to <var>verificationMethod</var>.
           </li>
           <li>
-If <var>vmIdentifier</var> is not a valid URL, an error MUST be raised and SHOULD
-convey an error type of
+If <var>vmIdentifier</var> is not a valid URL, an error MUST be raised and
+SHOULD convey an error type of
 <a href="#INVALID_VERIFICATION_METHOD_URL">INVALID_VERIFICATION_METHOD_URL</a>.
           </li>
           <li>
@@ -2297,7 +2297,7 @@ INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD</a>.
           </li>
           <li>
 Return <var>verificationMethod</var> as the
-<strong>verification method</strong>.
+<strong>[=verification method=]</strong>.
           </li>
         </ol>
 
@@ -2321,31 +2321,38 @@ The following example provides a minimum conformant
         </pre>
 
         <p class="note" title="Controller documents can contain references to external verification methods">
-[=Verification methods=] are identified via the `id` property, whose value is a
-URL. It is possible for a [=controller document=] to specify a [=verification
-method=], through a [=verification relationship=], that exists in a place that
-is external to the [=controller document=]. As described in Section
-[[[#integrity-protection-of-controllers]]], specifying a [=verification method=]
-that is external to a [=controller document=] is a valid use of this
-specification. When retrieving any [=verification method=], especially when the
-[=verification method=] might be cached, it is vital that the algorithm above is
-used to confirm that the [=controller document=] refers to the
-[=verification method=] (via a [=verification relationship=])
-and that the [=verification method=] refers to the [=controller document=]
-(via the [=verification method=]'s `controller` property). Failure to
-confirm that these reciprocal relationships exist can lead to security
-compromises where an attacker poisons a cache by claiming control of a
-[=verification method=] without the consent (that is, without a reciprocal
+[=Verification methods=] are expressed as strings that are URLs, or identified
+via the `id` property, whose value is a URL. It is possible for a [=controller
+document=] to specify a [=verification method=], through a [=verification
+relationship=], that exists in a place that is external to the [=controller
+document=]. As described in Section [[[#integrity-protection-of-controllers]]],
+specifying a [=verification method=] that is external to a [=controller
+document=] is a valid use of this specification. When retrieving any
+[=verification method=], especially when the [=verification method=] might be
+cached, it is vital that the algorithm above is used to confirm that the
+[=controller document=] refers to the [=verification method=] (via a
+[=verification relationship=]) and that the [=verification method=] refers to
+the [=controller document=] (via the [=verification method=]'s `controller`
+property). Failure to confirm that these reciprocal relationships exist can lead
+to security compromises where an attacker poisons a cache by claiming control of
+a [=verification method=] without the consent (that is, without a reciprocal
 reference) of the victim.
         </p>
 
         <pre class="example nohighlight" title="Referencing an external verification method for `capabilityInvocation`">
 {
   "id": "https://controller.example/123",
-  "capabilityInvocation": [<span class="highligh">"https://external.example/xyz#key-789"</span>]
+  "capabilityInvocation": [<span class="highlight">"https://external.example/xyz#key-789"</span>]
 }
         </pre>
 
+        <p>
+In the example above, the algorithm described in this section will use the
+`https://external.example/xyz#key-789` URL value as the [=verification method=]
+identifier. The algorithm will then confirm that the key exists in the
+external controller document, and that the reciprocal reference exists as
+described earlier in this section.
+        </p>
 
       </section>
 
