@@ -2326,16 +2326,17 @@ URL. It is possible for a [=controller document=] to specify a [=verification
 method=], through a [=verification relationship=], that exists in a place that
 is external to the [=controller document=]. As described in Section
 [[[#integrity-protection-of-controllers]]], specifying a [=verification method=]
-that is external to a [=controller document=] is a valid usage of this
+that is external to a [=controller document=] is a valid use of this
 specification. When retrieving any [=verification method=], especially when the
 [=verification method=] might be cached, it is vital that the algorithm above is
-used to ensure that there is a bi-directional reference from the [=controller
-document=] to the [=verification method=] (via a [=verification relationship=])
-and from the [=verification method=] to the [=controller document=] (via the
-[=verification method=]'s `controller` property). Not ensuring this
-bi-directional relationship exists can lead to security compromises where an
-attacker poisons a cache by claiming control of a [=verification method=]
-without the consent (that is, without a bi-directional reference) of the victim.
+used to confirm that the [=controller document=] refers to the
+[=verification method=] (via a [=verification relationship=])
+and that the [=verification method=] refers to the [=controller document=]
+(via the [=verification method=]'s `controller` property). Failure to
+confirm that these reciprocal relationships exist can lead to security
+compromises where an attacker poisons a cache by claiming control of a
+[=verification method=] without the consent (that is, without a reciprocal
+reference) of the victim.
         </p>
 
         <pre class="example nohighlight" title="Referencing an external verification method for `capabilityInvocation`">
