@@ -3128,14 +3128,15 @@ same-origin bound cryptographic key would suffice.
       <h2>Identifier Correlation Risks</h2>
 
       <p>
-Identifiers can be used for the purpose of correlation. [=Controllers=] can
+Identifiers can be used for unwanted correlation. [=Controllers=] can
 mitigate this privacy risk by using [=pairwise identifiers=] that are unique to
-each relationship; in effect, each identifier acts as a pseudonym. A [=pairwise
-identifier=] need only be shared with more than one party when correlation is
-explicitly desired. If [=pairwise identifiers=] are the default, then the only
+each relationship or interaction domain; in effect, each identifier acts as a pseudonym. A [=pairwise
+identifier=] need only be shared with more than one party when correlation
+across contexts is explicitly desired. If [=pairwise identifiers=] are the default,
+then the only
 need to publish an identifier openly, or to share it with multiple parties, is
 when the [=controllers=] and/or [=subjects=] explicitly desire public
-identification and correlation.
+identification and correlation across interaction domains.
       </p>
     </section>
 
