@@ -2946,22 +2946,21 @@ by this specification.
       </p>
 
       <p>
-Some mistakenly presume that Multiformats promote an explosion of encoding
-formats, which harm interoperability due to forcing implementers to have to
-implement many different formats. To the contrary, Multiformats exist because
-there are multiple choices in the world today when it comes to things like base
-encoding functions, cryptographic hashing functions, and cryptographic key
-formats. The creation and use of Multiformats acknowledge that application
-developers make different choices based upon different requirements. Imposing a
-single base-encoding, cryptographic hashing, or cryptographic key format on the
-world has never worked. Instead, Multiformats provide a mechanism to detect any
-base encoding, cryptographic hash, or cryptographic key format.
+The Multiformats specifications exist because application developers
+appropriately choose different base-encoding functions, cryptographic
+hashing functions, and cryptographic key formats, among other things,
+based on different use cases and their requirements. No single
+base-encoding function, cryptographic hashing function, or cryptographic
+key format in the world has ever satisfied all requirement sets.
+Multiformats provides an alternative means by which to encode and/or
+detect any base-encoding, cryptographic hash, or cryptographic key
+format in self-documenting data and documents.
       </p>
 
       <p>
-When possible, specification authors are urged to, ideally, pick a single
-Multiformat and, if that is not possible, minimize the number of Multiformats
-any particular application or ecosystem uses to increase interoperability.
+To increase interoperability, specification authors are urged to minimize
+the number of Multiformats &mdash; optimally, choosing only one &mdash; to
+be used for any particular application or ecosystem.
       </p>
 
     </section>
