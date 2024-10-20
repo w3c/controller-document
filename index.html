@@ -348,14 +348,25 @@ specification is designed to address.
         </p>
 
         <section class="notoc">
-          <h4>Identification</h4>
+          <h4>Globally Unique Identifiers</h4>
 
           <p>
-Lemmy runs an enterprise portal that manages large amounts of sensitive data
-submitted by people working for a variety of organizations. He would like to use
-identifiers for entities in the database where control over the identifier can
-be cryptographically proven in order to increase security related to who is
-allowed to access and update each organization's data.
+Lemmy runs multiple enterprise portals that manage large amounts of sensitive
+data submitted by people working for a variety of organizations. He would like
+to use identifiers for entities in the databases that are provided by
+his customers and do not depend on easily phishable information such as
+email addresses and passwords.
+          </p>
+        </section>
+
+        <section class="notoc">
+          <h4>Cryptographic Verification</h4>
+
+          <p>
+Lemmy would like to ensure that his customers prove control over their
+identifiers &mdash; for example, by using public/private key cryptography
+&mdash; in order to increase security related to who is allowed to access and
+update each organization's data.
           </p>
         </section>
 
