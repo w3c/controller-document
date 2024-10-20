@@ -316,10 +316,10 @@ public cryptographic keys.
       <p>
 Digital signatures, based on
 <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">asymmetric
-cryptography</a>, can be used in [=authentication=] and [=authorization=]
-schemes to make them difficult for adversaries to compromise. However,
+cryptography</a>, can be used to make [=authentication=] and [=authorization=]
+schemes more difficult for adversaries to compromise. However,
 one shortcoming of digital signatures is the challenge in disseminating
-necessary information, such as public cryptographic keys, to those who need
+necessary information, such as public cryptographic keys and revocation information, to those who need
 to verify the security of a digital signature.
       </p>
 
@@ -341,9 +341,9 @@ others.
       <section>
         <h3>Use Cases</h3>
         <p>
-The following use cases are illustrative of the need for this specification.
+The use cases below illustrate the need for this specification.
 While many other related use cases exist, such as those in [[[DID-USE-CASES]]],
-the following paragraphs highlight the main scenarios that this specification is
+those described below are the main scenarios that this specification is
 designed to address.
         </p>
 
@@ -355,7 +355,7 @@ Lemmy runs an enterprise portal that manages large amounts of sensitive data
 submitted by people working for a variety of organizations. He would like to use
 identifiers for entities in the database where control over the identifier can
 be cryptographically proven in order to increase security related to who is
-allowed to access and update each organizations data.
+allowed to access and update each organization's data.
           </p>
         </section>
 
@@ -364,9 +364,9 @@ allowed to access and update each organizations data.
 
           <p>
 Stef, who operates a high security service, would like to ensure that certain
-cryptographic keys used by his customers can only be used for certain purposes
-to enable different levels of access and protection for each type of
-cryptographic key.
+cryptographic keys used by his customers can only be used for specific purposes
+(such as encryption, authorization, and/or authentication) to enable different
+levels of access and protection for each type of cryptographic key.
           </p>
         </section>
 
@@ -376,7 +376,7 @@ cryptographic key.
           <p>
 Marge, a software developer, would like to publicly advertise ways in which
 other people on the Web can reach her through various communication services she
-uses based on her globally unique identifier.
+uses based on her globally unique identifier(s).
           </p>
         </section>
 
@@ -385,8 +385,8 @@ uses based on her globally unique identifier.
 
           <p>
 Cory, a systems architect, would like to extend the use cases described in this
-section in a way that provides new functionality while not creating conflicts
-with others that are adding extensions.
+section in a way that provides new functionality without creating conflicts
+with extensions being added by others.
           </p>
         </section>
 
@@ -396,9 +396,9 @@ with others that are adding extensions.
         <h3>Requirements</h3>
 
         <p>
-The following requirements are derived from the illustrative use cases in this
-specification. Further requirements resulting in a more decentralized solution
-can be found in [[[DID-USE-CASES]]].
+The following requirements are derived from the use cases described earlier in
+this specification. Additional requirements which could lead to a more
+decentralized solution can be found in [[[DID-USE-CASES]]].
         </p>
 
         <dl>
@@ -413,13 +413,13 @@ indeed its controller.
           </dd>
           <dt>3. Associated cryptographic material</dt>
           <dd>
-The identifier is tightly coupled with cryptographic material that can be used
-to prove control over that identifier.
+The identifier is tightly coupled with cryptographic material that an entity
+can use to prove control over that identifier.
           </dd>
           <dt>4. Streamlined key rotation</dt>
           <dd>
-When authentication materials need to be updated, these identifiers can update
-without direct intervention with requesting parties and with minimal individual
+Entities denoted by designated identifiers can update authentication materials
+without direct intervention by requesting parties and with minimal individual
 interaction.
           </dd>
           <dt>5. Service endpoint discovery</dt>
@@ -429,23 +429,24 @@ endpoints for interacting with the subject of the identifier.
           </dd>
           <dt>6. Delegation of control</dt>
           <dd>
-The controller of the identifier is able to delegate that control to a third
-party.
+The controller of the identifier is able to delegate that control, in full
+and/or in part, to a third party.
           </dd>
-          <dt>7. Cryptographic future proof</dt>
+          <dt>7. Cryptographically future-proof</dt>
           <dd>
-These identifiers are capable of being updated as technology evolves. Current
-cryptography techniques are known to be susceptible to quantum computational
-attacks. Future-proofed identifiers provide a means to continue using the same
-identifier with updated, advanced authentication and authorization technologies.
+These identifiers and associated information are capable of being updated
+as technology evolves. Current cryptographic techniques are known to be
+susceptible to quantum computational attacks. Future-proofed identifiers
+provide a means by which to continue using the same identifier with updated,
+advanced authentication and/or authorization technologies.
           </dd>
           <dt>8. Cryptographic authentication and communication</dt>
           <dd>
-These identifiers enable cryptographic techniques to authenticate individuals
-and to secure communications with the subject of the identifier, typically using
-public-private key pairs.
+These identifiers enable the use of cryptographic techniques that can be employed
+to authenticate individuals and/or to secure communications with the subject of
+the identifier, typically using public-private key pairs.
           </dd>
-          <dt>9. Legally-enabled identity</dt>
+          <dt>9. Legally recognizable identification</dt>
           <dd>
 These identifiers can be used as a basis for credentials and transactions that
 can be recognized as legally valid under one or more jurisdictions.
