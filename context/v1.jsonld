@@ -5,9 +5,8 @@
     "type": "@type",
 
     "alsoKnownAs": {
-      "@id": "https://w3id.org/security#alsoKnownAs",
-      "@type": "@id",
-      "@container": "@set"
+      "@id": "https://www.w3.org/ns/activitystreams#alsoKnownAs",
+      "@type": "@id"
     },
     "assertionMethod": {
       "@id": "https://w3id.org/security#assertionMethod",
