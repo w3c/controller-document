@@ -342,9 +342,9 @@ others.
         <h3>Use Cases</h3>
         <p>
 The use cases below illustrate the need for this specification.
-While many other related use cases exist, such as those in [[[DID-USE-CASES]]],
-those described below are the main scenarios that this specification is
-designed to address.
+While many other related use cases exist, such as those in [[[DID-USE-CASES]]]
+and [[[VC-USE-CASES]]], those described below are the main scenarios that this
+specification is designed to address.
         </p>
 
         <section class="notoc">
@@ -387,6 +387,18 @@ uses based on her globally unique identifier(s).
 Cory, a systems architect, would like to extend the use cases described in this
 section in a way that provides new functionality without creating conflicts
 with extensions being added by others.
+          </p>
+        </section>
+
+        <section class="notoc">
+          <h4>Issue and Present Claims</h4>
+
+          <p>
+Neru would like to issue digital credentials on behalf of her company that
+contain claims about their employees. The claims that are made need to use
+identifiers that are cryptographically attributable back to Neru's company and
+need to allow for the holder's of those credentials to be able to
+cryptographically authenticate themselves when they present the credential.
           </p>
         </section>
 
@@ -3263,7 +3275,7 @@ documents</a>.
 If a [=controller document=] is about a specific individual and is
 public-facing, it is <em>critical</em> that [=controller documents=] contain
 no personal biometric or biographical data. While it is true that personal data
-might include pseudonymous information, such as a public cryptographic key or an IP address, 
+might include pseudonymous information, such as a public cryptographic key or an IP address,
 publishing that sort of information does not create the same immediate privacy
 dangers as publishing an individual's full name, profile photo, or social media
 account in a [=controller document=]. A better alternative is to transmit
