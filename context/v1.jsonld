@@ -38,6 +38,11 @@
       "@type": "@id",
       "@container": "@set"
     },
+    "service": {
+      "@id": "https://www.w3.org/ns/did#service",
+      "@type": "@id",
+      "@container": "@set"
+    },
     "verificationMethod": {
       "@id": "https://w3id.org/security#verificationMethod",
       "@type": "@id",
