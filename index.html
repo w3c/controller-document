@@ -296,8 +296,8 @@ table.simple tbody tr:last-of-type {
 <body>
     <section id='abstract'>
       <p>
-A [=controller document=] contains cryptographic material and service
-endpoints for the purposes of verifying proofs from, and interacting
+A [=controller document=] contains cryptographic material and identifies
+service endpoints that can be used to verify proofs from, and interact
 with, the [=controller=] of an identifier.
       </p>
     </section>
@@ -309,27 +309,29 @@ with, the [=controller=] of an identifier.
     <section class="informative">
       <h2>Introduction</h2>
       <p>
-A [=controller document=] contains cryptographic material and service
-endpoints for the purposes of verifying proofs from, and interacting
+A [=controller document=] contains cryptographic material and identifies
+service endpoints that can be used to verify proofs from, and interact
 with, the [=controller=] of an identifier.
       </p>
       <p>
 [=Controller documents=] enable the verification of proofs created
 by the controller of an identifier. They provide [=verification methods=]
-that express public cryptographic material, such as public keys, for 
-verifying proofs created by the controller of the 
+that express public cryptographic material, such as public keys, which 
+can be used to verify proofs created by the controller of the 
 identifier for specific purposes, such as
 authentication, attestation, key agreement (for encryption), and capability invocation
 and delegation.
       </p>
       <p> 
-Controller Documents also provide [=services=] related to the identifier,
-for example to request additional information for verification.
+Controller Documents can also identify [=services=] related to the identifier;
+for example, a service from which to request additional information for
+verification.
       </p>
       <p> 
 In other words, the
-controller document contains the necessary information for proving
-that specific actions were taken by the controller of an identifier,
+controller document contains the information necessary to communicate
+with, and/or prove that specific actions were taken by, the controller
+of an identifier,
 including material for
 cryptographic proofs and service endpoints for additional
 communications.
