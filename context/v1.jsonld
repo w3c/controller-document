@@ -41,8 +41,16 @@
     "service": {
       "@id": "https://www.w3.org/ns/did#service",
       "@type": "@id",
-      "@container": "@set"
-    },
+      "@context": {
+        "@protected": true,
+        "id": "@id",
+        "type": "@type",
+        "serviceEndpoint": {
+          "@id": "https://www.w3.org/ns/did#serviceEndpoint",
+          "@type": "@id"
+        }
+      }
+    },    
     "verificationMethod": {
       "@id": "https://w3id.org/security#verificationMethod",
       "@type": "@id",
