@@ -52,10 +52,9 @@
     },    
     "verificationMethod": {
       "@id": "https://w3id.org/security#verificationMethod",
-      "@type": "@id",
-      "@container": "@set"
+      "@type": "@id"
     },
-   "Multikey": {
+    "Multikey": {
       "@id": "https://w3id.org/security#Multikey",
       "@context": {
         "@protected": true,
@@ -83,7 +82,7 @@
         }
       }
     },
-   "JsonWebKey": {
+    "JsonWebKey": {
       "@id": "https://w3id.org/security#JsonWebKey",
       "@context": {
         "@protected": true,
