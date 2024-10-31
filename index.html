@@ -300,9 +300,9 @@ table.simple tbody tr:last-of-type {
 <body>
     <section id='abstract'>
       <p>
-A [=controller document=] contains cryptographic material and identifies
-service endpoints that can be used to verify proofs from, and interact
-with, the [=controller=] of an identifier.
+A [=controller document=] contains cryptographic material and service
+endpoints for the purposes of verifying proofs from, and interacting
+with, the controller of an identifier.
       </p>
     </section>
 
@@ -332,10 +332,21 @@ service endpoints for additional communications.
       </p>
 
       <p>
-It is expected that other specifications, such as [[[?DID-CORE]]], will profile
+A [=controller document=] contains cryptographic material and service
+endpoints for the purposes of verifying proofs from, and interacting
+with, the [=controller=] of an identifier.
+      </p>
+      <p>
+A [=controller document=] specifies one or more
+[=verification relationships=] and [=services=] for a single, 
+identifier, for which the current controller document is taken as authoritative. Every controller document is stored and retrieved according to the URL of the document, which is also the canonical identifier 
+of the document.
+      </p>
+      <p>
+It is expected that other specifications will profile
 the features that are defined in this specification, requiring and/or
 recommending the use of some and prohibiting and/or deprecating the use of
-others.
+others. For example, [[[?DID-CORE]]] is expected to define DID documents as a profile of controller documents, where the DID is the identifier, DID documents are controller documents, and resolution is the process of retrieving the canonical DID document for a DID.
       </p>
 
       <section>
@@ -557,22 +568,23 @@ their identifiers, and other related properties.<!--  See Section -->
 
           <dt><dfn class="export" data-lt="controller(s)|Controllers">controller</dfn></dt>
           <dd>
-An entity that is [=authorized=] to perform an action with a specific resource,
-such as update a [=controller document=] or use a cryptographic key to generate
-a digital signature.
+An entity that is capable of performing an action with a specific resource,
+such as updating a [=controller document=] or generating a [=proof=] using a [=verification method=].
           </dd>
 
           <dt><dfn class="export">controller document</dfn></dt>
           <dd>
-A set of data that specifies one or more relationships between a
-[=controller=] and a set of data, such as a set of public cryptographic keys.
+A document that contains cryptographic material and service
+endpoints for the purposes of verifying proofs from, and interacting
+with, the [=controller=] of an identifier.
           </dd>
 
           <dt><dfn data-lt="subjects">subject</dfn></dt>
           <dd>
-The entity identified by the `id` property in a [=controller document=].
-Anything can be a subject: person, group, organization, physical thing, digital
-thing, logical thing, etc.
+An entity referred to by the `id` property in a [=controller document=]
+when it is used in specific contexts such as authentication or
+attestations. Anything can be a subject: person, group, organization,
+physical thing, digital thing, logical thing, etc.
           </dd>
 
           <dt><dfn class="export">verification method</dfn></dt>
@@ -596,7 +608,7 @@ method, even though descriptions of the process might not use the words
           <dt><dfn class="export">verification relationship</dfn></dt>
           <dd>
             <p>
-An expression of the relationship between a [=subject=] and a
+An expression of the relationship between a [=identifier=] and a
 [=verification method=]. One example of a verification relationship is
 [[[#authentication]]].
             </p>
@@ -611,9 +623,9 @@ An expression of the relationship between a [=subject=] and a
         <h3>Data Model</h3>
 
         <p>
-A [=controller document=] is a set of data that specifies one or more
-relationships between a [=controller=] and a set of data, such as a set of
-public cryptographic keys. The [=controller document=] SHOULD
+A [=controller document=] specifies one or more relationships between
+an [=identifier=] and a set of verification methods and service 
+endpoints. The [=controller document=] SHOULD
 contain [=verification relationships=] that explicitly permit the use of
 certain [=verification methods=] for specific purposes.
         </p>
@@ -829,13 +841,11 @@ present in the <em>topmost</em>
 
             <p>
 A [=controller=] is any entity capable of making changes to a
-[=controller document=]. Every controller document is stored and
-retrieved according to the URL of the document. Whoever can update
-the content of the resource returned from dereferencing that URL
-is, by definition, a controller of the document and its canonical
-identifier. Proofs that satisfy a controller document's verification
-methods are taken as cryptographic assurance that the controller of the
-identifier created those proofs.
+[=controller document=]. Whoever can update
+the content of the resource returned from dereferencing the controller
+document's canonical URL is, by definition, a controller of the
+document and its canonical identifier. Proofs that satisfy a
+controller document's verification methods are taken as cryptographic assurance that the controller of the identifier created those proofs.
             </p>
             <p class="note" title="Identifier Controller v Document Controller">
 The controller of the controller document is taken to be the
