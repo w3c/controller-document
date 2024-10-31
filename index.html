@@ -319,7 +319,7 @@ controller of an identifier. They provide [=verification methods=] that express
 public cryptographic material, such as public keys, for verifying proofs created
 by the controller of the identifier for specific purposes, such as
 authentication, attestation, key agreement (for encryption), and capability
-invocation and delegation. [=Controller documents=] also provide [=services=]
+invocation and delegation. [=Controller documents=] also list [=services=]
 related to the identifier, for example to request additional information for
 verification.
       </p>
@@ -330,23 +330,21 @@ communicate with, and/or prove that specific actions were taken by, the
 controller of an identifier, including material for cryptographic proofs and
 service endpoints for additional communications.
       </p>
-
-      <p>
-A [=controller document=] contains cryptographic material and service
-endpoints for the purposes of verifying proofs from, and interacting
-with, the [=controller=] of an identifier.
-      </p>
       <p>
 A [=controller document=] specifies one or more
 [=verification relationships=] and [=services=] for a single, 
-identifier, for which the current controller document is taken as authoritative. Every controller document is stored and retrieved according to the URL of the document, which is also the canonical identifier 
-of the document.
+identifier, for which the current controller document is taken as authoritative. 
+Every controller document is stored and retrieved according to the URL of the 
+document, which is also the canonical identifier of the document.
       </p>
       <p>
 It is expected that other specifications will profile
 the features that are defined in this specification, requiring and/or
 recommending the use of some and prohibiting and/or deprecating the use of
-others. For example, [[[?DID-CORE]]] is expected to define DID documents as a profile of controller documents, where the DID is the identifier, DID documents are controller documents, and resolution is the process of retrieving the canonical DID document for a DID.
+others. For example, [[[?DID-CORE]]] is expected to define DID documents as a 
+profile of controller documents, where the DID is the identifier, DID documents 
+are controller documents, and resolution is the process of retrieving the 
+canonical DID document for a DID.
       </p>
 
       <section>
@@ -568,24 +566,65 @@ their identifiers, and other related properties.<!--  See Section -->
 
           <dt><dfn class="export" data-lt="controller(s)|Controllers">controller</dfn></dt>
           <dd>
+            <p>
 An entity that is capable of performing an action with a specific resource,
 such as updating a [=controller document=] or generating a [=proof=] using a [=verification method=].
+            </p>
           </dd>
 
           <dt><dfn class="export">controller document</dfn></dt>
           <dd>
+            <p>
 A document that contains cryptographic material and service
 endpoints for the purposes of verifying proofs from, and interacting
 with, the [=controller=] of an identifier.
+            </p>
           </dd>
 
           <dt><dfn data-lt="subjects">subject</dfn></dt>
           <dd>
-An entity referred to by the `id` property in a [=controller document=]
-when it is used in specific contexts such as authentication or
-attestations. Anything can be a subject: person, group, organization,
-physical thing, digital thing, logical thing, etc.
+            <p>
+An entity that is referred to by the `id` property in a [=controller document=]
+when it is used as a subject in other contexts, such as authentication or
+attestations, e.g., Verifiable Credentials. Anything can be a subject: 
+person, group, organization, physical thing, digital thing, logical thing, etc. 
+            </p>
+            <p class="note">
+It is expected that the subject referred to by the id of a controller document 
+be consistent over time, so that a set of credentials with a given identifer as 
+subject can be taken to be about the same entity. However, it *is* possible to 
+issue credentials with a subject identifier _without_ the subject even being 
+aware of it.
+
+It is expected that credential issuers will ask the subject for identifiers 
+and that those subjects would demonstrate proof of control before the issuer
+issues the credential. However, there are valid cases where issuers will 
+use identifiers that are not provably under the control of the subject. 
+
+However, even in cases
+where the subject of the ID does prove control, the interpretation of the subject
+remains contextual and potentially ambiguous.
+
+For example, the White House might issue a credential about the president of the United States 
+using did:example:abc as a subject identifier, saying in effect "The President 
+likes fried chicken." Then, the US National Parks Service might issue their own 
+credential about the president, using the same identifier, saying "The President authorizes
+the creation of new National Parks." 
+
+However, the White House meant "President Joe Biden", who is a physical person who 
+happened to be in office at the time the credential was issued. In contrast, 
+the park service meant "the current president, aka POTUS, whoever he is"; this second VC is not 
+about the Joe Biden as a human individual, it's about the role of President of
+the United States. 
+
+In natural language, these ambiguities are often easily ignored or corrected. In 
+digital media, it's vital that context be evaluated to establish the intended 
+referent, especially when identifiers are used in different 
+contexts by different issuers.
+            </p>
+
           </dd>
+
 
           <dt><dfn class="export">verification method</dfn></dt>
           <dd>
@@ -845,7 +884,8 @@ A [=controller=] is any entity capable of making changes to a
 the content of the resource returned from dereferencing the controller
 document's canonical URL is, by definition, a controller of the
 document and its canonical identifier. Proofs that satisfy a
-controller document's verification methods are taken as cryptographic assurance that the controller of the identifier created those proofs.
+controller document's verification methods are taken as cryptographic
+assurance that the controller of the identifier created those proofs.
             </p>
             <p class="note" title="Identifier Controller v Document Controller">
 The controller of the controller document is taken to be the
@@ -874,7 +914,7 @@ an authentication verification method) WITHOUT enabling that party
 to update the controller document. However, since the document
 controller explicitly listed that key for authentication, the
 proof in question is taken as created by the document controller, as
-it was created by their explicit assignee. This is useful
+it was created by their explicit assignee. This is especially useful
 when the "other party" is a device under the control of the document
 controller, but with a distinct cryptographic authority, i.e., it
 has its own keystore and can generate proofs. That pattern enables
@@ -912,7 +952,7 @@ is determined entirely by its storage location.
 While the identifier used for a [=controller=] is unambiguous, this does not
 imply that a single entity is always the controller, nor that a controller
 only has a single identifier. A [=controller=] might be a single entity, or a
-collection of entities, such as a corporation. A [=controller=] might also use
+collection of entities, such as a partnership. A [=controller=] might also use
 multiple identifiers to refer to itself, for purposes such as privacy or
 delineating operational boundaries within an organization. Similarly, a
 [=controller=] might control many [=verification methods=]. For these reasons,
@@ -923,7 +963,7 @@ controlling only a single [=verification method=].
             <p class="note" title="Authentication versus Authorization">
 Note that the definition of [=authentication=] is different from the definition
 of [=authorization=]. Generally speaking, [=authentication=] answers the
-question of "Who is this?" while [=authorization=] answers the question of "Are
+question of "Do we know who this is?" while [=authorization=] answers the question of "Are
 they allowed to perform this action?". The `authentication` property in this
 specification is used to, unsurprisingly, perform [=authentication=] while the
 other [=verification relationships=] such as `capabilityDelegation` and
@@ -988,8 +1028,9 @@ not necessarily appropriate, <em>even with</em> a reciprocal relationship.
 
             <p>
 [=Services=] are used in [=controller documents=] to express ways of
-communicating with the [=subject=] or associated entities. A [=service=] can be
-any type of service the [=subject=] wants to advertise for further discovery,
+communicating with the [=controller=], or associated entities, in relation to 
+the controlled identifier. A [=service=] can be
+any type of service the [=controller=] wants to advertise for further discovery,
 authentication, authorization, or interaction.
             </p>
 
@@ -1189,9 +1230,13 @@ revocation.
 The `controller` property is used by [=controller documents=], as described in
 Section [[[#controller-documents]]], and by [=verification methods=], as
 described in Section [[[#verification-methods]]]. When it is used in either
-place, its purpose is essentially the same; that is, it expresses one or more entities that are authorized to perform certain actions associated with the resource with which it is associated. 
+place, its purpose is essentially the same; that is, it expresses one or more 
+entities that are authorized to perform certain actions associated with the 
+resource with which it is associated. 
 
-In the case of the controller of a controller document, the controller can update the content of the document. In the case of the controller of a verification method, the controller can generate proofs that satisfy the method.
+In the case of the controller of a controller document, the controller can 
+update the content of the document. In the case of the controller of a 
+verification method, the controller can generate proofs that satisfy the method.
 
 To ensure explicit security guarantees, the
 [=controller=] of a [=verification method=] cannot be inferred from the
