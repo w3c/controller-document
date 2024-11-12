@@ -928,11 +928,11 @@ If present, its value MUST be a
 <a data-cite="INFRA#string">strings</a>,
 each of which conforms to the rules in the [[[URL]]].
 
-Each entry in the 'controller property' MUST identify
-at least one entity capable of updating the canonical version
-of the [=controller document=] which contains the property, such
-that subsequent requests for this controller document, from its
-canonical location, contain the latest version.
+Each entry in the `controller` property MUST identify
+an entity capable of updating the canonical version
+of the [=controller document=].
+This means that subsequent requests for this controller document, 
+through its canonical location, would always contain the latest version.
 
 If the `controller` property is not present, then control of the document
 is determined entirely by its storage location.
