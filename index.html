@@ -1878,10 +1878,13 @@ protected resource.
             <h2>Capability Delegation</h2>
 
             <p>
-The `capabilityDelegation` [=verification relationship=] is used
-to specify a mechanism that might be used by the [=controller=] to delegate
-a cryptographic capability to another party, such as delegating the authority
-to access a specific HTTP API to a subordinate.
+The `capabilityDelegation` [=verification relationship=] is used to specify a
+mechanism that might be used by the [=controller=] to delegate a cryptographic
+capability to another party. The mechanism, such as an
+<a href="https://w3c-ccg.github.io/zcap-spec/">Authorization Capability</a>
+or a <a href="https://github.com/ucan-wg/spec/blob/main/README.md">UCAN</a>, and
+the processing performed following delegation, such as accessing a specific HTTP
+API, is application-specific.
             </p>
 
             <dl>
