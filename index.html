@@ -2847,6 +2847,26 @@ same declarations, such as the Decentralized Identifier v1.1 context
 (`https://www.w3.org/ns/did/v1`).
           </p>
 
+          <pre class="example nohighlight" title="A controller document without an @context property">
+{
+  "id": "https://controller.example/101",
+  "verificationMethod": [{
+    "id": "https://controller.example/101#key-203947",
+    "type": "JsonWebKey",
+    "controller": "https://controller.example/101",
+    "publicKeyJwk": {
+      "kid": "key-203947",
+      "kty": "EC",
+      "crv": "P-256",
+      "alg": "ES256",
+      "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+      "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"
+    }
+  }],
+  "authentication": ["#key-20240828"]
+}
+          </pre>
+
           <p>
 Implementations that do not intend to use JSON-LD MAY choose to not include an
 `@context` declaration at the top-level of the document. Whether or not the
@@ -2855,6 +2875,7 @@ and values expressed in [=conforming documents=] interpreted by [=conforming
 processors=] are the same. Any differences in semantics between documents
 processed in either mode are either implementation or specification bugs.
           </p>
+
         </section>
       </section>
 
