@@ -1173,12 +1173,23 @@ the Data Integrity EdDSA Cryptosuites</a>.
             </p>
 
             <p>
+Implementers are often exposed to many different verification material formats
+such as
+<a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH public keys</a>,
+<a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">
+PEM-encoded public keys</a>,
+hex-encoded public keys,
+<a data-cite="?RFC7517">JSON Web Keys</a>,
+<a href="#Multikey">Multikeys</a>, and
+<a data-cite="?8152#section-7">COSE public keys</a>.
 To increase the likelihood of interoperable implementations, this specification
-limits the number of formats for expressing verification material in a
-[=controller document=]. The fewer formats that implementers have to
-choose from, the more likely that interoperability will be achieved. This
-approach attempts to strike a delicate balance between easing implementation
-and providing support for formats that have historically had broad deployment.
+suggests limiting the number of formats used to express verification material in
+a [=controller document=]. The fewer formats that implementers have to choose
+from, the more likely that interoperability will be achieved for a particular
+ecosystem. Ideally, there would be one public key format, however, history has
+demonstrated that not to be the case and acknowledges that implementers will
+support as many verification material formats as makes sense for their
+ecosystem.
             </p>
 
             <p>
