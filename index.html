@@ -334,8 +334,8 @@ service endpoints for additional communications.
 A [=controller document=] specifies one or more
 [=verification relationships=] and [=service endpoints=] for a single 
 identifier, for which the current controller document is taken as authoritative. 
-Every controller document is stored and retrieved according to the URL of the 
-document, which is also the canonical identifier of the document.
+Every controller document is stored and retrieved according to the [[=canonical url=]] of the 
+document, which MUST also be the [[=base identifier=]] of the document.
       </p>
       <p>
 It is expected that other specifications will profile
@@ -590,39 +590,20 @@ attestations, e.g., Verifiable Credentials. Anything can be a subject:
 person, group, organization, physical thing, digital thing, logical thing, etc. 
             </p>
             <p class="note">
-It is expected that the subject referred to by the id of a controller document 
-be consistent over time, so that a set of credentials with a given identifer as 
-subject can be taken to be about the same entity. However, it <em>is</em> possible to 
-issue credentials with a subject identifier <em>without</em> the subject being 
-aware of it.
-
-It is expected that credential issuers will ask the subject for identifiers 
-and that those subjects would demonstrate proof of control before the issuer
-issues the credential. However, there are valid cases where issuers will 
-use identifiers that are not provably under the control of the subject. 
-
-However, even in cases
-where the subject of the ID does prove control, the interpretation of the subject
-remains contextual and potentially ambiguous.
-
-For example, the White House might issue a credential about the president of the United States 
-using `did:example:abc` as a subject identifier, saying in effect "The President 
-likes fried chicken." Then, the US National Parks Service might issue their own 
-credential about the president, using the same identifier, saying "The President authorizes
-the creation of new National Parks." 
-
-However, the White House meant "President Joe Biden", who is a physical person who 
-happened to be in office at the time the credential was issued. In contrast, 
-the park service meant "the current president, aka POTUS, whoever he is"; this second VC is not 
-about the Joe Biden as a human individual, it's about the role of President of
-the United States. 
-
-In natural language, these ambiguities are often easily ignored or corrected. In 
-digital media, it's vital that context be evaluated to establish the intended 
-referent, especially when identifiers are used in different 
-contexts by different issuers.
+It is expected that the subject referred to by the id of a controller
+document be consistent over time, so that a set of proofs with the
+same identifier as subject can be interpreted as referring to the same
+entity. For example, it is preferred that credential issuers require
+subjects to demonstrate proof of control over their identifiers before
+issuing a credential with that subject, creating assurances that the same
+entity was involved as the subject in the issuing of each credential.
+However, there are valid cases where that is either impossible or
+unreasonable. For example, when a parent requests a Verifiable Credential
+for their child. There are also invalid cases where an issuer simply makes
+a mistake or intentionally issues a false statement. All of these
+possibilities should be considered when evaluating the security of relying
+on a given identifier for any purpose. See the section on Identifier  Ambiguity in Security Considerations.
             </p>
-
           </dd>
 
 
@@ -650,6 +631,27 @@ method, even though descriptions of the process might not use the words
 An expression of the relationship between an [=identifier=] and a
 [=verification method=]. One example of a verification relationship is
 [[[#authentication]]].
+            </p>
+          </dd>
+
+          <dt><dfn class="export">base identifier</dfn></dt>
+          <dd>
+            <p>
+              The value of the "id" property of the root object in the controller document. MUST be
+              set to the [[=canonical url=]] for this controller document.
+            </p>
+          </dd>
+          <dt><dfn class="export">canonical url</dfn></dt>
+          <dd>
+            <p>
+              The URL for retrieving the current, authoritative controller
+              document for a given identifier. Dereferencing the canonical
+              URL MUST return the current authoritative controller
+              document. The returned document's [[=base identifier==]] MUST
+              be the same as the canonical URL; if it is anything else,
+              then the returned document is *not* an authoritative
+              controller document and the identifier SHOULD be treated as
+              invalid.
             </p>
           </dd>
 
@@ -1771,7 +1773,7 @@ under `authentication` in the [=controller document=].
             <p>
 Note that the [=verification method=] indicated by the
 `authentication` property of a [=controller document=] can
-only be used to [=authenticate=] interactive sessions on behalf 
+only be used to [=authenticate=] on behalf 
 of the controller document's base identifier. 
             </p>
           </section>
@@ -2972,7 +2974,72 @@ by this specification and further defined in [[[?VC-DATA-MODEL-2.0]]].
         </p>
       </section>
     </section>
+    <section>
+    <h2>Identifier Ambiguity</h2>
+    <p>Even in cases where the subject of the identifier proves control, the interpretation of the subject remains contextual and potentially ambiguous.
+    </p><p>
+    For example, a school might issue a credential about the
+    teacher of _Intro to Computer Science_, using `did:example:abc` as a subject identifier, saying in effect "did:example:abc is the teacher of
+    _Intro to Computer Science_" and "did:example:abc controls access
+    to the school's computer lab. See them to request access".
+    </p><p>
+      From this usage it is ambgious as to whether or not `did:example:abc`
+      refers to a specific teacher or to whomever is the current teacher.
+    </p><p>
+      Only with further statements might we be able to discern the difference.
+    </p><p>
+      But it's still tricky. For example the subject in the following statement
+      ```turtle
+       did:example:abc foaf:name "Bob Smith" . 
+      ```
+     remains ambiguous. If `did:example:abc` refers to a specific human
+      being, then the statement is taken as an attestation about that
+      particular human's name. However, if `did:example:abc` is used to 
+      refer to the _current_ teacher, it is also valid as the current
+      teacher does have that name. In this case the ambiguity is
+      immaterial.
+    </p><p>
+        However, in a statement like
+      ```turtle
+      did:example:abc http://law.example/convicted http://calaw.example/PenalCode647b . 
+      ```     
+    The difference becomes vital. The statement in English could be
+    "the person referred to by did:example:abc has been convicted of
+    California Penal Code 647b." But which person(s) did we mean? Did we
+    mean to say one, some, or all of the teachers of computer science at
+    the school have been convicted of violating Pen647b? Or is it meant to
+    say that a particular individual teacher, perhaps the one named "Bob
+    Smith", has been convicted of said crime? 
+    </p>
+    <p>
+      The challenge is particularly difficult in situations where the
+      subject is fundamentally uninvolved in the issuance of the
+      credential. For example, an identifier might be used by a school to
+      refer to a teacher, and students and or parents may use that
+      identifier to make statements about the teacher, with neither the
+      teacher nor the school involved. In these cases, it is easy to
+      imagine that the subtle nuance of the school's intended meaning, e.g., "any current teacher of the computer science class", gets lost
+      and the identifier misused by parents and
+      students to refer to a specific teacher, quite likely in contexts
+      where neither the school nor the teacher is aware of the
+      conversation.
+    </p>
+    <p>
+      In natural language, these ambiguities are often easily ignored or
+      corrected. In digital media, it's vital that context be evaluated to
+      establish the intended referent, especially when identifiers are
+      used in different contexts by different issuers, e.g.: on a school
+      website by the school, but in a social networking app by parents and
+      students.
+    </p>
+    <p>
+      In short, the context in which identifiers are created and used
+      must be considered when relying on any particular interpretation
+      of the subject of any particular identifier.
+    </p>
 
+
+    </section>
     <section>
       <h2>Key and Signature Expiration</h2>
 
