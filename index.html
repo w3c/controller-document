@@ -258,6 +258,10 @@ code {
   color: rgb(199, 73, 0);
   font-weight: bold;
 }
+pre.highlight {
+  font-weight: bold;
+  color: green;
+}
 pre.nohighlight {
   overflow-x: auto;
   white-space: pre-wrap;
@@ -296,8 +300,8 @@ table.simple tbody tr:last-of-type {
 <body>
     <section id='abstract'>
       <p>
-A [=controller document=] contains cryptographic material and service
-endpoints for the purposes of verifying proofs from, and interacting
+A [=controller document=] contains cryptographic material and lists
+service endpoints for the purposes of verifying proofs from, and interacting
 with, the controller of an identifier.
       </p>
     </section>
@@ -308,31 +312,185 @@ with, the controller of an identifier.
 
     <section class="informative">
       <h2>Introduction</h2>
+
       <p>
-A [=controller document=] is a set of data that specifies one or more
-relationships between a [=controller=] and a set of data, such as a set of
-public cryptographic keys. The [=controller document=] contains[=verification
- relationships=] that explicitly permit the use of certain
-[=verification
-methods=] for specific purposes.
+[=Controller documents=] enable the verification of proofs created by the
+controller of an identifier. They provide [=verification methods=] that express
+public cryptographic material, such as public keys, for verifying proofs created
+by the controller of the identifier for specific purposes, such as
+authentication, attestation, key agreement (for encryption), and capability
+invocation and delegation. [=Controller documents=] also list [=services=]
+related to the identifier, for example to request additional information for
+verification.
       </p>
+
       <p>
-A [=controller document=] contains cryptographic material and service
-endpoints for the purposes of verifying proofs from, and interacting
-with, the [=controller=] of an identifier.
+In other words, the controller document contains the information necessary to
+communicate with, and/or prove that specific actions were taken by, the
+controller of an identifier, including material for cryptographic proofs and
+service endpoints for additional communications.
       </p>
       <p>
 A [=controller document=] specifies one or more
-[=verification relationships=] and [=services=] for a single, 
-identifier, for which the current controller document is taken as authoritative. Every controller document is stored and retrieved according to the URL of the document, which is also the canonical identifier 
-of the document.
+[=verification relationships=] and [=service endpoints=] for a single 
+identifier, for which the current controller document is taken as authoritative. 
+Every controller document is stored and retrieved according to the URL of the 
+document, which is also the canonical identifier of the document.
       </p>
       <p>
 It is expected that other specifications will profile
 the features that are defined in this specification, requiring and/or
 recommending the use of some and prohibiting and/or deprecating the use of
-others. For example, [[[?DID-CORE]]] is expected to define DID documents as a profile of controller documents, where the DID is the identifier, DID documents are controller documents, and resolution is the process of retrieving the canonical DID document for a DID.
+others. For example, [[[?DID-CORE]]] is expected to define DID documents as a 
+profile of controller documents, where the DID is the identifier, DID documents 
+are controller documents, and resolution is the process of retrieving the 
+canonical DID document for a DID.
       </p>
+
+      <section>
+        <h3>Use Cases</h3>
+        <p>
+The use cases below illustrate the need for this specification.
+While many other related use cases exist, such as those in [[[DID-USE-CASES]]]
+and [[[VC-USE-CASES]]], those described below are the main scenarios that this
+specification is designed to address.
+        </p>
+
+        <section class="notoc">
+          <h4>Globally Unique Identifiers</h4>
+
+          <p>
+Lemmy runs multiple enterprise portals that manage large amounts of sensitive
+data submitted by people working for a variety of organizations. He would like
+to use identifiers for entities in the databases that are provided by
+his customers and do not depend on easily phishable information such as
+email addresses and passwords.
+          </p>
+        </section>
+
+        <section class="notoc">
+          <h4>Cryptographic Verification</h4>
+
+          <p>
+Lemmy would like to ensure that his customers prove control over their
+identifiers &mdash; for example, by using public/private key cryptography
+&mdash; in order to increase security related to who is allowed to access and
+update each organization's data.
+          </p>
+        </section>
+
+        <section class="notoc">
+          <h4>Cryptographic Purpose</h4>
+
+          <p>
+Stef, who operates a high security service, would like to ensure that certain
+cryptographic keys used by his customers can only be used for specific purposes
+(such as encryption, authorization, and/or authentication) to enable different
+levels of access and protection for each type of cryptographic key.
+          </p>
+        </section>
+
+        <section class="notoc">
+          <h4>Service Engagement</h4>
+
+          <p>
+Marge, a software developer, would like to publicly advertise ways in which
+other people on the Web can reach her through various communication services she
+uses based on her globally unique identifier(s).
+          </p>
+        </section>
+
+        <section class="notoc">
+          <h4>Extensibility</h4>
+
+          <p>
+Cory, a systems architect, would like to extend the use cases described in this
+section in a way that provides new functionality without creating conflicts
+with extensions being added by others.
+          </p>
+        </section>
+
+        <section class="notoc">
+          <h4>Issue and Present Claims</h4>
+
+          <p>
+Neru would like to issue digital credentials on behalf of her company that
+contain claims about their employees. The claims that are made need to use
+identifiers that are cryptographically attributable back to Neru's company and
+need to allow for the holder's of those credentials to be able to
+cryptographically authenticate themselves when they present the credential.
+          </p>
+        </section>
+
+      </section>
+
+      <section>
+        <h3>Requirements</h3>
+
+        <p>
+The following requirements are derived from the use cases described earlier in
+this specification. Additional requirements which could lead to a more
+decentralized solution can be found in [[[DID-USE-CASES]]].
+        </p>
+
+        <dl>
+          <dt>1. Guaranteed Unique Identifier</dt>
+          <dd>
+Identifiers are globally unique with no possibility of duplication.
+          </dd>
+          <dt>2. Proof of Control</dt>
+          <dd>
+It is possible to prove that the entity claiming control over the identifier is
+indeed its controller.
+          </dd>
+          <dt>3. Associated cryptographic material</dt>
+          <dd>
+The identifier is tightly coupled with cryptographic material that an entity
+can use to prove control over that identifier.
+          </dd>
+          <dt>4. Streamlined key rotation</dt>
+          <dd>
+Entities denoted by designated identifiers can update authentication materials
+without direct intervention by requesting parties and with minimal individual
+interaction.
+          </dd>
+          <dt>5. Service endpoint discovery</dt>
+          <dd>
+These identifiers allow requesting parties to look up available service
+endpoints for interacting with the subject of the identifier.
+          </dd>
+          <dt>6. Delegation of control</dt>
+          <dd>
+The controller of the identifier is able to delegate that control, in full
+and/or in part, to a third party.
+          </dd>
+          <dt>7. Cryptographically future-proof</dt>
+          <dd>
+These identifiers and associated information are capable of being updated
+as technology evolves. Current cryptographic techniques are known to be
+susceptible to quantum computational attacks. Future-proofed identifiers
+provide a means by which to continue using the same identifier with updated,
+advanced authentication and/or authorization technologies.
+          </dd>
+          <dt>8. Cryptographic authentication and communication</dt>
+          <dd>
+These identifiers enable the use of cryptographic techniques that can be employed
+to authenticate individuals and/or to secure communications with the subject of
+the identifier, typically using public-private key pairs.
+          </dd>
+          <dt>9. Legally recognizable identification</dt>
+          <dd>
+These identifiers can be used as a basis for credentials and transactions that
+can be recognized as legally valid under one or more jurisdictions.
+          </dd>
+          <dt>10. Human-centered interoperability</dt>
+          <dd>
+Decentralized identifiers need to be easy to use by people with no technical
+expertise or specialist knowledge.
+          </dd>
+        </dl>
+
+      </section>
 
       <section id="conformance">
         <p>
@@ -408,24 +566,65 @@ their identifiers, and other related properties.<!--  See Section -->
 
           <dt><dfn class="export" data-lt="controller(s)|Controllers">controller</dfn></dt>
           <dd>
+            <p>
 An entity that is capable of performing an action with a specific resource,
 such as updating a [=controller document=] or generating a [=proof=] using a [=verification method=].
+            </p>
           </dd>
 
           <dt><dfn class="export">controller document</dfn></dt>
           <dd>
-A document that contains cryptographic material and service
-endpoints for the purposes of verifying proofs from, and interacting
+            <p>
+A document that contains cryptographic material and lists service
+endpoints that can be used for verifying proofs from, and interacting
 with, the [=controller=] of an identifier.
+            </p>
           </dd>
 
           <dt><dfn data-lt="subjects">subject</dfn></dt>
           <dd>
-An entity referred to by the `id` property in a [=controller document=]
-when it is used in specific contexts such as authentication or
-attestations. Anything can be a subject: person, group, organization,
-physical thing, digital thing, logical thing, etc.
+            <p>
+An entity that is referred to by the `id` property in a [=controller document=]
+when it is used as a subject in other contexts, such as authentication or
+attestations, e.g., Verifiable Credentials. Anything can be a subject: 
+person, group, organization, physical thing, digital thing, logical thing, etc. 
+            </p>
+            <p class="note">
+It is expected that the subject referred to by the id of a controller document 
+be consistent over time, so that a set of credentials with a given identifer as 
+subject can be taken to be about the same entity. However, it <em>is</em> possible to 
+issue credentials with a subject identifier <em>without</em> the subject being 
+aware of it.
+
+It is expected that credential issuers will ask the subject for identifiers 
+and that those subjects would demonstrate proof of control before the issuer
+issues the credential. However, there are valid cases where issuers will 
+use identifiers that are not provably under the control of the subject. 
+
+However, even in cases
+where the subject of the ID does prove control, the interpretation of the subject
+remains contextual and potentially ambiguous.
+
+For example, the White House might issue a credential about the president of the United States 
+using `did:example:abc` as a subject identifier, saying in effect "The President 
+likes fried chicken." Then, the US National Parks Service might issue their own 
+credential about the president, using the same identifier, saying "The President authorizes
+the creation of new National Parks." 
+
+However, the White House meant "President Joe Biden", who is a physical person who 
+happened to be in office at the time the credential was issued. In contrast, 
+the park service meant "the current president, aka POTUS, whoever he is"; this second VC is not 
+about the Joe Biden as a human individual, it's about the role of President of
+the United States. 
+
+In natural language, these ambiguities are often easily ignored or corrected. In 
+digital media, it's vital that context be evaluated to establish the intended 
+referent, especially when identifiers are used in different 
+contexts by different issuers.
+            </p>
+
           </dd>
+
 
           <dt><dfn class="export">verification method</dfn></dt>
           <dd>
@@ -448,7 +647,7 @@ method, even though descriptions of the process might not use the words
           <dt><dfn class="export">verification relationship</dfn></dt>
           <dd>
             <p>
-An expression of the relationship between a [=identifier=] and a
+An expression of the relationship between an [=identifier=] and a
 [=verification method=]. One example of a verification relationship is
 [[[#authentication]]].
             </p>
@@ -464,7 +663,7 @@ An expression of the relationship between a [=identifier=] and a
 
         <p>
 A [=controller document=] specifies one or more relationships between
-an [=identifier=] and a set of verification methods and service 
+an [=identifier=] and a set of verification methods and/or service 
 endpoints. The [=controller document=] SHOULD
 contain [=verification relationships=] that explicitly permit the use of
 certain [=verification methods=] for specific purposes.
@@ -565,6 +764,15 @@ A <a data-cite="INFRA#ordered-set">set</a> of
 syntax.
                 </td>
                 <td style="white-space: nowrap;">[[[#also-known-as]]]</td>
+              </tr>
+              <tr>
+                <td>`service`</td>
+                <td>no</td>
+                <td>
+A <a data-cite="INFRA#ordered-set">set</a> of [=service=]
+<a data-cite="INFRA#ordered-map">maps</a>.
+                </td>
+                <td style="white-space: nowrap;">[[[#services]]]</td>
               </tr>
               <tr>
                 <td>`verificationMethod`</td>
@@ -676,9 +884,10 @@ A [=controller=] is any entity capable of making changes to a
 the content of the resource returned from dereferencing the controller
 document's canonical URL is, by definition, a controller of the
 document and its canonical identifier. Proofs that satisfy a
-controller document's verification methods are taken as cryptographic assurance that the controller of the identifier created those proofs.
+controller document's verification methods are taken as cryptographic
+assurance that the controller of the identifier created those proofs.
             </p>
-            <p class="note" title="Identifier Controller v Document Controller">
+            <p class="note" title="Identifier Controller versus Document Controller">
 The controller of the controller document is taken to be the
 controller of the document's canonical identifier, also known as its
 URL. That is, whoever can update the controller document is both
@@ -701,11 +910,11 @@ of the controller document. For example, a document controller could
 set a public key under another party's control as an authentication
 verification method. This would enable the other party to authenticate
 on behalf of this identifier (because their public key is listed in 
-an authentication verification method) WITHOUT enabling that party
+an authentication verification method) <em>without</em> enabling that party
 to update the controller document. However, since the document
 controller explicitly listed that key for authentication, the
 proof in question is taken as created by the document controller, as
-it was created by their explicit assignee. This is useful
+it was created by their explicit assignee. This is especially useful
 when the "other party" is a device under the control of the document
 controller, but with a distinct cryptographic authority, i.e., it
 has its own keystore and can generate proofs. That pattern enables
@@ -719,11 +928,11 @@ If present, its value MUST be a
 <a data-cite="INFRA#string">strings</a>,
 each of which conforms to the rules in the [[[URL]]].
 
-Each entry in the 'controller property' MUST identify
-at least one entity capable of updating the canonical version
-of the [=controller document=] which contains the property, such
-that subsequent requests for this controller document, from its
-canonical location, contain the latest version.
+Each entry in the `controller` property MUST identify
+an entity capable of updating the canonical version
+of the [=controller document=].
+Subsequent requests for this [=controller document=] through its
+canonical location will always receive the latest version.
 
 If the `controller` property is not present, then control of the document
 is determined entirely by its storage location.
@@ -743,7 +952,7 @@ is determined entirely by its storage location.
 While the identifier used for a [=controller=] is unambiguous, this does not
 imply that a single entity is always the controller, nor that a controller
 only has a single identifier. A [=controller=] might be a single entity, or a
-collection of entities, such as a corporation. A [=controller=] might also use
+collection of entities, such as a partnership. A [=controller=] might also use
 multiple identifiers to refer to itself, for purposes such as privacy or
 delineating operational boundaries within an organization. Similarly, a
 [=controller=] might control many [=verification methods=]. For these reasons,
@@ -754,7 +963,7 @@ controlling only a single [=verification method=].
             <p class="note" title="Authentication versus Authorization">
 Note that the definition of [=authentication=] is different from the definition
 of [=authorization=]. Generally speaking, [=authentication=] answers the
-question of "Who is this?" while [=authorization=] answers the question of "Are
+question of "Do we know who this is?" while [=authorization=] answers the question of "Are
 they allowed to perform this action?". The `authentication` property in this
 specification is used to, unsurprisingly, perform [=authentication=] while the
 other [=verification relationships=] such as `capabilityDelegation` and
@@ -819,16 +1028,17 @@ not necessarily appropriate, <em>even with</em> a reciprocal relationship.
 
             <p>
 [=Services=] are used in [=controller documents=] to express ways of
-communicating with the [=subject=] or associated entities. A [=service=] can be
-any type of service the [=subject=] wants to advertise for further discovery,
+communicating with the [=controller=], or associated entities, in relation to 
+the controlled identifier. A [=service=] can be
+any type of service the [=controller=] wants to advertise for further discovery,
 authentication, authorization, or interaction.
             </p>
 
             <p>
 Due to privacy concerns, revealing public information through [=services=], such
 as social media accounts, personal websites, and email addresses, is
-discouraged. Further exploration of privacy concerns can be found in
-[=#keep-personal-data-private=] and [=#service-privacy=]. The information
+discouraged. Further exploration of privacy concerns can be found in sections
+[[[#keep-personal-data-private]]] and [[[#service-privacy]]]. The information
 associated with [=services=] is often service specific. For example, the
 information associated with an encrypted messaging service can express how to
 initiate the encrypted link before messaging begins.
@@ -884,7 +1094,7 @@ value MUST be a valid URL conforming to [[[URL]]].
 For more information regarding privacy and security considerations related to
 [=services=] see [[[#service-privacy]]], [[[#keep-personal-data-private]]],
 [[[#controller-document-correlation-risks]]], and
-[[[#authentication-service-endpoints]]].
+[[[#service-endpoints-for-authentication-and-authorization]]].
       </p>
 
       <pre class="example nohighlight" title="Usage of the service property">
@@ -1020,9 +1230,13 @@ revocation.
 The `controller` property is used by [=controller documents=], as described in
 Section [[[#controller-documents]]], and by [=verification methods=], as
 described in Section [[[#verification-methods]]]. When it is used in either
-place, its purpose is essentially the same; that is, it expresses one or more entities that are authorized to perform certain actions associated with the resource with which it is associated. 
+place, its purpose is essentially the same; that is, it expresses one or more 
+entities that are authorized to perform certain actions associated with the 
+resource with which it is associated. 
 
-In the case of the controller of a controller document, the controller can update the content of the document. In the case of the controller of a verification method, the controller can generate proofs that satisfy the method.
+In the case of the controller of a controller document, the controller can 
+update the content of the document. In the case of the controller of a 
+verification method, the controller can generate proofs that satisfy the method.
 
 To ensure explicit security guarantees, the
 [=controller=] of a [=verification method=] cannot be inferred from the
@@ -2273,21 +2487,18 @@ function baseDecode(sourceEncoding, sourceBase, baseAlphabet) {
         <p>
 The following algorithm specifies how to safely retrieve a verification method,
 such as a cryptographic [=public key=], by using a [=verification method=]
-identifier. Required inputs are a
-<strong>[=verification method=]</strong> (<var>verificationMethod</var>), a
+identifier. Required inputs are a <strong>[=verification method=]</strong>
+identifier (<var>vmIdentifier</var>), a
 <strong>[=verification relationship=]</strong>
 (<var>verificationRelationship</var>), and a set of <strong>dereferencing
 options</strong> (<var>options</var>). A
-<strong>verification method</strong> is produced as output.
+<strong>[=verification method=]</strong> is produced as output.
         </p>
 
         <ol class="algorithm">
           <li>
-Let <var>vmIdentifier</var> be set to <var>verificationMethod</var>.
-          </li>
-          <li>
-If <var>vmIdentifier</var> is not a valid URL, an error MUST be raised and SHOULD
-convey an error type of
+If <var>vmIdentifier</var> is not a valid URL, an error MUST be raised and
+SHOULD convey an error type of
 <a href="#INVALID_VERIFICATION_METHOD_URL">INVALID_VERIFICATION_METHOD_URL</a>.
           </li>
           <li>
@@ -2306,16 +2517,16 @@ Let <var>controllerDocument</var> be the result of dereferencing
 of the URL scheme and using the supplied <var>options</var>.
           </li>
           <li>
-If <var>controllerDocument</var>.<var>id</var> does not match the
-<var>controllerDocumentUrl</var>, an error MUST be raised and SHOULD
-convey an error type of
-<a href="#INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID</a>.
-          </li>
-          <li>
 If <var>controllerDocument</var> is not a [=conforming controller document=],
 an error MUST be raised and SHOULD
 convey an error type of
 <a href="#INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT</a>.
+          </li>
+          <li>
+If <var>controllerDocument</var>.<var>id</var> does not match the
+<var>controllerDocumentUrl</var>, an error MUST be raised and SHOULD
+convey an error type of
+<a href="#INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID</a>.
           </li>
           <li>
 Let <var>verificationMethod</var> be the result of dereferencing the
@@ -2328,16 +2539,28 @@ an error MUST be raised and SHOULD convey an error type of
 <a href="#INVALID_VERIFICATION_METHOD">INVALID_VERIFICATION_METHOD</a>.
           </li>
           <li>
-If the [=verification method=] is not associated with a
-[=verification relationship=] array in the <var>controllerDocument</var>,
-either by reference (URL) or by value (object), an error MUST be raised and
+If the absolute URL value of <var>verificationMethod</var>.<var>id</var>
+does not equal <var>vmIdentifier</var>, an error MUST be raised and SHOULD
+convey an error type of
+<a href="#INVALID_VERIFICATION_METHOD">INVALID_VERIFICATION_METHOD</a>.
+          </li>
+          <li>
+If the absolute URL value of <var>verificationMethod</var>.<var>controller</var>
+does not equal <var>controllerDocumentUrl</var>, an error MUST be raised and
 SHOULD convey an error type of
+<a href="#INVALID_VERIFICATION_METHOD">INVALID_VERIFICATION_METHOD</a>.
+          </li>
+          <li>
+If <var>verificationMethod</var> is not associated, either by reference
+(URL) or by value (object), with the [=verification relationship=] array in the
+<var>controllerDocument</var> identified by <var>verificationRelationship</var>,
+an error MUST be raised and SHOULD convey an error type of
 <a href="#INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD">
 INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD</a>.
           </li>
           <li>
 Return <var>verificationMethod</var> as the
-<strong>verification method</strong>.
+<strong>[=verification method=]</strong>.
           </li>
         </ol>
 
@@ -2359,6 +2582,44 @@ The following example provides a minimum conformant
   "authentication": ["#key-456"]
 }
         </pre>
+
+        <p class="note" title="Controller documents can contain references to external verification methods">
+[=Verification method=] identifiers are expressed as strings that are URLs, or
+via the `id` property, whose value is a URL. It is possible for a [=controller
+document=] to express a [=verification method=], through a [=verification
+relationship=], that exists in a place that is external to the [=controller
+document=]. As described in Section [[[#integrity-protection-of-controllers]]],
+specifying a [=verification method=] that is external to a [=controller
+document=] is a valid use of this specification. It is vital that this
+[=verification method=] is retrieved from the external [=controller document=].
+        </p>
+
+        <p>
+When retrieving any [=verification method=] the algorithm above is used to
+ensure that the [=verification method=] is retrieved from the correct
+[=controller document=]. The algorithm also ensures that this [=controller
+document=] refers to the [=verification method=] (via a [=verification
+relationship=]) and that the [=verification method=] refers to the [=controller
+document=] (via the [=verification method=]'s `controller` property). Failure to
+use this algorithm, or an equivalent one that performs these checks, can lead to
+security compromises where an attacker poisons a cache by claiming control of a
+victim's [=verification method=].
+        </p>
+
+        <pre class="example nohighlight" title="Referencing an external verification method for `capabilityInvocation`">
+{
+  "id": "https://controller.example/123",
+  "capabilityInvocation": [<span class="highlight">"https://external.example/xyz#key-789"</span>]
+}
+        </pre>
+
+        <p>
+In the example above, the algorithm described in this section will use the
+`https://external.example/xyz#key-789` URL value as the [=verification method=]
+identifier. The algorithm will then confirm that the [=verification method=]
+exists in the external [=controller document=] and that the appropriate
+relationships exist as described earlier in this section.
+        </p>
 
       </section>
 
@@ -2556,27 +2817,31 @@ the `proofPurpose` property in the proof. See Section
         </p>
 
         <section>
-          <h4>Context injection</h4>
+          <h4>Context Injection</h4>
           <p>
-            The `@context` property is used to ensure that implementations are using the
-            same semantics when terms in this specification are processed. For example, this
-            can be important when properties like `authentication` are processed and its
-            value, such as `Multikey` or `JsonWebKey`, are used.
+The `@context` property is used to ensure that implementations are using the
+same semantics when terms in this specification are processed. For example, this
+can be important when properties like `authentication` are processed and its
+value, such as `Multikey` or `JsonWebKey`, are used.
           </p>
 
           <p>
-            When an application is processing a [=controller document=], if an `@context`
-            property is not provided in the document or the terms used in the document are
-            not mapped by existing values in the `@context` property, implementations MUST inject
-            or append an `@context` property with a value of
-            `https://www.w3.org/ns/controller/v1` or one or more contexts with at least the
-            same declarations, such as the Decentralized Identifier v1.1 context
-            (`https://www.w3.org/ns/did/v1`).
+When an application is processing a [=controller document=], if an `@context`
+property is not provided in the document or the terms used in the document are
+not mapped by existing values in the `@context` property, implementations MUST
+inject or append an `@context` property with a value of
+`https://www.w3.org/ns/controller/v1` or one or more contexts with at least the
+same declarations, such as the Decentralized Identifier v1.1 context
+(`https://www.w3.org/ns/did/v1`).
           </p>
 
           <p>
-            Implementations that do not intend to use JSON-LD MAY choose to not include an
-            `@context` declaration at the top-level of the document.
+Implementations that do not intend to use JSON-LD MAY choose to not include an
+`@context` declaration at the top-level of the document. Whether or not the
+`@context` value or JSON-LD processors are used, the semantics for all properties
+and values expressed in [=conforming documents=] interpreted by [=conforming
+processors=] are the same. Any differences in semantics between documents
+processed in either mode are either implementation or specification bugs.
           </p>
         </section>
       </section>
@@ -2923,6 +3188,38 @@ that can be invalidated at any time by the [=controller=].
     </section>
 
     <section>
+      <h2>Choosing a Multiformat</h2>
+
+      <p>
+<dfn class="external lint-ignore">Multiformats</dfn> enable self-describing
+data; if data is known to be a Multiformat, its exact type can be determined by
+reading a few compact header bytes that are expressed at the beginning of the
+data. <a href="#multibase-0">Multibase</a>, <a href="#multihash">Multihash</a>,
+and <a href="#Multikey">Multikey</a> are types of Multiformats that are defined
+by this specification.
+      </p>
+
+      <p>
+The Multiformats specifications exist because application developers
+appropriately choose different base-encoding functions, cryptographic
+hashing functions, and cryptographic key formats, among other things,
+based on different use cases and their requirements. No single
+base-encoding function, cryptographic hashing function, or cryptographic
+key format in the world has ever satisfied all requirement sets.
+Multiformats provides an alternative means by which to encode and/or
+detect any base-encoding, cryptographic hash, or cryptographic key
+format in self-documenting data and documents.
+      </p>
+
+      <p>
+To increase interoperability, specification authors are urged to minimize
+the number of Multiformats &mdash; optimally, choosing only one &mdash; to
+be used for any particular application or ecosystem.
+      </p>
+
+    </section>
+
+    <section>
       <h2>Encrypted Data in Controller Documents</h2>
       <p>
 Encryption algorithms have been known to fail due to advances in cryptography
@@ -2971,6 +3268,37 @@ version of the external JSON-LD Context.
     </section>
 
     <section>
+      <h2>Integrity Protection of Controllers</h2>
+
+      <p>
+As described in Section [[[#controllers]]], this specification includes a
+mechanism by which to delegate change control of a [=controller document=] to
+an entity that is described in an external [=controller document=] through the
+use of the `controller` property.
+      </p>
+
+      <p>
+Delegating change control addresses a number of use cases including those
+where the care of an entity is the responsibility of some other entity or
+entities, as well as those where some entity desires that another entity
+provide account recovery services, among other use cases. In such scenarios,
+it can be beneficial to allow the guardian to manage the rotation of their
+own key material. It can also be beneficial for the delegator to associate
+a cryptographic hash of the remote [=controller document=] to "pin" the
+remote document to a known good value.
+      </p>
+
+      <p>
+While this document does not specify a particular mechanism for
+cryptographically protected URLs, the `relatedResource` property in
+[[[VC-DATA-MODEL-2.0]]] and the `digestMultibase` property in
+[[[VC-DATA-INTEGRITY]]] could be employed by a mechanism that can provide
+such protection.
+      </p>
+
+    </section>
+
+    <section>
       <h2>Level of Assurance</h2>
 
       <p>
@@ -3016,6 +3344,19 @@ information could be transmitted using Verifiable Credentials
 extended to incorporate this information.
       </p>
     </section>
+
+    <section>
+      <h2>Service Endpoints for Authentication and Authorization</h2>
+
+      <p>
+If a [=controller document=] publishes a [=service=] intended for authentication
+or authorization of the [=subject=] (see Section [[[#services]]]), it is the
+responsibility of the [=service=] provider, [=subject=], and/or requesting party
+to comply with the requirements of the authentication and/or authorization
+protocols supported by that [=service=] endpoint.
+      </p>
+    </section>
+
   </section>
 
   <section class="informative">
@@ -3040,10 +3381,43 @@ documents</a>.
 
       <p>
 If a [=controller document=] is about a specific individual and is
-public-facing, it is <em>critical</em> that the [=controller documents=]
-contain no personal data. Personal data can instead be transmitted through other
-means such as 1) verifiable credentials [[?VC-DATA-MODEL-2.0]], or 2)
-other private communication channels.
+public-facing, it is <em>critical</em> that [=controller documents=] contain
+no personal biometric or biographical data. While it is true that personal data
+might include pseudonymous information, such as a public cryptographic key or an IP address,
+publishing that sort of information does not create the same immediate privacy
+dangers as publishing an individual's full name, profile photo, or social media
+account in a [=controller document=]. A better alternative is to transmit
+such personal data through other means such as verifiable credentials
+[[?VC-DATA-MODEL-2.0]] or other data formats sent over private and secure
+communication channels.
+      </p>
+    </section>
+
+    <section>
+      <h3>Relationship to the Same-Origin Policy</h3>
+
+      <p>
+The <a href="https://en.wikipedia.org/wiki/Same-origin_policy">
+Same-origin policy</a> is a security and privacy concept that constrains
+information to the same Web domain by default. There are mechanisms, such as
+[[[?WEBAUTHN]]], that extend this policy to cryptographic keys. When a
+cryptographic key is bound to a specific domain, it is sometimes referred to
+as a <dfn>pairwise identifier</dfn>.
+      </p>
+      <p>
+The same-origin policy can be overridden for a variety of use cases, such as
+for
+<a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">
+Cross-origin resource sharing</a> (CORS). This specification allows for the
+cross-origin resource sharing of verification methods and service endpoints,
+which means that correlatable identifiers might be shared between origins. While
+resource sharing can lead to positive security outcomes (reduced cryptographic
+key registration burden), it can also lead to negative privacy outcomes
+(tracking). Those that use this specification are warned that there are
+trade-offs with each approach and to use the mechanism that maximizes security
+and privacy according to the needs of the individual or organization. Using a
+[=controller document=] for all use cases is not always advantageous when a
+same-origin bound cryptographic key would suffice.
       </p>
     </section>
 
@@ -3051,14 +3425,15 @@ other private communication channels.
       <h2>Identifier Correlation Risks</h2>
 
       <p>
-Identifiers can be used for the purpose of correlation.
-[=Controllers=] can mitigate this privacy risk by using pairwise identifiers
-that are unique to each relationship; in effect, each identifier acts as a
-pseudonym. A pairwise identifier need only be shared with more than one party
-when correlation is explicitly desired. If pairwise identifiers are the default,
-then the only need to publish an identifier openly, or to share it with multiple
-parties, is when the [=controllers=] and/or [=subjects=] explicitly
-desire public identification and correlation.
+Identifiers can be used for unwanted correlation. [=Controllers=] can
+mitigate this privacy risk by using [=pairwise identifiers=] that are unique to
+each relationship or interaction domain; in effect, each identifier acts as a pseudonym. A [=pairwise
+identifier=] need only be shared with more than one party when correlation
+across contexts is explicitly desired. If [=pairwise identifiers=] are the default,
+then the only
+need to publish an identifier openly, or to share it with multiple parties, is
+when the [=controllers=] and/or [=subjects=] explicitly desire public
+identification and correlation across interaction domains.
       </p>
     </section>
 
@@ -3066,11 +3441,11 @@ desire public identification and correlation.
       <h2>Controller Document Correlation Risks</h2>
 
       <p>
-The anti-correlation protections of pairwise identifiers are easily defeated if
-the data in the corresponding [=controller documents=] can be correlated. For
+The anti-correlation protections of [=pairwise identifiers=] are easily defeated
+if the data in the corresponding [=controller documents=] can be correlated. For
 example, using identical [=verification methods=] in multiple <a>controller
 documents</a> can provide as much correlation information as using the same
-identifier. Therefore, the [=controller document=] for a pairwise identifier
+identifier. Therefore, the [=controller document=] for a [=pairwise identifier=]
 also needs to use pairwise unique information, such as ensuring that
 [=verification methods=] are unique to the pairwise relationship.
       </p>
@@ -3107,6 +3482,36 @@ relationships</a> related to using the identifier.
       </p>
 
     </section>
+
+    <section>
+      <h2>Service Privacy</h2>
+      <p>
+The ability for a [=controller=] to optionally express at least one [=service=] in the [=controller document=] increases their control and agency.
+Each additional endpoint in the [=controller document=] adds privacy risk either
+due to correlation, such as across endpoint descriptions, or because the
+[=services=] are not protected by an authorization mechanism, or both.
+      </p>
+      <p>
+[=Controller documents=] are often public and, since they are standardized, will
+be stored and indexed efficiently. This
+risk is increased if [=controller documents=] are published to immutable
+[=verifiable data registries=]. Access to a history of the [=controller
+documents=] referenced by a URL enables a form of traffic analysis made more
+efficient through the use of standards.
+      </p>
+      <p>
+The degree of additional privacy risk caused by including multiple [=services=] in
+one [=controller document=] can be difficult to estimate. Privacy harms are
+typically unintended consequences. URLs can refer to documents, [=services=],
+schemas, and other things that might be associated with individual people,
+households, clubs, and employers &mdash; and correlation of their [=services=]
+could become a powerful surveillance and inference tool. An example of
+this potential harm can be seen when multiple common country-level top level
+domains such as `https://example.co.uk` might be used to infer the approximate
+location of the [=subject=] with a greater degree of probability.
+      </p>
+    </section>
+
     </section>
 
     <section>
@@ -3393,10 +3798,68 @@ Apply wording updates from VC-JOSE-COSE spec.
 
       <p>
 The specification authors would like to thank the contributors to the
-<a href="https://www.w3.org/TR/2022/REC-did-core-20220719/">W3C Decentralized Identifiers (DIDs) v1.0</a>,
-<a href="https://www.w3.org/TR/2024/CRD-vc-data-integrity-20240609/">W3C Verifiable Credential Data Integrity 1.0</a>, and
-<a href="https://www.w3.org/TR/2024/CRD-vc-jose-cose-20240521/">W3C Securing Verifiable Credentials using JOSE and COSE</a> specifications
-upon which this work is based.
+<a href="https://www.w3.org/TR/2022/REC-did-core-20220719/">
+W3C Decentralized Identifiers (DIDs) v1.0</a> specification upon which this work
+is based.
+      </p>
+
+      <p>
+The Working Group gratefully acknowledges the work that led to the creation of
+this specification, and extends sincere appreciation to those individuals that
+worked on technologies and specifications that deeply influenced our work. In
+particular, this includes the work of Phil Zimmerman, Jon Callas, Lutz
+Donnerhacke, Hal Finney, David Shaw, and Rodney Thayer on <a
+href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy"> Pretty Good Privacy
+(PGP)</a> in the 1990s and 2000s.
+      </p>
+
+      <p>
+In the mid-2010s, preliminary implementations of what would become Decentralized
+Identifiers were <a href="https://web-payments.org/minutes/2014-05-07/#topic-1">
+built</a> in collaboration with Jeremie Miller's Telehash project and the W3C
+Web Payments Community Group's work led by Dave Longley and Manu Sporny. Around
+a year later, the XDI.org Registry Working Group
+<a href="https://docs.google.com/document/d/1EP-KhH60y-nl4xkEzoeSf3DjmjLomfboF4p2umF51FA/">
+began exploring</a> decentralized technologies for replacing its existing
+identifier registry. Some of the first
+<a href="https://github.com/WebOfTrustInfo/rwot1-sf/blob/master/final-documents/dpki.pdf">written</a>
+<a href="https://github.com/WebOfTrustInfo/rwot2-id2020/blob/master/final-documents/requirements-for-dids.pdf">papers</a>
+exploring the concept of Decentralized Identifiers can be traced back to the
+first several Rebooting the Web of Trust workshops convened by Christopher
+Allen. That work led to a key collaboration between Christopher Allen, Drummond
+Reed, Les Chasen, Manu Sporny, and Anil John. Anil saw promise in the technology
+and allocated the initial set of government funding to explore the space.
+Without the support of Anil John and his guidance through the years, it is
+unlikely that Decentralized Identifiers would be where they are today. Further
+refinement at the Rebooting the Web of Trust workshops led to the <a
+href="https://github.com/WebOfTrustInfo/rwot3-sf/blob/master/final-documents/did-implementer-draft-10.pdf">first
+implementers documentation</a>, edited by Drummond Reed, Les Chasen, Christopher
+Allen, and Ryan Grant. Contributors included Manu Sporny, Dave Longley, Jason
+Law, Daniel Hardman, Markus Sabadello, Christian Lundkvist, and Jonathan
+Endersby. This initial work was then merged into the W3C Credentials Community
+Group, incubated further, and then transitioned to the W3C Decentralized
+Identifiers Working Group for global standardization. That work was then used
+as the basis for this, more generalized and less decentralized, specification.
+      </p>
+
+      <p>
+Portions of the work on this specification have been funded by the United States
+Department of Homeland Security's (US DHS) Science and Technology Directorate
+under contracts HSHQDC-16-R00012-H-SB2016-1-002, and HSHQDC-17-C-00019, as well
+as the US DHS Silicon Valley Innovation Program under contracts
+70RSAT20T00000003, 70RSAT20T00000010/P00001, 70RSAT20T00000029,
+70RSAT20T00000030, 70RSAT20T00000033, 70RSAT20T00000045,
+70RSAT21T00000016/P00001, 70RSAT23T00000005, 70RSAT23C00000030, and
+70RSAT23R00000006. The content of this specification does not necessarily
+reflect the position or the policy of the U.S. Government and no official
+endorsement should be inferred.
+      </p>
+
+      <p>
+Portions of the work on this specification have also been funded by the European
+Union's StandICT.eu program under sub-grantee contract number CALL05/19. The
+content of this specification does not necessarily reflect the position or the
+policy of the European Union and no official endorsement should be inferred.
       </p>
 
       <p>
@@ -3404,6 +3867,51 @@ We would also like to thank the base-x software library contributors and the
 Bitcoin Core developers who wrote the original code, shared under an MIT
 License, found in Section [[[#base-encode]]] and Section [[[#base-decode]]].
       </p>
+
+      <p>
+Work on this specification has also been supported by the
+<a href="https://www.weboftrust.info/">Rebooting the Web of Trust</a> community
+facilitated by Christopher Allen, Shannon Appelcline, Kiara Robles, Brian
+Weller, Betty Dhamers, Kaliya Young, Kim Hamilton Duffy, Manu Sporny, Drummond
+Reed, Joe Andrieu, Heather Vescent, Samantha Chase, Andrew Hughes, Erica
+Connell, Shigeya Suzuki, and Zaïda Rivai. Development of this specification has
+also been supported by the
+<a href="https://w3c-ccg.github.io/">W3C Credentials Community Group</a>, which
+has been Chaired by Kim Hamilton Duffy, Joe Andrieu, Christopher Allen, Heather
+Vescent, and Wayne Chang. The participants in the Internet Identity Workshop,
+facilitated by Phil Windley, Kaliya Young, Doc Searls, and Heidi Nobantu Saul,
+also supported this work through numerous working sessions designed to debate,
+improve, and educate participants about this specification.
+      </p>
+
+      <p>
+The Working Group thanks the following individuals for their contributions to
+this specification (in alphabetical order, Github handles start with `@` and
+are sorted as last names): Denis Ah-Kang, Nacho Alamillo, Christopher Allen, Joe
+Andrieu, Antonio, Phil Archer, George Aristy, Baha, Juan Benet, BigBlueHat, Dan
+Bolser, Chris Boscolo, Pelle Braendgaard, Daniel Buchner, Daniel Burnett, Juan
+Caballero, @cabo, Tim Cappalli, Melvin Carvalho, David Chadwick, Wayne Chang,
+Sam Curren, Hai Dang, Tim Daubenschütz, Oskar van Deventer, Kim Hamilton Duffy,
+Arnaud Durand, Ken Ebert, Veikko Eeva, @ewagner70, Carson Farmer, Nikos Fotiou,
+Gabe, Gayan, @gimly-jack, @gjgd, Ryan Grant, Peter Grassberger, Adrian Gropper,
+Amy Guy, Daniel Hardman, Kyle Den Hartog, Philippe Le Hegaret, Ivan Herman,
+Michael Herman, Alen Horvat, Dave Huseby, Marcel Jackisch, Mike Jones, Andrew
+Jones, Tom Jones, jonnycrunch, Gregg Kellogg, Michael Klein, @kdenhartog-sybil1,
+Paul Knowles, @ktobich, David I. Lehn, Charles E. Lehner, Michael Lodder,
+@mooreT1881, Dave Longley, Tobias Looker, Wolf McNally, Robert Mitwicki, Mircea
+Nistor, Grant Noble, Mark Nottingham, @oare, Darrell O'Donnell, Vinod Panicker,
+Dirk Porsche, Praveen, Mike Prorock, @pukkamustard, Drummond Reed, Julian
+Reschke, Yancy Ribbens, Justin Richer, Rieks, @rknobloch, Mikeal Rogers,
+Evstifeev Roman, Troy Ronda, Leonard Rosenthol, Michael Ruminer, Markus
+Sabadello, Cihan Saglam, Samu, Rob Sanderson, Wendy Seltzer, Mehran Shakeri,
+Jaehoon (Ace) Shim, Samuel Smith, James M Snell, SondreB, Manu Sporny, @ssstolk,
+Orie Steele, Shigeya Suzuki, Sammotic Switchyarn, @tahpot, Oliver Terbu,  Ted
+Thibodeau Jr., Joel Thorstensson, Tralcan, Henry Tsai, Rod Vagg, Mike Varley,
+Kaliya "Identity Woman" Young, Eric Welton, Fuqiao Xue, @Yue, Dmitri Zagidulin,
+@zhanb, and Brent Zundel.
+      </p>
+
+
     </section>
 
   </body>
