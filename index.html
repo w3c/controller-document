@@ -589,21 +589,28 @@ when it is used as a subject in other contexts, such as authentication or
 attestations, e.g., Verifiable Credentials. Anything can be a subject: 
 person, group, organization, physical thing, digital thing, logical thing, etc. 
             </p>
-            <p class="note">
-It is expected that the subject referred to by the id of a controller
-document be consistent over time, so that a set of proofs with the
-same identifier as subject can be interpreted as referring to the same
-entity. For example, it is preferred that credential issuers require
-subjects to demonstrate proof of control over their identifiers before
-issuing a credential with that subject, creating assurances that the same
-entity was involved as the subject in the issuing of each credential.
-However, there are valid cases where that is either impossible or
-unreasonable. For example, when a parent requests a Verifiable Credential
-for their child. There are also invalid cases where an issuer simply makes
-a mistake or intentionally issues a false statement. All of these
-possibilities should be considered when evaluating the security of relying
-on a given identifier for any purpose. See the section on Identifier  Ambiguity in Security Considerations.
-            </p>
+            <div class="note">
+              <p>
+It is expected that the [=subject=] referred to by the `id` of a
+[=controller document=] will be consistent over time, so that a set of
+proofs with the same [=identifier=] as [=subject=] can be interpreted
+as referring to the same entity. For example, it is preferred that
+credential issuers require that [=subjects=] demonstrate proof of
+control over their [=identifier=] before issuing a credential with that
+[=identifier=] as subject, creating assurance that the same entity was
+involved in the issuance of each credential with that [=identifier=]
+as [=subject=].
+              </p>
+              <p>
+However, there are valid cases where that practice is either impossible or
+unreasonable; for example, when a parent requests a Verifiable Credential
+for their child. There are also cases where an issuer simply makes a mistake
+or intentionally issues a false statement. All of these possibilities should
+be considered when evaluating the security impacts of reliance on a given
+[=identifier=] for any given purpose. See the section on Identifier Ambiguity
+in Security Considerations.
+              </p>
+            </div>
           </dd>
 
 
