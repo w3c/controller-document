@@ -936,13 +936,15 @@ If present, its value MUST be a
 <a data-cite="INFRA#ordered-set">set</a> of
 <a data-cite="INFRA#string">strings</a>,
 each of which conforms to the rules in the [[[URL]]].
-
+            </p>
+            <p>
 Each entry in the `controller` property MUST identify
 an entity capable of updating the canonical version
 of the [=controller document=].
 Subsequent requests for this [=controller document=] through its
 canonical location will always receive the latest version.
-
+            </p>
+            <p>
 If the `controller` property is not present, then control of the document
 is determined entirely by its storage location.
               </dd>
