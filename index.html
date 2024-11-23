@@ -334,8 +334,6 @@ controller of an [=identifier=], including material for cryptographic proofs and
 A [=controller document=] specifies
 [=verification relationships=] and [=service=] endpoints for a single
 identifier, for which the current controller document is taken as authoritative.
-Every controller document is stored and retrieved according to the [[=canonical url=]] of the
-document, which MUST also be the [[=base identifier=]] of the document.
       </p>
       <p>
 It is expected that other specifications will profile
@@ -585,36 +583,13 @@ with, the [=controller=] of an identifier.
           <dt><dfn data-lt="subjects">subject</dfn></dt>
           <dd>
             <p>
-An entity that is referred to by the value of the `id` property in a
-[=controller document=]. The value of the `id` property, also referred to as an
-<dfn>identifier</dfn>, is also used as a subject in other contexts, such as
-[=authentication=] or attestations like [=verifiable credentials=]. Anything can
-be a subject: person, group, organization, physical thing, digital thing,
-logical thing, etc.
+An entity, such as a person, group, organization, physical thing, digital thing,
+or logical thing that is referred to by the value of an `id` property in a
+[=controller document=]. Subjects identified in a [=controller document=]
+are also used as a subjects in other contexts, such as during
+[=authentication=] or in [=verifiable credentials=].
             </p>
-            <div class="note">
-              <p>
-It is expected that the [=subject=] referred to by the `id` of a
-[=controller document=] will be consistent over time, so that a set of
-proofs with the same [=identifier=] as [=subject=] can be interpreted
-as referring to the same entity. For example, it is preferred that
-credential issuers require that [=subjects=] demonstrate proof of
-control over their [=identifier=] before issuing a credential with that
-[=identifier=] as [=subject=], creating assurance that the same entity
-was involved in the issuance of each credential with that [=identifier=]
-as [=subject=].
-              </p>
-              <p>
-However, there are valid cases where that practice is either impossible or
-unreasonable; for example, when a parent requests a Verifiable Credential
-for their child. There are also cases where an issuer simply makes a mistake
-or intentionally issues a false statement. All of these possibilities should
-be considered when evaluating the security impacts of reliance on a given
-[=identifier=] for any given purpose. See Section [[[#identifier-ambiguity]]].
-              </p>
-            </div>
           </dd>
-
 
           <dt><dfn class="export">verification method</dfn></dt>
           <dd>
@@ -642,26 +617,6 @@ An expression of the relationship between an [=identifier=] and a
 [[[#authentication]]].
             </p>
           </dd>
-
-          <dt><dfn class="export">base identifier</dfn></dt>
-          <dd>
-            <p>
-The value of the `id` property of the root object in the [=controller document=]
-MUST be set to the [=canonical URL=] for this [=controller document=].
-            </p>
-          </dd>
-          <dt><dfn class="export">canonical url</dfn></dt>
-          <dd>
-            <p>
-The URL for retrieving the current, authoritative [=controller document=]
-for a given [=identifier=]. Dereferencing the [=canonical URL=] MUST return
-the current authoritative [=controller document=]. The returned document's
-[[=base identifier=]] MUST be the same as the [=canonical URL=]; if it is
-anything else, then the returned document is *not* an authoritative
-[=controller document=] and the [=identifier=] SHOULD be treated as invalid.
-            </p>
-          </dd>
-
         </dl>
 
       </section>
@@ -853,21 +808,21 @@ the URL syntax, or a <a data-cite="INFRA#ordered-set">set</a> of
           <section>
             <h3>Subjects</h3>
             <p>
-The identifier for a particular [=subject=] is expressed using the
-`id` property in the [=controller document=].
+A [=subject=] is expressed using the `id` property in a [=controller document=].
+The value of an `id` property is referred to as an <dfn>identifier</dfn>.
             </p>
 
             <dl>
               <dt>id</dt>
               <dd>
-The value of `id` MUST be a <a data-cite="INFRA#string">string</a>
-that conforms to the rules in the [[[URL]]].
+The value of `id` property MUST be a <a data-cite="INFRA#string">string</a> that
+conforms to the rules in the [[[URL]]].
               </dd>
             </dl>
 
             <p>
-A [=controller document=] MUST contain an `id` value in the
-root <a data-cite="INFRA#ordered-map">map</a>.
+A [=controller document=] MUST contain an `id` value in the <em>topmost</em>
+<a data-cite="INFRA#ordered-map">map</a>.
             </p>
 
             <pre class="example nohighlight">
@@ -877,10 +832,40 @@ root <a data-cite="INFRA#ordered-map">map</a>.
             </pre>
 
             <p>
-The `id` property only denotes the identifier of the [=subject=] when it is
-present in the <em>topmost</em>
-<a data-cite="INFRA#ordered-map">map</a> of the [=controller document=].
+The value of the `id` property in the <em>topmost</em>
+<a data-cite="INFRA#ordered-map">map</a> of the [=controller document=] is
+called the <dfn>base identifier</dfn> for the [=controller document=]. The URL
+for retrieving the current, authoritative [=controller document=] for a given
+[=identifier=] is called the <dfn>canonical URL</dfn> for the [=controller
+document=]. Dereferencing the [=canonical URL=] MUST return the current
+authoritative [=controller document=]. The returned document's [=base
+identifier=] MUST be the same as the [=canonical URL=]; if it is anything else,
+then the returned document is not an authoritative [=controller document=] and
+the [=identifier=] SHOULD be treated as invalid. Every controller document is
+stored and retrieved according to the [=canonical URL=] of the document, which
+MUST also be the [=base identifier=] of the document.
             </p>
+
+            <div class="note" title="Identifiers are context-dependent">
+              <p>
+It is expected that the [=subject=] referred to by an `id` in a [=controller
+document=] will be consistent over time, such that any [=verifiable
+credentials=] that use them can be interpreted as referring to the same entity.
+For example, it is preferred that an [=issuer=] of a [=verifiable credential=]
+require that a [=subject=] demonstrate proof of control over their
+[=identifier=] before issuing a credential with that [=identifier=] as
+[=subject=], creating assurance that the same entity was involved in the
+issuance of each credential with that [=identifier=] as [=subject=].
+              </p>
+              <p>
+However, there are valid cases where that practice is either impossible or
+unreasonable; for example, when a parent requests a [=verifiable credential=]
+for their child. There are also cases where an [=issuer=] simply makes a mistake
+or intentionally issues a false statement. All of these possibilities are
+considered when evaluating the security impacts of reliance on a given
+[=identifier=] for any given purpose. See Section [[[#identifier-ambiguity]]].
+              </p>
+            </div>
 
           </section>
 
