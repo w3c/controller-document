@@ -3670,6 +3670,61 @@ calculation.
 
     </section>
 
+    </section>
+
+    <section class="appendix informative">
+      <h2>IANA Considerations</h2>
+
+      <p>
+This section will be submitted to the Internet Engineering Steering Group
+(IESG) for review, approval, and registration with IANA.
+      </p>
+
+      <section id="controller-media-type">
+        <h2>application/controller</h2>
+        <p>
+This specification registers the `application/controller` media type
+specifically for identifying documents conforming to the [=controller document=]
+format.
+        </p>
+        <table>
+          <tr>
+            <td>Type name: </td>
+            <td>application</td>
+          </tr>
+          <tr>
+            <td>Subtype name: </td>
+            <td>controller</td>
+          </tr>
+          <tr>
+            <td>Required parameters: </td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Encoding considerations: </td>
+            <td>
+Resources that use the `application/controller` media type are required to
+conform to all of the requirements for the `application/json` media type and are
+therefore subject to the same encoding considerations specified in Section 11 of
+[[[RFC7159]]].
+            </td>
+          </tr>
+          <tr>
+            <td>Security considerations: </td>
+            <td>As defined in the [[[CONTROLLER-DOCUMENT]]].</td>
+          </tr>
+          <tr>
+            <td>Contact: </td>
+            <td>
+W3C Verifiable Credentials Working Group
+<a href="mailto:public-vc-wg@w3.org">public-vc-wg@w3.org</a>
+            </td>
+          </tr>
+        </table>
+
+      </section>
+    </section>
+
     <section class="appendix informative">
       <h2>Examples</h2>
 
