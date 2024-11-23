@@ -319,16 +319,16 @@ controller of an identifier. They provide [=verification methods=] that express
 public cryptographic material, such as public keys, for verifying proofs created
 by the controller of the identifier for specific purposes, such as
 authentication, attestation, key agreement (for encryption), and capability
-invocation and delegation. [=Controller documents=] also list [=services=]
-related to the identifier, for example; from which to request additional
-information for verification.
+invocation and delegation. [=Controller documents=] also list
+[=service endpoints=] related to the [=identifier=]; for example, from which
+to request additional information for verification.
       </p>
 
       <p>
 In other words, the controller document contains the information necessary to
 communicate with, and/or prove that specific actions were taken by, the
-controller of an identifier, including material for cryptographic proofs and
-service endpoints for additional communications.
+controller of an [=identifier=], including material for cryptographic proofs and
+[=service endpoints=] for additional communications.
       </p>
       <p>
 A [=controller document=] specifies
@@ -584,10 +584,11 @@ with, the [=controller=] of an identifier.
           <dt><dfn data-lt="subjects">subject</dfn></dt>
           <dd>
             <p>
-An entity that is referred to by the `id` property in a [=controller document=]
-when it is used as a subject in other contexts, such as authentication or
-attestations, e.g., Verifiable Credentials. Anything can be a subject: 
-person, group, organization, physical thing, digital thing, logical thing, etc. 
+An entity that is referred to by the value of the `id` property in a
+[=controller document=]. This value, also referred to as an [=identifier=],
+is also used as a subject in other contexts, such as [=authentication=] or
+attestations like Verifiable Credentials. Anything can be a subject: person,
+group, organization, physical thing, digital thing, logical thing, etc.
             </p>
             <div class="note">
               <p>
@@ -597,8 +598,8 @@ proofs with the same [=identifier=] as [=subject=] can be interpreted
 as referring to the same entity. For example, it is preferred that
 credential issuers require that [=subjects=] demonstrate proof of
 control over their [=identifier=] before issuing a credential with that
-[=identifier=] as subject, creating assurance that the same entity was
-involved in the issuance of each credential with that [=identifier=]
+[=identifier=] as [=subject=], creating assurance that the same entity
+was involved in the issuance of each credential with that [=identifier=]
 as [=subject=].
               </p>
               <p>
@@ -645,20 +646,18 @@ An expression of the relationship between an [=identifier=] and a
           <dd>
             <p>
 The value of the `id` property of the root object in the [=controller document=]
-MUST be set to the [[=canonical url=]] for this [=controller document=].
+MUST be set to the [=canonical URL=] for this [=controller document=].
             </p>
           </dd>
           <dt><dfn class="export">canonical url</dfn></dt>
           <dd>
             <p>
-              The URL for retrieving the current, authoritative controller
-              document for a given identifier. Dereferencing the canonical
-              URL MUST return the current authoritative controller
-              document. The returned document's [[=base identifier=]] MUST
-              be the same as the canonical URL; if it is anything else,
-              then the returned document is *not* an authoritative
-              controller document and the identifier SHOULD be treated as
-              invalid.
+The URL for retrieving the current, authoritative [=controller document=]
+for a given [=identifier=]. Dereferencing the [=canonical URL=] MUST return
+the current authoritative [=controller document=]. The returned document's
+[[=base identifier=]] MUST be the same as the [=canonical URL=]; if it is
+anything else, then the returned document is *not* an authoritative
+[=controller document=] and the [=identifier=] SHOULD be treated as invalid.
             </p>
           </dd>
 
@@ -672,7 +671,7 @@ MUST be set to the [[=canonical url=]] for this [=controller document=].
 
         <p>
 A [=controller document=] specifies one or more relationships between
-an [=identifier=] and a set of verification methods and/or service 
+an [=identifier=] and a set of [=verification methods=] and/or service 
 endpoints. The [=controller document=] SHOULD
 contain [=verification relationships=] that explicitly permit the use of
 certain [=verification methods=] for specific purposes.
@@ -888,7 +887,7 @@ present in the <em>topmost</em>
             <h3>Controllers</h3>
 
             <p>
-A [=controller=] is any entity capable of making changes to a
+A [=controller=] of a [=controller document=] is any entity capable of making changes to that
 [=controller document=]. Whoever can update
 the content of the resource returned from dereferencing the controller
 document's canonical URL is, by definition, a controller of the
@@ -897,13 +896,13 @@ controller document's verification methods are taken as cryptographic
 assurance that the controller of the identifier created those proofs.
             </p>
             <p class="note" title="Identifier Controller versus Document Controller">
-The controller of the controller document is taken to be the
-controller of the document's canonical identifier, also known as its
-URL. That is, whoever can update the controller document is both
-the document controller and the identifier controller. Updating the
-document is how you control the identifier. These terms can be used
-interchangeably. Controlling the canonical controller document for 
-an identifier is the same as controlling the identifier.
+The [=controller=] of the [=controller document=] is taken to be the
+[=controller=] of the document's canonical [=identifier=], also known as its
+URL. That is, whoever can update the [=controller document=] is both
+the document [=controller=] and the [=identifier=] [=controller=]. Updating the
+document is how you control the [=identifier=]. These terms can be used
+interchangeably. Controlling the canonical [=controller document=] for 
+an [=identifier=] is the same as controlling the [=identifier=].
             </p>
             <dl>
               <dt>controller</dt>
@@ -914,15 +913,15 @@ list URLs identifying those controllers.
 
   <p class="note" title="Presumed Control">
 It is possible to list a verification method which is
-functionally under the control of someone other than the controller
-of the controller document. For example, a document controller could
+functionally under the control of someone other than the [=controller=]
+of the [=controller document=]. For example, a document [=controller=] could
 set a public key under another party's control as an authentication
 verification method. This would enable the other party to authenticate
-on behalf of this identifier (because their public key is listed in 
+on behalf of this [=identifier=] (because their public key is listed in 
 an authentication verification method) <em>without</em> enabling that party
-to update the controller document. However, since the document
-controller explicitly listed that key for authentication, the
-proof in question is taken as created by the document controller, as
+to update the [=controller document=]. However, since the document
+[=controller=] explicitly listed that key for authentication, the
+proof in question is taken as created by the document [=controller=], as
 it was created by their explicit assignee. This is especially useful
 when the "other party" is a device under the control of the document
 controller, but with a distinct cryptographic authority, i.e., it
@@ -960,8 +959,8 @@ is determined entirely by its storage location.
             </pre>
 
             <p>
-While the identifier used for a [=controller=] is unambiguous, this does not
-imply that a single entity is always the controller, nor that a controller
+While the [=identifier=] used for a [=controller=] is unambiguous, this does not
+imply that a single entity is always the [=controller=], nor that a [=controller=]
 only has a single identifier. A [=controller=] might be a single entity, or a
 collection of entities, such as a partnership. A [=controller=] might also use
 multiple identifiers to refer to itself, for purposes such as privacy or
@@ -1246,9 +1245,10 @@ entities that are authorized to perform certain actions associated with the
 resource with which it is associated. 
             </p>
             <p>
-In the case of the controller of a controller document, the controller can 
-update the content of the document. In the case of the controller of a 
-verification method, the controller can generate proofs that satisfy the method.
+In the case of the [=controller=] of a [=controller document=], the
+[=controller=] can update the content of the document. In the case of the
+[=controller=] of a [=verification method=], the [=controller=] can generate
+proofs that satisfy the method.
             </p>
             <p>
 To ensure explicit security guarantees, the
@@ -1785,7 +1785,7 @@ under `authentication` in the [=controller document=].
 Note that the [=verification method=] indicated by the
 `authentication` property of a [=controller document=] can
 only be used to [=authenticate=] on behalf 
-of the controller document's base identifier. 
+of the [=controller document=]'s [=base identifier=]. 
             </p>
           </section>
 
@@ -2988,57 +2988,57 @@ by this specification and further defined in [[[?VC-DATA-MODEL-2.0]]].
     <section>
       <h2>Identifier Ambiguity</h2>
         <p>
-Even in cases where the subject of the identifier proves control, the
-interpretation of the subject remains contextual and potentially ambiguous.
+Even in cases where the [=subject=] of the [=identifier=] proves control, the
+interpretation of the [=subject=] remains contextual and potentially ambiguous.
         </p>
         <p>
 For example, a school might issue a credential about the teacher of _Intro
-to Computer Science_, using `did:example:abc` as a subject identifier,
-saying in effect "did:example:abc is the teacher of _Intro to Computer
-Science_" and "did:example:abc controls access to the school's computer
-lab. See them to request access".
+to Computer Science_, using `did:example:abc` as a [=subject=] [=identifier=],
+saying "`did:example:abc` is the teacher of _Intro to Computer Science_" and
+"`did:example:abc` controls access to the school's computer lab. See them to
+request access".
         </p>
         <p>
-From this usage it is ambgious as to whether or not `did:example:abc`
-refers to a specific teacher or to whomever is the current teacher.
+In this usage, it is ambiguous whether `did:example:abc` refers to
+a specific teacher or to whomever is the current teacher.
         </p>
         <p>
 Only with further statements might we be able to discern the difference.
         </p>
         <p>
-But it's still tricky. For example the subject in the following statement
+But it's still tricky. For example the subject in the following statement —
 ```turtle
 did:example:abc foaf:name "Bob Smith" .
 ```
-remains ambiguous. If `did:example:abc` refers to a specific human
-being, then the statement is taken as an attestation about that
-particular human's name. However, if `did:example:abc` is used to 
-refer to the _current_ teacher, it is also valid as the current
-teacher does have that name. In this case the ambiguity isimmaterial.
+— remains ambiguous. If `did:example:abc` refers to a specific human
+being, then the statement is taken as an attestation about the
+particular human identified by that name. However, if `did:example:abc`
+is used to refer to the _current_ teacher, it is also valid _if the current
+teacher does have that name._ In this case, the ambiguity is immaterial.
         </p>
         <p>
-However, in a statement like
+However, in a statement like —
 ```turtle
 did:example:abc http://law.example/convicted http://calaw.example/PenalCode647b . 
 ```     
-The difference becomes vital. The statement in English could be
-"the person referred to by did:example:abc has been convicted of
+— the difference becomes vital. The statement in English could be
+"the person referred to by `did:example:abc` has been convicted of
 California Penal Code 647b." But which person(s) did we mean? Did we
 mean to say one, some, or all of the teachers of computer science at
-the school have been convicted of violating Pen647b? Or is it meant to
-say that a particular individual teacher, perhaps the one named "Bob
-Smith", has been convicted of said crime? 
+the school have been convicted of violating `PenalCode647b`? Or is it
+meant to say that a particular individual teacher, perhaps the one
+named "Bob Smith", has been convicted of said crime? 
         </p>
         <p>
 The challenge is particularly difficult in situations where the
-subject is fundamentally uninvolved in the issuance of the
-credential. For example, an identifier might be used by a school to
+[=subject=] is fundamentally uninvolved in the issuance of the
+credential. For example, an [=identifier=] might be used by a school to
 refer to a teacher, and students and or parents may use that
-identifier to make statements about the teacher, with neither the
+[=identifier=] to make statements about the teacher, with neither the
 teacher nor the school involved. In these cases, it is easy to
 imagine that the subtle nuance of the school's intended meaning,
 e.g., "any current teacher of the computer science class", gets lost
-and the identifier misused by parents and
+and the [=identifier=] gets misused by parents and
 students to refer to a specific teacher, quite likely in contexts
 where neither the school nor the teacher is aware of the
 conversation.
@@ -3046,15 +3046,15 @@ conversation.
         <p>
 In natural language, these ambiguities are often easily ignored or
 corrected. In digital media, it's vital that context be evaluated to
-establish the intended referent, especially when identifiers are
-used in different contexts by different issuers, e.g.: on a school
-website by the school, but in a social networking app by parents and
-students.
+establish the intended referent, especially when [=identifiers=] are
+used in different contexts by different issuers, e.g., on an official
+school website by the school, but in an unofficial social networking
+app by parents and students.
         </p>
         <p>
-In short, the context in which identifiers are created and used
+In short, the context in which [=identifiers=] are created and used
 must be considered when relying on any particular interpretation
-of the subject of any particular identifier.
+of the [=subject=] of any particular [=identifier=].
         </p>
     </section>
     <section>
