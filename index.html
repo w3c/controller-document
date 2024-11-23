@@ -320,7 +320,7 @@ public cryptographic material, such as public keys, for verifying proofs created
 by the controller of the identifier for specific purposes, such as
 authentication, attestation, key agreement (for encryption), and capability
 invocation and delegation. [=Controller documents=] also list
-[=service endpoints=] related to the [=identifier=]; for example, from which
+[=service=] endpoints related to the [=identifier=]; for example, from which
 to request additional information for verification.
       </p>
 
@@ -328,22 +328,22 @@ to request additional information for verification.
 In other words, the controller document contains the information necessary to
 communicate with, and/or prove that specific actions were taken by, the
 controller of an [=identifier=], including material for cryptographic proofs and
-[=service endpoints=] for additional communications.
+[=service=] endpoints for additional communications.
       </p>
       <p>
 A [=controller document=] specifies
-[=verification relationships=] and [=service endpoints=] for a single 
-identifier, for which the current controller document is taken as authoritative. 
-Every controller document is stored and retrieved according to the [[=canonical url=]] of the 
+[=verification relationships=] and [=service=] endpoints for a single
+identifier, for which the current controller document is taken as authoritative.
+Every controller document is stored and retrieved according to the [[=canonical url=]] of the
 document, which MUST also be the [[=base identifier=]] of the document.
       </p>
       <p>
 It is expected that other specifications will profile
 the features that are defined in this specification, requiring and/or
 recommending the use of some and prohibiting and/or deprecating the use of
-others. For example, [[[?DID-CORE]]] is expected to define DID documents as a 
-profile of controller documents, where the DID is the identifier, DID documents 
-are controller documents, and resolution is the process of retrieving the 
+others. For example, [[[?DID-CORE]]] is expected to define DID documents as a
+profile of controller documents, where the DID is the identifier, DID documents
+are controller documents, and resolution is the process of retrieving the
 canonical DID document for a DID.
       </p>
 
@@ -567,8 +567,9 @@ their identifiers, and other related properties.<!--  See Section -->
           <dt><dfn class="export" data-lt="controller(s)|Controllers">controller</dfn></dt>
           <dd>
             <p>
-An entity that is capable of performing an action with a specific resource,
-such as updating a [=controller document=] or generating a [=proof=] using a [=verification method=].
+An entity that is capable of performing an action with a specific resource, such
+as updating a [=controller document=] or generating a proof using a
+[=verification method=].
             </p>
           </dd>
 
@@ -585,10 +586,11 @@ with, the [=controller=] of an identifier.
           <dd>
             <p>
 An entity that is referred to by the value of the `id` property in a
-[=controller document=]. This value, also referred to as an [=identifier=],
-is also used as a subject in other contexts, such as [=authentication=] or
-attestations like Verifiable Credentials. Anything can be a subject: person,
-group, organization, physical thing, digital thing, logical thing, etc.
+[=controller document=]. The value of the `id` property, also referred to as an
+<dfn>identifier</dfn>, is also used as a subject in other contexts, such as
+[=authentication=] or attestations like [=verifiable credentials=]. Anything can
+be a subject: person, group, organization, physical thing, digital thing,
+logical thing, etc.
             </p>
             <div class="note">
               <p>
@@ -608,8 +610,7 @@ unreasonable; for example, when a parent requests a Verifiable Credential
 for their child. There are also cases where an issuer simply makes a mistake
 or intentionally issues a false statement. All of these possibilities should
 be considered when evaluating the security impacts of reliance on a given
-[=identifier=] for any given purpose. See the section on [=Identifier Ambiguity=]
-in Security Considerations.
+[=identifier=] for any given purpose. See Section [[[#identifier-ambiguity]]].
               </p>
             </div>
           </dd>
@@ -671,7 +672,7 @@ anything else, then the returned document is *not* an authoritative
 
         <p>
 A [=controller document=] specifies one or more relationships between
-an [=identifier=] and a set of [=verification methods=] and/or service 
+an [=identifier=] and a set of [=verification methods=] and/or service
 endpoints. The [=controller document=] SHOULD
 contain [=verification relationships=] that explicitly permit the use of
 certain [=verification methods=] for specific purposes.
@@ -901,7 +902,7 @@ The [=controller=] of the [=controller document=] is taken to be the
 URL. That is, whoever can update the [=controller document=] is both
 the document [=controller=] and the [=identifier=] [=controller=]. Updating the
 document is how you control the [=identifier=]. These terms can be used
-interchangeably. Controlling the canonical [=controller document=] for 
+interchangeably. Controlling the canonical [=controller document=] for
 an [=identifier=] is the same as controlling the [=identifier=].
             </p>
             <dl>
@@ -917,7 +918,7 @@ functionally under the control of someone other than the [=controller=]
 of the [=controller document=]. For example, a document [=controller=] could
 set a public key under another party's control as an authentication
 verification method. This would enable the other party to authenticate
-on behalf of this [=identifier=] (because their public key is listed in 
+on behalf of this [=identifier=] (because their public key is listed in
 an authentication verification method) <em>without</em> enabling that party
 to update the [=controller document=]. However, since the document
 [=controller=] explicitly listed that key for authentication, the
@@ -1038,7 +1039,7 @@ not necessarily appropriate, <em>even with</em> a reciprocal relationship.
 
             <p>
 [=Services=] are used in [=controller documents=] to express ways of
-communicating with the [=controller=], or associated entities, in relation to 
+communicating with the [=controller=], or associated entities, in relation to
 the controlled [=identifier=]. A [=service=] can be
 any type of service the [=controller=] wants to advertise for further discovery,
 authentication, authorization, or interaction.
@@ -1240,9 +1241,9 @@ revocation.
 The `controller` property is used by [=controller documents=], as described in
 Section [[[#controller-documents]]], and by [=verification methods=], as
 described in Section [[[#verification-methods]]]. When it is used in either
-place, its purpose is essentially the same; that is, it expresses one or more 
-entities that are authorized to perform certain actions associated with the 
-resource with which it is associated. 
+place, its purpose is essentially the same; that is, it expresses one or more
+entities that are authorized to perform certain actions associated with the
+resource with which it is associated.
             </p>
             <p>
 In the case of the [=controller=] of a [=controller document=], the
@@ -1780,8 +1781,8 @@ under `authentication` in the [=controller document=].
             <p>
 Note that the [=verification method=] indicated by the
 `authentication` property of a [=controller document=] can
-only be used to [=authenticate=] on behalf 
-of the [=controller document=]'s [=base identifier=]. 
+only be used to [=authenticate=] on behalf
+of the [=controller document=]'s [=base identifier=].
             </p>
           </section>
 
@@ -3039,15 +3040,15 @@ teacher does have that name._ In this case, the ambiguity is immaterial.
         <p>
 However, in a statement like —
 ```turtle
-did:example:abc http://law.example/convicted http://calaw.example/PenalCode647b . 
-```     
+did:example:abc http://law.example/convicted http://calaw.example/PenalCode647b .
+```
 — the difference becomes vital. The statement in English could be
 "the person referred to by `did:example:abc` has been convicted of
 California Penal Code 647b." But which person(s) did we mean? Did we
 mean to say one, some, or all of the teachers of computer science at
 the school have been convicted of violating `PenalCode647b`? Or is it
 meant to say that a particular individual teacher, perhaps the one
-named "Bob Smith", has been convicted of said crime? 
+named "Bob Smith", has been convicted of said crime?
         </p>
         <p>
 The challenge is particularly difficult in situations where the
