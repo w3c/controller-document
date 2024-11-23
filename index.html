@@ -15,7 +15,7 @@
 
     <script type="text/javascript" class="remove">
       var respecConfig = {
-          // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+          // specification status (for example WD, LCWD, NOTE, etc.). If in doubt use ED.
           specStatus:           "WD",
 
           // the specification's short name, as in http://www.w3.org/TR/short-name/
@@ -1760,7 +1760,7 @@ proof of authentication. When such an authentication-verifying entity receives
 some data (in some protocol-specific format) that contains a proof that was made
 for the purpose of "authentication", and that says that an entity is identified
 by the `id`, then that <em>verifier</em> checks to ensure that the proof can be
-verified using a [=verification method=] (e.g., [=public key=]) listed
+verified using a [=verification method=] (for example, [=public key=]) listed
 under `authentication` in the [=controller document=].
             </p>
             <p>
@@ -1916,7 +1916,7 @@ access a protected HTTP API that requires authorization in order to use it. In
 order to authorize when using the HTTP API, the [=controller=]
 uses a capability that is associated with a particular URL that is
 exposed via the HTTP API. The invocation of the capability could be
-expressed in a number of ways, e.g., as a digitally signed
+expressed in a number of ways, for example, as a digitally signed
 message that is placed into the HTTP Headers.
             </p>
             <p>
@@ -2994,75 +2994,89 @@ by this specification and further defined in [[[?VC-DATA-MODEL-2.0]]].
     <section>
       <h2>Identifier Ambiguity</h2>
         <p>
-Even in cases where the [=subject=] of the [=identifier=] proves control, the
-interpretation of the [=subject=] remains contextual and potentially ambiguous.
+Even in cases where the [=subject=] referred to by an [=identifier=] proves
+control, the interpretation of the [=subject=] remains contextual and
+potentially ambiguous.
+        </p>
+
+        <p>
+For example, a school might issue a [=verifiable credential=] about the teacher
+of <strong>Intro to Computer Science</strong>, using
+`https://controller.example/abc` as a [=subject=] [=identifier=], saying
+"`https://controller.example/abc` is the teacher of
+<strong>Intro to Computer Science</strong>" and
+"`https://controller.example/abc` controls access to the school's computer lab.
+See them to request access".
+        </p>
+
+        <p>
+In this usage, it is ambiguous whether `https://controller.example/abc` refers
+to a specific teacher or to whomever is the current teacher. Only with further
+statements might we be able to discern the difference. But it's still tricky.
+For example the subject in the following statement remains ambiguous:
+        </p>
+
+        <pre class="example nohighlight"
+             title="Statement about the name of https://controller.example/abc as RDF Triples">
+&lt;https://controller.example/abc&gt;
+  &lt;https://schema.org/name&gt;
+    "Bob Smith" .
+        </pre>
+
+        <p>
+If `https://controller.example/abc` refers to a specific human being, then the
+statement is taken as an attestation about the particular human identified by
+that name. However, if `https://controller.example/abc` is used to refer to the
+_current_ teacher, it is also valid <em>if the current teacher does have that
+name</em>. In this case, the ambiguity is immaterial.
+        </p>
+
+        <p>
+However, in a statement like the following, the difference becomes vital.
+        </p>
+
+        <pre class="example nohighlight"
+             title="Legal statements the convicted status of https://controller.example/abc as RDF Triples">
+&lt;https://controller.example/abc&gt;
+  &lt;http://law.example/convicted&gt;
+    &lt;http://calaw.example/PenalCode647b&gt; .
+        </pre>
+
+        <p>
+The statement in English could be "The person referred to by
+`https://controller.example/abc` has been convicted of California Penal Code
+647b." But which person(s) did we mean? Did we mean to say one, some, or all of
+the teachers of computer science at the school have been convicted of violating
+`PenalCode647b`? Or is it meant to say that a particular individual teacher,
+perhaps the one named "Bob Smith", has been convicted of said crime?
+        </p>
+
+        <p>
+The challenge is particularly difficult in situations where the [=subject=] is
+fundamentally uninvolved in the issuance of the [=verifiable credential=].
+For example, an [=identifier=] might be used by a school to refer to a teacher,
+and students and or parents might use that [=identifier=] to make statements
+about the teacher, with neither the teacher nor the school involved. In these
+cases, it is easy to imagine that the subtle nuance of the school's intended
+meaning, for example, "any current teacher of the computer science class", gets
+lost and the [=identifier=] gets misused by parents and students to refer to a
+specific teacher, quite likely in contexts where neither the school nor the
+teacher is aware of the conversation.
         </p>
         <p>
-For example, a school might issue a credential about the teacher of _Intro
-to Computer Science_, using `did:example:abc` as a [=subject=] [=identifier=],
-saying "`did:example:abc` is the teacher of _Intro to Computer Science_" and
-"`did:example:abc` controls access to the school's computer lab. See them to
-request access".
+In natural language, these ambiguities are often easily ignored or corrected. In
+digital media, it is vital that context be evaluated to establish the intended
+referent, especially when [=identifiers=] are used in different contexts by
+different [=issuers=], for example, on an official school website by the school,
+but in an unofficial social networking app by parents and students.
         </p>
         <p>
-In this usage, it is ambiguous whether `did:example:abc` refers to
-a specific teacher or to whomever is the current teacher.
-        </p>
-        <p>
-Only with further statements might we be able to discern the difference.
-        </p>
-        <p>
-But it's still tricky. For example the subject in the following statement —
-```turtle
-did:example:abc foaf:name "Bob Smith" .
-```
-— remains ambiguous. If `did:example:abc` refers to a specific human
-being, then the statement is taken as an attestation about the
-particular human identified by that name. However, if `did:example:abc`
-is used to refer to the _current_ teacher, it is also valid _if the current
-teacher does have that name._ In this case, the ambiguity is immaterial.
-        </p>
-        <p>
-However, in a statement like —
-```turtle
-did:example:abc http://law.example/convicted http://calaw.example/PenalCode647b .
-```
-— the difference becomes vital. The statement in English could be
-"the person referred to by `did:example:abc` has been convicted of
-California Penal Code 647b." But which person(s) did we mean? Did we
-mean to say one, some, or all of the teachers of computer science at
-the school have been convicted of violating `PenalCode647b`? Or is it
-meant to say that a particular individual teacher, perhaps the one
-named "Bob Smith", has been convicted of said crime?
-        </p>
-        <p>
-The challenge is particularly difficult in situations where the
-[=subject=] is fundamentally uninvolved in the issuance of the
-credential. For example, an [=identifier=] might be used by a school to
-refer to a teacher, and students and or parents may use that
-[=identifier=] to make statements about the teacher, with neither the
-teacher nor the school involved. In these cases, it is easy to
-imagine that the subtle nuance of the school's intended meaning,
-e.g., "any current teacher of the computer science class", gets lost
-and the [=identifier=] gets misused by parents and
-students to refer to a specific teacher, quite likely in contexts
-where neither the school nor the teacher is aware of the
-conversation.
-        </p>
-        <p>
-In natural language, these ambiguities are often easily ignored or
-corrected. In digital media, it's vital that context be evaluated to
-establish the intended referent, especially when [=identifiers=] are
-used in different contexts by different issuers, e.g., on an official
-school website by the school, but in an unofficial social networking
-app by parents and students.
-        </p>
-        <p>
-In short, the context in which [=identifiers=] are created and used
-must be considered when relying on any particular interpretation
-of the [=subject=] of any particular [=identifier=].
+In short, the context in which [=identifiers=] are created and used has to be
+considered when relying on any particular interpretation of the [=subject=] of
+any particular [=identifier=].
         </p>
     </section>
+
     <section>
       <h2>Key and Signature Expiration</h2>
 
