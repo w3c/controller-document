@@ -1687,40 +1687,43 @@ is done by dereferencing the URL and searching the resulting resource for a
           <h2>Verification Relationships</h2>
 
           <p>
-A [=verification relationship=] expresses the relationship between the
-[=controller=] and a [=verification method=].
+A [=verification relationship=] is an expression that one or more
+[=verification methods=] are authorized to verify [=proofs=] made on behalf of
+the subject.
           </p>
+
           <p>
-Different [=verification relationships=] enable the associated
-[=verification methods=] to be used for different purposes. It is up to a
-<em>verifier</em> to ascertain the validity of a verification attempt by
-checking that the [=verification method=] used is contained in the
-appropriate [=verification relationship=] property of the
-[=controller document=].
+Different [=verification relationships=] enable the associated [=verification
+methods=] to be used for different purposes. It is up to a [=verifier=]
+to ascertain the validity of a verification attempt by checking that the
+[=verification method=] used is referred to by the appropriate [=verification
+relationship=] property in the [=controller document=].
           </p>
+
           <p>
-The [=verification relationship=] between the [=controller=] and the
-[=verification method=] is explicit in the [=controller document=].
-[=Verification methods=] that are not associated with a particular
-[=verification relationship=] cannot be used for that [=verification
-relationship=]. For example, a [=verification method=] in the value of
-the [=authentication=] property cannot be used to engage in
-key agreement protocols with the [=controller=] &mdash; the value of the
-<a href="#defn-keyAgreement">keyAgreement</a> property needs to be used
-for that.
+The [=verification relationship=] between the [=subject=] and the [=verification
+method=] is explicit in the [=controller document=]. [=Verification methods=]
+that are not associated with a particular [=verification relationship=] cannot
+be used for that [=verification relationship=]. For example, a [=verification
+method=] associated with the [=authentication=] property cannot be used to
+engage in key agreement protocols &mdash; the value of the
+<a href="#defn-keyAgreement">keyAgreement</a> property needs to be used for
+that.
           </p>
+
           <p>
-The [=controller document=] does not express revoked keys using a <a>verification
-relationship</a>. If a referenced verification method is not in the latest
-[=controller document=] used to dereference it, then that verification method is
-considered invalid or revoked.
+The [=controller document=] does not express revoked keys using a [=verification
+relationship=]. If a referenced [=verification method definition=] is not in the
+latest [=controller document=] used to dereference it, then that [=verification
+method=] is considered invalid or revoked.
           </p>
+
           <p>
-The following sections define several useful [=verification relationships=].
-A [=controller document=] MAY include any of these, or other properties, to
-express a specific [=verification relationship=]. To maximize
-interoperability, any such properties used SHOULD be registered in the
-<a href="https://w3c.github.io/vc-specs-dir/#securing-mechanisms">VC Specifications Directory</a>.
+The following sections define several useful [=verification relationships=]. A
+[=controller document=] MAY include any of these, or other properties, to
+express a specific [=verification relationship=]. To maximize interoperability,
+any such properties used SHOULD be registered in the list of
+[[[DID-EXTENSIONS-PROPERTIES]]].
           </p>
 
           <section>
