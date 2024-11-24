@@ -556,6 +556,8 @@ A process by which an entity can prove to a verifier that it has a specific
 attribute or controls a specific secret.
           </dd>
 
+
+
           <dt><dfn data-lt="authorized|authorize">authorization</dfn></dt>
           <dd>
 A process by which an entity can prove to a verifier that it is allowed to
@@ -608,22 +610,14 @@ example, a cryptographic public key can be used as a verification method with
 respect to a digital signature; in such use, it verifies that the signer
 used the associated cryptographic private key.
             </p>
-            <p>
-"Verification" and "proof" in this definition are intended to apply broadly. For
-example, a cryptographic public key might be used during Diffie-Hellman key
-exchange to negotiate a shared symmetric key for encryption. This guarantees the
-integrity of the key agreement process. It is thus another type of verification
-method, even though descriptions of the process might not use the words
-"verification" or "proof."
-            </p>
           </dd>
 
           <dt><dfn class="export">verification relationship</dfn></dt>
           <dd>
             <p>
-An expression of the relationship between an [=identifier=] and a
-[=verification method=]. One example of a verification relationship is
-[[[#authentication]]].
+An expression that one or more [=verification methods=] are authorized to verify
+proofs made on behalf of the [=subject=]. One example of a verification
+relationship is [[[#authentication]]].
             </p>
           </dd>
         </dl>
@@ -1119,14 +1113,23 @@ For more information regarding privacy and security considerations related to
           <h2>Verification Methods</h2>
           <p>
 A [=controller document=] can express [=verification methods=], such as
-cryptographic [=public keys=], which can be used to [=authenticate=] or
-authorize interactions with the [=controller=] or associated parties. For
-example, a cryptographic [=public key=] can be used as a <a>verification
-method</a> with respect to a digital signature; in such use, it verifies that
-the signer could use the associated cryptographic private key. <a>Verification
-methods</a> might take many parameters. An example of this is a set of five
-cryptographic keys from which any three are required to contribute to a
-cryptographic threshold signature.
+cryptographic [=public keys=], which can be used to verify cryptographic proofs,
+such as those used to [=authenticate=] or authorize interactions with the
+[=controller=] or associated parties. For example, a cryptographic [=public
+key=] can be used as a <a>verification method</a> with respect to a digital
+signature; in such use, it verifies that the signer could use the associated
+cryptographic private key. <a>Verification methods</a> might take many
+parameters. An example of this is a set of five cryptographic keys from which
+any three are required to contribute to a cryptographic threshold signature.
+          </p>
+
+          <p>
+"Verification" and "proof" are intended to apply broadly. For example, a
+cryptographic public key might be used during Diffie-Hellman key exchange to
+negotiate a shared symmetric key for encryption. This guarantees the integrity
+of the key agreement process. It is thus another type of verification method,
+even though descriptions of the process might not use the words "verification"
+or "proof."
           </p>
 
           <dl>
