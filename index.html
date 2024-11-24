@@ -314,14 +314,13 @@ interacting with, the controller of an identifier.
       <h2>Introduction</h2>
 
       <p>
-[=Controller documents=] enable the verification of [=proofs=] created by the
-controller of an identifier. They provide [=verification methods=] that express
-public cryptographic material, such as public keys, for verifying [=proofs=] created
-by the controller of the identifier for specific purposes, such as
-authentication, attestation, key agreement (for encryption), and capability
-invocation and delegation. [=Controller documents=] also list
-[=service=] endpoints related to the [=identifier=]; for example, from which
-to request additional information for verification.
+[=Controller documents=] identify a [=subject=] and provide [=verification
+methods=] that express public cryptographic material, such as [=public keys=],
+for verifying [=proofs=] created on behalf of the [=subject=] for specific
+purposes, such as authentication, attestation, key agreement (for encryption),
+and capability invocation and delegation. [=Controller documents=] also list
+[=service=] endpoints related to an [=identifier=]; for example, from which to
+request additional information for verification.
       </p>
 
       <p>
@@ -1226,12 +1225,7 @@ revocation.
           <pre class="example nohighlight"
             title="Example verification method structure">
     {
-      "@context": [
-        "https://www.w3.org/ns/controller/v1",
-        "https://www.w3.org/ns/credentials/v2",
-        "https://w3id.org/security/jwk/v1",
-        "https://w3id.org/security/data-integrity/v2"
-      ]
+      "@context": "https://www.w3.org/ns/controller/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "verificationMethod": [{
@@ -1381,7 +1375,7 @@ above:
             <pre class="example nohighlight"
               title="Multikey encoding of a Ed25519 public key">
 {
-  "@context": ["https://w3id.org/security/multikey/v1"],
+  "@context": "https://www.w3.org/ns/controller/v1",
   "id": "https://controller.example/123456789abcdefghi#keys-1",
   "type": "Multikey",
   "controller": "https://controller.example/123456789abcdefghi",
@@ -1749,11 +1743,7 @@ referenced.
             <pre class="example nohighlight" title="Authentication property
                           containing three verification methods">
     {
-      "@context": [
-        "https://www.w3.org/ns/controller/v1",
-        "https://www.w3.org/ns/credentials/v2",
-        "https://w3id.org/security/multikey/v1"
-      ],
+      "@context": "https://www.w3.org/ns/controller/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "authentication": [
@@ -1835,11 +1825,7 @@ corresponding [=controller document=].
             <pre class="example nohighlight" title="Assertion method property
                         containing two verification methods">
     {
-      "@context": [
-        "https://www.w3.org/ns/controller/v1",
-        "https://www.w3.org/ns/credentials/v2",
-        "https://w3id.org/security/multikey/v1"
-      ],
+      "@context": "https://www.w3.org/ns/controller/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "assertionMethod": [
@@ -1963,10 +1949,7 @@ protected resource.
             <pre class="example nohighlight" title="Capability invocation property
                           containing two verification methods">
     {
-      "@context": [
-        "https://www.w3.org/ns/controller/v1",
-        "https://w3id.org/security/multikey/v1"
-      ],
+      "@context": "https://www.w3.org/ns/controller/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "capabilityInvocation": [
@@ -2024,10 +2007,7 @@ example described in [[[#capability-invocation]]].
             <pre class="example nohighlight" title="Capability Delegation property
                           containing two verification methods">
     {
-      "@context": [
-        "https://www.w3.org/ns/controller/v1",
-        "https://w3id.org/security/multikey/v1"
-      ],
+      "@context": "https://www.w3.org/ns/controller/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "capabilityDelegation": [
