@@ -300,9 +300,9 @@ table.simple tbody tr:last-of-type {
 <body>
     <section id='abstract'>
       <p>
-A [=controller document=] contains cryptographic material and lists
-service endpoints for the purposes of verifying proofs from, and interacting
-with, the controller of an identifier.
+A controller document contains cryptographic material and lists service
+endpoints for the purposes of verifying cryptographic proofs from, and
+interacting with, the controller of an identifier.
       </p>
     </section>
 
@@ -314,9 +314,9 @@ with, the controller of an identifier.
       <h2>Introduction</h2>
 
       <p>
-[=Controller documents=] enable the verification of proofs created by the
+[=Controller documents=] enable the verification of [=proofs=] created by the
 controller of an identifier. They provide [=verification methods=] that express
-public cryptographic material, such as public keys, for verifying proofs created
+public cryptographic material, such as public keys, for verifying [=proofs=] created
 by the controller of the identifier for specific purposes, such as
 authentication, attestation, key agreement (for encryption), and capability
 invocation and delegation. [=Controller documents=] also list
@@ -327,7 +327,7 @@ to request additional information for verification.
       <p>
 In other words, the controller document contains the information necessary to
 communicate with, and/or prove that specific actions were taken by, the
-controller of an [=identifier=], including material for cryptographic proofs and
+controller of an [=identifier=], including material for [=proofs=] and
 [=service=] endpoints for additional communications.
       </p>
       <p>
@@ -541,13 +541,13 @@ definition is included whenever one of these terms appears in this specification
 
           <dt><dfn>public key</dfn></dt>
           <dd>
-Cryptographic material that can be used to verify digital proofs created with a
+Cryptographic material that can be used to verify [=proofs=] created with a
 corresponding [=private key=].
           </dd>
 
           <dt><dfn>private key</dfn></dt>
           <dd>
-Cryptographic material that can be used to generate digital proofs.
+Cryptographic material that can be used to generate [=proofs=].
           </dd>
 
           <dt><dfn data-lt="authenticated|authenticate">authentication</dfn></dt>
@@ -556,7 +556,14 @@ A process by which an entity can prove to a verifier that it has a specific
 attribute or controls a specific secret.
           </dd>
 
-
+          <dt><dfn>proof</dfn></dt>
+          <dd>
+A mathematical demonstration that confirms the validity of an assertion. The
+demonstration consists of a set of properties and values that enable a verifier
+to cryptographically validate the assertion. A
+<a href="https://en.wikipedia.org/wiki/Digital_signature">digital signature</a>
+is a type of proof.
+          </dd>
 
           <dt><dfn data-lt="authorized|authorize">authorization</dfn></dt>
           <dd>
@@ -577,7 +584,7 @@ their identifiers, and other related properties.<!--  See Section -->
           <dd>
             <p>
 An entity that is capable of performing an action with a specific resource, such
-as updating a [=controller document=] or generating a proof using a
+as updating a [=controller document=] or generating a [=proof=] using a
 [=verification method=].
             </p>
           </dd>
@@ -586,7 +593,7 @@ as updating a [=controller document=] or generating a proof using a
           <dd>
             <p>
 A document that contains cryptographic material and lists service
-endpoints that can be used for verifying proofs from, and interacting
+endpoints that can be used for verifying [=proofs=] from, and interacting
 with, the [=controller=] of an identifier.
             </p>
           </dd>
@@ -605,7 +612,7 @@ are also used as a subjects in other contexts, such as during
           <dt><dfn class="export">verification method</dfn></dt>
           <dd>
             <p>
-A method and its parameters, used to independently verify a proof. For
+A method and its parameters, used to independently verify a [=proof=]. For
 example, a cryptographic public key can be used as a verification method with
 respect to a digital signature; in such use, it verifies that the signer
 used the associated cryptographic private key.
@@ -855,7 +862,7 @@ It is expected that the [=subject=] referred to by an `id` in a [=controller
 document=] will be consistent over time, such that any [=verifiable
 credentials=] that use them can be interpreted as referring to the same entity.
 For example, it is preferred that an [=issuer=] of a [=verifiable credential=]
-require that a [=subject=] demonstrate proof of control over their
+require that a [=subject=] demonstrate [=proof=] of control over their
 [=identifier=] before issuing a credential with that [=identifier=] as
 [=subject=], creating assurance that the same entity was involved in the
 issuance of each credential with that [=identifier=] as [=subject=].
@@ -882,7 +889,7 @@ the content of the resource returned from dereferencing the controller
 document's canonical URL is, by definition, a controller of the
 document and its canonical identifier. Proofs that satisfy a
 [=controller document=]'s [=verification methods=] are taken as cryptographic
-assurance that the [=controller=] of the [=identifier=] created those proofs.
+assurance that the [=controller=] of the [=identifier=] created those [=proofs=].
             </p>
             <p class="note" title="Identifier Controller versus Document Controller">
 The [=controller=] of the [=controller document=] is taken to be the
@@ -914,9 +921,9 @@ proof in question is taken as created by the document [=controller=], as
 it was created by their explicit assignee. This is especially useful
 when the "other party" is a device under the control of the document
 controller, but with a distinct cryptographic authority, i.e., it
-has its own keystore and can generate proofs. That pattern enables
+has its own keystore and can generate [=proofs=]. That pattern enables
 different devices, each using their own cryptographic material, to
-generate verifiable proofs that are taken as proofs created by
+generate verifiable [=proofs=] that are taken as [=proofs=] created by
 controller of the identifier.
   </p>
 If present, its value MUST be a
@@ -1113,7 +1120,7 @@ For more information regarding privacy and security considerations related to
           <h2>Verification Methods</h2>
           <p>
 A [=controller document=] can express [=verification methods=], such as
-cryptographic [=public keys=], which can be used to verify cryptographic proofs,
+cryptographic [=public keys=], which can be used to verify [=proofs=],
 such as those used to [=authenticate=] or authorize interactions with the
 [=controller=] or associated parties. For example, a cryptographic [=public
 key=] can be used as a <a>verification method</a> with respect to a digital
@@ -1185,7 +1192,7 @@ If provided, it MUST be an
 [[XMLSCHEMA11-2]] `dateTimeStamp` string specifying when the
 [=verification method=] SHOULD cease to be used. Once the value is set, it is
 not expected to be updated, and systems depending on the value are expected to
-not verify any proofs associated with the [=verification method=] at or after
+not verify any [=proofs=] associated with the [=verification method=] at or after
 the time of expiration.
                 </dd>
                 <dt><dfn class="lint-ignore">revoked</dfn></dt>
@@ -1769,9 +1776,9 @@ referenced.
 This is useful to any entity verifying authentication that needs to check
 whether an entity that is attempting to [=authenticate=] is presenting a valid
 proof of authentication. When such an authentication-verifying entity receives
-some data (in some protocol-specific format) that contains a proof that was made
+some data (in some protocol-specific format) that contains a [=proof=] that was made
 for the purpose of "authentication", and that says that an entity is identified
-by the `id`, then that <em>verifier</em> checks to ensure that the proof can be
+by the `id`, then that <em>verifier</em> checks to ensure that the [=proof=] can be
 verified using a [=verification method=] (for example, [=public key=]) listed
 under `authentication` in the [=controller document=].
             </p>
@@ -1807,8 +1814,8 @@ This property is useful, for example, during the processing of a
 verifiable credential by a verifier.
 <!-- VC-DATA-INTEGRITY-SPECIFIC:
 During verification, a verifier checks to see if a
-[=verifiable credential=] contains a proof created by the [=controller=]
-by checking that the [=verification method=] used to assert the proof is
+[=verifiable credential=] contains a [=proof=] created by the [=controller=]
+by checking that the [=verification method=] used to assert the [=proof=] is
 associated with the `assertionMethod` property in the
 corresponding [=controller document=].
 -->
@@ -2671,7 +2678,7 @@ The `detail` value SHOULD provide a longer human-readable string for the error.
         <dl>
           <dt id="INVALID_VERIFICATION_METHOD_URL">INVALID_VERIFICATION_METHOD_URL (-21)</dt>
           <dd>
-The `verificationMethod` value in a proof was malformed. See Section
+The `verificationMethod` value in a [=proof=] was malformed. See Section
 [[[#retrieve-verification-method]]].
           </dd>
           <dt id="INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID (-22)</dt>
@@ -2693,7 +2700,7 @@ The [=verification method=] in a [=controller document=] was malformed. See Sect
           <dd>
 The [=verification method=] in a [=controller document=] was not
 associated using the expected [=verification relationship=] as expressed in
-the `proofPurpose` property in the proof. See Section
+the `proofPurpose` property in the [=proof=]. See Section
 [[[#retrieve-verification-method]]].
           </dd>
         </dl>
@@ -3120,7 +3127,7 @@ time it was used.
 Rotation is a management process that enables the secret cryptographic material
 associated with an existing [=verification method=] to be deactivated or
 destroyed once a new [=verification method=] has been added to the
-[=controller document=]. Going forward, any new proofs that a
+[=controller document=]. Going forward, any new [=proofs=] that a
 [=controller=] would have generated using the old secret cryptographic
 material can now instead be generated using the new  cryptographic material and
 can be verified using the new [=verification method=].
@@ -3170,7 +3177,7 @@ present in the latest version of a [=controller document=] are not impacted by
 rotation. In these cases, verification software might require additional
 information, such as when a particular [=verification method=] was
 expected to be valid as well as access to a verifiable data registry
-containing a historical record, to determine the validity of the proof or
+containing a historical record, to determine the validity of the [=proof=] or
 signature. This option might not be available in all systems.
         </li>
         <li>
@@ -3244,9 +3251,9 @@ compromises such as masquerading, theft, and fraud.
 Revocation is expected to be understood as a [=controller=] expressing that
 proofs or signatures associated with a revoked [=verification method=]
 created after its revocation should be treated as invalid. It could also imply a
-concern that existing proofs or signatures might have been created by an
+concern that existing [=proofs=] or signatures might have been created by an
 attacker, but this is not necessarily the case. Verifiers, however, might still
-choose to accept or reject any such proofs or signatures at their own
+choose to accept or reject any such [=proofs=] or signatures at their own
 discretion.
         </li>
 
@@ -3269,7 +3276,7 @@ method</a> is publicly revoked.
         <h3>Revocation Semantics</h3>
 
         <p>
-Although verifiers might choose not to accept proofs or signatures from a
+Although verifiers might choose not to accept [=proofs=] or signatures from a
 revoked verification method, knowing whether a verification was made with a
 revoked [=verification method=] is trickier than it might seem. Some auditing
 systems provide the ability to look back at the state of an identifier at a
@@ -3422,7 +3429,7 @@ Additional information about the security context of authentication events is
 often required for compliance reasons, especially in regulated areas such as the
 financial and public sectors. This information is often referred to as a Level
 of Assurance (LOA). Examples include the protection of secret cryptographic
-material, the identity proofing process, and the form-factor of the
+material, the identity [=proof=]ing process, and the form-factor of the
 authenticator.
       </p>
 
@@ -3647,8 +3654,8 @@ guidance below is provided for those situations.
         <h2>Presenting Time Values</h2>
         <p>
 This specification enables the expression of dates and times related to the
-validity period of cryptographic proofs. This information might be indirectly
-exposed to an individual if a proof is processed and is detected to be outside
+validity period of [=proofs=]. This information might be indirectly
+exposed to an individual if a [=proof=] is processed and is detected to be outside
 an allowable time range. When exposing these dates and times to an individual,
 implementers are urged to take into account
 <a data-cite="?VC-DATA-MODEL-2.0#representing-time">cultural normas and locales
