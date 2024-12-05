@@ -1435,6 +1435,16 @@ then be encoded using the base-58-btc alphabet, according to Section
 (`z`).
                   </td>
                 </tr>
+                <tr>
+                  <td>SM2 256-bit public key</td>
+                  <td>
+The encoding of a SM2 public key MUST start with the two-byte prefix
+`0x8624` (the varint expression of `0x1206`) followed by the 33-byte compressed
+public key data. The resulting 35-byte value MUST then be encoded using the
+base-58-btc alphabet, according to Section [[[#multibase-0]]], and then
+prepended with the base-58-btc Multibase header (`z`).
+                  </td>
+                </tr>
               </tbody>
             </table>
 
@@ -1487,6 +1497,16 @@ by the 96-byte compressed public key data. The resulting 98-byte value MUST
 then be encoded using the base-58-btc alphabet, according to Section
 [[[#multibase-0]]], and then prepended with the base-58-btc Multibase header
 (`z`).
+                  </td>
+                </tr>
+                <tr>
+                  <td>SM2 256-bit secret key</td>
+                  <td>
+The encoding of a SM2 secret key MUST start with the two-byte prefix
+`0x9026` (the varint expression of `0x1310`) followed by the 32-byte
+secret key data. The resulting 34-byte value MUST then be encoded using the
+base-58-btc alphabet, according to Section [[[#multibase-0]]], and then
+prepended with the base-58-btc Multibase header (`z`).
                   </td>
                 </tr>
               </tbody>
@@ -3766,6 +3786,16 @@ developers seeking test values.
   ]
 }
           </pre>
+
+          <pre class="example nohighlight"
+            title="A SM2 public key encoded as a Multikey">
+{
+  "id": "https://multikey.example/issuer/123#key-0",
+  "type": "Multikey",
+  "controller": "https://multikey.example/issuer/123",
+  "publicKeyMultibase": "zEPJc1vCfbG2aoZn8f3U8ggYRL4ZFfF63ZA3qFSk81WJxnCQr"
+}
+          </pre>
         </section>
         <section class="informative">
         <h2>JsonWebKey Examples</h2>
@@ -3882,6 +3912,21 @@ developers seeking test values.
   "capabilityInvocation": [
     "https://controller.example/123#key-2"
   ]
+}
+          </pre>
+
+          <pre class="example nohighlight"
+            title="A SM2 public key encoded as a JsonWebKey">
+{
+  "id": "https://jsonwebkey.example/issuer/123#key-0",
+  "type": "JsonWebKey",
+  "controller": "https://jsonwebkey.example/issuer/123",
+  "publicKeyJwk": {
+    "kty": "EC",
+    "crv": "SM2",
+    "x": "NIMpjy0M25izi2DrQLhQBlL8b45Lt9a0FzfELdpdO0s",
+    "y": "NXstrSPtSp1cZzvupZ8C68FCgSQhZbuGYLorP6F1N2w"
+  }
 }
           </pre>
         </section>
