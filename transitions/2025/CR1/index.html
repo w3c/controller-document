@@ -248,7 +248,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   "editors": [
     {
       "name": "Manu Sporny",
-      "url": "https://digitalbazaar.com/",
+      "url": "https://www.linkedin.com/in/manusporny/",
       "company": "Digital Bazaar",
       "companyURL": "http://digitalbazaar.com/",
       "w3cid": 41758
@@ -501,7 +501,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         
         
         <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="41758">
-    <a class="u-url url p-name fn" href="https://digitalbazaar.com/">Manu Sporny</a> (<a class="p-org org h-org" href="http://digitalbazaar.com/">Digital Bazaar</a>)
+    <a class="u-url url p-name fn" href="https://www.linkedin.com/in/manusporny/">Manu Sporny</a> (<a class="p-org org h-org" href="http://digitalbazaar.com/">Digital Bazaar</a>)
   </dd><dd class="editor p-author h-card vcard" data-editor-id="38745">
     <a class="u-url url p-name fn" href="https://self-issued.info/">Michael B. Jones</a> (<span class="p-org org h-org">Invited Expert</span>)
   </dd>
@@ -601,7 +601,7 @@ interacting with, the controller of an identifier.
   </p><p>
                       This document is governed by the
                       <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20231103/">03 November 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
-                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-cases"><bdi class="secno">1.1 </bdi>Use Cases</a></li><li class="tocline"><a class="tocxref" href="#requirements"><bdi class="secno">1.2 </bdi>Requirements</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.3 </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">1.4 </bdi>Terminology</a></li></ol></li><li class="tocline"><a class="tocxref" href="#data-model"><bdi class="secno">2. </bdi>Data Model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#controller-documents"><bdi class="secno">2.1 </bdi>Controller Documents</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#subjects"><bdi class="secno">2.1.1 </bdi>Subjects</a></li><li class="tocline"><a class="tocxref" href="#controllers"><bdi class="secno">2.1.2 </bdi>Controllers</a></li><li class="tocline"><a class="tocxref" href="#also-known-as"><bdi class="secno">2.1.3 </bdi>Also Known As</a></li><li class="tocline"><a class="tocxref" href="#services"><bdi class="secno">2.1.4 </bdi>Services</a></li></ol></li><li class="tocline"><a class="tocxref" href="#verification-methods"><bdi class="secno">2.2 </bdi>Verification Methods</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#verification-material"><bdi class="secno">2.2.1 </bdi>Verification Material</a></li><li class="tocline"><a class="tocxref" href="#Multikey"><bdi class="secno">2.2.2 </bdi>Multikey</a></li><li class="tocline"><a class="tocxref" href="#JsonWebKey"><bdi class="secno">2.2.3 </bdi>JsonWebKey</a></li><li class="tocline"><a class="tocxref" href="#referring-to-verification-methods"><bdi class="secno">2.2.4 </bdi>Referring to Verification Methods</a></li></ol></li><li class="tocline"><a class="tocxref" href="#verification-relationships"><bdi class="secno">2.3 </bdi>Verification Relationships</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#authentication"><bdi class="secno">2.3.1 </bdi>Authentication</a></li><li class="tocline"><a class="tocxref" href="#assertion"><bdi class="secno">2.3.2 </bdi>Assertion</a></li><li class="tocline"><a class="tocxref" href="#key-agreement"><bdi class="secno">2.3.3 </bdi>Key Agreement</a></li><li class="tocline"><a class="tocxref" href="#capability-invocation"><bdi class="secno">2.3.4 </bdi>Capability Invocation</a></li><li class="tocline"><a class="tocxref" href="#capability-delegation"><bdi class="secno">2.3.5 </bdi>Capability Delegation</a></li></ol></li><li class="tocline"><a class="tocxref" href="#multibase-0"><bdi class="secno">2.4 </bdi>Multibase</a></li><li class="tocline"><a class="tocxref" href="#multihash"><bdi class="secno">2.5 </bdi>Multihash</a></li></ol></li><li class="tocline"><a class="tocxref" href="#algorithms"><bdi class="secno">3. </bdi>Algorithms</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#base-encode"><bdi class="secno">3.1 </bdi>Base Encode</a></li><li class="tocline"><a class="tocxref" href="#base-decode"><bdi class="secno">3.2 </bdi>Base Decode</a></li><li class="tocline"><a class="tocxref" href="#retrieve-verification-method"><bdi class="secno">3.3 </bdi>Retrieve Verification Method</a></li><li class="tocline"><a class="tocxref" href="#processing-errors"><bdi class="secno">3.4 </bdi>Processing Errors</a></li></ol></li><li class="tocline"><a class="tocxref" href="#contexts-and-vocabularies"><bdi class="secno">4. </bdi>Contexts and Vocabularies</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#vocabulary"><bdi class="secno">4.1 </bdi>Vocabulary</a></li><li class="tocline"><a class="tocxref" href="#json-ld-context"><bdi class="secno">4.2 </bdi>JSON-LD context</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#context-injection"><bdi class="secno">4.2.1 </bdi>Context Injection</a></li></ol></li><li class="tocline"><a class="tocxref" href="#datatypes"><bdi class="secno">4.3 </bdi>Datatypes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#multibase"><bdi class="secno">4.3.1 </bdi>The <code>multibase</code> Datatype</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">5. </bdi>Security Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#proving-control-and-binding"><bdi class="secno">5.1 </bdi>Proving Control and Binding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#proving-control-of-an-identifier-and-or-controller-document"><bdi class="secno">5.1.1 </bdi>Proving Control of an Identifier and/or Controller Document</a></li><li class="tocline"><a class="tocxref" href="#binding-to-physical-identity"><bdi class="secno">5.1.2 </bdi>Binding to Physical Identity</a></li></ol></li><li class="tocline"><a class="tocxref" href="#identifier-ambiguity"><bdi class="secno">5.2 </bdi>Identifier Ambiguity</a></li><li class="tocline"><a class="tocxref" href="#key-and-signature-expiration"><bdi class="secno">5.3 </bdi>Key and Signature Expiration</a></li><li class="tocline"><a class="tocxref" href="#verification-method-rotation"><bdi class="secno">5.4 </bdi>Verification Method Rotation</a></li><li class="tocline"><a class="tocxref" href="#verification-method-revocation"><bdi class="secno">5.5 </bdi>Verification Method Revocation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#revocation-semantics"><bdi class="secno">5.5.1 </bdi>Revocation Semantics</a></li></ol></li><li class="tocline"><a class="tocxref" href="#choosing-a-multiformat"><bdi class="secno">5.6 </bdi>Choosing a Multiformat</a></li><li class="tocline"><a class="tocxref" href="#encrypted-data-in-controller-documents"><bdi class="secno">5.7 </bdi>Encrypted Data in Controller Documents</a></li><li class="tocline"><a class="tocxref" href="#content-integrity-protection"><bdi class="secno">5.8 </bdi>Content Integrity Protection</a></li><li class="tocline"><a class="tocxref" href="#integrity-protection-of-controllers"><bdi class="secno">5.9 </bdi>Integrity Protection of Controllers</a></li><li class="tocline"><a class="tocxref" href="#level-of-assurance"><bdi class="secno">5.10 </bdi>Level of Assurance</a></li><li class="tocline"><a class="tocxref" href="#service-endpoints-for-authentication-and-authorization"><bdi class="secno">5.11 </bdi>Service Endpoints for Authentication and Authorization</a></li></ol></li><li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">6. </bdi>Privacy Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#keep-personal-data-private"><bdi class="secno">6.1 </bdi>Keep Personal Data Private</a></li><li class="tocline"><a class="tocxref" href="#relationship-to-the-same-origin-policy"><bdi class="secno">6.2 </bdi>Relationship to the Same-Origin Policy</a></li><li class="tocline"><a class="tocxref" href="#identifier-correlation-risks"><bdi class="secno">6.3 </bdi>Identifier Correlation Risks</a></li><li class="tocline"><a class="tocxref" href="#controller-document-correlation-risks"><bdi class="secno">6.4 </bdi>Controller Document Correlation Risks</a></li><li class="tocline"><a class="tocxref" href="#subject-classification"><bdi class="secno">6.5 </bdi>Subject Classification</a></li><li class="tocline"><a class="tocxref" href="#service-privacy"><bdi class="secno">6.6 </bdi>Service Privacy</a></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-considerations"><bdi class="secno">7. </bdi>Accessibility Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#presenting-time-values"><bdi class="secno">7.1 </bdi>Presenting Time Values</a></li></ol></li><li class="tocline"><a class="tocxref" href="#examples"><bdi class="secno">A. </bdi>Examples</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#multikey-examples"><bdi class="secno">A.1 </bdi>Multikey Examples</a></li><li class="tocline"><a class="tocxref" href="#jsonwebkey-examples"><bdi class="secno">A.2 </bdi>JsonWebKey Examples</a></li></ol></li><li class="tocline"><a class="tocxref" href="#revision-history"><bdi class="secno">B. </bdi>Revision History</a></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">C. </bdi>Acknowledgements</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">D. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">D.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">D.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-cases"><bdi class="secno">1.1 </bdi>Use Cases</a></li><li class="tocline"><a class="tocxref" href="#requirements"><bdi class="secno">1.2 </bdi>Requirements</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.3 </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">1.4 </bdi>Terminology</a></li></ol></li><li class="tocline"><a class="tocxref" href="#data-model"><bdi class="secno">2. </bdi>Data Model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#controller-documents"><bdi class="secno">2.1 </bdi>Controller Documents</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#subjects"><bdi class="secno">2.1.1 </bdi>Subjects</a></li><li class="tocline"><a class="tocxref" href="#controllers"><bdi class="secno">2.1.2 </bdi>Controllers</a></li><li class="tocline"><a class="tocxref" href="#also-known-as"><bdi class="secno">2.1.3 </bdi>Also Known As</a></li><li class="tocline"><a class="tocxref" href="#services"><bdi class="secno">2.1.4 </bdi>Services</a></li></ol></li><li class="tocline"><a class="tocxref" href="#verification-methods"><bdi class="secno">2.2 </bdi>Verification Methods</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#verification-material"><bdi class="secno">2.2.1 </bdi>Verification Material</a></li><li class="tocline"><a class="tocxref" href="#Multikey"><bdi class="secno">2.2.2 </bdi>Multikey</a></li><li class="tocline"><a class="tocxref" href="#JsonWebKey"><bdi class="secno">2.2.3 </bdi>JsonWebKey</a></li><li class="tocline"><a class="tocxref" href="#referring-to-verification-methods"><bdi class="secno">2.2.4 </bdi>Referring to Verification Methods</a></li></ol></li><li class="tocline"><a class="tocxref" href="#verification-relationships"><bdi class="secno">2.3 </bdi>Verification Relationships</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#authentication"><bdi class="secno">2.3.1 </bdi>Authentication</a></li><li class="tocline"><a class="tocxref" href="#assertion"><bdi class="secno">2.3.2 </bdi>Assertion</a></li><li class="tocline"><a class="tocxref" href="#key-agreement"><bdi class="secno">2.3.3 </bdi>Key Agreement</a></li><li class="tocline"><a class="tocxref" href="#capability-invocation"><bdi class="secno">2.3.4 </bdi>Capability Invocation</a></li><li class="tocline"><a class="tocxref" href="#capability-delegation"><bdi class="secno">2.3.5 </bdi>Capability Delegation</a></li></ol></li><li class="tocline"><a class="tocxref" href="#multibase-0"><bdi class="secno">2.4 </bdi>Multibase</a></li><li class="tocline"><a class="tocxref" href="#multihash"><bdi class="secno">2.5 </bdi>Multihash</a></li></ol></li><li class="tocline"><a class="tocxref" href="#algorithms"><bdi class="secno">3. </bdi>Algorithms</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#base-encode"><bdi class="secno">3.1 </bdi>Base Encode</a></li><li class="tocline"><a class="tocxref" href="#base-decode"><bdi class="secno">3.2 </bdi>Base Decode</a></li><li class="tocline"><a class="tocxref" href="#retrieve-verification-method"><bdi class="secno">3.3 </bdi>Retrieve Verification Method</a></li><li class="tocline"><a class="tocxref" href="#processing-errors"><bdi class="secno">3.4 </bdi>Processing Errors</a></li></ol></li><li class="tocline"><a class="tocxref" href="#contexts-and-vocabularies"><bdi class="secno">4. </bdi>Contexts and Vocabularies</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#vocabulary"><bdi class="secno">4.1 </bdi>Vocabulary</a></li><li class="tocline"><a class="tocxref" href="#json-ld-context"><bdi class="secno">4.2 </bdi>JSON-LD context</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#context-injection"><bdi class="secno">4.2.1 </bdi>Context Injection</a></li></ol></li><li class="tocline"><a class="tocxref" href="#datatypes"><bdi class="secno">4.3 </bdi>Datatypes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#multibase"><bdi class="secno">4.3.1 </bdi>The <code>multibase</code> Datatype</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">5. </bdi>Security Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#proving-control-and-binding"><bdi class="secno">5.1 </bdi>Proving Control and Binding</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#proving-control-of-an-identifier-and-or-controller-document"><bdi class="secno">5.1.1 </bdi>Proving Control of an Identifier and/or Controller Document</a></li><li class="tocline"><a class="tocxref" href="#binding-to-physical-identity"><bdi class="secno">5.1.2 </bdi>Binding to Physical Identity</a></li></ol></li><li class="tocline"><a class="tocxref" href="#identifier-ambiguity"><bdi class="secno">5.2 </bdi>Identifier Ambiguity</a></li><li class="tocline"><a class="tocxref" href="#key-and-signature-expiration"><bdi class="secno">5.3 </bdi>Key and Signature Expiration</a></li><li class="tocline"><a class="tocxref" href="#verification-method-rotation"><bdi class="secno">5.4 </bdi>Verification Method Rotation</a></li><li class="tocline"><a class="tocxref" href="#verification-method-revocation"><bdi class="secno">5.5 </bdi>Verification Method Revocation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#revocation-semantics"><bdi class="secno">5.5.1 </bdi>Revocation Semantics</a></li></ol></li><li class="tocline"><a class="tocxref" href="#choosing-a-multiformat"><bdi class="secno">5.6 </bdi>Choosing a Multiformat</a></li><li class="tocline"><a class="tocxref" href="#encrypted-data-in-controller-documents"><bdi class="secno">5.7 </bdi>Encrypted Data in Controller Documents</a></li><li class="tocline"><a class="tocxref" href="#content-integrity-protection"><bdi class="secno">5.8 </bdi>Content Integrity Protection</a></li><li class="tocline"><a class="tocxref" href="#integrity-protection-of-controllers"><bdi class="secno">5.9 </bdi>Integrity Protection of Controllers</a></li><li class="tocline"><a class="tocxref" href="#level-of-assurance"><bdi class="secno">5.10 </bdi>Level of Assurance</a></li><li class="tocline"><a class="tocxref" href="#service-endpoints-for-authentication-and-authorization"><bdi class="secno">5.11 </bdi>Service Endpoints for Authentication and Authorization</a></li></ol></li><li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">6. </bdi>Privacy Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#keep-personal-data-private"><bdi class="secno">6.1 </bdi>Keep Personal Data Private</a></li><li class="tocline"><a class="tocxref" href="#relationship-to-the-same-origin-policy"><bdi class="secno">6.2 </bdi>Relationship to the Same-Origin Policy</a></li><li class="tocline"><a class="tocxref" href="#identifier-correlation-risks"><bdi class="secno">6.3 </bdi>Identifier Correlation Risks</a></li><li class="tocline"><a class="tocxref" href="#controller-document-correlation-risks"><bdi class="secno">6.4 </bdi>Controller Document Correlation Risks</a></li><li class="tocline"><a class="tocxref" href="#subject-classification"><bdi class="secno">6.5 </bdi>Subject Classification</a></li><li class="tocline"><a class="tocxref" href="#service-privacy"><bdi class="secno">6.6 </bdi>Service Privacy</a></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-considerations"><bdi class="secno">7. </bdi>Accessibility Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#presenting-time-values"><bdi class="secno">7.1 </bdi>Presenting Time Values</a></li></ol></li><li class="tocline"><a class="tocxref" href="#iana-considerations"><bdi class="secno">A. </bdi>IANA Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#controller-media-type"><bdi class="secno">A.1 </bdi>application/cid</a></li></ol></li><li class="tocline"><a class="tocxref" href="#examples"><bdi class="secno">B. </bdi>Examples</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#multikey-examples"><bdi class="secno">B.1 </bdi>Multikey Examples</a></li><li class="tocline"><a class="tocxref" href="#jsonwebkey-examples"><bdi class="secno">B.2 </bdi>JsonWebKey Examples</a></li></ol></li><li class="tocline"><a class="tocxref" href="#revision-history"><bdi class="secno">C. </bdi>Revision History</a></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">D. </bdi>Acknowledgements</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">E. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">E.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">E.2 </bdi>Informative references</a></li></ol></li></ol></nav>
 
     <section class="informative" id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
       
@@ -3699,7 +3699,7 @@ authenticator.
       </p>
 
       <p>
-<a target="_blank" href="https://ec.europa.eu/info/law/payment-services-psd-2-directive-eu-2015-2366_en">
+<a target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A32015L2366">
 Payment services (PSD 2)</a> and <a target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2014.257.01.0073.01.ENG">
 eIDAS</a> introduce such requirements to the security context. Level of
 assurance frameworks are classified and defined by regulations and
@@ -3930,14 +3930,69 @@ calculation.
 
     </section>
 
-    <section class="appendix informative" id="examples"><div class="header-wrapper"><h2 id="a-examples"><bdi class="secno">A. </bdi>Examples</h2><a class="self-link" href="#examples" aria-label="Permalink for Appendix A."></a></div><p><em>This section is non-normative.</em></p>
+    
+
+    <section class="appendix informative" id="iana-considerations"><div class="header-wrapper"><h2 id="a-iana-considerations"><bdi class="secno">A. </bdi>IANA Considerations</h2><a class="self-link" href="#iana-considerations" aria-label="Permalink for Appendix A."></a></div><p><em>This section is non-normative.</em></p>
+      
+
+      <p>
+This section will be submitted to the Internet Engineering Steering Group
+(IESG) for review, approval, and registration with IANA.
+      </p>
+
+      <section id="controller-media-type"><div class="header-wrapper"><h3 id="a-1-application-cid"><bdi class="secno">A.1 </bdi>application/cid</h3><a class="self-link" href="#controller-media-type" aria-label="Permalink for Appendix A.1"></a></div>
+        
+        <p>
+This specification registers the <code>application/cid</code> media type specifically for
+identifying documents conforming to the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-113">controllable identifier document</a>
+format.
+        </p>
+        <table>
+          <tbody><tr>
+            <td>Type name: </td>
+            <td>application</td>
+          </tr>
+          <tr>
+            <td>Subtype name: </td>
+            <td>controller</td>
+          </tr>
+          <tr>
+            <td>Required parameters: </td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Encoding considerations: </td>
+            <td>
+Resources that use the <code>application/cid</code> media type are required to conform to
+all of the requirements for the <code>application/json</code> media type and are therefore
+subject to the same encoding considerations specified in Section 11 of
+<cite><a data-matched-text="[[[RFC7159]]]" href="https://www.rfc-editor.org/rfc/rfc7159">The JavaScript Object Notation (JSON) Data Interchange Format</a></cite>.
+            </td>
+          </tr>
+          <tr>
+            <td>Security considerations: </td>
+            <td>As defined in the <cite><a data-matched-text="[[[CONTROLLER-DOCUMENT]]]" href="https://www.w3.org/TR/controller-document/">Controller Documents 1.0</a></cite>.</td>
+          </tr>
+          <tr>
+            <td>Contact: </td>
+            <td>
+<abbr title="World Wide Web Consortium">W3C</abbr> Verifiable Credentials Working Group
+<a href="mailto:public-vc-wg@w3.org">public-vc-wg@w3.org</a>
+            </td>
+          </tr>
+        </tbody></table>
+
+      </section>
+    </section>
+
+    <section class="appendix informative" id="examples"><div class="header-wrapper"><h2 id="b-examples"><bdi class="secno">B. </bdi>Examples</h2><a class="self-link" href="#examples" aria-label="Permalink for Appendix B."></a></div><p><em>This section is non-normative.</em></p>
       
 
       <p>
 This section contains more detailed examples of the concepts introduced in
 the specification.
       </p>
-      <section class="informative" id="multikey-examples"><div class="header-wrapper"><h3 id="a-1-multikey-examples"><bdi class="secno">A.1 </bdi>Multikey Examples</h3><a class="self-link" href="#multikey-examples" aria-label="Permalink for Appendix A.1"></a></div><p><em>This section is non-normative.</em></p>
+      <section class="informative" id="multikey-examples"><div class="header-wrapper"><h3 id="b-1-multikey-examples"><bdi class="secno">B.1 </bdi>Multikey Examples</h3><a class="self-link" href="#multikey-examples" aria-label="Permalink for Appendix B.1"></a></div><p><em>This section is non-normative.</em></p>
         
 
         <p>
@@ -4032,7 +4087,7 @@ developers seeking test values.
 }</pre>
       </div>
         </section>
-        <section class="informative" id="jsonwebkey-examples"><div class="header-wrapper"><h3 id="a-2-jsonwebkey-examples"><bdi class="secno">A.2 </bdi>JsonWebKey Examples</h3><a class="self-link" href="#jsonwebkey-examples" aria-label="Permalink for Appendix A.2"></a></div><p><em>This section is non-normative.</em></p>
+        <section class="informative" id="jsonwebkey-examples"><div class="header-wrapper"><h3 id="b-2-jsonwebkey-examples"><bdi class="secno">B.2 </bdi>JsonWebKey Examples</h3><a class="self-link" href="#jsonwebkey-examples" aria-label="Permalink for Appendix B.2"></a></div><p><em>This section is non-normative.</em></p>
         
 
         <p>
@@ -4159,7 +4214,7 @@ developers seeking test values.
 
     
 
-    <section class="appendix informative" id="revision-history"><div class="header-wrapper"><h2 id="b-revision-history"><bdi class="secno">B. </bdi>Revision History</h2><a class="self-link" href="#revision-history" aria-label="Permalink for Appendix B."></a></div><p><em>This section is non-normative.</em></p>
+    <section class="appendix informative" id="revision-history"><div class="header-wrapper"><h2 id="c-revision-history"><bdi class="secno">C. </bdi>Revision History</h2><a class="self-link" href="#revision-history" aria-label="Permalink for Appendix C."></a></div><p><em>This section is non-normative.</em></p>
       
 
       <p>
@@ -4178,7 +4233,7 @@ Apply wording updates from VC-JOSE-COSE spec.
 
     </section>
 
-    <section class="appendix informative" id="acknowledgements"><div class="header-wrapper"><h2 id="c-acknowledgements"><bdi class="secno">C. </bdi>Acknowledgements</h2><a class="self-link" href="#acknowledgements" aria-label="Permalink for Appendix C."></a></div><p><em>This section is non-normative.</em></p>
+    <section class="appendix informative" id="acknowledgements"><div class="header-wrapper"><h2 id="d-acknowledgements"><bdi class="secno">D. </bdi>Acknowledgements</h2><a class="self-link" href="#acknowledgements" aria-label="Permalink for Appendix D."></a></div><p><em>This section is non-normative.</em></p>
       
 
       <p>
@@ -4299,7 +4354,7 @@ Kaliya "Identity Woman" Young, Eric Welton, Fuqiao Xue, @Yue, Dmitri Zagidulin,
 
   
 
-<section id="references" class="appendix"><div class="header-wrapper"><h2 id="d-references"><bdi class="secno">D. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix D."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="d-1-normative-references"><bdi class="secno">D.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix D.1"></a></div>
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="e-references"><bdi class="secno">E. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix E."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="e-1-normative-references"><bdi class="secno">E.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix E.1"></a></div>
     
     <dl class="bibliography"><dt id="bib-did-extensions-properties">[DID-EXTENSIONS-PROPERTIES]</dt><dd>
       <a href="https://www.w3.org/TR/did-extensions-properties/"><cite>DID Document Property Extensions</cite></a>. Manu Sporny; Markus Sabadello.  W3C. 19 November 2024. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/did-extensions-properties/">https://www.w3.org/TR/did-extensions-properties/</a>
@@ -4336,9 +4391,11 @@ Kaliya "Identity Woman" Young, Eric Welton, Fuqiao Xue, @Yue, Dmitri Zagidulin,
     </dd><dt id="bib-xmlschema11-2">[XMLSCHEMA11-2]</dt><dd>
       <a href="https://www.w3.org/TR/xmlschema11-2/"><cite>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</cite></a>. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al.  W3C. 5 April 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xmlschema11-2/">https://www.w3.org/TR/xmlschema11-2/</a>
     </dd></dl>
-  </section><section id="informative-references"><div class="header-wrapper"><h3 id="d-2-informative-references"><bdi class="secno">D.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix D.2"></a></div>
+  </section><section id="informative-references"><div class="header-wrapper"><h3 id="e-2-informative-references"><bdi class="secno">E.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix E.2"></a></div>
     
-    <dl class="bibliography"><dt id="bib-did-core">[DID-CORE]</dt><dd>
+    <dl class="bibliography"><dt id="bib-controller-document">[CONTROLLER-DOCUMENT]</dt><dd>
+      <a href="https://www.w3.org/TR/controller-document/"><cite>Controller Documents 1.0</cite></a>. Manu Sporny; Michael Jones.  W3C. 28 October 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/controller-document/">https://www.w3.org/TR/controller-document/</a>
+    </dd><dt id="bib-did-core">[DID-CORE]</dt><dd>
       <a href="https://www.w3.org/TR/did-core/"><cite>Decentralized Identifiers (DIDs) v1.0</cite></a>. Manu Sporny; Amy Guy; Markus Sabadello; Drummond Reed.  W3C. 19 July 2022. W3C Recommendation. URL: <a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a>
     </dd><dt id="bib-did-use-cases">[DID-USE-CASES]</dt><dd>
       <a href="https://www.w3.org/TR/did-use-cases/"><cite>Use Cases and Requirements for Decentralized Identifiers</cite></a>. Joe Andrieu; Phil Archer; Kim Duffy; Ryan Grant; Adrian Gropper.  W3C. 17 March 2021. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/did-use-cases/">https://www.w3.org/TR/did-use-cases/</a>
@@ -4350,6 +4407,8 @@ Kaliya "Identity Woman" Young, Eric Welton, Fuqiao Xue, @Yue, Dmitri Zagidulin,
       <a href="https://iapp.org/media/pdf/resource_center/pbd_implement_7found_principles.pdf"><cite>Privacy by Design</cite></a>. Ann Cavoukian.  Information and Privacy Commissioner. 2011. URL: <a href="https://iapp.org/media/pdf/resource_center/pbd_implement_7found_principles.pdf">https://iapp.org/media/pdf/resource_center/pbd_implement_7found_principles.pdf</a>
     </dd><dt id="bib-rfc3552">[RFC3552]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc3552"><cite>Guidelines for Writing RFC Text on Security Considerations</cite></a>. E. Rescorla; B. Korver.  IETF. July 2003. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc3552">https://www.rfc-editor.org/rfc/rfc3552</a>
+    </dd><dt id="bib-rfc7159">[RFC7159]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc7159"><cite>The JavaScript Object Notation (JSON) Data Interchange Format</cite></a>. T. Bray, Ed. IETF. March 2014. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc7159">https://www.rfc-editor.org/rfc/rfc7159</a>
     </dd><dt id="bib-turtle">[TURTLE]</dt><dd>
       <a href="https://www.w3.org/TR/turtle/"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a>
     </dd><dt id="bib-vc-data-integrity">[VC-DATA-INTEGRITY]</dt><dd>
@@ -4539,6 +4598,8 @@ Kaliya "Identity Woman" Young, Eric Welton, Fuqiao Xue, @Yue, Dmitri Zagidulin,
       <a href="#ref-for-dfn-controllable-identifier-document-103" title="§ 6.5 Subject Classification">§ 6.5 Subject Classification</a> <a href="#ref-for-dfn-controllable-identifier-document-104" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-105" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-106" title="Reference 4">(4)</a> 
     </li><li>
       <a href="#ref-for-dfn-controllable-identifier-document-107" title="§ 6.6 Service Privacy">§ 6.6 Service Privacy</a> <a href="#ref-for-dfn-controllable-identifier-document-108" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-109" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-110" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controllable-identifier-document-111" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controllable-identifier-document-112" title="Reference 6">(6)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-controllable-identifier-document-113" title="§ A.1 application/cid">§ A.1 application/cid</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-controller-s" aria-label="Links in this document to definition: controller">
