@@ -43,7 +43,7 @@ dfn{cursor:pointer}
 .dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
 </style>
     
-<title>Controllable Identifier Document 1.0</title>
+<title>Controlled Identifier Document 1.0</title>
     
     
     
@@ -143,7 +143,7 @@ table.simple tbody tr:last-of-type {
 </style>
 
 <meta name="color-scheme" content="light">
-<meta name="description" content="A controllable identifier document contains cryptographic material and lists service
+<meta name="description" content="A controlled identifier document contains cryptographic material and lists service
 endpoints for the purposes of verifying cryptographic proofs from, and
 interacting with, the controller of an identifier.">
 <link rel="canonical" href="https://www.w3.org/TR/cid-1.0/">
@@ -478,7 +478,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 <body class="h-entry" data-cite="URL I18N-GLOSSARY INFRA VC-DATA-MODEL-2.0"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
-    <h1 id="title" class="title">Controllable Identifier Document 1.0</h1> 
+    <h1 id="title" class="title">Controlled Identifier Document 1.0</h1> 
     <p id="w3c-state"><a href="https://www.w3.org/standards/types#CR">W3C Candidate Recommendation Snapshot</a> <time class="dt-published" datetime="2025-01-09">09 January 2025</time></p>
     <details open="">
       <summary>More details about this document</summary>
@@ -554,7 +554,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </div>
     <section id="abstract" class="introductory"><h2>Abstract</h2>
       <p>
-A controllable identifier document contains cryptographic material and lists service
+A controlled identifier document contains cryptographic material and lists service
 endpoints for the purposes of verifying cryptographic proofs from, and
 interacting with, the controller of an identifier.
       </p>
@@ -621,24 +621,24 @@ removed before the transition to <abbr title="World Wide Web Consortium">W3C</ab
       
 
       <p>
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-1">Controllable identifier documents</a> identify a <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-1">subject</a> and provide <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-1">verification methods</a> that express public cryptographic material, such as <a data-link-type="dfn|abstract-op" href="#dfn-public-key" class="internalDFN" id="ref-for-dfn-public-key-1">public keys</a>,
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-1">Controlled identifier documents</a> identify a <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-1">subject</a> and provide <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-1">verification methods</a> that express public cryptographic material, such as <a data-link-type="dfn|abstract-op" href="#dfn-public-key" class="internalDFN" id="ref-for-dfn-public-key-1">public keys</a>,
 for verifying <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-1">proofs</a> created on behalf of the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-2">subject</a> for specific
 purposes, such as authentication, attestation, key agreement (for encryption),
-and capability invocation and delegation. <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-2">Controllable identifier documents</a> also list
+and capability invocation and delegation. <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-2">Controlled identifier documents</a> also list
 <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-1">service</a> endpoints related to an <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-1">identifier</a>; for example, from which to
 request additional information for verification.
       </p>
 
       <p>
-In other words, the controllable identifier document contains the information necessary to
+In other words, the controlled identifier document contains the information necessary to
 communicate with, and/or prove that specific actions were taken by, the
 controller of an <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-2">identifier</a>, including material for <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-2">proofs</a> and
 <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-2">service</a> endpoints for additional communications.
       </p>
       <p>
-A <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-3">controllable identifier document</a> specifies
+A <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-3">controlled identifier document</a> specifies
 <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-1">verification relationships</a> and <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-3">service</a> endpoints for a single
-identifier, for which the current controllable identifier document is taken as authoritative.
+identifier, for which the current controlled identifier document is taken as authoritative.
       </p>
       <p>
 It is expected that other specifications will profile
@@ -654,8 +654,8 @@ usage. The DID Core specification is one such document that does that, but
 citing it directly received objections. This issue notes that the WG intends to
 resolve the text below into something that we can achieve consensus on:<br><br>
 <em>For example, the Decentralized Identifiers Specification is expected to
-define DID documents as a profile of controllable identifier documents, where the DID is the
-identifier, DID documents are controllable identifier documents, and resolution is the
+define DID documents as a profile of controlled identifier documents, where the DID is the
+identifier, DID documents are controlled identifier documents, and resolution is the
 process of retrieving the canonical DID document for a DID.</em>
       </p></div>
 
@@ -812,7 +812,7 @@ expertise or specialist knowledge.
         when, and only when, they appear in all capitals, as shown here.
       </p>
         <p>
-A <dfn id="dfn-conforming-controllable-identifier-document" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">conforming controllable identifier document</dfn> is any concrete expression of the
+A <dfn id="dfn-conforming-controlled-identifier-document" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">conforming controlled identifier document</dfn> is any concrete expression of the
 data model that follows the relevant normative requirements in Sections
 <a href="#data-model" data-matched-text="[[[#data-model]]]" class="sec-ref"><bdi class="secno">2. </bdi>Data Model</a> and <a href="#contexts-and-vocabularies" data-matched-text="[[[#contexts-and-vocabularies]]]" class="sec-ref"><bdi class="secno">4. </bdi>Contexts and Vocabularies</a>.
         </p>
@@ -826,7 +826,7 @@ data model that follows the relevant normative requirements in Sections
 
         <p>
 A <dfn class="lint-ignore" data-plurals="conforming documents" id="dfn-conforming-document" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">conforming document</dfn> is either a
-<a data-link-type="dfn|abstract-op" href="#dfn-conforming-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-conforming-controllable-identifier-document-1">conforming controllable identifier document</a>, or a
+<a data-link-type="dfn|abstract-op" href="#dfn-conforming-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-conforming-controlled-identifier-document-1">conforming controlled identifier document</a>, or a
 <a data-link-type="dfn|abstract-op" href="#dfn-conforming-verification-method" class="internalDFN" id="ref-for-dfn-conforming-verification-method-1">conforming verification method</a>.
         </p>
 
@@ -860,15 +860,15 @@ A process by which an entity can prove to a verifier that it is allowed to
 perform a specific activity.
           </dd>
 
-          <dt><dfn class="export" data-export="" id="dfn-controllable-identifier" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">controllable identifier</dfn></dt>
-          <dd data-defines="#dfn-controllable-identifier">
+          <dt><dfn class="export" data-export="" id="dfn-controlled-identifier" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">controlled identifier</dfn></dt>
+          <dd data-defines="#dfn-controlled-identifier">
             <p>
 A type of identifier that can be proven to be under the control of an entity.
             </p>
           </dd>
 
-          <dt><dfn class="export" data-export="" data-plurals="controllable identifier documents" id="dfn-controllable-identifier-document" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">controllable identifier document</dfn></dt>
-          <dd data-defines="#dfn-controllable-identifier-document">
+          <dt><dfn class="export" data-export="" data-plurals="controlled identifier documents" id="dfn-controlled-identifier-document" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">controlled identifier document</dfn></dt>
+          <dd data-defines="#dfn-controlled-identifier-document">
             <p>
 A document that contains cryptographic material and lists service endpoints that
 can be used for verifying <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-3">proofs</a> from, and interacting with, the
@@ -880,7 +880,7 @@ can be used for verifying <a data-link-type="dfn|abstract-op" href="#dfn-proof" 
           <dd data-defines="#dfn-controller-s">
             <p>
 An entity that is capable of performing an action with a specific resource, such
-as updating a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-4">controllable identifier document</a> or generating a <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-4">proof</a> using a
+as updating a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-4">controlled identifier document</a> or generating a <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-4">proof</a> using a
 <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-2">verification method</a>.
             </p>
           </dd>
@@ -919,7 +919,7 @@ corresponding <a data-link-type="dfn|abstract-op" href="#dfn-private-key" class=
             <p>
 An entity, such as a person, group, organization, physical thing, digital thing,
 or logical thing that is referred to by the value of an <code>id</code> property in a
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-5">controllable identifier document</a>. Subjects identified in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-6">controllable identifier document</a>
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-5">controlled identifier document</a>. Subjects identified in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-6">controlled identifier document</a>
 are also used as a subjects in other contexts, such as during
 <a data-link-type="dfn|abstract-op" href="#dfn-authenticated" class="internalDFN" id="ref-for-dfn-authenticated-1">authentication</a> or in <a data-link-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credentials</a>.
             </p>
@@ -951,9 +951,9 @@ relationship is <a href="#authentication" data-matched-text="[[[#authentication]
         
 
         <p>
-A <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-7">controllable identifier document</a> specifies one or more relationships between
+A <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-7">controlled identifier document</a> specifies one or more relationships between
 an <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-3">identifier</a> and a set of <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-5">verification methods</a> and/or service
-endpoints. The <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-8">controllable identifier document</a> <em class="rfc2119">SHOULD</em>
+endpoints. The <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-8">controlled identifier document</a> <em class="rfc2119">SHOULD</em>
 contain <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-2">verification relationships</a> that explicitly permit the use of
 certain <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-6">verification methods</a> for specific purposes.
         </p>
@@ -1005,7 +1005,7 @@ different types with possible differences in constraints.
           
 
           <p>
-The following sections define the properties in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-9">controllable identifier document</a>,
+The following sections define the properties in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-9">controlled identifier document</a>,
 including whether these properties are required or optional. These properties
 describe relationships between the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-4">subject</a> and the value of the
 property.
@@ -1131,7 +1131,7 @@ the URL syntax, or a <a href="https://infra.spec.whatwg.org/#ordered-set">set</a
           <section id="subjects"><div class="header-wrapper"><h4 id="x2-1-1-subjects"><bdi class="secno">2.1.1 </bdi>Subjects</h4><a class="self-link" href="#subjects" aria-label="Permalink for Section 2.1.1"></a></div>
             
             <p>
-A <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-5">subject</a> is expressed using the <code>id</code> property in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-10">controllable identifier document</a>.
+A <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-5">subject</a> is expressed using the <code>id</code> property in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-10">controlled identifier document</a>.
 The value of an <code>id</code> property is referred to as an <dfn data-plurals="identifiers" id="dfn-identifier" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">identifier</dfn>.
             </p>
 
@@ -1144,7 +1144,7 @@ conforms to the rules in the <cite><a data-matched-text="[[[URL]]]" href="https:
             </dl>
 
             <p>
-A <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-11">controllable identifier document</a> <em class="rfc2119">MUST</em> contain an <code>id</code> value in the <em>topmost</em>
+A <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-11">controlled identifier document</a> <em class="rfc2119">MUST</em> contain an <code>id</code> value in the <em>topmost</em>
 <a href="https://infra.spec.whatwg.org/#ordered-map">map</a>.
             </p>
 
@@ -1158,20 +1158,20 @@ A <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-documen
 
             <p>
 The value of the <code>id</code> property in the <em>topmost</em>
-<a href="https://infra.spec.whatwg.org/#ordered-map">map</a> of the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-12">controllable identifier document</a> is
-called the <dfn id="dfn-base-identifier" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">base identifier</dfn> for the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-13">controllable identifier document</a>. The URL
-for retrieving the current, authoritative <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-14">controllable identifier document</a> for a given
-<a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-4">identifier</a> is called the <dfn id="dfn-canonical-url" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">canonical URL</dfn> for the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-15">controllable identifier document</a>. Dereferencing the <a data-link-type="dfn|abstract-op" href="#dfn-canonical-url" class="internalDFN" id="ref-for-dfn-canonical-url-1">canonical URL</a> <em class="rfc2119">MUST</em> return the current
-authoritative <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-16">controllable identifier document</a>. The returned document's <a data-link-type="dfn|abstract-op" href="#dfn-base-identifier" class="internalDFN" id="ref-for-dfn-base-identifier-1">base identifier</a> <em class="rfc2119">MUST</em> be the same as the <a data-link-type="dfn|abstract-op" href="#dfn-canonical-url" class="internalDFN" id="ref-for-dfn-canonical-url-2">canonical URL</a>; if it is anything else,
-then the returned document is not an authoritative <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-17">controllable identifier document</a> and
-the <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-5">identifier</a> <em class="rfc2119">SHOULD</em> be treated as invalid. Every controllable identifier document is
+<a href="https://infra.spec.whatwg.org/#ordered-map">map</a> of the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-12">controlled identifier document</a> is
+called the <dfn id="dfn-base-identifier" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">base identifier</dfn> for the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-13">controlled identifier document</a>. The URL
+for retrieving the current, authoritative <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-14">controlled identifier document</a> for a given
+<a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-4">identifier</a> is called the <dfn id="dfn-canonical-url" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">canonical URL</dfn> for the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-15">controlled identifier document</a>. Dereferencing the <a data-link-type="dfn|abstract-op" href="#dfn-canonical-url" class="internalDFN" id="ref-for-dfn-canonical-url-1">canonical URL</a> <em class="rfc2119">MUST</em> return the current
+authoritative <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-16">controlled identifier document</a>. The returned document's <a data-link-type="dfn|abstract-op" href="#dfn-base-identifier" class="internalDFN" id="ref-for-dfn-base-identifier-1">base identifier</a> <em class="rfc2119">MUST</em> be the same as the <a data-link-type="dfn|abstract-op" href="#dfn-canonical-url" class="internalDFN" id="ref-for-dfn-canonical-url-2">canonical URL</a>; if it is anything else,
+then the returned document is not an authoritative <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-17">controlled identifier document</a> and
+the <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-5">identifier</a> <em class="rfc2119">SHOULD</em> be treated as invalid. Every controlled identifier document is
 stored and retrieved according to the <a data-link-type="dfn|abstract-op" href="#dfn-canonical-url" class="internalDFN" id="ref-for-dfn-canonical-url-3">canonical URL</a> of the document, which
 <em class="rfc2119">MUST</em> also be the <a data-link-type="dfn|abstract-op" href="#dfn-base-identifier" class="internalDFN" id="ref-for-dfn-base-identifier-2">base identifier</a> of the document.
             </p>
 
             <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="5"><span>Note</span><span class="issue-label">: Identifiers are context-dependent</span></div><div class="">
               <p>
-It is expected that the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-6">subject</a> referred to by an <code>id</code> in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-18">controllable identifier document</a> will be consistent over time, such that any <a data-link-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credentials</a> that use them can be interpreted as referring to the same entity.
+It is expected that the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-6">subject</a> referred to by an <code>id</code> in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-18">controlled identifier document</a> will be consistent over time, such that any <a data-link-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credentials</a> that use them can be interpreted as referring to the same entity.
 For example, it is preferred that an <a data-link-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-issuers">issuer</a> of a <a data-link-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credential</a>
 require that a <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-7">subject</a> demonstrate <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-8">proof</a> of control over their
 <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-6">identifier</a> before issuing a credential with that <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-7">identifier</a> as
@@ -1194,21 +1194,21 @@ considered when evaluating the security impacts of reliance on a given
             
 
             <p>
-A <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-2">controller</a> of a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-19">controllable identifier document</a> is any entity capable of making changes to that
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-20">controllable identifier document</a>. Whoever can update
+A <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-2">controller</a> of a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-19">controlled identifier document</a> is any entity capable of making changes to that
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-20">controlled identifier document</a>. Whoever can update
 the content of the resource returned from dereferencing the controller
 document's canonical URL is, by definition, a controller of the
 document and its canonical identifier. Proofs that satisfy a
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-21">controllable identifier document</a>'s <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-13">verification methods</a> are taken as cryptographic
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-21">controlled identifier document</a>'s <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-13">verification methods</a> are taken as cryptographic
 assurance that the <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-3">controller</a> of the <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-10">identifier</a> created those <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-9">proofs</a>.
             </p>
             <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Note</span><span class="issue-label">: Identifier Controller versus Document Controller</span></div><p class="">
-The <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-4">controller</a> of the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-22">controllable identifier document</a> is taken to be the
+The <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-4">controller</a> of the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-22">controlled identifier document</a> is taken to be the
 <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-5">controller</a> of the document's canonical <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-11">identifier</a>, also known as its
-URL. That is, whoever can update the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-23">controllable identifier document</a> is both
+URL. That is, whoever can update the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-23">controlled identifier document</a> is both
 the document <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-6">controller</a> and the <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-12">identifier</a> <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-7">controller</a>. Updating the
 document is how you control the <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-13">identifier</a>. These terms can be used
-interchangeably. Controlling the canonical <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-24">controllable identifier document</a> for
+interchangeably. Controlling the canonical <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-24">controlled identifier document</a> for
 an <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-14">identifier</a> is the same as controlling the <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-15">identifier</a>.
             </p></div>
             <dl>
@@ -1221,12 +1221,12 @@ list URLs identifying those controllers.
   <div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="5"><span>Note</span><span class="issue-label">: Presumed Control</span></div><p class="">
 It is possible to list a verification method which is
 functionally under the control of someone other than the <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-8">controller</a>
-of the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-25">controllable identifier document</a>. For example, a document <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-9">controller</a> could
+of the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-25">controlled identifier document</a>. For example, a document <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-9">controller</a> could
 set a public key under another party's control as an authentication
 verification method. This would enable the other party to authenticate
 on behalf of this <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-16">identifier</a> (because their public key is listed in
 an authentication verification method) <em>without</em> enabling that party
-to update the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-26">controllable identifier document</a>. However, since the document
+to update the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-26">controlled identifier document</a>. However, since the document
 <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-10">controller</a> explicitly listed that key for authentication, the
 proof in question is taken as created by the document <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-11">controller</a>, as
 it was created by their explicit assignee. This is especially useful
@@ -1246,8 +1246,8 @@ each of which conforms to the rules in the <cite><a data-matched-text="[[[URL]]]
             <p>
 Each entry in the <code>controller</code> property <em class="rfc2119">MUST</em> identify
 an entity capable of updating the canonical version
-of the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-27">controllable identifier document</a>.
-Subsequent requests for this <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-28">controllable identifier document</a> through its
+of the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-27">controlled identifier document</a>.
+Subsequent requests for this <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-28">controlled identifier document</a> through its
 canonical location will always receive the latest version.
             </p>
             <p>
@@ -1256,9 +1256,9 @@ is determined entirely by its storage location.
               </p></dd>
             </dl>
 
-            <div class="example" id="example-controllable-identifier-document-with-a-controller-property">
+            <div class="example" id="example-controlled-identifier-document-with-a-controller-property">
         <div class="marker">
-    <a class="self-link" href="#example-controllable-identifier-document-with-a-controller-property">Example<bdi> 4</bdi></a><span class="example-title">: Controllable identifier document with a controller property</span>
+    <a class="self-link" href="#example-controlled-identifier-document-with-a-controller-property">Example<bdi> 4</bdi></a><span class="example-title">: Controlled identifier document with a controller property</span>
   </div> <pre class="nohighlight">{
   "@context": "https://www.w3.org/ns/controller/v1",
   "id": "https://controller1.example/123",
@@ -1322,8 +1322,8 @@ also identified by one or more other identifiers.
               <p>
 Applications might choose to consider two identifiers related by <code>alsoKnownAs</code>
 to be equivalent <em>if</em> the <code>alsoKnownAs</code> relationship expressed in the
-controllable identifier document of one <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-12">subject</a> is also expressed in the reverse direction
-(i.e., reciprocated) in the controllable identifier document of the other <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-13">subject</a>. It is
+controlled identifier document of one <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-12">subject</a> is also expressed in the reverse direction
+(i.e., reciprocated) in the controlled identifier document of the other <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-13">subject</a>. It is
 best practice <em>not</em> to consider them
 equivalent in the absence of this reciprocating relationship. In other words,
 the presence of an <code>alsoKnownAs</code> assertion does not prove that this assertion
@@ -1334,7 +1334,7 @@ independent verification of an <code>alsoKnownAs</code> assertion.
 Given that the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-14">subject</a> might use different identifiers for different
 purposes, such as enhanced privacy protection, an expectation of strong
 equivalence between the two identifiers, or taking action to
-merge the information from the two corresponding <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-29">controllable identifier documents</a>, is
+merge the information from the two corresponding <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-29">controlled identifier documents</a>, is
 not necessarily appropriate, <em>even with</em> a reciprocal relationship.
               </p>
             </div></div>
@@ -1345,7 +1345,7 @@ not necessarily appropriate, <em>even with</em> a reciprocal relationship.
             
 
             <p>
-<a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-5">Services</a> are used in <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-30">controllable identifier documents</a> to express ways of
+<a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-5">Services</a> are used in <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-30">controlled identifier documents</a> to express ways of
 communicating with the <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-20">controller</a>, or associated entities, in relation to
 the controlled <a data-link-type="dfn|abstract-op" href="#dfn-identifier" class="internalDFN" id="ref-for-dfn-identifier-18">identifier</a>. A <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-6">service</a> can be
 any type of service the <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-21">controller</a> wants to advertise for further discovery,
@@ -1432,7 +1432,7 @@ For more information regarding privacy and security considerations related to
         <section id="verification-methods"><div class="header-wrapper"><h3 id="x2-2-verification-methods"><bdi class="secno">2.2 </bdi>Verification Methods</h3><a class="self-link" href="#verification-methods" aria-label="Permalink for Section 2.2"></a></div>
           
           <p>
-A <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-31">controllable identifier document</a> can express <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-18">verification methods</a>, such as
+A <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-31">controlled identifier document</a> can express <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-18">verification methods</a>, such as
 cryptographic <a data-link-type="dfn|abstract-op" href="#dfn-public-key" class="internalDFN" id="ref-for-dfn-public-key-2">public keys</a>, which can be used to verify <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-13">proofs</a>,
 such as those used to <a data-link-type="dfn|abstract-op" href="#dfn-authenticated" class="internalDFN" id="ref-for-dfn-authenticated-7">authenticate</a> or authorize interactions with the
 <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-22">controller</a> or associated parties. For example, a cryptographic <a data-link-type="dfn|abstract-op" href="#dfn-public-key" class="internalDFN" id="ref-for-dfn-public-key-3">public key</a> can be used as a <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-19">verification method</a> with respect to a digital
@@ -1452,7 +1452,7 @@ or "proof."
           </p>
 
           <p>
-A <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-21">verification method</a> is defined in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-32">controllable identifier document</a> using the
+A <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-21">verification method</a> is defined in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-32">controlled identifier document</a> using the
 <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ordered-map">map</a> below and is referred to as the
 <dfn id="dfn-verification-method-definition" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verification method definition</dfn>:
           </p>
@@ -1539,7 +1539,7 @@ revocation.
       </div>
 
           <div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="4"><span>Note</span><span class="issue-label">: The `controller` property is used by multiple objects</span></div><p class="">
-The <code>controller</code> property is used by <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-33">controllable identifier documents</a>, as described in
+The <code>controller</code> property is used by <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-33">controlled identifier documents</a>, as described in
 Section <a href="#controller-documents" data-matched-text="[[[#controller-documents]]]" class="sec-ref"><bdi class="secno">2.1 </bdi>Controller Documents</a>, and by <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-33">verification methods</a>, as
 described in Section <a href="#verification-methods" data-matched-text="[[[#verification-methods]]]" class="sec-ref"><bdi class="secno">2.2 </bdi>Verification Methods</a>. When it is used in either
 place, its purpose is essentially the same; that is, it expresses one or more
@@ -1547,7 +1547,7 @@ entities that are authorized to perform certain actions associated with the
 resource with which it is associated.
             </p></div>
             <p>
-In the case of the <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-23">controller</a> of a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-34">controllable identifier document</a>, the
+In the case of the <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-23">controller</a> of a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-34">controlled identifier document</a>, the
 <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-24">controller</a> can update the content of the document. In the case of the
 <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-25">controller</a> of a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-34">verification method</a>, the <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-26">controller</a> can generate
 proofs that satisfy the method.
@@ -1555,9 +1555,9 @@ proofs that satisfy the method.
             <p>
 To ensure explicit security guarantees, the
 <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-27">controller</a> of a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-35">verification method</a> cannot be inferred from the
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-35">controllable identifier document</a>. It is necessary to explicitly express the identifier of
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-35">controlled identifier document</a>. It is necessary to explicitly express the identifier of
 the controller of the key because the value of <code>controller</code> for a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-36">verification method</a> is <em>not</em> necessarily the value of the <code>controller</code> for a
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-36">controllable identifier document</a>.
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-36">controlled identifier document</a>.
           </p>
 
           <section id="verification-material"><div class="header-wrapper"><h4 id="x2-2-1-verification-material"><bdi class="secno">2.2.1 </bdi>Verification Material</h4><a class="self-link" href="#verification-material" aria-label="Permalink for Section 2.2.1"></a></div>
@@ -1580,7 +1580,7 @@ the Data Integrity EdDSA Cryptosuites</a>.
             <p>
 To increase the likelihood of interoperable implementations, this specification
 limits the number of formats for expressing verification material in a
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-37">controllable identifier document</a>. The fewer formats that implementers have to
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-37">controlled identifier document</a>. The fewer formats that implementers have to
 choose from, the more likely that interoperability will be achieved. This
 approach attempts to strike a delicate balance between easing implementation
 and providing support for formats that have historically had broad deployment.
@@ -1600,7 +1600,7 @@ conversion <em class="rfc2119">MUST NOT</em> affect the external representation 
             </p>
 
             <p>
-An example of a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-38">controllable identifier document</a> containing <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-42">verification
+An example of a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-38">controlled identifier document</a> containing <a href="#dfn-verification-method" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-method-42">verification
 methods</a> using both properties above is shown below.
             </p>
 
@@ -1793,7 +1793,7 @@ Developers are advised to not accidentally publish a representation of a secret
 key. Implementations that adhere to this specification will raise errors in the
 event of a Multikey header value that is not in the public key header table
 above, or when reading a Multikey value that is expected to be a public key,
-such as one published in a controllable identifier document, that does not start with a known
+such as one published in a controlled identifier document, that does not start with a known
 public key header.
             </p>
 
@@ -1945,7 +1945,7 @@ If the value of a <a data-link-type="dfn|abstract-op" href="#dfn-verification-me
 embedded and its properties can be accessed directly. However, if the value is a
 URL <a href="https://infra.spec.whatwg.org/#string">string</a>, the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-49">verification method</a> has
 been included by reference and its properties will need to be retrieved from
-elsewhere in the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-39">controllable identifier document</a> or from another <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-40">controllable identifier document</a>. This
+elsewhere in the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-39">controlled identifier document</a> or from another <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-40">controlled identifier document</a>. This
 is done by dereferencing the URL and searching the resulting resource for a
 <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-50">verification method</a> <a href="https://infra.spec.whatwg.org/#ordered-map">map</a> with an
 <code>id</code> property whose value matches the URL.
@@ -1988,11 +1988,11 @@ the subject.
           <p>
 Different <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-7">verification relationships</a> enable the associated <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-52">verification methods</a> to be used for different purposes. It is up to a <a data-link-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifier">verifier</a>
 to ascertain the validity of a verification attempt by checking that the
-<a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-53">verification method</a> used is referred to by the appropriate <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-8">verification relationship</a> property in the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-41">controllable identifier document</a>.
+<a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-53">verification method</a> used is referred to by the appropriate <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-8">verification relationship</a> property in the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-41">controlled identifier document</a>.
           </p>
 
           <p>
-The <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-9">verification relationship</a> between the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-15">subject</a> and the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-54">verification method</a> is explicit in the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-42">controllable identifier document</a>. <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-55">Verification methods</a>
+The <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-9">verification relationship</a> between the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-15">subject</a> and the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-54">verification method</a> is explicit in the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-42">controlled identifier document</a>. <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-55">Verification methods</a>
 that are not associated with a particular <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-10">verification relationship</a> cannot
 be used for that <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-11">verification relationship</a>. For example, a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-56">verification method</a> associated with the <a data-link-type="dfn|abstract-op" href="#dfn-authenticated" class="internalDFN" id="ref-for-dfn-authenticated-8">authentication</a> property cannot be used to
 engage in key agreement protocols — the value of the
@@ -2002,12 +2002,12 @@ that.
 
           <p>
 If a referenced <a data-link-type="dfn|abstract-op" href="#dfn-verification-method-definition" class="internalDFN" id="ref-for-dfn-verification-method-definition-2">verification method definition</a> is not in the latest
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-43">controllable identifier document</a> used to dereference it, then that <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-57">verification method</a> is considered invalid or revoked.
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-43">controlled identifier document</a> used to dereference it, then that <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-57">verification method</a> is considered invalid or revoked.
           </p>
 
           <p>
 The following sections define several useful <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-12">verification relationships</a>. A
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-44">controllable identifier document</a> <em class="rfc2119">MAY</em> include any of these, or other properties, to
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-44">controlled identifier document</a> <em class="rfc2119">MAY</em> include any of these, or other properties, to
 express a specific <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-13">verification relationship</a>. To maximize interoperability,
 any such properties used <em class="rfc2119">SHOULD</em> be registered in the list of
 <cite><a data-matched-text="[[[DID-EXTENSIONS-PROPERTIES]]]" href="https://www.w3.org/TR/did-extensions-properties/">DID Document Property Extensions</a></cite>.
@@ -2076,13 +2076,13 @@ some data (in some protocol-specific format) that contains a <a data-link-type="
 for the purpose of "authentication", and that says that an entity is identified
 by the <code>id</code>, then that <em>verifier</em> checks to ensure that the <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-18">proof</a> can be
 verified using a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-60">verification method</a> (for example, <a data-link-type="dfn|abstract-op" href="#dfn-public-key" class="internalDFN" id="ref-for-dfn-public-key-6">public key</a>) listed
-under <code>authentication</code> in the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-45">controllable identifier document</a>.
+under <code>authentication</code> in the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-45">controlled identifier document</a>.
             </p>
             <p>
 Note that the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-61">verification method</a> indicated by the
-<code>authentication</code> property of a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-46">controllable identifier document</a> can
+<code>authentication</code> property of a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-46">controlled identifier document</a> can
 only be used to <a data-link-type="dfn|abstract-op" href="#dfn-authenticated" class="internalDFN" id="ref-for-dfn-authenticated-11">authenticate</a> on behalf
-of the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-47">controllable identifier document</a>'s <a data-link-type="dfn|abstract-op" href="#dfn-base-identifier" class="internalDFN" id="ref-for-dfn-base-identifier-3">base identifier</a>.
+of the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-47">controlled identifier document</a>'s <a data-link-type="dfn|abstract-op" href="#dfn-base-identifier" class="internalDFN" id="ref-for-dfn-base-identifier-3">base identifier</a>.
             </p>
           </section>
 
@@ -2206,7 +2206,7 @@ wrap a decryption key for the recipient.
 The <code>capabilityInvocation</code> <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-17">verification relationship</a> is used
 to specify a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-68">verification method</a> that might be used by the
 <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-31">controller</a> to invoke a cryptographic capability, such as the
-authorization to update the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-48">controllable identifier document</a>.
+authorization to update the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-48">controlled identifier document</a>.
             </p>
 
             <dl>
@@ -2232,7 +2232,7 @@ message that is placed into the HTTP Headers.
 The server providing the HTTP API is the <em>verifier</em> of the capability and
 it would need to verify that the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-71">verification method</a> referred to by the
 invoked capability exists in the <code>capabilityInvocation</code>
-property of the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-49">controllable identifier document</a>. The verifier would also check to make sure
+property of the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-49">controlled identifier document</a>. The verifier would also check to make sure
 that the action being performed is valid and the capability is appropriate for
 the resource being accessed. If the verification is successful, the server has
 cryptographically determined that the invoker is authorized to access the
@@ -2824,7 +2824,7 @@ Let <var>controllerDocument</var> be the result of dereferencing
 of the URL scheme and using the supplied <var>options</var>.
           </li>
           <li>
-If <var>controllerDocument</var> is not a <a data-link-type="dfn|abstract-op" href="#dfn-conforming-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-conforming-controllable-identifier-document-2">conforming controllable identifier document</a>,
+If <var>controllerDocument</var> is not a <a data-link-type="dfn|abstract-op" href="#dfn-conforming-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-conforming-controlled-identifier-document-2">conforming controlled identifier document</a>,
 an error <em class="rfc2119">MUST</em> be raised and <em class="rfc2119">SHOULD</em>
 convey an error type of
 <a href="#INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT</a>.
@@ -2873,13 +2873,13 @@ Return <var>verificationMethod</var> as the
 
         <p>
 The following example provides a minimum conformant
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-50">controllable identifier document</a> containing a minimum conformant
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-50">controlled identifier document</a> containing a minimum conformant
 <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-77">verification method</a> as required by the algorithm in this section:
         </p>
 
-        <div class="example" id="example-minimum-conformant-controllable-identifier-document">
+        <div class="example" id="example-minimum-conformant-controlled-identifier-document">
         <div class="marker">
-    <a class="self-link" href="#example-minimum-conformant-controllable-identifier-document">Example<bdi> 19</bdi></a><span class="example-title">: Minimum conformant controllable identifier document</span>
+    <a class="self-link" href="#example-minimum-conformant-controlled-identifier-document">Example<bdi> 19</bdi></a><span class="example-title">: Minimum conformant controlled identifier document</span>
   </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://controller.example/123"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"verificationMethod"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span>
@@ -2892,17 +2892,17 @@ The following example provides a minimum conformant
 <span class="hljs-punctuation">}</span></code></pre>
       </div>
 
-        <div class="note" role="note" id="issue-container-generatedID-6"><div role="heading" class="note-title marker" id="h-note-6" aria-level="4"><span>Note</span><span class="issue-label">: Controllable identifier documents can contain references to external verification methods</span></div><p class="">
+        <div class="note" role="note" id="issue-container-generatedID-6"><div role="heading" class="note-title marker" id="h-note-6" aria-level="4"><span>Note</span><span class="issue-label">: Controlled identifier documents can contain references to external verification methods</span></div><p class="">
 <a data-link-type="dfn|abstract-op" href="#dfn-verification-method-identifier" class="internalDFN" id="ref-for-dfn-verification-method-identifier-3">Verification method identifiers</a> are expressed as strings that are URLs, or
-via the <code>id</code> property, whose value is a URL. It is possible for a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-51">controllable identifier document</a> to express a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-78">verification method</a>, through a <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-22">verification relationship</a>, that exists in a place that is external to the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-52">controllable identifier document</a>. As described in Section <a href="#integrity-protection-of-controllers" data-matched-text="[[[#integrity-protection-of-controllers]]]" class="sec-ref"><bdi class="secno">5.9 </bdi>Integrity Protection of Controllers</a>,
-specifying a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-79">verification method</a> that is external to a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-53">controllable identifier document</a> is a valid use of this specification. It is vital that this
-<a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-80">verification method</a> is retrieved from the external <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-54">controllable identifier document</a>.
+via the <code>id</code> property, whose value is a URL. It is possible for a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-51">controlled identifier document</a> to express a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-78">verification method</a>, through a <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-22">verification relationship</a>, that exists in a place that is external to the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-52">controlled identifier document</a>. As described in Section <a href="#integrity-protection-of-controllers" data-matched-text="[[[#integrity-protection-of-controllers]]]" class="sec-ref"><bdi class="secno">5.9 </bdi>Integrity Protection of Controllers</a>,
+specifying a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-79">verification method</a> that is external to a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-53">controlled identifier document</a> is a valid use of this specification. It is vital that this
+<a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-80">verification method</a> is retrieved from the external <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-54">controlled identifier document</a>.
         </p></div>
 
         <p>
 When retrieving any <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-81">verification method</a> the algorithm above is used to
 ensure that the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-82">verification method</a> is retrieved from the correct
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-55">controllable identifier document</a>. The algorithm also ensures that this <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-56">controllable identifier document</a> refers to the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-83">verification method</a> (via a <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-23">verification relationship</a>) and that the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-84">verification method</a> refers to the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-57">controllable identifier document</a> (via the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-85">verification method</a>'s <code>controller</code> property). Failure to
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-55">controlled identifier document</a>. The algorithm also ensures that this <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-56">controlled identifier document</a> refers to the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-83">verification method</a> (via a <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-23">verification relationship</a>) and that the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-84">verification method</a> refers to the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-57">controlled identifier document</a> (via the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-85">verification method</a>'s <code>controller</code> property). Failure to
 use this algorithm, or an equivalent one that performs these checks, can lead to
 security compromises where an attacker poisons a cache by claiming control of a
 victim's <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-86">verification method</a>.
@@ -2920,7 +2920,7 @@ victim's <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" cla
         <p>
 In the example above, the algorithm described in this section will use the
 <code>https://external.example/xyz#key-789</code> URL value as the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method-identifier" class="internalDFN" id="ref-for-dfn-verification-method-identifier-4">verification method identifier</a>. The algorithm will then confirm that the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-87">verification method</a>
-exists in the external <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-58">controllable identifier document</a> and that the appropriate
+exists in the external <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-58">controlled identifier document</a> and that the appropriate
 relationships exist as described earlier in this section.
         </p>
 
@@ -2969,22 +2969,22 @@ The <code>verificationMethod</code> value in a <a data-link-type="dfn|abstract-o
           </dd>
           <dt id="INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID (-22)</dt>
           <dd>
-The <code>id</code> value in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-59">controllable identifier document</a> was malformed. See Section
+The <code>id</code> value in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-59">controlled identifier document</a> was malformed. See Section
 <a href="#retrieve-verification-method" data-matched-text="[[[#retrieve-verification-method]]]" class="sec-ref"><bdi class="secno">3.3 </bdi>Retrieve Verification Method</a>.
           </dd>
           <dt id="INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT (-23)</dt>
           <dd>
-The <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-60">controllable identifier document</a> was malformed. See Section
+The <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-60">controlled identifier document</a> was malformed. See Section
 <a href="#retrieve-verification-method" data-matched-text="[[[#retrieve-verification-method]]]" class="sec-ref"><bdi class="secno">3.3 </bdi>Retrieve Verification Method</a>.
           </dd>
           <dt id="INVALID_VERIFICATION_METHOD">INVALID_VERIFICATION_METHOD (-24)</dt>
           <dd>
-The <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-88">verification method</a> in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-61">controllable identifier document</a> was malformed. See Section
+The <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-88">verification method</a> in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-61">controlled identifier document</a> was malformed. See Section
 <a href="#retrieve-verification-method" data-matched-text="[[[#retrieve-verification-method]]]" class="sec-ref"><bdi class="secno">3.3 </bdi>Retrieve Verification Method</a>.
           </dd>
           <dt id="INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD">INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD (-25)</dt>
           <dd>
-The <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-89">verification method</a> in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-62">controllable identifier document</a> was not
+The <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-89">verification method</a> in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-62">controlled identifier document</a> was not
 associated using the expected <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-24">verification relationship</a> as expressed in
 the <code>proofPurpose</code> property in the <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-20">proof</a>. See Section
 <a href="#retrieve-verification-method" data-matched-text="[[[#retrieve-verification-method]]]" class="sec-ref"><bdi class="secno">3.3 </bdi>Retrieve Verification Method</a>.
@@ -3121,7 +3121,7 @@ value, such as <code>Multikey</code> or <code>JsonWebKey</code>, are used.
           </p>
 
           <p>
-When an application is processing a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-63">controllable identifier document</a>, if an <code>@context</code>
+When an application is processing a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-63">controlled identifier document</a>, if an <code>@context</code>
 property is not provided in the document or the terms used in the document are
 not mapped by existing values in the <code>@context</code> property, implementations <em class="rfc2119">MUST</em>
 inject or append an <code>@context</code> property with a value of
@@ -3130,9 +3130,9 @@ same declarations, such as the Decentralized Identifier v1.1 context
 (<code>https://www.w3.org/ns/did/v1</code>).
           </p>
 
-          <div class="example" id="example-a-controllable-identifier-document-without-an-context-property">
+          <div class="example" id="example-a-controlled-identifier-document-without-an-context-property">
         <div class="marker">
-    <a class="self-link" href="#example-a-controllable-identifier-document-without-an-context-property">Example<bdi> 21</bdi></a><span class="example-title">: A controllable identifier document without an @context property</span>
+    <a class="self-link" href="#example-a-controlled-identifier-document-without-an-context-property">Example<bdi> 21</bdi></a><span class="example-title">: A controlled identifier document without an @context property</span>
   </div> <pre class="nohighlight">{
   "id": "https://controller.example/101",
   "verificationMethod": [{
@@ -3237,10 +3237,10 @@ unique to this specification.
 
       <p>
 Binding an entity in the digital world or the physical world to an identifier, to
-a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-64">controllable identifier document</a>, or to cryptographic material requires the use of
+a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-64">controlled identifier document</a>, or to cryptographic material requires the use of
 security protocols contemplated by this specification. The following sections
 describe some possible scenarios and how an entity therein might prove control
-over an identifier or a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-65">controllable identifier document</a> for the purposes of authentication or
+over an identifier or a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-65">controlled identifier document</a> for the purposes of authentication or
 authorization.
       </p>
 
@@ -3248,9 +3248,9 @@ authorization.
         
 
         <p>
-Proving control over an identifier and/or a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-66">controllable identifier document</a> is useful
+Proving control over an identifier and/or a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-66">controlled identifier document</a> is useful
 when accessing remote systems. Cryptographic digital signatures enable certain
-security protocols related to <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-67">controllable identifier documents</a>
+security protocols related to <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-67">controlled identifier documents</a>
 to be cryptographically verifiable. For these purposes, this specification
 defines useful <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-25">verification relationships</a> in <a href="#authentication" class="sec-ref"><bdi class="secno">2.3.1 </bdi>Authentication</a> and <a href="#capability-invocation" data-matched-text="[[[#capability-invocation]]]" class="sec-ref"><bdi class="secno">2.3.4 </bdi>Capability Invocation</a>. The
 secret cryptographic material associated with the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-90">verification methods</a>
@@ -3263,10 +3263,10 @@ authentication or authorization security protocol.
         
 
         <p>
-An identifier or <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-68">controllable identifier document</a> do not inherently carry any
+An identifier or <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-68">controlled identifier document</a> do not inherently carry any
 <a href="https://en.wikipedia.org/wiki/Personal_data">personal data</a> and
 it is strongly advised that non-public entities do not publish personal data in
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-69">controllable identifier documents</a>.
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-69">controlled identifier documents</a>.
         </p>
 
         <p>
@@ -3407,7 +3407,7 @@ time it was used.
 Rotation is a management process that enables the secret cryptographic material
 associated with an existing <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-91">verification method</a> to be deactivated or
 destroyed once a new <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-92">verification method</a> has been added to the
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-70">controllable identifier document</a>. Going forward, any new <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-21">proofs</a> that a
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-70">controlled identifier document</a>. Going forward, any new <a data-link-type="dfn|abstract-op" href="#dfn-proof" class="internalDFN" id="ref-for-dfn-proof-21">proofs</a> that a
 <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-37">controller</a> would have generated using the old secret cryptographic
 material can now instead be generated using the new  cryptographic material and
 can be verified using the new <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-93">verification method</a>.
@@ -3441,7 +3441,7 @@ rotation.
         </li>
         <li>
 <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-97">Verification method</a> rotation manifests only as changes to the current or
-latest version of a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-71">controllable identifier document</a>.
+latest version of a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-71">controlled identifier document</a>.
         </li>
         <li>
 When a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-98">verification method</a> has been active for a long time, or used for
@@ -3453,7 +3453,7 @@ parties that are forced to continuously renew or refresh associated credentials.
         </li>
         <li>
 Proofs or signatures that rely on <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-100">verification methods</a> that are not
-present in the latest version of a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-72">controllable identifier document</a> are not impacted by
+present in the latest version of a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-72">controlled identifier document</a> are not impacted by
 rotation. In these cases, verification software might require additional
 information, such as when a particular <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-101">verification method</a> was
 expected to be valid as well as access to a verifiable data registry
@@ -3487,7 +3487,7 @@ such as those involved in encrypting messages and authentication.
       <p>
 Compromise of the secrets associated with a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-105">verification method</a> allows
 the attacker to use them according to the <a data-link-type="dfn|abstract-op" href="#dfn-verification-relationship" class="internalDFN" id="ref-for-dfn-verification-relationship-27">verification relationship</a>
-expressed by <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-39">controller</a> in the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-73">controllable identifier document</a>, for example, for
+expressed by <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-39">controller</a> in the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-73">controlled identifier document</a>, for example, for
 authentication. The attacker's use of the secrets might be indistinguishable
 from the legitimate <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-40">controller</a>'s use starting from
 the time the <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-106">verification method</a> was registered, to the time it was
@@ -3516,7 +3516,7 @@ method</a> that is known to be compromised.
 
         <li>
 <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-110">Verification method</a> revocation can only be embodied in changes to
-the latest version of a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-74">controllable identifier document</a>; it cannot retroactively adjust
+the latest version of a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-74">controlled identifier document</a>; it cannot retroactively adjust
 previous versions.
         </li>
 
@@ -3538,7 +3538,7 @@ discretion.
         </li>
 
         <li>
-Even if a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-113">verification method</a> is present in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-75">controllable identifier document</a>,
+Even if a <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-113">verification method</a> is present in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-75">controlled identifier document</a>,
 additional information, such as a public key revocation certificate, or an
 external allow or deny list, could be used to determine whether a
 <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-114">verification method</a> has been revoked.
@@ -3560,7 +3560,7 @@ Although verifiers might choose not to accept <a data-link-type="dfn|abstract-op
 revoked verification method, knowing whether a verification was made with a
 revoked <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-117">verification method</a> is trickier than it might seem. Some auditing
 systems provide the ability to look back at the state of an identifier at a
-point in time, or at a particular version of the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-76">controllable identifier document</a>.
+point in time, or at a particular version of the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-76">controlled identifier document</a>.
 When such a feature is combined with a reliable way to determine the time or
 identifier version that existed when a cryptographically verifiable statement
 was made, then revocation does not undo that statement. This can be the basis
@@ -3573,7 +3573,7 @@ future use of the method.
         </p>
         <p>
 However, in order for such semantics to be safe, the second condition — an
-ability to know what the state of the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-77">controllable identifier document</a> was at the time
+ability to know what the state of the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-77">controlled identifier document</a> was at the time
 the assertion was made — is expected to apply. Without that guarantee,
 someone could discover a revoked key and use it to make cryptographically
 verifiable statements with a simulated date in the past.
@@ -3627,17 +3627,17 @@ be used for any particular application or ecosystem.
       <p>
 Encryption algorithms have been known to fail due to advances in cryptography
 and computing power. Implementers are advised to assume that any encrypted data
-placed in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-78">controllable identifier document</a> might eventually be made available in clear text
+placed in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-78">controlled identifier document</a> might eventually be made available in clear text
 to the same audience to which the encrypted data is available. This is
-particularly pertinent if the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-79">controllable identifier document</a> is public.
+particularly pertinent if the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-79">controlled identifier document</a> is public.
       </p>
       <p>
-Encrypting all or parts of a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-80">controllable identifier document</a> is <em>not</em> an appropriate
+Encrypting all or parts of a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-80">controlled identifier document</a> is <em>not</em> an appropriate
 means to protect data in the long term. Similarly, placing encrypted data in
-a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-81">controllable identifier document</a> is not an appropriate means to protect personal data.
+a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-81">controlled identifier document</a> is not an appropriate means to protect personal data.
       </p>
       <p>
-Given the caveats above, if encrypted data is included in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-82">controllable identifier document</a>,
+Given the caveats above, if encrypted data is included in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-82">controlled identifier document</a>,
 implementers are advised to not associate any correlatable information
 that could be used to infer a relationship between the encrypted data
 and an associated party. Examples of correlatable information include
@@ -3651,18 +3651,18 @@ receiving party.
     <section id="content-integrity-protection"><div class="header-wrapper"><h3 id="x5-8-content-integrity-protection"><bdi class="secno">5.8 </bdi>Content Integrity Protection</h3><a class="self-link" href="#content-integrity-protection" aria-label="Permalink for Section 5.8"></a></div>
       
       <p>
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-83">Controllable identifier documents</a> that include links to external machine-readable
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-83">Controlled identifier documents</a> that include links to external machine-readable
 content such as images, web pages, or schemas are vulnerable to tampering. It is
 strongly advised that external links are integrity protected using mechanisms to
 secure related resources such as those described in the <cite><a data-matched-text="[[[?VC-DATA-MODEL-2.0]]]" href="https://www.w3.org/TR/vc-data-model-2.0/">Verifiable Credentials Data Model v2.0</a></cite>
 specification. External links are to be avoided if they cannot be integrity
-protected and the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-84">controllable identifier document</a>'s integrity is dependent on the
+protected and the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-84">controlled identifier document</a>'s integrity is dependent on the
 external link.
       </p>
       <p>
-One example of an external link where the integrity of the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-85">controllable identifier document</a> itself could be affected is the JSON-LD Context [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-ld11" title="JSON-LD 1.1">JSON-LD11</a></cite>],
+One example of an external link where the integrity of the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-85">controlled identifier document</a> itself could be affected is the JSON-LD Context [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-ld11" title="JSON-LD 1.1">JSON-LD11</a></cite>],
 when present. To protect against compromise,
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-86">controllable identifier document</a> consumers using JSON-LD are advised to cache
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-86">controlled identifier document</a> consumers using JSON-LD are advised to cache
 local static copies of JSON-LD contexts and/or verify the integrity of external
 contexts against a cryptographic hash that is known to be associated with a safe
 version of the external JSON-LD Context.
@@ -3674,8 +3674,8 @@ version of the external JSON-LD Context.
 
       <p>
 As described in Section <a href="#controllers" data-matched-text="[[[#controllers]]]" class="sec-ref"><bdi class="secno">2.1.2 </bdi>Controllers</a>, this specification includes a
-mechanism by which to delegate change control of a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-87">controllable identifier document</a> to
-an entity that is described in an external <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-88">controllable identifier document</a> through the
+mechanism by which to delegate change control of a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-87">controlled identifier document</a> to
+an entity that is described in an external <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-88">controlled identifier document</a> through the
 use of the <code>controller</code> property.
       </p>
 
@@ -3686,7 +3686,7 @@ entities, as well as those where some entity desires that another entity
 provide account recovery services, among other use cases. In such scenarios,
 it can be beneficial to allow the guardian to manage the rotation of their
 own key material. It can also be beneficial for the delegator to associate
-a cryptographic hash of the remote <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-89">controllable identifier document</a> to "pin" the
+a cryptographic hash of the remote <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-89">controlled identifier document</a> to "pin" the
 remote document to a known good value.
       </p>
 
@@ -3731,10 +3731,10 @@ assurance. Since <a data-link-type="dfn|abstract-op" href="#dfn-verification-rel
 <a href="#assertion">assertion</a> and <a data-link-type="dfn|abstract-op" href="#dfn-authenticated" class="internalDFN" id="ref-for-dfn-authenticated-12">authentication</a> might be
 used in some of these situations, information about the applied security context
 might need to be expressed and provided to a <em>verifier</em>. Whether and how
-to encode this information in the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-90">controllable identifier document</a> data model is out
+to encode this information in the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-90">controlled identifier document</a> data model is out
 of scope for this specification. Interested readers might note that 1) the
 information could be transmitted using Verifiable Credentials
-[<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model-2.0" title="Verifiable Credentials Data Model v2.0">VC-DATA-MODEL-2.0</a></cite>], and 2) the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-91">controllable identifier document</a> data model can be
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model-2.0" title="Verifiable Credentials Data Model v2.0">VC-DATA-MODEL-2.0</a></cite>], and 2) the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-91">controlled identifier document</a> data model can be
 extended to incorporate this information.
       </p>
     </section>
@@ -3743,7 +3743,7 @@ extended to incorporate this information.
       
 
       <p>
-If a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-92">controllable identifier document</a> publishes a <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-14">service</a> intended for authentication
+If a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-92">controlled identifier document</a> publishes a <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-14">service</a> intended for authentication
 or authorization of the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-22">subject</a> (see Section <a href="#services" data-matched-text="[[[#services]]]" class="sec-ref"><bdi class="secno">2.1.4 </bdi>Services</a>), it is the
 responsibility of the <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-15">service</a> provider, <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-23">subject</a>, and/or requesting party
 to comply with the requirements of the authentication and/or authorization
@@ -3757,29 +3757,29 @@ protocols supported by that <a data-link-type="dfn|abstract-op" href="#dfn-servi
     
 
     <p>
-Since <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-93">controllable identifier documents</a> are designed to be administered directly by
+Since <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-93">controlled identifier documents</a> are designed to be administered directly by
 the <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-46">controller</a>, it is critically important to apply the principles of
 Privacy by Design [<cite><a class="bibref" data-link-type="biblio" href="#bib-privacy-by-design" title="Privacy by Design">PRIVACY-BY-DESIGN</a></cite>] to all aspects of the
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-94">controllable identifier document</a>. All seven of these principles have been applied
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-94">controlled identifier document</a>. All seven of these principles have been applied
 throughout the development of this specification. The design used in this
 specification does not assume that there is a registrar, hosting company, nor
 other intermediate service provider to recommend or apply additional privacy
 safeguards. Privacy in this specification is preventive, not remedial, and is an
 embedded default. The following sections cover privacy considerations that
-implementers might find useful when building systems that utilize <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-95">controllable identifier documents</a>.
+implementers might find useful when building systems that utilize <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-95">controlled identifier documents</a>.
     </p>
 
     <section id="keep-personal-data-private"><div class="header-wrapper"><h3 id="x6-1-keep-personal-data-private"><bdi class="secno">6.1 </bdi>Keep Personal Data Private</h3><a class="self-link" href="#keep-personal-data-private" aria-label="Permalink for Section 6.1"></a></div>
       
 
       <p>
-If a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-96">controllable identifier document</a> is about a specific individual and is
-public-facing, it is <em>critical</em> that <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-97">controllable identifier documents</a> contain
+If a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-96">controlled identifier document</a> is about a specific individual and is
+public-facing, it is <em>critical</em> that <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-97">controlled identifier documents</a> contain
 no personal biometric or biographical data. While it is true that personal data
 might include pseudonymous information, such as a public cryptographic key or an IP address,
 publishing that sort of information does not create the same immediate privacy
 dangers as publishing an individual's full name, profile photo, or social media
-account in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-98">controllable identifier document</a>. A better alternative is to transmit
+account in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-98">controlled identifier document</a>. A better alternative is to transmit
 such personal data through other means such as verifiable credentials
 [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model-2.0" title="Verifiable Credentials Data Model v2.0">VC-DATA-MODEL-2.0</a></cite>] or other data formats sent over private and secure
 communication channels.
@@ -3809,7 +3809,7 @@ key registration burden), it can also lead to negative privacy outcomes
 (tracking). Those that use this specification are warned that there are
 trade-offs with each approach and to use the mechanism that maximizes security
 and privacy according to the needs of the individual or organization. Using a
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-99">controllable identifier document</a> for all use cases is not always advantageous when a
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-99">controlled identifier document</a> for all use cases is not always advantageous when a
 same-origin bound cryptographic key would suffice.
       </p>
     </section>
@@ -3834,9 +3834,9 @@ identification and correlation across interaction domains.
 
       <p>
 The anti-correlation protections of <a data-link-type="dfn|abstract-op" href="#dfn-pairwise-identifier" class="internalDFN" id="ref-for-dfn-pairwise-identifier-4">pairwise identifiers</a> are easily defeated
-if the data in the corresponding <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-100">controllable identifier documents</a> can be correlated. For
-example, using identical <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-118">verification methods</a> in multiple <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-101">controllable identifier documents</a> can provide as much correlation information as using the same
-identifier. Therefore, the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-102">controllable identifier document</a> for a <a data-link-type="dfn|abstract-op" href="#dfn-pairwise-identifier" class="internalDFN" id="ref-for-dfn-pairwise-identifier-5">pairwise identifier</a>
+if the data in the corresponding <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-100">controlled identifier documents</a> can be correlated. For
+example, using identical <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-118">verification methods</a> in multiple <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-101">controlled identifier documents</a> can provide as much correlation information as using the same
+identifier. Therefore, the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-102">controlled identifier document</a> for a <a data-link-type="dfn|abstract-op" href="#dfn-pairwise-identifier" class="internalDFN" id="ref-for-dfn-pairwise-identifier-5">pairwise identifier</a>
 also needs to use pairwise unique information, such as ensuring that
 <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-119">verification methods</a> are unique to the pairwise relationship.
       </p>
@@ -3846,7 +3846,7 @@ also needs to use pairwise unique information, such as ensuring that
     <section id="subject-classification"><div class="header-wrapper"><h3 id="x6-5-subject-classification"><bdi class="secno">6.5 </bdi>Subject Classification</h3><a class="self-link" href="#subject-classification" aria-label="Permalink for Section 6.5"></a></div>
       
       <p>
-It is dangerous to add properties to the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-103">controllable identifier document</a> that can be
+It is dangerous to add properties to the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-103">controlled identifier document</a> that can be
 used to indicate, explicitly or through inference, what <em>type</em> or nature
 of thing the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-25">subject</a> is, particularly if the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-26">subject</a> is a person.
       </p>
@@ -3854,19 +3854,19 @@ of thing the <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="int
 Not only do such properties potentially result in personal data (see
 <a href="#keep-personal-data-private" data-matched-text="[[[#keep-personal-data-private]]]" class="sec-ref"><bdi class="secno">6.1 </bdi>Keep Personal Data Private</a>) or correlatable data (see <a href="#identifier-correlation-risks" class="sec-ref"> <bdi class="secno">6.3 </bdi>Identifier Correlation Risks</a> and
 <a href="#controller-document-correlation-risks" data-matched-text="[[[#controller-document-correlation-risks]]]" class="sec-ref"><bdi class="secno">6.4 </bdi>Controller Document Correlation Risks</a>) being present in
-the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-104">controllable identifier document</a>, but they can be used for grouping particular
+the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-104">controlled identifier document</a>, but they can be used for grouping particular
 identifiers in such a way that they are included in or excluded from certain
 operations or functionalities.
       </p>
       <p>
-Including <em>type</em> information in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-105">controllable identifier document</a> can result
+Including <em>type</em> information in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-105">controlled identifier document</a> can result
 in personal privacy harms even for <a data-link-type="dfn|abstract-op" href="#dfn-subjects" class="internalDFN" id="ref-for-dfn-subjects-27">subjects</a> that are non-person entities,
 such as IoT devices. The aggregation of such information around a
 <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-49">controller</a> could serve as a form of digital fingerprint and this is best
 avoided.
       </p>
       <p>
-To minimize these risks, all properties in a <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-106">controllable identifier document</a> ought to
+To minimize these risks, all properties in a <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-106">controlled identifier document</a> ought to
 be for expressing <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" class="internalDFN" id="ref-for-dfn-verification-method-120">verification methods</a> and <a href="#dfn-verification-relationship" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verification-relationship-29">verification
 relationships</a> related to using the identifier.
       </p>
@@ -3876,21 +3876,21 @@ relationships</a> related to using the identifier.
     <section id="service-privacy"><div class="header-wrapper"><h3 id="x6-6-service-privacy"><bdi class="secno">6.6 </bdi>Service Privacy</h3><a class="self-link" href="#service-privacy" aria-label="Permalink for Section 6.6"></a></div>
       
       <p>
-The ability for a <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-50">controller</a> to optionally express at least one <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-17">service</a> in the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-107">controllable identifier document</a> increases their control and agency.
-Each additional endpoint in the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-108">controllable identifier document</a> adds privacy risk either
+The ability for a <a data-link-type="dfn|abstract-op" href="#dfn-controller-s" class="internalDFN" id="ref-for-dfn-controller-s-50">controller</a> to optionally express at least one <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-17">service</a> in the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-107">controlled identifier document</a> increases their control and agency.
+Each additional endpoint in the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-108">controlled identifier document</a> adds privacy risk either
 due to correlation, such as across endpoint descriptions, or because the
 <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-18">services</a> are not protected by an authorization mechanism, or both.
       </p>
       <p>
-<a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-109">Controllable identifier documents</a> are often public and, since they are standardized, will
+<a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-109">Controlled identifier documents</a> are often public and, since they are standardized, will
 be stored and indexed efficiently. This
-risk is increased if <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-110">controllable identifier documents</a> are published to immutable
-<a data-link-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-data-registries">verifiable data registries</a>. Access to a history of the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-111">controllable identifier documents</a> referenced by a URL enables a form of traffic analysis made more
+risk is increased if <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-110">controlled identifier documents</a> are published to immutable
+<a data-link-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-data-registries">verifiable data registries</a>. Access to a history of the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-111">controlled identifier documents</a> referenced by a URL enables a form of traffic analysis made more
 efficient through the use of standards.
       </p>
       <p>
 The degree of additional privacy risk caused by including multiple <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-19">services</a> in
-one <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-112">controllable identifier document</a> can be difficult to estimate. Privacy harms are
+one <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-112">controlled identifier document</a> can be difficult to estimate. Privacy harms are
 typically unintended consequences. URLs can refer to documents, <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-20">services</a>,
 schemas, and other things that might be associated with individual people,
 households, clubs, and employers — and correlation of their <a data-link-type="dfn|abstract-op" href="#dfn-service" class="internalDFN" id="ref-for-dfn-service-21">services</a>
@@ -3958,7 +3958,7 @@ This section will be submitted to the Internet Engineering Steering Group
         
         <p>
 This specification registers the <code>application/cid</code> media type specifically for
-identifying documents conforming to the <a data-link-type="dfn|abstract-op" href="#dfn-controllable-identifier-document" class="internalDFN" id="ref-for-dfn-controllable-identifier-document-113">controllable identifier document</a>
+identifying documents conforming to the <a data-link-type="dfn|abstract-op" href="#dfn-controlled-identifier-document" class="internalDFN" id="ref-for-dfn-controlled-identifier-document-113">controlled identifier document</a>
 format.
         </p>
         <table>
@@ -4061,9 +4061,9 @@ developers seeking test values.
 }</pre>
       </div>
 
-          <div class="example" id="example-multiple-public-keys-encoded-as-multikeys-in-a-controllable-identifier-document">
+          <div class="example" id="example-multiple-public-keys-encoded-as-multikeys-in-a-controlled-identifier-document">
         <div class="marker">
-    <a class="self-link" href="#example-multiple-public-keys-encoded-as-multikeys-in-a-controllable-identifier-document">Example<bdi> 28</bdi></a><span class="example-title">: Multiple public keys encoded as Multikeys in a controllable identifier document</span>
+    <a class="self-link" href="#example-multiple-public-keys-encoded-as-multikeys-in-a-controlled-identifier-document">Example<bdi> 28</bdi></a><span class="example-title">: Multiple public keys encoded as Multikeys in a controlled identifier document</span>
   </div> <pre class="nohighlight">{
   "@context": "https://www.w3.org/ns/controller/v1",
   "id": "https://controller.example/123",
@@ -4172,9 +4172,9 @@ developers seeking test values.
 }</pre>
       </div>
 
-          <div class="example" id="example-multiple-public-keys-encoded-as-jsonwebkey-in-a-controllable-identifier-document">
+          <div class="example" id="example-multiple-public-keys-encoded-as-jsonwebkey-in-a-controlled-identifier-document">
         <div class="marker">
-    <a class="self-link" href="#example-multiple-public-keys-encoded-as-jsonwebkey-in-a-controllable-identifier-document">Example<bdi> 33</bdi></a><span class="example-title">: Multiple public keys encoded as JsonWebKey in a controllable identifier document</span>
+    <a class="self-link" href="#example-multiple-public-keys-encoded-as-jsonwebkey-in-a-controlled-identifier-document">Example<bdi> 33</bdi></a><span class="example-title">: Multiple public keys encoded as JsonWebKey in a controlled identifier document</span>
   </div> <pre class="nohighlight">{
   "@context": "https://www.w3.org/ns/controller/v1",
   "id": "https://controller.example/123",
@@ -4436,18 +4436,18 @@ Kaliya "Identity Woman" Young, Eric Welton, Fuqiao Xue, @Yue, Dmitri Zagidulin,
     </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
-  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-conforming-controllable-identifier-document" aria-label="Links in this document to definition: conforming controllable identifier document">
+  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-conforming-controlled-identifier-document" aria-label="Links in this document to definition: conforming controlled identifier document">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="#dfn-conforming-controllable-identifier-document" aria-label="Permalink for definition: conforming controllable identifier document. Activate to close this dialog.">Permalink</a>
+        <a class="self-link" href="#dfn-conforming-controlled-identifier-document" aria-label="Permalink for definition: conforming controlled identifier document. Activate to close this dialog.">Permalink</a>
          
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-conforming-controllable-identifier-document-1" title="§ 1.3 Conformance">§ 1.3 Conformance</a> 
+      <a href="#ref-for-dfn-conforming-controlled-identifier-document-1" title="§ 1.3 Conformance">§ 1.3 Conformance</a> 
     </li><li>
-      <a href="#ref-for-dfn-conforming-controllable-identifier-document-2" title="§ 3.3 Retrieve Verification Method">§ 3.3 Retrieve Verification Method</a> 
+      <a href="#ref-for-dfn-conforming-controlled-identifier-document-2" title="§ 3.3 Retrieve Verification Method">§ 3.3 Retrieve Verification Method</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-conforming-verification-method" aria-label="Links in this document to definition: conforming verification method">
@@ -4526,94 +4526,94 @@ Kaliya "Identity Woman" Young, Eric Welton, Fuqiao Xue, @Yue, Dmitri Zagidulin,
       <a href="#ref-for-dfn-authorized-1" title="§ 2.1.2 Controllers">§ 2.1.2 Controllers</a> <a href="#ref-for-dfn-authorized-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-authorized-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-authorized-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-authorized-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-authorized-6" title="Reference 6">(6)</a> 
     </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-controllable-identifier" aria-label="Links in this document to definition: controllable identifier">
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-controlled-identifier" aria-label="Links in this document to definition: controlled identifier">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="#dfn-controllable-identifier" aria-label="Permalink for definition: controllable identifier. Activate to close this dialog.">Permalink</a>
+        <a class="self-link" href="#dfn-controlled-identifier" aria-label="Permalink for definition: controlled identifier. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
       <li>Not referenced in this document.</li>
     </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-controllable-identifier-document" aria-label="Links in this document to definition: controllable identifier document">
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-controlled-identifier-document" aria-label="Links in this document to definition: controlled identifier document">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="#dfn-controllable-identifier-document" aria-label="Permalink for definition: controllable identifier document. Activate to close this dialog.">Permalink</a>
+        <a class="self-link" href="#dfn-controlled-identifier-document" aria-label="Permalink for definition: controlled identifier document. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dfn-controllable-identifier-document-1" title="§ 1. Introduction">§ 1. Introduction</a> <a href="#ref-for-dfn-controllable-identifier-document-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-3" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-1" title="§ 1. Introduction">§ 1. Introduction</a> <a href="#ref-for-dfn-controlled-identifier-document-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-3" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-4" title="§ 1.4 Terminology">§ 1.4 Terminology</a> <a href="#ref-for-dfn-controllable-identifier-document-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-6" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-4" title="§ 1.4 Terminology">§ 1.4 Terminology</a> <a href="#ref-for-dfn-controlled-identifier-document-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-6" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-7" title="§ 2. Data Model">§ 2. Data Model</a> <a href="#ref-for-dfn-controllable-identifier-document-8" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-7" title="§ 2. Data Model">§ 2. Data Model</a> <a href="#ref-for-dfn-controlled-identifier-document-8" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-9" title="§ 2.1 Controller Documents">§ 2.1 Controller Documents</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-9" title="§ 2.1 Controller Documents">§ 2.1 Controller Documents</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-10" title="§ 2.1.1 Subjects">§ 2.1.1 Subjects</a> <a href="#ref-for-dfn-controllable-identifier-document-11" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-12" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-13" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controllable-identifier-document-14" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controllable-identifier-document-15" title="Reference 6">(6)</a> <a href="#ref-for-dfn-controllable-identifier-document-16" title="Reference 7">(7)</a> <a href="#ref-for-dfn-controllable-identifier-document-17" title="Reference 8">(8)</a> <a href="#ref-for-dfn-controllable-identifier-document-18" title="Reference 9">(9)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-10" title="§ 2.1.1 Subjects">§ 2.1.1 Subjects</a> <a href="#ref-for-dfn-controlled-identifier-document-11" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-12" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controlled-identifier-document-13" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controlled-identifier-document-14" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controlled-identifier-document-15" title="Reference 6">(6)</a> <a href="#ref-for-dfn-controlled-identifier-document-16" title="Reference 7">(7)</a> <a href="#ref-for-dfn-controlled-identifier-document-17" title="Reference 8">(8)</a> <a href="#ref-for-dfn-controlled-identifier-document-18" title="Reference 9">(9)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-19" title="§ 2.1.2 Controllers">§ 2.1.2 Controllers</a> <a href="#ref-for-dfn-controllable-identifier-document-20" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-21" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-22" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controllable-identifier-document-23" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controllable-identifier-document-24" title="Reference 6">(6)</a> <a href="#ref-for-dfn-controllable-identifier-document-25" title="Reference 7">(7)</a> <a href="#ref-for-dfn-controllable-identifier-document-26" title="Reference 8">(8)</a> <a href="#ref-for-dfn-controllable-identifier-document-27" title="Reference 9">(9)</a> <a href="#ref-for-dfn-controllable-identifier-document-28" title="Reference 10">(10)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-19" title="§ 2.1.2 Controllers">§ 2.1.2 Controllers</a> <a href="#ref-for-dfn-controlled-identifier-document-20" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-21" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controlled-identifier-document-22" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controlled-identifier-document-23" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controlled-identifier-document-24" title="Reference 6">(6)</a> <a href="#ref-for-dfn-controlled-identifier-document-25" title="Reference 7">(7)</a> <a href="#ref-for-dfn-controlled-identifier-document-26" title="Reference 8">(8)</a> <a href="#ref-for-dfn-controlled-identifier-document-27" title="Reference 9">(9)</a> <a href="#ref-for-dfn-controlled-identifier-document-28" title="Reference 10">(10)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-29" title="§ 2.1.3 Also Known As">§ 2.1.3 Also Known As</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-29" title="§ 2.1.3 Also Known As">§ 2.1.3 Also Known As</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-30" title="§ 2.1.4 Services">§ 2.1.4 Services</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-30" title="§ 2.1.4 Services">§ 2.1.4 Services</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-31" title="§ 2.2 Verification Methods">§ 2.2 Verification Methods</a> <a href="#ref-for-dfn-controllable-identifier-document-32" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-33" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-34" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controllable-identifier-document-35" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controllable-identifier-document-36" title="Reference 6">(6)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-31" title="§ 2.2 Verification Methods">§ 2.2 Verification Methods</a> <a href="#ref-for-dfn-controlled-identifier-document-32" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-33" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controlled-identifier-document-34" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controlled-identifier-document-35" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controlled-identifier-document-36" title="Reference 6">(6)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-37" title="§ 2.2.1 Verification Material">§ 2.2.1 Verification Material</a> <a href="#ref-for-dfn-controllable-identifier-document-38" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-37" title="§ 2.2.1 Verification Material">§ 2.2.1 Verification Material</a> <a href="#ref-for-dfn-controlled-identifier-document-38" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-39" title="§ 2.2.4 Referring to Verification Methods">§ 2.2.4 Referring to Verification Methods</a> <a href="#ref-for-dfn-controllable-identifier-document-40" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-39" title="§ 2.2.4 Referring to Verification Methods">§ 2.2.4 Referring to Verification Methods</a> <a href="#ref-for-dfn-controlled-identifier-document-40" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-41" title="§ 2.3 Verification Relationships">§ 2.3 Verification Relationships</a> <a href="#ref-for-dfn-controllable-identifier-document-42" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-43" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-44" title="Reference 4">(4)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-41" title="§ 2.3 Verification Relationships">§ 2.3 Verification Relationships</a> <a href="#ref-for-dfn-controlled-identifier-document-42" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-43" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controlled-identifier-document-44" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-45" title="§ 2.3.1 Authentication">§ 2.3.1 Authentication</a> <a href="#ref-for-dfn-controllable-identifier-document-46" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-47" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-45" title="§ 2.3.1 Authentication">§ 2.3.1 Authentication</a> <a href="#ref-for-dfn-controlled-identifier-document-46" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-47" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-48" title="§ 2.3.4 Capability Invocation">§ 2.3.4 Capability Invocation</a> <a href="#ref-for-dfn-controllable-identifier-document-49" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-48" title="§ 2.3.4 Capability Invocation">§ 2.3.4 Capability Invocation</a> <a href="#ref-for-dfn-controlled-identifier-document-49" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-50" title="§ 3.3 Retrieve Verification Method">§ 3.3 Retrieve Verification Method</a> <a href="#ref-for-dfn-controllable-identifier-document-51" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-52" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-53" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controllable-identifier-document-54" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controllable-identifier-document-55" title="Reference 6">(6)</a> <a href="#ref-for-dfn-controllable-identifier-document-56" title="Reference 7">(7)</a> <a href="#ref-for-dfn-controllable-identifier-document-57" title="Reference 8">(8)</a> <a href="#ref-for-dfn-controllable-identifier-document-58" title="Reference 9">(9)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-50" title="§ 3.3 Retrieve Verification Method">§ 3.3 Retrieve Verification Method</a> <a href="#ref-for-dfn-controlled-identifier-document-51" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-52" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controlled-identifier-document-53" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controlled-identifier-document-54" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controlled-identifier-document-55" title="Reference 6">(6)</a> <a href="#ref-for-dfn-controlled-identifier-document-56" title="Reference 7">(7)</a> <a href="#ref-for-dfn-controlled-identifier-document-57" title="Reference 8">(8)</a> <a href="#ref-for-dfn-controlled-identifier-document-58" title="Reference 9">(9)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-59" title="§ 3.4 Processing Errors">§ 3.4 Processing Errors</a> <a href="#ref-for-dfn-controllable-identifier-document-60" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-61" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-62" title="Reference 4">(4)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-59" title="§ 3.4 Processing Errors">§ 3.4 Processing Errors</a> <a href="#ref-for-dfn-controlled-identifier-document-60" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-61" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controlled-identifier-document-62" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-63" title="§ 4.2.1 Context Injection">§ 4.2.1 Context Injection</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-63" title="§ 4.2.1 Context Injection">§ 4.2.1 Context Injection</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-64" title="§ 5.1 Proving Control and Binding">§ 5.1 Proving Control and Binding</a> <a href="#ref-for-dfn-controllable-identifier-document-65" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-64" title="§ 5.1 Proving Control and Binding">§ 5.1 Proving Control and Binding</a> <a href="#ref-for-dfn-controlled-identifier-document-65" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-66" title="§ 5.1.1 Proving Control of an Identifier and/or Controller Document">§ 5.1.1 Proving Control of an Identifier and/or Controller Document</a> <a href="#ref-for-dfn-controllable-identifier-document-67" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-66" title="§ 5.1.1 Proving Control of an Identifier and/or Controller Document">§ 5.1.1 Proving Control of an Identifier and/or Controller Document</a> <a href="#ref-for-dfn-controlled-identifier-document-67" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-68" title="§ 5.1.2 Binding to Physical Identity">§ 5.1.2 Binding to Physical Identity</a> <a href="#ref-for-dfn-controllable-identifier-document-69" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-68" title="§ 5.1.2 Binding to Physical Identity">§ 5.1.2 Binding to Physical Identity</a> <a href="#ref-for-dfn-controlled-identifier-document-69" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-70" title="§ 5.4 Verification Method Rotation">§ 5.4 Verification Method Rotation</a> <a href="#ref-for-dfn-controllable-identifier-document-71" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-72" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-70" title="§ 5.4 Verification Method Rotation">§ 5.4 Verification Method Rotation</a> <a href="#ref-for-dfn-controlled-identifier-document-71" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-72" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-73" title="§ 5.5 Verification Method Revocation">§ 5.5 Verification Method Revocation</a> <a href="#ref-for-dfn-controllable-identifier-document-74" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-75" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-73" title="§ 5.5 Verification Method Revocation">§ 5.5 Verification Method Revocation</a> <a href="#ref-for-dfn-controlled-identifier-document-74" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-75" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-76" title="§ 5.5.1 Revocation Semantics">§ 5.5.1 Revocation Semantics</a> <a href="#ref-for-dfn-controllable-identifier-document-77" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-76" title="§ 5.5.1 Revocation Semantics">§ 5.5.1 Revocation Semantics</a> <a href="#ref-for-dfn-controlled-identifier-document-77" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-78" title="§ 5.7 Encrypted Data in Controller Documents">§ 5.7 Encrypted Data in Controller Documents</a> <a href="#ref-for-dfn-controllable-identifier-document-79" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-80" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-81" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controllable-identifier-document-82" title="Reference 5">(5)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-78" title="§ 5.7 Encrypted Data in Controller Documents">§ 5.7 Encrypted Data in Controller Documents</a> <a href="#ref-for-dfn-controlled-identifier-document-79" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-80" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controlled-identifier-document-81" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controlled-identifier-document-82" title="Reference 5">(5)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-83" title="§ 5.8 Content Integrity Protection">§ 5.8 Content Integrity Protection</a> <a href="#ref-for-dfn-controllable-identifier-document-84" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-85" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-86" title="Reference 4">(4)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-83" title="§ 5.8 Content Integrity Protection">§ 5.8 Content Integrity Protection</a> <a href="#ref-for-dfn-controlled-identifier-document-84" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-85" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controlled-identifier-document-86" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-87" title="§ 5.9 Integrity Protection of Controllers">§ 5.9 Integrity Protection of Controllers</a> <a href="#ref-for-dfn-controllable-identifier-document-88" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-89" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-87" title="§ 5.9 Integrity Protection of Controllers">§ 5.9 Integrity Protection of Controllers</a> <a href="#ref-for-dfn-controlled-identifier-document-88" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-89" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-90" title="§ 5.10 Level of Assurance">§ 5.10 Level of Assurance</a> <a href="#ref-for-dfn-controllable-identifier-document-91" title="Reference 2">(2)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-90" title="§ 5.10 Level of Assurance">§ 5.10 Level of Assurance</a> <a href="#ref-for-dfn-controlled-identifier-document-91" title="Reference 2">(2)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-92" title="§ 5.11 Service Endpoints for Authentication and Authorization">§ 5.11 Service Endpoints for Authentication and Authorization</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-92" title="§ 5.11 Service Endpoints for Authentication and Authorization">§ 5.11 Service Endpoints for Authentication and Authorization</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-93" title="§ 6. Privacy Considerations">§ 6. Privacy Considerations</a> <a href="#ref-for-dfn-controllable-identifier-document-94" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-95" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-93" title="§ 6. Privacy Considerations">§ 6. Privacy Considerations</a> <a href="#ref-for-dfn-controlled-identifier-document-94" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-95" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-96" title="§ 6.1 Keep Personal Data Private">§ 6.1 Keep Personal Data Private</a> <a href="#ref-for-dfn-controllable-identifier-document-97" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-98" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-96" title="§ 6.1 Keep Personal Data Private">§ 6.1 Keep Personal Data Private</a> <a href="#ref-for-dfn-controlled-identifier-document-97" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-98" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-99" title="§ 6.2 Relationship to the Same-Origin Policy">§ 6.2 Relationship to the Same-Origin Policy</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-99" title="§ 6.2 Relationship to the Same-Origin Policy">§ 6.2 Relationship to the Same-Origin Policy</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-100" title="§ 6.4 Controller Document Correlation Risks">§ 6.4 Controller Document Correlation Risks</a> <a href="#ref-for-dfn-controllable-identifier-document-101" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-102" title="Reference 3">(3)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-100" title="§ 6.4 Controller Document Correlation Risks">§ 6.4 Controller Document Correlation Risks</a> <a href="#ref-for-dfn-controlled-identifier-document-101" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-102" title="Reference 3">(3)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-103" title="§ 6.5 Subject Classification">§ 6.5 Subject Classification</a> <a href="#ref-for-dfn-controllable-identifier-document-104" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-105" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-106" title="Reference 4">(4)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-103" title="§ 6.5 Subject Classification">§ 6.5 Subject Classification</a> <a href="#ref-for-dfn-controlled-identifier-document-104" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-105" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controlled-identifier-document-106" title="Reference 4">(4)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-107" title="§ 6.6 Service Privacy">§ 6.6 Service Privacy</a> <a href="#ref-for-dfn-controllable-identifier-document-108" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controllable-identifier-document-109" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controllable-identifier-document-110" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controllable-identifier-document-111" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controllable-identifier-document-112" title="Reference 6">(6)</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-107" title="§ 6.6 Service Privacy">§ 6.6 Service Privacy</a> <a href="#ref-for-dfn-controlled-identifier-document-108" title="Reference 2">(2)</a> <a href="#ref-for-dfn-controlled-identifier-document-109" title="Reference 3">(3)</a> <a href="#ref-for-dfn-controlled-identifier-document-110" title="Reference 4">(4)</a> <a href="#ref-for-dfn-controlled-identifier-document-111" title="Reference 5">(5)</a> <a href="#ref-for-dfn-controlled-identifier-document-112" title="Reference 6">(6)</a> 
     </li><li>
-      <a href="#ref-for-dfn-controllable-identifier-document-113" title="§ A.1 application/cid">§ A.1 application/cid</a> 
+      <a href="#ref-for-dfn-controlled-identifier-document-113" title="§ A.1 application/cid">§ A.1 application/cid</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-controller-s" aria-label="Links in this document to definition: controller">

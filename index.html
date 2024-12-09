@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Controllable Identifier Document 1.0</title>
+    <title>Controlled Identifier Document 1.0</title>
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
     <!--
       === NOTA BENE ===
@@ -300,7 +300,7 @@ table.simple tbody tr:last-of-type {
 <body>
     <section id='abstract'>
       <p>
-A controllable identifier document contains cryptographic material and lists service
+A controlled identifier document contains cryptographic material and lists service
 endpoints for the purposes of verifying cryptographic proofs from, and
 interacting with, the controller of an identifier.
       </p>
@@ -329,25 +329,25 @@ removed before the transition to W3C Proposed Recommendation.
       <h2>Introduction</h2>
 
       <p>
-[=Controllable identifier documents=] identify a [=subject=] and provide [=verification
+[=Controlled identifier documents=] identify a [=subject=] and provide [=verification
 methods=] that express public cryptographic material, such as [=public keys=],
 for verifying [=proofs=] created on behalf of the [=subject=] for specific
 purposes, such as authentication, attestation, key agreement (for encryption),
-and capability invocation and delegation. [=Controllable identifier documents=] also list
+and capability invocation and delegation. [=Controlled identifier documents=] also list
 [=service=] endpoints related to an [=identifier=]; for example, from which to
 request additional information for verification.
       </p>
 
       <p>
-In other words, the controllable identifier document contains the information necessary to
+In other words, the controlled identifier document contains the information necessary to
 communicate with, and/or prove that specific actions were taken by, the
 controller of an [=identifier=], including material for [=proofs=] and
 [=service=] endpoints for additional communications.
       </p>
       <p>
-A [=controllable identifier document=] specifies
+A [=controlled identifier document=] specifies
 [=verification relationships=] and [=service=] endpoints for a single
-identifier, for which the current controllable identifier document is taken as authoritative.
+identifier, for which the current controlled identifier document is taken as authoritative.
       </p>
       <p>
 It is expected that other specifications will profile
@@ -363,8 +363,8 @@ usage. The DID Core specification is one such document that does that, but
 citing it directly received objections. This issue notes that the WG intends to
 resolve the text below into something that we can achieve consensus on:<br><br>
 <em>For example, the Decentralized Identifiers Specification is expected to
-define DID documents as a profile of controllable identifier documents, where the DID is the
-identifier, DID documents are controllable identifier documents, and resolution is the
+define DID documents as a profile of controlled identifier documents, where the DID is the
+identifier, DID documents are controlled identifier documents, and resolution is the
 process of retrieving the canonical DID document for a DID.</em>
       </p>
 
@@ -515,7 +515,7 @@ expertise or specialist knowledge.
 
       <section id="conformance">
         <p>
-A <dfn>conforming controllable identifier document</dfn> is any concrete expression of the
+A <dfn>conforming controlled identifier document</dfn> is any concrete expression of the
 data model that follows the relevant normative requirements in Sections
 [[[#data-model]]] and [[[#contexts-and-vocabularies]]].
         </p>
@@ -529,7 +529,7 @@ data model that follows the relevant normative requirements in Sections
 
         <p>
 A <dfn class="lint-ignore">conforming document</dfn> is either a
-[=conforming controllable identifier document=], or a
+[=conforming controlled identifier document=], or a
 [=conforming verification method=].
         </p>
 
@@ -598,19 +598,19 @@ their identifiers, and other related properties.<!--  See Section -->
           <dd>
             <p>
 An entity that is capable of performing an action with a specific resource, such
-as updating a [=controllable identifier document=] or generating a [=proof=] using a
+as updating a [=controlled identifier document=] or generating a [=proof=] using a
 [=verification method=].
             </p>
           </dd>
 
-          <dt><dfn class="export">controllable identifier</dfn></dt>
+          <dt><dfn class="export">controlled identifier</dfn></dt>
           <dd>
             <p>
 A type of identifier that can be proven to be under the control of an entity.
             </p>
           </dd>
 
-          <dt><dfn class="export">controllable identifier document</dfn></dt>
+          <dt><dfn class="export">controlled identifier document</dfn></dt>
           <dd>
             <p>
 A document that contains cryptographic material and lists service endpoints that
@@ -624,7 +624,7 @@ can be used for verifying [=proofs=] from, and interacting with, the
             <p>
 An entity, such as a person, group, organization, physical thing, digital thing,
 or logical thing that is referred to by the value of an `id` property in a
-[=controllable identifier document=]. Subjects identified in a [=controllable identifier document=]
+[=controlled identifier document=]. Subjects identified in a [=controlled identifier document=]
 are also used as a subjects in other contexts, such as during
 [=authentication=] or in [=verifiable credentials=].
             </p>
@@ -657,9 +657,9 @@ relationship is [[[#authentication]]].
         <h3>Data Model</h3>
 
         <p>
-A [=controllable identifier document=] specifies one or more relationships between
+A [=controlled identifier document=] specifies one or more relationships between
 an [=identifier=] and a set of [=verification methods=] and/or service
-endpoints. The [=controllable identifier document=] SHOULD
+endpoints. The [=controlled identifier document=] SHOULD
 contain [=verification relationships=] that explicitly permit the use of
 certain [=verification methods=] for specific purposes.
         </p>
@@ -708,7 +708,7 @@ different types with possible differences in constraints.
           <h2>Controller Documents</h2>
 
           <p>
-The following sections define the properties in a [=controllable identifier document=],
+The following sections define the properties in a [=controlled identifier document=],
 including whether these properties are required or optional. These properties
 describe relationships between the [=subject=] and the value of the
 property.
@@ -839,7 +839,7 @@ the URL syntax, or a <a data-cite="INFRA#ordered-set">set</a> of
           <section>
             <h3>Subjects</h3>
             <p>
-A [=subject=] is expressed using the `id` property in a [=controllable identifier document=].
+A [=subject=] is expressed using the `id` property in a [=controlled identifier document=].
 The value of an `id` property is referred to as an <dfn>identifier</dfn>.
             </p>
 
@@ -852,7 +852,7 @@ conforms to the rules in the [[[URL]]].
             </dl>
 
             <p>
-A [=controllable identifier document=] MUST contain an `id` value in the <em>topmost</em>
+A [=controlled identifier document=] MUST contain an `id` value in the <em>topmost</em>
 <a data-cite="INFRA#ordered-map">map</a>.
             </p>
 
@@ -864,22 +864,22 @@ A [=controllable identifier document=] MUST contain an `id` value in the <em>top
 
             <p>
 The value of the `id` property in the <em>topmost</em>
-<a data-cite="INFRA#ordered-map">map</a> of the [=controllable identifier document=] is
-called the <dfn>base identifier</dfn> for the [=controllable identifier document=]. The URL
-for retrieving the current, authoritative [=controllable identifier document=] for a given
-[=identifier=] is called the <dfn>canonical URL</dfn> for the [=controllable identifier
+<a data-cite="INFRA#ordered-map">map</a> of the [=controlled identifier document=] is
+called the <dfn>base identifier</dfn> for the [=controlled identifier document=]. The URL
+for retrieving the current, authoritative [=controlled identifier document=] for a given
+[=identifier=] is called the <dfn>canonical URL</dfn> for the [=controlled identifier
 document=]. Dereferencing the [=canonical URL=] MUST return the current
-authoritative [=controllable identifier document=]. The returned document's [=base
+authoritative [=controlled identifier document=]. The returned document's [=base
 identifier=] MUST be the same as the [=canonical URL=]; if it is anything else,
-then the returned document is not an authoritative [=controllable identifier document=] and
-the [=identifier=] SHOULD be treated as invalid. Every controllable identifier document is
+then the returned document is not an authoritative [=controlled identifier document=] and
+the [=identifier=] SHOULD be treated as invalid. Every controlled identifier document is
 stored and retrieved according to the [=canonical URL=] of the document, which
 MUST also be the [=base identifier=] of the document.
             </p>
 
             <div class="note" title="Identifiers are context-dependent">
               <p>
-It is expected that the [=subject=] referred to by an `id` in a [=controllable identifier
+It is expected that the [=subject=] referred to by an `id` in a [=controlled identifier
 document=] will be consistent over time, such that any [=verifiable
 credentials=] that use them can be interpreted as referring to the same entity.
 For example, it is preferred that an [=issuer=] of a [=verifiable credential=]
@@ -904,21 +904,21 @@ considered when evaluating the security impacts of reliance on a given
             <h3>Controllers</h3>
 
             <p>
-A [=controller=] of a [=controllable identifier document=] is any entity capable of making changes to that
-[=controllable identifier document=]. Whoever can update
+A [=controller=] of a [=controlled identifier document=] is any entity capable of making changes to that
+[=controlled identifier document=]. Whoever can update
 the content of the resource returned from dereferencing the controller
 document's canonical URL is, by definition, a controller of the
 document and its canonical identifier. Proofs that satisfy a
-[=controllable identifier document=]'s [=verification methods=] are taken as cryptographic
+[=controlled identifier document=]'s [=verification methods=] are taken as cryptographic
 assurance that the [=controller=] of the [=identifier=] created those [=proofs=].
             </p>
             <p class="note" title="Identifier Controller versus Document Controller">
-The [=controller=] of the [=controllable identifier document=] is taken to be the
+The [=controller=] of the [=controlled identifier document=] is taken to be the
 [=controller=] of the document's canonical [=identifier=], also known as its
-URL. That is, whoever can update the [=controllable identifier document=] is both
+URL. That is, whoever can update the [=controlled identifier document=] is both
 the document [=controller=] and the [=identifier=] [=controller=]. Updating the
 document is how you control the [=identifier=]. These terms can be used
-interchangeably. Controlling the canonical [=controllable identifier document=] for
+interchangeably. Controlling the canonical [=controlled identifier document=] for
 an [=identifier=] is the same as controlling the [=identifier=].
             </p>
             <dl>
@@ -931,12 +931,12 @@ list URLs identifying those controllers.
   <p class="note" title="Presumed Control">
 It is possible to list a verification method which is
 functionally under the control of someone other than the [=controller=]
-of the [=controllable identifier document=]. For example, a document [=controller=] could
+of the [=controlled identifier document=]. For example, a document [=controller=] could
 set a public key under another party's control as an authentication
 verification method. This would enable the other party to authenticate
 on behalf of this [=identifier=] (because their public key is listed in
 an authentication verification method) <em>without</em> enabling that party
-to update the [=controllable identifier document=]. However, since the document
+to update the [=controlled identifier document=]. However, since the document
 [=controller=] explicitly listed that key for authentication, the
 proof in question is taken as created by the document [=controller=], as
 it was created by their explicit assignee. This is especially useful
@@ -956,8 +956,8 @@ each of which conforms to the rules in the [[[URL]]].
             <p>
 Each entry in the `controller` property MUST identify
 an entity capable of updating the canonical version
-of the [=controllable identifier document=].
-Subsequent requests for this [=controllable identifier document=] through its
+of the [=controlled identifier document=].
+Subsequent requests for this [=controlled identifier document=] through its
 canonical location will always receive the latest version.
             </p>
             <p>
@@ -967,7 +967,7 @@ is determined entirely by its storage location.
             </dl>
 
             <pre class="example nohighlight"
-              title="Controllable identifier document with a controller property">
+              title="Controlled identifier document with a controller property">
 {
   "@context": "https://www.w3.org/ns/controller/v1",
   "id": "https://controller1.example/123",
@@ -1031,8 +1031,8 @@ also identified by one or more other identifiers.
               <p>
 Applications might choose to consider two identifiers related by `alsoKnownAs`
 to be equivalent <em>if</em> the `alsoKnownAs` relationship expressed in the
-controllable identifier document of one [=subject=] is also expressed in the reverse direction
-(i.e., reciprocated) in the controllable identifier document of the other [=subject=]. It is
+controlled identifier document of one [=subject=] is also expressed in the reverse direction
+(i.e., reciprocated) in the controlled identifier document of the other [=subject=]. It is
 best practice <em>not</em> to consider them
 equivalent in the absence of this reciprocating relationship. In other words,
 the presence of an `alsoKnownAs` assertion does not prove that this assertion
@@ -1043,7 +1043,7 @@ independent verification of an `alsoKnownAs` assertion.
 Given that the [=subject=] might use different identifiers for different
 purposes, such as enhanced privacy protection, an expectation of strong
 equivalence between the two identifiers, or taking action to
-merge the information from the two corresponding [=controllable identifier documents=], is
+merge the information from the two corresponding [=controlled identifier documents=], is
 not necessarily appropriate, <em>even with</em> a reciprocal relationship.
               </p>
             </div>
@@ -1054,7 +1054,7 @@ not necessarily appropriate, <em>even with</em> a reciprocal relationship.
             <h2>Services</h2>
 
             <p>
-[=Services=] are used in [=controllable identifier documents=] to express ways of
+[=Services=] are used in [=controlled identifier documents=] to express ways of
 communicating with the [=controller=], or associated entities, in relation to
 the controlled [=identifier=]. A [=service=] can be
 any type of service the [=controller=] wants to advertise for further discovery,
@@ -1140,7 +1140,7 @@ For more information regarding privacy and security considerations related to
         <section>
           <h2>Verification Methods</h2>
           <p>
-A [=controllable identifier document=] can express [=verification methods=], such as
+A [=controlled identifier document=] can express [=verification methods=], such as
 cryptographic [=public keys=], which can be used to verify [=proofs=],
 such as those used to [=authenticate=] or authorize interactions with the
 [=controller=] or associated parties. For example, a cryptographic [=public
@@ -1161,7 +1161,7 @@ or "proof."
           </p>
 
           <p>
-A [=verification method=] is defined in a [=controllable identifier document=] using the
+A [=verification method=] is defined in a [=controlled identifier document=] using the
 [=map=] below and is referred to as the
 <dfn>verification method definition</dfn>:
           </p>
@@ -1266,7 +1266,7 @@ revocation.
 
           <p class="note"
             title="The `controller` property is used by multiple objects">
-The `controller` property is used by [=controllable identifier documents=], as described in
+The `controller` property is used by [=controlled identifier documents=], as described in
 Section [[[#controller-documents]]], and by [=verification methods=], as
 described in Section [[[#verification-methods]]]. When it is used in either
 place, its purpose is essentially the same; that is, it expresses one or more
@@ -1274,7 +1274,7 @@ entities that are authorized to perform certain actions associated with the
 resource with which it is associated.
             </p>
             <p>
-In the case of the [=controller=] of a [=controllable identifier document=], the
+In the case of the [=controller=] of a [=controlled identifier document=], the
 [=controller=] can update the content of the document. In the case of the
 [=controller=] of a [=verification method=], the [=controller=] can generate
 proofs that satisfy the method.
@@ -1282,10 +1282,10 @@ proofs that satisfy the method.
             <p>
 To ensure explicit security guarantees, the
 [=controller=] of a [=verification method=] cannot be inferred from the
-[=controllable identifier document=]. It is necessary to explicitly express the identifier of
+[=controlled identifier document=]. It is necessary to explicitly express the identifier of
 the controller of the key because the value of `controller` for a [=verification
 method=] is <em>not</em> necessarily the value of the `controller` for a
-[=controllable identifier document=].
+[=controlled identifier document=].
           </p>
 
           <section>
@@ -1308,7 +1308,7 @@ the Data Integrity EdDSA Cryptosuites</a>.
             <p>
 To increase the likelihood of interoperable implementations, this specification
 limits the number of formats for expressing verification material in a
-[=controllable identifier document=]. The fewer formats that implementers have to
+[=controlled identifier document=]. The fewer formats that implementers have to
 choose from, the more likely that interoperability will be achieved. This
 approach attempts to strike a delicate balance between easing implementation
 and providing support for formats that have historically had broad deployment.
@@ -1328,7 +1328,7 @@ conversion MUST NOT affect the external representation of key material.
             </p>
 
             <p>
-An example of a [=controllable identifier document=] containing <a>verification
+An example of a [=controlled identifier document=] containing <a>verification
 methods</a> using both properties above is shown below.
             </p>
 
@@ -1520,7 +1520,7 @@ Developers are advised to not accidentally publish a representation of a secret
 key. Implementations that adhere to this specification will raise errors in the
 event of a Multikey header value that is not in the public key header table
 above, or when reading a Multikey value that is expected to be a public key,
-such as one published in a controllable identifier document, that does not start with a known
+such as one published in a controlled identifier document, that does not start with a known
 public key header.
             </p>
 
@@ -1671,7 +1671,7 @@ data-cite="INFRA#ordered-map">map</a>, the [=verification method=] has been
 embedded and its properties can be accessed directly. However, if the value is a
 URL <a data-cite="INFRA#string">string</a>, the [=verification method=] has
 been included by reference and its properties will need to be retrieved from
-elsewhere in the [=controllable identifier document=] or from another [=controllable identifier document=]. This
+elsewhere in the [=controlled identifier document=] or from another [=controlled identifier document=]. This
 is done by dereferencing the URL and searching the resulting resource for a
 [=verification method=] <a data-cite="INFRA#ordered-map">map</a> with an
 `id` property whose value matches the URL.
@@ -1715,12 +1715,12 @@ Different [=verification relationships=] enable the associated [=verification
 methods=] to be used for different purposes. It is up to a [=verifier=]
 to ascertain the validity of a verification attempt by checking that the
 [=verification method=] used is referred to by the appropriate [=verification
-relationship=] property in the [=controllable identifier document=].
+relationship=] property in the [=controlled identifier document=].
           </p>
 
           <p>
 The [=verification relationship=] between the [=subject=] and the [=verification
-method=] is explicit in the [=controllable identifier document=]. [=Verification methods=]
+method=] is explicit in the [=controlled identifier document=]. [=Verification methods=]
 that are not associated with a particular [=verification relationship=] cannot
 be used for that [=verification relationship=]. For example, a [=verification
 method=] associated with the [=authentication=] property cannot be used to
@@ -1731,13 +1731,13 @@ that.
 
           <p>
 If a referenced [=verification method definition=] is not in the latest
-[=controllable identifier document=] used to dereference it, then that [=verification
+[=controlled identifier document=] used to dereference it, then that [=verification
 method=] is considered invalid or revoked.
           </p>
 
           <p>
 The following sections define several useful [=verification relationships=]. A
-[=controllable identifier document=] MAY include any of these, or other properties, to
+[=controlled identifier document=] MAY include any of these, or other properties, to
 express a specific [=verification relationship=]. To maximize interoperability,
 any such properties used SHOULD be registered in the list of
 [[[DID-EXTENSIONS-PROPERTIES]]].
@@ -1804,13 +1804,13 @@ some data (in some protocol-specific format) that contains a [=proof=] that was 
 for the purpose of "authentication", and that says that an entity is identified
 by the `id`, then that <em>verifier</em> checks to ensure that the [=proof=] can be
 verified using a [=verification method=] (for example, [=public key=]) listed
-under `authentication` in the [=controllable identifier document=].
+under `authentication` in the [=controlled identifier document=].
             </p>
             <p>
 Note that the [=verification method=] indicated by the
-`authentication` property of a [=controllable identifier document=] can
+`authentication` property of a [=controlled identifier document=] can
 only be used to [=authenticate=] on behalf
-of the [=controllable identifier document=]'s [=base identifier=].
+of the [=controlled identifier document=]'s [=base identifier=].
             </p>
           </section>
 
@@ -1841,7 +1841,7 @@ During verification, a verifier checks to see if a
 [=verifiable credential=] contains a [=proof=] created by the [=controller=]
 by checking that the [=verification method=] used to assert the [=proof=] is
 associated with the `assertionMethod` property in the
-corresponding [=controllable identifier document=].
+corresponding [=controlled identifier document=].
 -->
             </p>
 
@@ -1936,7 +1936,7 @@ wrap a decryption key for the recipient.
 The `capabilityInvocation` [=verification relationship=] is used
 to specify a [=verification method=] that might be used by the
 [=controller=] to invoke a cryptographic capability, such as the
-authorization to update the [=controllable identifier document=].
+authorization to update the [=controlled identifier document=].
             </p>
 
             <dl>
@@ -1962,7 +1962,7 @@ message that is placed into the HTTP Headers.
 The server providing the HTTP API is the <em>verifier</em> of the capability and
 it would need to verify that the [=verification method=] referred to by the
 invoked capability exists in the `capabilityInvocation`
-property of the [=controllable identifier document=]. The verifier would also check to make sure
+property of the [=controlled identifier document=]. The verifier would also check to make sure
 that the action being performed is valid and the capability is appropriate for
 the resource being accessed. If the verification is successful, the server has
 cryptographically determined that the invoker is authorized to access the
@@ -2548,7 +2548,7 @@ Let <var>controllerDocument</var> be the result of dereferencing
 of the URL scheme and using the supplied <var>options</var>.
           </li>
           <li>
-If <var>controllerDocument</var> is not a [=conforming controllable identifier document=],
+If <var>controllerDocument</var> is not a [=conforming controlled identifier document=],
 an error MUST be raised and SHOULD
 convey an error type of
 <a href="#INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT</a>.
@@ -2597,11 +2597,11 @@ Return <var>verificationMethod</var> as the
 
         <p>
 The following example provides a minimum conformant
-[=controllable identifier document=] containing a minimum conformant
+[=controlled identifier document=] containing a minimum conformant
 [=verification method=] as required by the algorithm in this section:
         </p>
 
-        <pre class="example" title="Minimum conformant controllable identifier document">
+        <pre class="example" title="Minimum conformant controlled identifier document">
 {
   "id": "https://controller.example/123",
   "verificationMethod": [{
@@ -2614,23 +2614,23 @@ The following example provides a minimum conformant
 }
         </pre>
 
-        <p class="note" title="Controllable identifier documents can contain references to external verification methods">
+        <p class="note" title="Controlled identifier documents can contain references to external verification methods">
 [=Verification method identifiers=] are expressed as strings that are URLs, or
-via the `id` property, whose value is a URL. It is possible for a [=controllable identifier
+via the `id` property, whose value is a URL. It is possible for a [=controlled identifier
 document=] to express a [=verification method=], through a [=verification
-relationship=], that exists in a place that is external to the [=controllable identifier
+relationship=], that exists in a place that is external to the [=controlled identifier
 document=]. As described in Section [[[#integrity-protection-of-controllers]]],
-specifying a [=verification method=] that is external to a [=controllable identifier
+specifying a [=verification method=] that is external to a [=controlled identifier
 document=] is a valid use of this specification. It is vital that this
-[=verification method=] is retrieved from the external [=controllable identifier document=].
+[=verification method=] is retrieved from the external [=controlled identifier document=].
         </p>
 
         <p>
 When retrieving any [=verification method=] the algorithm above is used to
 ensure that the [=verification method=] is retrieved from the correct
-[=controllable identifier document=]. The algorithm also ensures that this [=controllable identifier
+[=controlled identifier document=]. The algorithm also ensures that this [=controlled identifier
 document=] refers to the [=verification method=] (via a [=verification
-relationship=]) and that the [=verification method=] refers to the [=controllable identifier
+relationship=]) and that the [=verification method=] refers to the [=controlled identifier
 document=] (via the [=verification method=]'s `controller` property). Failure to
 use this algorithm, or an equivalent one that performs these checks, can lead to
 security compromises where an attacker poisons a cache by claiming control of a
@@ -2648,7 +2648,7 @@ victim's [=verification method=].
 In the example above, the algorithm described in this section will use the
 `https://external.example/xyz#key-789` URL value as the [=verification method
 identifier=]. The algorithm will then confirm that the [=verification method=]
-exists in the external [=controllable identifier document=] and that the appropriate
+exists in the external [=controlled identifier document=] and that the appropriate
 relationships exist as described earlier in this section.
         </p>
 
@@ -2697,22 +2697,22 @@ The `verificationMethod` value in a [=proof=] was malformed. See Section
           </dd>
           <dt id="INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID (-22)</dt>
           <dd>
-The `id` value in a [=controllable identifier document=] was malformed. See Section
+The `id` value in a [=controlled identifier document=] was malformed. See Section
 [[[#retrieve-verification-method]]].
           </dd>
           <dt id="INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT (-23)</dt>
           <dd>
-The [=controllable identifier document=] was malformed. See Section
+The [=controlled identifier document=] was malformed. See Section
 [[[#retrieve-verification-method]]].
           </dd>
           <dt id="INVALID_VERIFICATION_METHOD">INVALID_VERIFICATION_METHOD (-24)</dt>
           <dd>
-The [=verification method=] in a [=controllable identifier document=] was malformed. See Section
+The [=verification method=] in a [=controlled identifier document=] was malformed. See Section
 [[[#retrieve-verification-method]]].
           </dd>
           <dt id="INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD">INVALID_RELATIONSHIP_FOR_VERIFICATION_METHOD (-25)</dt>
           <dd>
-The [=verification method=] in a [=controllable identifier document=] was not
+The [=verification method=] in a [=controlled identifier document=] was not
 associated using the expected [=verification relationship=] as expressed in
 the `proofPurpose` property in the [=proof=]. See Section
 [[[#retrieve-verification-method]]].
@@ -2857,7 +2857,7 @@ value, such as `Multikey` or `JsonWebKey`, are used.
           </p>
 
           <p>
-When an application is processing a [=controllable identifier document=], if an `@context`
+When an application is processing a [=controlled identifier document=], if an `@context`
 property is not provided in the document or the terms used in the document are
 not mapped by existing values in the `@context` property, implementations MUST
 inject or append an `@context` property with a value of
@@ -2866,7 +2866,7 @@ same declarations, such as the Decentralized Identifier v1.1 context
 (`https://www.w3.org/ns/did/v1`).
           </p>
 
-          <pre class="example nohighlight" title="A controllable identifier document without an @context property">
+          <pre class="example nohighlight" title="A controlled identifier document without an @context property">
 {
   "id": "https://controller.example/101",
   "verificationMethod": [{
@@ -2972,10 +2972,10 @@ unique to this specification.
 
       <p>
 Binding an entity in the digital world or the physical world to an identifier, to
-a [=controllable identifier document=], or to cryptographic material requires the use of
+a [=controlled identifier document=], or to cryptographic material requires the use of
 security protocols contemplated by this specification. The following sections
 describe some possible scenarios and how an entity therein might prove control
-over an identifier or a [=controllable identifier document=] for the purposes of authentication or
+over an identifier or a [=controlled identifier document=] for the purposes of authentication or
 authorization.
       </p>
 
@@ -2983,9 +2983,9 @@ authorization.
         <h3>Proving Control of an Identifier and/or Controller Document</h3>
 
         <p>
-Proving control over an identifier and/or a [=controllable identifier document=] is useful
+Proving control over an identifier and/or a [=controlled identifier document=] is useful
 when accessing remote systems. Cryptographic digital signatures enable certain
-security protocols related to [=controllable identifier documents=]
+security protocols related to [=controlled identifier documents=]
 to be cryptographically verifiable. For these purposes, this specification
 defines useful [=verification relationships=] in <a
 href="#authentication"></a> and [[[#capability-invocation]]]. The
@@ -2999,10 +2999,10 @@ authentication or authorization security protocol.
         <h3>Binding to Physical Identity</h3>
 
         <p>
-An identifier or [=controllable identifier document=] do not inherently carry any
+An identifier or [=controlled identifier document=] do not inherently carry any
 <a href="https://en.wikipedia.org/wiki/Personal_data">personal data</a> and
 it is strongly advised that non-public entities do not publish personal data in
-[=controllable identifier documents=].
+[=controlled identifier documents=].
         </p>
 
         <p>
@@ -3141,7 +3141,7 @@ time it was used.
 Rotation is a management process that enables the secret cryptographic material
 associated with an existing [=verification method=] to be deactivated or
 destroyed once a new [=verification method=] has been added to the
-[=controllable identifier document=]. Going forward, any new [=proofs=] that a
+[=controlled identifier document=]. Going forward, any new [=proofs=] that a
 [=controller=] would have generated using the old secret cryptographic
 material can now instead be generated using the new  cryptographic material and
 can be verified using the new [=verification method=].
@@ -3175,7 +3175,7 @@ rotation.
         </li>
         <li>
 [=Verification method=] rotation manifests only as changes to the current or
-latest version of a [=controllable identifier document=].
+latest version of a [=controlled identifier document=].
         </li>
         <li>
 When a [=verification method=] has been active for a long time, or used for
@@ -3187,7 +3187,7 @@ parties that are forced to continuously renew or refresh associated credentials.
         </li>
         <li>
 Proofs or signatures that rely on [=verification methods=] that are not
-present in the latest version of a [=controllable identifier document=] are not impacted by
+present in the latest version of a [=controlled identifier document=] are not impacted by
 rotation. In these cases, verification software might require additional
 information, such as when a particular [=verification method=] was
 expected to be valid as well as access to a verifiable data registry
@@ -3221,7 +3221,7 @@ such as those involved in encrypting messages and authentication.
       <p>
 Compromise of the secrets associated with a [=verification method=] allows
 the attacker to use them according to the [=verification relationship=]
-expressed by [=controller=] in the [=controllable identifier document=], for example, for
+expressed by [=controller=] in the [=controlled identifier document=], for example, for
 authentication. The attacker's use of the secrets might be indistinguishable
 from the legitimate [=controller=]'s use starting from
 the time the [=verification method=] was registered, to the time it was
@@ -3250,7 +3250,7 @@ method</a> that is known to be compromised.
 
         <li>
 [=Verification method=] revocation can only be embodied in changes to
-the latest version of a [=controllable identifier document=]; it cannot retroactively adjust
+the latest version of a [=controlled identifier document=]; it cannot retroactively adjust
 previous versions.
         </li>
 
@@ -3272,7 +3272,7 @@ discretion.
         </li>
 
         <li>
-Even if a [=verification method=] is present in a [=controllable identifier document=],
+Even if a [=verification method=] is present in a [=controlled identifier document=],
 additional information, such as a public key revocation certificate, or an
 external allow or deny list, could be used to determine whether a
 [=verification method=] has been revoked.
@@ -3294,7 +3294,7 @@ Although verifiers might choose not to accept [=proofs=] or signatures from a
 revoked verification method, knowing whether a verification was made with a
 revoked [=verification method=] is trickier than it might seem. Some auditing
 systems provide the ability to look back at the state of an identifier at a
-point in time, or at a particular version of the [=controllable identifier document=].
+point in time, or at a particular version of the [=controlled identifier document=].
 When such a feature is combined with a reliable way to determine the time or
 identifier version that existed when a cryptographically verifiable statement
 was made, then revocation does not undo that statement. This can be the basis
@@ -3307,7 +3307,7 @@ future use of the method.
         </p>
         <p>
 However, in order for such semantics to be safe, the second condition &mdash; an
-ability to know what the state of the [=controllable identifier document=] was at the time
+ability to know what the state of the [=controlled identifier document=] was at the time
 the assertion was made &mdash; is expected to apply. Without that guarantee,
 someone could discover a revoked key and use it to make cryptographically
 verifiable statements with a simulated date in the past.
@@ -3361,17 +3361,17 @@ be used for any particular application or ecosystem.
       <p>
 Encryption algorithms have been known to fail due to advances in cryptography
 and computing power. Implementers are advised to assume that any encrypted data
-placed in a [=controllable identifier document=] might eventually be made available in clear text
+placed in a [=controlled identifier document=] might eventually be made available in clear text
 to the same audience to which the encrypted data is available. This is
-particularly pertinent if the [=controllable identifier document=] is public.
+particularly pertinent if the [=controlled identifier document=] is public.
       </p>
       <p>
-Encrypting all or parts of a [=controllable identifier document=] is <em>not</em> an appropriate
+Encrypting all or parts of a [=controlled identifier document=] is <em>not</em> an appropriate
 means to protect data in the long term. Similarly, placing encrypted data in
-a [=controllable identifier document=] is not an appropriate means to protect personal data.
+a [=controlled identifier document=] is not an appropriate means to protect personal data.
       </p>
       <p>
-Given the caveats above, if encrypted data is included in a [=controllable identifier document=],
+Given the caveats above, if encrypted data is included in a [=controlled identifier document=],
 implementers are advised to not associate any correlatable information
 that could be used to infer a relationship between the encrypted data
 and an associated party. Examples of correlatable information include
@@ -3385,19 +3385,19 @@ receiving party.
     <section>
       <h2>Content Integrity Protection</h2>
       <p>
-[=Controllable identifier documents=] that include links to external machine-readable
+[=Controlled identifier documents=] that include links to external machine-readable
 content such as images, web pages, or schemas are vulnerable to tampering. It is
 strongly advised that external links are integrity protected using mechanisms to
 secure related resources such as those described in the [[[?VC-DATA-MODEL-2.0]]]
 specification. External links are to be avoided if they cannot be integrity
-protected and the [=controllable identifier document=]'s integrity is dependent on the
+protected and the [=controlled identifier document=]'s integrity is dependent on the
 external link.
       </p>
       <p>
-One example of an external link where the integrity of the [=controllable identifier
+One example of an external link where the integrity of the [=controlled identifier
 document=] itself could be affected is the JSON-LD Context [[JSON-LD11]],
 when present. To protect against compromise,
-[=controllable identifier document=] consumers using JSON-LD are advised to cache
+[=controlled identifier document=] consumers using JSON-LD are advised to cache
 local static copies of JSON-LD contexts and/or verify the integrity of external
 contexts against a cryptographic hash that is known to be associated with a safe
 version of the external JSON-LD Context.
@@ -3409,8 +3409,8 @@ version of the external JSON-LD Context.
 
       <p>
 As described in Section [[[#controllers]]], this specification includes a
-mechanism by which to delegate change control of a [=controllable identifier document=] to
-an entity that is described in an external [=controllable identifier document=] through the
+mechanism by which to delegate change control of a [=controlled identifier document=] to
+an entity that is described in an external [=controlled identifier document=] through the
 use of the `controller` property.
       </p>
 
@@ -3421,7 +3421,7 @@ entities, as well as those where some entity desires that another entity
 provide account recovery services, among other use cases. In such scenarios,
 it can be beneficial to allow the guardian to manage the rotation of their
 own key material. It can also be beneficial for the delegator to associate
-a cryptographic hash of the remote [=controllable identifier document=] to "pin" the
+a cryptographic hash of the remote [=controlled identifier document=] to "pin" the
 remote document to a known good value.
       </p>
 
@@ -3474,10 +3474,10 @@ assurance. Since [=verification relationships=] used to perform
 <a href="#assertion">assertion</a> and [=authentication=] might be
 used in some of these situations, information about the applied security context
 might need to be expressed and provided to a <em>verifier</em>. Whether and how
-to encode this information in the [=controllable identifier document=] data model is out
+to encode this information in the [=controlled identifier document=] data model is out
 of scope for this specification. Interested readers might note that 1) the
 information could be transmitted using Verifiable Credentials
-[[?VC-DATA-MODEL-2.0]], and 2) the [=controllable identifier document=] data model can be
+[[?VC-DATA-MODEL-2.0]], and 2) the [=controlled identifier document=] data model can be
 extended to incorporate this information.
       </p>
     </section>
@@ -3486,7 +3486,7 @@ extended to incorporate this information.
       <h2>Service Endpoints for Authentication and Authorization</h2>
 
       <p>
-If a [=controllable identifier document=] publishes a [=service=] intended for authentication
+If a [=controlled identifier document=] publishes a [=service=] intended for authentication
 or authorization of the [=subject=] (see Section [[[#services]]]), it is the
 responsibility of the [=service=] provider, [=subject=], and/or requesting party
 to comply with the requirements of the authentication and/or authorization
@@ -3500,16 +3500,16 @@ protocols supported by that [=service=] endpoint.
     <h1>Privacy Considerations</h1>
 
     <p>
-Since [=controllable identifier documents=] are designed to be administered directly by
+Since [=controlled identifier documents=] are designed to be administered directly by
 the [=controller=], it is critically important to apply the principles of
 Privacy by Design [[PRIVACY-BY-DESIGN]] to all aspects of the
-[=controllable identifier document=]. All seven of these principles have been applied
+[=controlled identifier document=]. All seven of these principles have been applied
 throughout the development of this specification. The design used in this
 specification does not assume that there is a registrar, hosting company, nor
 other intermediate service provider to recommend or apply additional privacy
 safeguards. Privacy in this specification is preventive, not remedial, and is an
 embedded default. The following sections cover privacy considerations that
-implementers might find useful when building systems that utilize [=controllable identifier
+implementers might find useful when building systems that utilize [=controlled identifier
 documents=].
     </p>
 
@@ -3517,13 +3517,13 @@ documents=].
       <h2>Keep Personal Data Private</h2>
 
       <p>
-If a [=controllable identifier document=] is about a specific individual and is
-public-facing, it is <em>critical</em> that [=controllable identifier documents=] contain
+If a [=controlled identifier document=] is about a specific individual and is
+public-facing, it is <em>critical</em> that [=controlled identifier documents=] contain
 no personal biometric or biographical data. While it is true that personal data
 might include pseudonymous information, such as a public cryptographic key or an IP address,
 publishing that sort of information does not create the same immediate privacy
 dangers as publishing an individual's full name, profile photo, or social media
-account in a [=controllable identifier document=]. A better alternative is to transmit
+account in a [=controlled identifier document=]. A better alternative is to transmit
 such personal data through other means such as verifiable credentials
 [[?VC-DATA-MODEL-2.0]] or other data formats sent over private and secure
 communication channels.
@@ -3553,7 +3553,7 @@ key registration burden), it can also lead to negative privacy outcomes
 (tracking). Those that use this specification are warned that there are
 trade-offs with each approach and to use the mechanism that maximizes security
 and privacy according to the needs of the individual or organization. Using a
-[=controllable identifier document=] for all use cases is not always advantageous when a
+[=controlled identifier document=] for all use cases is not always advantageous when a
 same-origin bound cryptographic key would suffice.
       </p>
     </section>
@@ -3579,10 +3579,10 @@ identification and correlation across interaction domains.
 
       <p>
 The anti-correlation protections of [=pairwise identifiers=] are easily defeated
-if the data in the corresponding [=controllable identifier documents=] can be correlated. For
-example, using identical [=verification methods=] in multiple [=controllable identifier
+if the data in the corresponding [=controlled identifier documents=] can be correlated. For
+example, using identical [=verification methods=] in multiple [=controlled identifier
 documents=] can provide as much correlation information as using the same
-identifier. Therefore, the [=controllable identifier document=] for a [=pairwise identifier=]
+identifier. Therefore, the [=controlled identifier document=] for a [=pairwise identifier=]
 also needs to use pairwise unique information, such as ensuring that
 [=verification methods=] are unique to the pairwise relationship.
       </p>
@@ -3592,7 +3592,7 @@ also needs to use pairwise unique information, such as ensuring that
     <section>
       <h2>Subject Classification</h2>
       <p>
-It is dangerous to add properties to the [=controllable identifier document=] that can be
+It is dangerous to add properties to the [=controlled identifier document=] that can be
 used to indicate, explicitly or through inference, what <em>type</em> or nature
 of thing the [=subject=] is, particularly if the [=subject=] is a person.
       </p>
@@ -3601,19 +3601,19 @@ Not only do such properties potentially result in personal data (see
 [[[#keep-personal-data-private]]]) or correlatable data (see <a
 href="#identifier-correlation-risks"> </a> and
 [[[#controller-document-correlation-risks]]]) being present in
-the [=controllable identifier document=], but they can be used for grouping particular
+the [=controlled identifier document=], but they can be used for grouping particular
 identifiers in such a way that they are included in or excluded from certain
 operations or functionalities.
       </p>
       <p>
-Including <em>type</em> information in a [=controllable identifier document=] can result
+Including <em>type</em> information in a [=controlled identifier document=] can result
 in personal privacy harms even for [=subjects=] that are non-person entities,
 such as IoT devices. The aggregation of such information around a
 [=controller=] could serve as a form of digital fingerprint and this is best
 avoided.
       </p>
       <p>
-To minimize these risks, all properties in a [=controllable identifier document=] ought to
+To minimize these risks, all properties in a [=controlled identifier document=] ought to
 be for expressing [=verification methods=] and <a>verification
 relationships</a> related to using the identifier.
       </p>
@@ -3623,22 +3623,22 @@ relationships</a> related to using the identifier.
     <section>
       <h2>Service Privacy</h2>
       <p>
-The ability for a [=controller=] to optionally express at least one [=service=] in the [=controllable identifier document=] increases their control and agency.
-Each additional endpoint in the [=controllable identifier document=] adds privacy risk either
+The ability for a [=controller=] to optionally express at least one [=service=] in the [=controlled identifier document=] increases their control and agency.
+Each additional endpoint in the [=controlled identifier document=] adds privacy risk either
 due to correlation, such as across endpoint descriptions, or because the
 [=services=] are not protected by an authorization mechanism, or both.
       </p>
       <p>
-[=Controllable identifier documents=] are often public and, since they are standardized, will
+[=Controlled identifier documents=] are often public and, since they are standardized, will
 be stored and indexed efficiently. This
-risk is increased if [=controllable identifier documents=] are published to immutable
-[=verifiable data registries=]. Access to a history of the [=controllable identifier
+risk is increased if [=controlled identifier documents=] are published to immutable
+[=verifiable data registries=]. Access to a history of the [=controlled identifier
 documents=] referenced by a URL enables a form of traffic analysis made more
 efficient through the use of standards.
       </p>
       <p>
 The degree of additional privacy risk caused by including multiple [=services=] in
-one [=controllable identifier document=] can be difficult to estimate. Privacy harms are
+one [=controlled identifier document=] can be difficult to estimate. Privacy harms are
 typically unintended consequences. URLs can refer to documents, [=services=],
 schemas, and other things that might be associated with individual people,
 households, clubs, and employers &mdash; and correlation of their [=services=]
@@ -3706,7 +3706,7 @@ This section will be submitted to the Internet Engineering Steering Group
         <h2>application/cid</h2>
         <p>
 This specification registers the `application/cid` media type specifically for
-identifying documents conforming to the [=controllable identifier document=]
+identifying documents conforming to the [=controlled identifier document=]
 format.
         </p>
         <table>
@@ -3806,7 +3806,7 @@ developers seeking test values.
           </pre>
 
           <pre class="example nohighlight"
-               title="Multiple public keys encoded as Multikeys in a controllable identifier document">
+               title="Multiple public keys encoded as Multikeys in a controlled identifier document">
 {
   "@context": "https://www.w3.org/ns/controller/v1",
   "id": "https://controller.example/123",
@@ -3912,7 +3912,7 @@ developers seeking test values.
           </pre>
 
           <pre class="example nohighlight"
-               title="Multiple public keys encoded as JsonWebKey in a controllable identifier document">
+               title="Multiple public keys encoded as JsonWebKey in a controlled identifier document">
 {
   "@context": "https://www.w3.org/ns/controller/v1",
   "id": "https://controller.example/123",
