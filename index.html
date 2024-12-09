@@ -687,7 +687,7 @@ certain [=verification methods=] for specific purposes.
 
         <pre class="example" title="Controller Document using publicKeyMultibase and JSON-LD">
 {
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example",
   "authentication": [{
       "id": "https://controller.example#authn-key-123",
@@ -969,7 +969,7 @@ is determined entirely by its storage location.
             <pre class="example nohighlight"
               title="Controlled identifier document with a controller property">
 {
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller1.example/123",
   "controller": "https://controllerB.example/abc",
 }
@@ -1247,7 +1247,7 @@ revocation.
           <pre class="example nohighlight"
             title="Example verification method structure">
     {
-      "@context": "https://www.w3.org/ns/controller/v1",
+      "@context": "https://www.w3.org/ns/cid/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "verificationMethod": [{
@@ -1336,7 +1336,7 @@ methods</a> using both properties above is shown below.
               class="example nohighlight"
               title="Verification methods using publicKeyJwk and publicKeyMultibase">
     {
-      "@context": "https://www.w3.org/ns/controller/v1",
+      "@context": "https://www.w3.org/ns/cid/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "verificationMethod": [{
@@ -1398,7 +1398,7 @@ above:
             <pre class="example nohighlight"
               title="Multikey encoding of a Ed25519 public key">
 {
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123456789abcdefghi#keys-1",
   "type": "Multikey",
   "controller": "https://controller.example/123456789abcdefghi",
@@ -1766,7 +1766,7 @@ referenced.
             <pre class="example nohighlight" title="Authentication property
                           containing three verification methods">
     {
-      "@context": "https://www.w3.org/ns/controller/v1",
+      "@context": "https://www.w3.org/ns/cid/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "authentication": [
@@ -1848,7 +1848,7 @@ corresponding [=controlled identifier document=].
             <pre class="example nohighlight" title="Assertion method property
                         containing two verification methods">
     {
-      "@context": "https://www.w3.org/ns/controller/v1",
+      "@context": "https://www.w3.org/ns/cid/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "assertionMethod": [
@@ -1899,7 +1899,7 @@ wrap a decryption key for the recipient.
             <pre class="example nohighlight" title="Key agreement property
                           containing two verification methods">
     {
-      "@context": "https://www.w3.org/ns/controller/v1",
+      "@context": "https://www.w3.org/ns/cid/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "keyAgreement": [
@@ -1972,7 +1972,7 @@ protected resource.
             <pre class="example nohighlight" title="Capability invocation property
                           containing two verification methods">
     {
-      "@context": "https://www.w3.org/ns/controller/v1",
+      "@context": "https://www.w3.org/ns/cid/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "capabilityInvocation": [
@@ -2030,7 +2030,7 @@ example described in [[[#capability-invocation]]].
             <pre class="example nohighlight" title="Capability Delegation property
                           containing two verification methods">
     {
-      "@context": "https://www.w3.org/ns/controller/v1",
+      "@context": "https://www.w3.org/ns/cid/v1",
       "id": "https://controller.example/123456789abcdefghi",
       <span class="comment">...</span>
       "capabilityDelegation": [
@@ -2818,7 +2818,7 @@ the `proofPurpose` property in the [=proof=]. See Section
           <tbody>
             <tr>
               <td style="white-space: nowrap;">
-                <strong>URL:</strong> https://www.w3.org/ns/controller/v1<br>
+                <strong>URL:</strong> https://www.w3.org/ns/cid/v1<br>
                 <strong>SHA2-256 Digest:</strong><br> <code><span class="vc-hash"
         data-hash-url="https://w3c.github.io/cid/context/v1.jsonld"
         data-hash-format="openssl dgst -sha256" /></code>
@@ -2830,7 +2830,7 @@ the `proofPurpose` property in the [=proof=]. See Section
         <p>
           It is possible to confirm the cryptographic digests listed above by running a
           command like the following through a modern UNIX-like OS command line interface: `curl -sL -H
-          "Accept: application/ld+json" https://www.w3.org/ns/controller/v1 | openssl dgst -sha256`
+          "Accept: application/ld+json" https://www.w3.org/ns/cid/v1 | openssl dgst -sha256`
         </p>
 
         <p>
@@ -2861,7 +2861,7 @@ When an application is processing a [=controlled identifier document=], if an `@
 property is not provided in the document or the terms used in the document are
 not mapped by existing values in the `@context` property, implementations MUST
 inject or append an `@context` property with a value of
-`https://www.w3.org/ns/controller/v1` or one or more contexts with at least the
+`https://www.w3.org/ns/cid/v1` or one or more contexts with at least the
 same declarations, such as the Decentralized Identifier v1.1 context
 (`https://www.w3.org/ns/did/v1`).
           </p>
@@ -3808,7 +3808,7 @@ developers seeking test values.
           <pre class="example nohighlight"
                title="Multiple public keys encoded as Multikeys in a controlled identifier document">
 {
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123",
   "verificationMethod": [{
     "id": "https://multikey.example/issuer/123#key-1",
@@ -3914,7 +3914,7 @@ developers seeking test values.
           <pre class="example nohighlight"
                title="Multiple public keys encoded as JsonWebKey in a controlled identifier document">
 {
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123",
   "verificationMethod": [{
     "id": "https://jsonwebkey.example/issuer/123#key-1",

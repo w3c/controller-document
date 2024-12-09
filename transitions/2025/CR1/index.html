@@ -985,7 +985,7 @@ certain <a data-link-type="dfn|abstract-op" href="#dfn-verification-method" clas
         <div class="marker">
     <a class="self-link" href="#example-controller-document-using-publickeymultibase-and-json-ld">Example<bdi> 2</bdi></a><span class="example-title">: Controller Document using publicKeyMultibase and JSON-LD</span>
   </div> <pre aria-busy="false"><code class="hljs json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">"@context"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://www.w3.org/ns/controller/v1"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"@context"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://www.w3.org/ns/cid/v1"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://controller.example"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"authentication"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span>
       <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://controller.example#authn-key-123"</span><span class="hljs-punctuation">,</span>
@@ -1260,7 +1260,7 @@ is determined entirely by its storage location.
         <div class="marker">
     <a class="self-link" href="#example-controlled-identifier-document-with-a-controller-property">Example<bdi> 4</bdi></a><span class="example-title">: Controlled identifier document with a controller property</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller1.example/123",
   "controller": "https://controllerB.example/abc",
 }</pre>
@@ -1521,7 +1521,7 @@ revocation.
         <div class="marker">
     <a class="self-link" href="#example-example-verification-method-structure">Example<bdi> 6</bdi></a><span class="example-title">: Example verification method structure</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123456789abcdefghi",
   <span class="comment">...</span>
   "verificationMethod": [{
@@ -1608,7 +1608,7 @@ methods</a> using both properties above is shown below.
         <div class="marker">
     <a class="self-link" href="#example-various-verification-method-types">Example<bdi> 7</bdi></a><span class="example-title">: Verification methods using publicKeyJwk and publicKeyMultibase</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123456789abcdefghi",
   <span class="comment">...</span>
   "verificationMethod": [{
@@ -1671,7 +1671,7 @@ above:
         <div class="marker">
     <a class="self-link" href="#example-multikey-encoding-of-a-ed25519-public-key">Example<bdi> 8</bdi></a><span class="example-title">: Multikey encoding of a Ed25519 public key</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123456789abcdefghi#keys-1",
   "type": "Multikey",
   "controller": "https://controller.example/123456789abcdefghi",
@@ -2038,7 +2038,7 @@ referenced.
     <a class="self-link" href="#example-authentication-property-containing-three-verification-methods">Example<bdi> 12</bdi></a><span class="example-title">: Authentication property
                           containing three verification methods</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123456789abcdefghi",
   <span class="comment">...</span>
   "authentication": [
@@ -2116,7 +2116,7 @@ verifiable credential by a verifier.
     <a class="self-link" href="#example-assertion-method-property-containing-two-verification-methods">Example<bdi> 13</bdi></a><span class="example-title">: Assertion method property
                         containing two verification methods</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123456789abcdefghi",
   <span class="comment">...</span>
   "assertionMethod": [
@@ -2169,7 +2169,7 @@ wrap a decryption key for the recipient.
     <a class="self-link" href="#example-key-agreement-property-containing-two-verification-methods">Example<bdi> 14</bdi></a><span class="example-title">: Key agreement property
                           containing two verification methods</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123456789abcdefghi",
   <span class="comment">...</span>
   "keyAgreement": [
@@ -2244,7 +2244,7 @@ protected resource.
     <a class="self-link" href="#example-capability-invocation-property-containing-two-verification-methods">Example<bdi> 15</bdi></a><span class="example-title">: Capability invocation property
                           containing two verification methods</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123456789abcdefghi",
   <span class="comment">...</span>
   "capabilityInvocation": [
@@ -2304,7 +2304,7 @@ example described in <a href="#capability-invocation" data-matched-text="[[[#cap
     <a class="self-link" href="#example-capability-delegation-property-containing-two-verification-methods">Example<bdi> 16</bdi></a><span class="example-title">: Capability Delegation property
                           containing two verification methods</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123456789abcdefghi",
   <span class="comment">...</span>
   "capabilityDelegation": [
@@ -3084,7 +3084,7 @@ the <code>proofPurpose</code> property in the <a data-link-type="dfn|abstract-op
           <tbody>
             <tr>
               <td style="white-space: nowrap;">
-                <strong>URL:</strong> https://www.w3.org/ns/controller/v1<br>
+                <strong>URL:</strong> https://www.w3.org/ns/cid/v1<br>
                 <strong>SHA2-256 Digest:</strong><br> <code><span class="vc-hash" data-hash-url="https://w3c.github.io/cid/context/v1.jsonld" data-hash-format="openssl dgst -sha256">ea216ecc1cb02cd39b693dba2250141e270ba0bf95890be107dd9a9e8e43de85</span></code>
               </td>
             </tr>
@@ -3094,7 +3094,7 @@ the <code>proofPurpose</code> property in the <a data-link-type="dfn|abstract-op
         <p>
           It is possible to confirm the cryptographic digests listed above by running a
           command like the following through a modern UNIX-like OS command line interface: <code>curl -sL -H
-          "Accept: application/ld+json" https://www.w3.org/ns/controller/v1 | openssl dgst -sha256</code>
+          "Accept: application/ld+json" https://www.w3.org/ns/cid/v1 | openssl dgst -sha256</code>
         </p>
 
         <p>
@@ -3125,7 +3125,7 @@ When an application is processing a <a data-link-type="dfn|abstract-op" href="#d
 property is not provided in the document or the terms used in the document are
 not mapped by existing values in the <code>@context</code> property, implementations <em class="rfc2119">MUST</em>
 inject or append an <code>@context</code> property with a value of
-<code>https://www.w3.org/ns/controller/v1</code> or one or more contexts with at least the
+<code>https://www.w3.org/ns/cid/v1</code> or one or more contexts with at least the
 same declarations, such as the Decentralized Identifier v1.1 context
 (<code>https://www.w3.org/ns/did/v1</code>).
           </p>
@@ -4065,7 +4065,7 @@ developers seeking test values.
         <div class="marker">
     <a class="self-link" href="#example-multiple-public-keys-encoded-as-multikeys-in-a-controlled-identifier-document">Example<bdi> 28</bdi></a><span class="example-title">: Multiple public keys encoded as Multikeys in a controlled identifier document</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123",
   "verificationMethod": [{
     "id": "https://multikey.example/issuer/123#key-1",
@@ -4176,7 +4176,7 @@ developers seeking test values.
         <div class="marker">
     <a class="self-link" href="#example-multiple-public-keys-encoded-as-jsonwebkey-in-a-controlled-identifier-document">Example<bdi> 33</bdi></a><span class="example-title">: Multiple public keys encoded as JsonWebKey in a controlled identifier document</span>
   </div> <pre class="nohighlight">{
-  "@context": "https://www.w3.org/ns/controller/v1",
+  "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example/123",
   "verificationMethod": [{
     "id": "https://jsonwebkey.example/issuer/123#key-1",
