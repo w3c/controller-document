@@ -22,7 +22,7 @@
           shortName:            "cid-1.0",
 
           // subtitle
-          //subtitle: "Controller Documents",
+          //subtitle: "Controlled Identifier Documents",
 
           // if you wish the publication date to be other than today, set this
           publishDate:  "2025-01-09",
@@ -664,7 +664,7 @@ contain [=verification relationships=] that explicitly permit the use of
 certain [=verification methods=] for specific purposes.
         </p>
 
-        <pre class="example" title="Controller Document using publicKeyJwk">
+        <pre class="example" title="Controlled Identifier Document using publicKeyJwk">
 {
   "id": "https://controller.example/101",
   "verificationMethod": [{
@@ -685,7 +685,7 @@ certain [=verification methods=] for specific purposes.
 }
         </pre>
 
-        <pre class="example" title="Controller Document using publicKeyMultibase and JSON-LD">
+        <pre class="example" title="Controlled Identifier Document using publicKeyMultibase and JSON-LD">
 {
   "@context": "https://www.w3.org/ns/cid/v1",
   "id": "https://controller.example",
@@ -705,7 +705,7 @@ different types with possible differences in constraints.
         </p>
 
         <section>
-          <h2>Controller Documents</h2>
+          <h2>Controlled Identifier Documents</h2>
 
           <p>
 The following sections define the properties in a [=controlled identifier document=],
@@ -1120,7 +1120,7 @@ value MUST be a valid URL conforming to [[[URL]]].
             <p>
 For more information regarding privacy and security considerations related to
 [=services=] see [[[#service-privacy]]], [[[#keep-personal-data-private]]],
-[[[#controller-document-correlation-risks]]], and
+[[[#controlled-identifier-document-correlation-risks]]], and
 [[[#service-endpoints-for-authentication-and-authorization]]].
       </p>
 
@@ -1267,7 +1267,7 @@ revocation.
           <p class="note"
             title="The `controller` property is used by multiple objects">
 The `controller` property is used by [=controlled identifier documents=], as described in
-Section [[[#controller-documents]]], and by [=verification methods=], as
+Section [[[#controlled-identifier-documents]]], and by [=verification methods=], as
 described in Section [[[#verification-methods]]]. When it is used in either
 place, its purpose is essentially the same; that is, it expresses one or more
 entities that are authorized to perform certain actions associated with the
@@ -2423,11 +2423,11 @@ division is used to perform the division.
 Decrement <var>byteOffset</var> by `1` and increment <var>i</var> by `1`.
                   </li>
                 </ol>
+                </li>
                 <li>
 Set <var>decodedLength</var> to <var>i</var> and increment
 <var>sourceOffset</var> by `1`.
                 </li>
-              </li>
             </ol>
           </li>
           <li>
@@ -2551,13 +2551,13 @@ of the URL scheme and using the supplied <var>options</var>.
 If <var>controllerDocument</var> is not a [=conforming controlled identifier document=],
 an error MUST be raised and SHOULD
 convey an error type of
-<a href="#INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT</a>.
+<a href="#INVALID_CONTROLLED_IDENTIFIER_DOCUMENT">INVALID_CONTROLLED_IDENTIFIER_DOCUMENT</a>.
           </li>
           <li>
 If <var>controllerDocument</var>.<var>id</var> does not match the
 <var>controllerDocumentUrl</var>, an error MUST be raised and SHOULD
 convey an error type of
-<a href="#INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID</a>.
+<a href="#INVALID_CONTROLLED_IDENTIFIER_DOCUMENT_ID">INVALID_CONTROLLED_IDENTIFIER_DOCUMENT_ID</a>.
           </li>
           <li>
 Let <var>verificationMethod</var> be the result of dereferencing the
@@ -2695,12 +2695,12 @@ The `detail` value SHOULD provide a longer human-readable string for the error.
 The `verificationMethod` value in a [=proof=] was malformed. See Section
 [[[#retrieve-verification-method]]].
           </dd>
-          <dt id="INVALID_CONTROLLER_DOCUMENT_ID">INVALID_CONTROLLER_DOCUMENT_ID (-22)</dt>
+          <dt id="INVALID_CONTROLLED_IDENTIFIER_DOCUMENT_ID">INVALID_CONTROLLED_IDENTIFIER_DOCUMENT_ID (-22)</dt>
           <dd>
 The `id` value in a [=controlled identifier document=] was malformed. See Section
 [[[#retrieve-verification-method]]].
           </dd>
-          <dt id="INVALID_CONTROLLER_DOCUMENT">INVALID_CONTROLLER_DOCUMENT (-23)</dt>
+          <dt id="INVALID_CONTROLLED_IDENTIFIER_DOCUMENT">INVALID_CONTROLLED_IDENTIFIER_DOCUMENT (-23)</dt>
           <dd>
 The [=controlled identifier document=] was malformed. See Section
 [[[#retrieve-verification-method]]].
@@ -2906,7 +2906,7 @@ This section defines datatypes that are used by this specification.
         </p>
 
       <section>
-        <h4 id="multibase">The `multibase` Datatype</h3>
+        <h4 id="multibase">The `multibase` Datatype</h4>
 
         <p>
 <a href="#multibase-0">Multibase</a>-encoded strings are used to encode binary
@@ -2980,7 +2980,7 @@ authorization.
       </p>
 
       <section>
-        <h3>Proving Control of an Identifier and/or Controller Document</h3>
+        <h3>Proving Control of an Identifier and/or Controlled Identifier Document</h3>
 
         <p>
 Proving control over an identifier and/or a [=controlled identifier document=] is useful
@@ -3357,7 +3357,7 @@ be used for any particular application or ecosystem.
     </section>
 
     <section>
-      <h2>Encrypted Data in Controller Documents</h2>
+      <h2>Encrypted Data in Controlled Identifier Documents</h2>
       <p>
 Encryption algorithms have been known to fail due to advances in cryptography
 and computing power. Implementers are advised to assume that any encrypted data
@@ -3575,7 +3575,7 @@ identification and correlation across interaction domains.
     </section>
 
     <section>
-      <h2>Controller Document Correlation Risks</h2>
+      <h2>Controlled Identifier Document Correlation Risks</h2>
 
       <p>
 The anti-correlation protections of [=pairwise identifiers=] are easily defeated
@@ -3600,7 +3600,7 @@ of thing the [=subject=] is, particularly if the [=subject=] is a person.
 Not only do such properties potentially result in personal data (see
 [[[#keep-personal-data-private]]]) or correlatable data (see <a
 href="#identifier-correlation-risks"> </a> and
-[[[#controller-document-correlation-risks]]]) being present in
+[[[#controlled-identifier-document-correlation-risks]]]) being present in
 the [=controlled identifier document=], but they can be used for grouping particular
 identifiers in such a way that they are included in or excluded from certain
 operations or functionalities.
@@ -3733,7 +3733,7 @@ subject to the same encoding considerations specified in Section 11 of
           </tr>
           <tr>
             <td>Security considerations: </td>
-            <td>As defined in the [[[CONTROLLER-DOCUMENT]]].</td>
+            <td>As defined in the [[[CONTROLLED-IDENTIFIER-DOCUMENT]]].</td>
           </tr>
           <tr>
             <td>Contact: </td>
